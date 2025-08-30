@@ -2,16 +2,15 @@
 import FlatPickr from 'vue-flatpickr-component'
 import { useTheme } from 'vuetify'
 
-// @ts-expect-error There won't be declaration file for it
-import { VField, filterFieldProps, makeVFieldProps } from 'vuetify/lib/components/VField/VField'
-
-// @ts-expect-error There won't be declaration file for it
-import { VInput, makeVInputProps } from 'vuetify/lib/components/VInput/VInput'
-
-// @ts-expect-error There won't be declaration file for it
+import { VField, VInput } from 'vuetify/components'
 import { filterInputAttrs } from 'vuetify/lib/util/helpers'
 
 import { useThemeConfig } from '@core/composable/useThemeConfig'
+
+interface Config {
+  inline?: boolean
+  [key: string]: any
+}
 
 const props = defineProps({
   autofocus: Boolean,
@@ -28,13 +27,22 @@ const props = defineProps({
     default: 'text',
   },
   modelModifiers: Object as PropType<Record<string, boolean>>,
-  ...makeVInputProps({
-    hideDetails: 'auto',
-  }),
-  ...makeVFieldProps({
-    variant: 'outlined',
-    color: 'primary',
-  }),
+  modelValue: [String, Date, Array] as PropType<string | Date | Date[] | null>,
+  hideDetails: {
+    type: [Boolean, String] as PropType<boolean | 'auto'>,
+    default: 'auto',
+  },
+  variant: {
+    type: String as PropType<'outlined' | 'plain' | 'underlined' | 'filled' | 'solo' | 'solo-inverted' | 'solo-filled'>,
+    default: 'outlined',
+  },
+  color: {
+    type: String,
+    default: 'primary',
+  },
+  class: String,
+  style: [String, Object],
+  dirty: Boolean,
 })
 
 const emit = defineEmits<Emit>()
@@ -54,11 +62,11 @@ defineOptions({
 
 const attrs = useAttrs()
 
-const [rootAttrs, compAttrs] = filterInputAttrs(attrs)
+const [rootAttrs, compAttrs] = filterInputAttrs(attrs) as [Record<string, any>, Record<string, any> & { config?: Config }]
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const [{ modelValue: _, ...inputProps }] = VInput.filterProps(props)
-const [fieldProps] = filterFieldProps(props)
+// Extract input and field props manually
+const { modelValue: _, class: className, style, variant, color, hideDetails, dirty, ...inputProps } = props
+const fieldProps = { variant, color, class: className, style }
 
 const refFlatPicker = ref()
 const { focused } = useFocus(refFlatPicker)
@@ -144,7 +152,7 @@ const emitModelValue = (val: string) => {
                 v-if="!isInlinePicker"
                 v-bind="compAttrs"
                 ref="refFlatPicker"
-                :model-value="modelValue"
+                :model-value="modelValue || null"
                 :placeholder="props.placeholder"
                 :readonly="isReadonly.value"
                 class="flat-picker-custom-style"
@@ -174,7 +182,7 @@ const emitModelValue = (val: string) => {
       v-if="isInlinePicker"
       v-bind="compAttrs"
       ref="refFlatPicker"
-      :model-value="modelValue"
+      :model-value="modelValue || null"
       @update:model-value="emitModelValue"
       @on-open="isCalendarOpen = true"
       @on-close="isCalendarOpen = false"

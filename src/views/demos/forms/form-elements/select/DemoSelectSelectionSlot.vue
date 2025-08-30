@@ -32,7 +32,7 @@ const value = ref(['Sandra Adams'])
       <VChip>
         <VAvatar
           start
-          :image="item.raw.avatar"
+          :image="item.avatar"
         />
         <span>{{ item.title }}</span>
       </VChip>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { VDataTable } from 'vuetify/labs/VDataTable'
+import { VDataTable } from 'vuetify/components/VDataTable'
 import chrome from '@images/logos/chrome.png'
 
 const isNewPasswordVisible = ref(false)
@@ -156,12 +156,12 @@ const recentDevices = [
           <template #item.browser="{ item }">
             <div class="d-flex">
               <VAvatar
-                :image="item.raw.logo"
+                :image="item.logo"
                 :size="22"
                 class="me-2"
               />
               <span class="text-base text-high-emphasis">
-                {{ item.raw.browser }}
+                {{ item.browser }}
               </span>
             </div>
           </template>

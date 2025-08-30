@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { VDataTable } from 'vuetify/labs/VDataTable'
+import { VDataTable } from 'vuetify/components/VDataTable'
 import type { SalesDetails } from '@/@fake-db/types'
 import axios from '@axios'
 
@@ -110,14 +110,14 @@ onMounted(() => {
         <div class="d-flex align-center">
           <div>
             <VImg
-              :src="item.raw.product.image"
+              :src="item.product.image"
               height="40"
               width="40"
             />
           </div>
           <div class="d-flex flex-column ms-3">
-            <span class="d-block font-weight-medium text-truncate text-high-emphasis">{{ item.raw.product.name }}</span>
-            <span class="text-xs">{{ item.raw.product.brand }}</span>
+            <span class="d-block font-weight-medium text-truncate text-high-emphasis">{{ item.product.name }}</span>
+            <span class="text-xs">{{ item.product.brand }}</span>
           </div>
         </div>
       </template>
@@ -126,7 +126,7 @@ onMounted(() => {
       <template #item.product.category="{ item }">
         <div class="d-flex align-center">
           <VAvatar
-            v-for="(category, index) in categoryIconFilter(item.raw.product.category)"
+            v-for="(category, index) in categoryIconFilter(item.product.category)"
             :key="index"
             size="26"
             :color="category.color"
@@ -140,7 +140,7 @@ onMounted(() => {
               {{ category.icon }}
             </VIcon>
           </VAvatar>
-          <span class="ms-1 text-no-wrap">{{ item.raw.product.category }}</span>
+          <span class="ms-1 text-no-wrap">{{ item.product.category }}</span>
         </div>
       </template>
 
@@ -149,16 +149,16 @@ onMounted(() => {
         <div class="d-flex align-center">
           <VAvatar
             size="1.875rem"
-            :color="!item.raw.avatar ? 'primary' : undefined"
-            :variant="!item.raw.avatar ? 'tonal' : undefined"
+            :color="!item.avatar ? 'primary' : undefined"
+            :variant="!item.avatar ? 'tonal' : undefined"
           >
             <VImg
-              v-if="item.raw.buyer.avatar"
-              :src="item.raw.buyer.avatar"
+              v-if="item.buyer.avatar"
+              :src="item.buyer.avatar"
             />
-            <span v-else>{{ item.raw.buyer.name.slice(0, 2).toUpperCase() }}</span>
+            <span v-else>{{ item.buyer.name.slice(0, 2).toUpperCase() }}</span>
           </VAvatar>
-          <span class="text-no-wrap font-weight-medium text-high-emphasis ms-2">{{ item.raw.buyer.name }}</span>
+          <span class="text-no-wrap font-weight-medium text-high-emphasis ms-2">{{ item.buyer.name }}</span>
         </div>
       </template>
 
@@ -166,28 +166,28 @@ onMounted(() => {
       <template #item.payment="{ item }">
         <div class="d-flex flex-column">
           <div class="d-flex align-center">
-            <span class="text-high-emphasis font-weight-medium">${{ item.raw.payment.paid_amount }}</span>
-            <span v-if="item.raw.payment.paid_amount !== item.raw.payment.total">/{{ item.raw.payment.total }}</span>
+            <span class="text-high-emphasis font-weight-medium">${{ item.payment.paid_amount }}</span>
+            <span v-if="item.payment.paid_amount !== item.payment.total">/{{ item.payment.total }}</span>
           </div>
-          <span class="text-xs text-no-wrap">{{ item.raw.payment.received_payment_status }}</span>
+          <span class="text-xs text-no-wrap">{{ item.payment.received_payment_status }}</span>
         </div>
       </template>
 
       <!-- Status -->
       <template #item.status="{ item }">
         <VChip
-          :color="resolveStatusColor(item.raw.payment.status)"
-          :class="`text-${resolveStatusColor(item.raw.payment.status)}`"
+          :color="resolveStatusColor(item.payment.status)"
+          :class="`text-${resolveStatusColor(item.payment.status)}`"
           size="small"
           class="font-weight-medium"
         >
-          {{ item.raw.payment.status }}
+          {{ item.payment.status }}
         </VChip>
       </template>
 
       <!-- Delete -->
       <template #item.delete="{ item }">
-        <IconBtn @click="deleteItem(item.raw.product.id)">
+        <IconBtn @click="deleteItem(item.product.id)">
           <VIcon icon="mdi-delete-outline" />
         </IconBtn>
       </template>

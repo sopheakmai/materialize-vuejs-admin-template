@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { VDataTable } from 'vuetify/labs/VDataTable'
+import { VDataTable } from 'vuetify/components/VDataTable'
 import UserInvoiceTable from './UserInvoiceTable.vue'
 
 // Images
@@ -112,14 +112,14 @@ const resolveUserProgressVariant = (progress: number) => {
               <VAvatar
                 :size="34"
                 class="me-3"
-                :image="item.raw.logo"
+                :image="item.logo"
               />
               <div>
                 <p class="font-weight-medium text-high-emphasis text-sm mb-0">
-                  {{ item.raw.name }}
+                  {{ item.name }}
                 </p>
                 <p class="text-xs text-medium-emphasis mb-0">
-                  {{ item.raw.project }}
+                  {{ item.project }}
                 </p>
               </div>
             </div>
@@ -127,23 +127,23 @@ const resolveUserProgressVariant = (progress: number) => {
 
           <!-- total tasks  -->
           <template #item.totalTask="{ item }">
-            <span class="text-high-emphasis text-sm">{{ item.raw.totalTask }}</span>
+            <span class="text-high-emphasis text-sm">{{ item.totalTask }}</span>
           </template>
 
           <!-- Progress -->
           <template #item.progress="{ item }">
-            <span class="text-sm text-high-emphasis">{{ item.raw.progress }}%</span>
+            <span class="text-sm text-high-emphasis">{{ item.progress }}%</span>
             <VProgressLinear
               :height="6"
-              :model-value="item.raw.progress"
+              :model-value="item.progress"
               rounded
-              :color="resolveUserProgressVariant(item.raw.progress)"
+              :color="resolveUserProgressVariant(item.progress)"
             />
           </template>
 
           <!-- hours  -->
           <template #item.hours="{ item }">
-            <span class="text-sm">{{ item.raw.hours }}</span>
+            <span class="text-sm">{{ item.hours }}</span>
           </template>
 
           <!-- remove footer -->

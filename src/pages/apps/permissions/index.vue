@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { VDataTableServer } from 'vuetify/labs/VDataTable'
+import { VDataTableServer } from 'vuetify/components/VDataTable'
 import type { Permission } from '@/@fake-db/types'
 import { paginationMeta } from '@/@fake-db/utils'
 import axios from '@axios'
@@ -103,10 +103,10 @@ const editPermission = (name: string) => {
         >
           <!-- Assigned To -->
           <template #item.assignedTo="{ item }">
-            <!-- {{ item.raw.assignedTo }} -->
+            <!-- {{ item.assignedTo }} -->
             <div class="d-flex gap-2">
               <VChip
-                v-for="text in item.raw.assignedTo"
+                v-for="text in item.assignedTo"
                 :key="text"
                 :color="colors[text].color"
                 density="comfortable"
@@ -117,7 +117,7 @@ const editPermission = (name: string) => {
           </template>
 
           <template #item.createdDate="{ item }">
-            <span class="text-sm text-medium-emphasis">{{ item.raw.createdDate }}</span>
+            <span class="text-sm text-medium-emphasis">{{ item.createdDate }}</span>
           </template>
 
           <!-- Actions -->
@@ -127,7 +127,7 @@ const editPermission = (name: string) => {
               size="small"
               color="medium-emphasis"
               variant="text"
-              @click="editPermission(item.raw.name)"
+              @click="editPermission(item.name)"
             >
               <VIcon
                 size="24"

@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import EcommerceActivityTimeline from '@/views/dashboard/ecommerce/EcommerceActivityTimeline.vue'
-import EcommerceLiveVisitors from '@/views/dashboard/ecommerce/EcommerceLiveVisitors.vue'
-import EcommerceMarketingSales from '@/views/dashboard/ecommerce/EcommerceMarketingSales.vue'
-import EcommerceOrdersImpressions from '@/views/dashboard/ecommerce/EcommerceOrdersImpressions.vue'
-import EcommerceSalesMonthCharts from '@/views/dashboard/ecommerce/EcommerceSalesMonthCharts.vue'
-import EcommerceSalesOverview from '@/views/dashboard/ecommerce/EcommerceSalesOverview.vue'
-import EcommerceTopReferralSources from '@/views/dashboard/ecommerce/EcommerceTopReferralSources.vue'
-import EcommerceTotalVisits from '@/views/dashboard/ecommerce/EcommerceTotalVisits.vue'
-import EcommerceUserList from '@/views/dashboard/ecommerce/EcommerceUserList.vue'
-import EcommerceVisitsByDay from '@/views/dashboard/ecommerce/EcommerceVisitsByDay.vue'
-import EcommerceWeeklySalesBg from '@/views/dashboard/ecommerce/EcommerceWeeklySalesBg.vue'
+// Lazy load ecommerce components for better performance
+const EcommerceActivityTimeline = defineAsyncComponent(() => import('@/views/dashboard/ecommerce/EcommerceActivityTimeline.vue'))
+const EcommerceLiveVisitors = defineAsyncComponent(() => import('@/views/dashboard/ecommerce/EcommerceLiveVisitors.vue'))
+const EcommerceMarketingSales = defineAsyncComponent(() => import('@/views/dashboard/ecommerce/EcommerceMarketingSales.vue'))
+const EcommerceOrdersImpressions = defineAsyncComponent(() => import('@/views/dashboard/ecommerce/EcommerceOrdersImpressions.vue'))
+const EcommerceSalesMonthCharts = defineAsyncComponent(() => import('@/views/dashboard/ecommerce/EcommerceSalesMonthCharts.vue'))
+const EcommerceSalesOverview = defineAsyncComponent(() => import('@/views/dashboard/ecommerce/EcommerceSalesOverview.vue'))
+const EcommerceTopReferralSources = defineAsyncComponent(() => import('@/views/dashboard/ecommerce/EcommerceTopReferralSources.vue'))
+const EcommerceTotalVisits = defineAsyncComponent(() => import('@/views/dashboard/ecommerce/EcommerceTotalVisits.vue'))
+const EcommerceUserList = defineAsyncComponent(() => import('@/views/dashboard/ecommerce/EcommerceUserList.vue'))
+const EcommerceVisitsByDay = defineAsyncComponent(() => import('@/views/dashboard/ecommerce/EcommerceVisitsByDay.vue'))
+const EcommerceWeeklySalesBg = defineAsyncComponent(() => import('@/views/dashboard/ecommerce/EcommerceWeeklySalesBg.vue'))
 import illustration1 from '@images/cards/illustration-1.png'
 import illustration2 from '@images/cards/illustration-2.png'
 

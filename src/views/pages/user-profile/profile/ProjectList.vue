@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { VDataTable } from 'vuetify/labs/VDataTable'
+import { VDataTable } from 'vuetify/components/VDataTable'
 import figma from '@images/icons/project-icons/figma.png'
 import html5 from '@images/icons/project-icons/html5.png'
 import python from '@images/icons/project-icons/python.png'
@@ -112,14 +112,14 @@ const moreList = [
           <VAvatar
             :size="34"
             class="me-3"
-            :image="item.raw.logo"
+            :image="item.logo"
           />
           <div>
             <p class="text-sm text-high-emphasis font-weight-medium mb-0">
-              {{ item.raw.name }}
+              {{ item.name }}
             </p>
             <p class="text-xs text-medium-emphasis mb-0">
-              {{ item.raw.project }}
+              {{ item.project }}
             </p>
           </div>
         </div>
@@ -131,12 +131,12 @@ const moreList = [
           <div class="flex-grow-1">
             <VProgressLinear
               :height="6"
-              :model-value="item.raw.progress"
+              :model-value="item.progress"
               rounded
-              :color="resolveUserProgressVariant(item.raw.progress)"
+              :color="resolveUserProgressVariant(item.progress)"
             />
           </div>
-          <span>{{ item.raw.progress }}%</span>
+          <span>{{ item.progress }}%</span>
         </div>
       </template>
 

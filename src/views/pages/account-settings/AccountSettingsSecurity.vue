@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { VDataTable } from 'vuetify/labs/VDataTable'
+import { VDataTable } from 'vuetify/components/VDataTable'
 import boyWithTab from '@images/illustrations/account-settings-security-illustration.png'
 
 const isCurrentPasswordVisible = ref(false)
@@ -329,12 +329,12 @@ const isOneTimePasswordDialogVisible = ref(false)
             <div class="d-flex align-center">
               <VIcon
                 start
-                :icon="item.raw.deviceIcon.icon"
-                :color="item.raw.deviceIcon.color"
+                :icon="item.deviceIcon.icon"
+                :color="item.deviceIcon.color"
                 size="20"
               />
               <span class="text-base text-high-emphasis">
-                {{ item.raw.browser }}
+                {{ item.browser }}
               </span>
             </div>
           </template>

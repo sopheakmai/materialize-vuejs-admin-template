@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { VDataTableServer } from 'vuetify/labs/VDataTable'
+import { VDataTableServer } from 'vuetify/components/VDataTable'
 import type { UserProperties } from '@/@fake-db/types'
 import { paginationMeta } from '@/@fake-db/utils'
 import AddNewUserDrawer from '@/views/apps/user/list/AddNewUserDrawer.vue'
@@ -157,29 +157,29 @@ const addNewUser = (userData: UserProperties) => {
           <div class="d-flex">
             <VAvatar
               size="34"
-              :variant="!item.raw.avatar ? 'tonal' : undefined"
-              :color="!item.raw.avatar ? resolveUserRoleVariant(item.raw.role).color : undefined"
+              :variant="!item.avatar ? 'tonal' : undefined"
+              :color="!item.avatar ? resolveUserRoleVariant(item.role).color : undefined"
               class="me-3"
             >
               <VImg
-                v-if="item.raw.avatar"
-                :src="item.raw.avatar"
+                v-if="item.avatar"
+                :src="item.avatar"
               />
               <span
                 v-else
                 class="text-sm"
-              >{{ avatarText(item.raw.fullName) }}</span>
+              >{{ avatarText(item.fullName) }}</span>
             </VAvatar>
             <div class="d-flex flex-column">
               <h6 class="text-sm">
                 <RouterLink
-                  :to="{ name: 'apps-user-view-id', params: { id: item.raw.id } }"
+                  :to="{ name: 'apps-user-view-id', params: { id: item.id } }"
                   class="font-weight-medium user-list-name"
                 >
-                  {{ item.raw.fullName }}
+                  {{ item.fullName }}
                 </RouterLink>
               </h6>
-              <span class="text-xs text-medium-emphasis">@{{ item.raw.username }}</span>
+              <span class="text-xs text-medium-emphasis">@{{ item.username }}</span>
             </div>
           </div>
         </template>
@@ -187,33 +187,33 @@ const addNewUser = (userData: UserProperties) => {
         <!-- Email -->
         <template #item.email="{ item }">
           <span class="text-sm">
-            {{ item.raw.email }}
+            {{ item.email }}
           </span>
         </template>
         <!-- Role -->
         <template #item.role="{ item }">
           <div class="d-flex gap-x-2">
             <VIcon
-              :icon="resolveUserRoleVariant(item.raw.role).icon"
-              :color="resolveUserRoleVariant(item.raw.role).color"
+              :icon="resolveUserRoleVariant(item.role).icon"
+              :color="resolveUserRoleVariant(item.role).color"
             />
-            <span class="text-capitalize">{{ item.raw.role }}</span>
+            <span class="text-capitalize">{{ item.role }}</span>
           </div>
         </template>
 
         <!-- Plan -->
         <template #item.plan="{ item }">
-          <span class="text-capitalize text-high-emphasis">{{ item.raw.currentPlan }}</span>
+          <span class="text-capitalize text-high-emphasis">{{ item.currentPlan }}</span>
         </template>
 
         <!-- Status -->
         <template #item.status="{ item }">
           <VChip
-            :color="resolveUserStatusVariant(item.raw.status)"
+            :color="resolveUserStatusVariant(item.status)"
             size="small"
             class="text-capitalize"
           >
-            {{ item.raw.status }}
+            {{ item.status }}
           </VChip>
         </template>
 
@@ -224,7 +224,7 @@ const addNewUser = (userData: UserProperties) => {
             variant="text"
             size="small"
             color="medium-emphasis"
-            :to="{ name: 'apps-user-view-id', params: { id: item.raw.id } }"
+            :to="{ name: 'apps-user-view-id', params: { id: item.id } }"
           >
             <VIcon
               size="24"

@@ -129,7 +129,7 @@ const handleNavScroll = (evt: Event) => {
         :key="isAppRtl"
         tag="ul"
         class="nav-items"
-        :options="{ wheelPropagation: false }"
+        :options="{ wheelPropagation: true }"
         @ps-scroll-y="handleNavScroll"
       >
         <Component
@@ -174,7 +174,8 @@ const handleNavScroll = (evt: Event) => {
   }
 
   .nav-items {
-    block-size: 100%;
+    flex-grow: 1;
+    min-block-size: 0;
 
     // ℹ️ We no loner needs this overflow styles as perfect scrollbar applies it
     // overflow-x: hidden;

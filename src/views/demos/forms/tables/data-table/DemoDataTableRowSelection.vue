@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { VDataTable } from 'vuetify/labs/VDataTable'
+import { VDataTable } from 'vuetify/components/VDataTable'
 import { avatarText } from '@/@core/utils/formatters'
 import data from '@/views/demos/forms/tables/data-table/datatable'
 
@@ -38,22 +38,22 @@ const resolveStatusVariant = (status: number) => {
       <div class="d-flex align-center">
         <VAvatar
           size="32"
-          :color="item.raw.avatar ? '' : 'primary'"
-          :class="item.raw.avatar ? '' : 'v-avatar-light-bg primary--text'"
-          :variant="!item.raw.avatar ? 'tonal' : undefined"
+          :color="item.avatar ? '' : 'primary'"
+          :class="item.avatar ? '' : 'v-avatar-light-bg primary--text'"
+          :variant="!item.avatar ? 'tonal' : undefined"
         >
           <VImg
-            v-if="item.raw.avatar"
-            :src="item.raw.avatar"
+            v-if="item.avatar"
+            :src="item.avatar"
           />
           <span
             v-else
             class="text-sm"
-          >{{ avatarText(item.raw.full_name) }}</span>
+          >{{ avatarText(item.full_name) }}</span>
         </VAvatar>
         <div class="d-flex flex-column ms-3">
-          <span class="d-block font-weight-medium text-high-emphasis text-truncate">{{ item.raw.full_name }}</span>
-          <small>{{ item.raw.post }}</small>
+          <span class="d-block font-weight-medium text-high-emphasis text-truncate">{{ item.full_name }}</span>
+          <small>{{ item.post }}</small>
         </div>
       </div>
     </template>
@@ -61,11 +61,11 @@ const resolveStatusVariant = (status: number) => {
     <!-- status -->
     <template #item.status="{ item }">
       <VChip
-        :color="resolveStatusVariant(item.raw.status).color"
+        :color="resolveStatusVariant(item.status).color"
         class="font-weight-medium"
         size="small"
       >
-        {{ resolveStatusVariant(item.raw.status).text }}
+        {{ resolveStatusVariant(item.status).text }}
       </VChip>
     </template>
   </VDataTable>

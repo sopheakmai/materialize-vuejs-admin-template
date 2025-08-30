@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { VDataTableServer } from 'vuetify/labs/VDataTable'
+import { VDataTableServer } from 'vuetify/components/VDataTable'
 import type { Invoice } from '@/@fake-db/types'
 import { paginationMeta } from '@/@fake-db/utils'
 import { useInvoiceStore } from '@/views/apps/invoice/useInvoiceStore'
@@ -166,7 +166,7 @@ watchEffect(() => {
         <template #item.id="{ item }">
           <RouterLink :to="{ name: 'apps-invoice-preview-id', params: { id: item.value } }">
             <span class="text-sm">
-              #{{ item.raw.id }}
+              #{{ item.id }}
             </span>
           </RouterLink>
         </template>
@@ -178,23 +178,23 @@ watchEffect(() => {
               <VAvatar
                 :size="34"
                 v-bind="props"
-                :color="resolveInvoiceStatusVariantAndIcon(item.raw.invoiceStatus).variant"
+                :color="resolveInvoiceStatusVariantAndIcon(item.invoiceStatus).variant"
                 variant="tonal"
               >
                 <VIcon
                   :size="20"
-                  :icon="resolveInvoiceStatusVariantAndIcon(item.raw.invoiceStatus).icon"
+                  :icon="resolveInvoiceStatusVariantAndIcon(item.invoiceStatus).icon"
                 />
               </VAvatar>
             </template>
             <p class="mb-0">
-              {{ item.raw.invoiceStatus }}
+              {{ item.invoiceStatus }}
             </p>
             <p class="mb-0">
-              Balance: {{ item.raw.balance }}
+              Balance: {{ item.balance }}
             </p>
             <p class="mb-0">
-              Due date: {{ item.raw.dueDate }}
+              Due date: {{ item.dueDate }}
             </p>
           </VTooltip>
         </template>
@@ -202,29 +202,29 @@ watchEffect(() => {
         <!-- Total -->
         <template #item.total="{ item }">
           <span class="text-sm">
-            ${{ item.raw.total }}
+            ${{ item.total }}
           </span>
         </template>
 
         <!-- issued Date -->
         <template #item.date="{ item }">
           <span class="text-sm">
-            {{ item.raw.issuedDate }}
+            {{ item.issuedDate }}
           </span>
         </template>
 
         <!-- Actions -->
         <template #item.actions="{ item }">
-          <IconBtn @click="deleteInvoice(item.raw.id)">
+          <IconBtn @click="deleteInvoice(item.id)">
             <VIcon icon="mdi-delete-outline" />
           </IconBtn>
 
-          <IconBtn :to="{ name: 'apps-invoice-preview-id', params: { id: item.raw.id } }">
+          <IconBtn :to="{ name: 'apps-invoice-preview-id', params: { id: item.id } }">
             <VIcon icon="mdi-eye-outline" />
           </IconBtn>
 
           <MoreBtn
-            :menu-list="computedMoreList(item.raw.id)"
+            :menu-list="computedMoreList(item.id)"
             item-props
           />
         </template>

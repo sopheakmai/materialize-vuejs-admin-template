@@ -503,8 +503,8 @@ const people = [
     <template #chip="{ props, item }">
       <VChip
         v-bind="props"
-        :prepend-avatar="item.raw.avatar"
-        :text="item.raw.name"
+        :prepend-avatar="item.avatar"
+        :text="item.name"
       />
     </template>
 
@@ -593,8 +593,8 @@ const people = [
     <template #chip="{ props, item }">
       <VChip
         v-bind="props"
-        :prepend-avatar="item.raw.avatar"
-        :text="item.raw.name"
+        :prepend-avatar="item.avatar"
+        :text="item.name"
       />
     </template>
 

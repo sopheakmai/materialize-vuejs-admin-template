@@ -4,7 +4,7 @@
     "target": "esnext",
     "useDefineForClassFields": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "isolatedModules": true,
     "strict": true,
     "jsx": "preserve",
@@ -61,13 +61,13 @@
   },
   "include": [
     "vite.config.*",
-    "env.d.ts",
-    "shims.d.ts",
+    "types/env.d.ts",
+    "types/shims.d.ts",
     "src/**/*",
     "src/**/*.vue",
     "themeConfig.ts",
-    "auto-imports.d.ts",
-    "components.d.ts"
+    "types/auto-imports.d.ts",
+    "types/components.d.ts"
   ],
   "exclude": [
     "dist",

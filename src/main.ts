@@ -11,6 +11,7 @@ import router from '@/router'
 import { abilitiesPlugin } from '@casl/vue'
 import '@core/scss/template/index.scss'
 import '@styles/styles.scss'
+import 'vue3-perfect-scrollbar/style.css'
 import { createPinia } from 'pinia'
 import { createApp } from 'vue'
 

@@ -172,12 +172,12 @@ const endDateTimePickerConfig = computed(() => {
                       :class="event.extendedProps.calendar ? 'd-flex' : ''"
                     >
                       <VBadge
-                        :color="item.raw.color"
+                        :color="item.color"
                         inline
                         dot
                         class="pa-1 mb-1"
                       />
-                      <span>{{ item.raw.label }}</span>
+                      <span>{{ item.label }}</span>
                     </div>
                   </template>
                 </VSelect>

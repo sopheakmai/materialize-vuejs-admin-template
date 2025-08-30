@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import AnalyticsActivityTimeline from '@/views/dashboard/analytics/AnalyticsActivityTimeline.vue'
-import AnalyticsCongratulationsJohn from '@/views/dashboard/analytics/AnalyticsCongratulationsJohn.vue'
-import AnalyticsOverviewRadialBarCharts from '@/views/dashboard/analytics/AnalyticsOverviewRadialBarCharts.vue'
-import AnalyticsPerformance from '@/views/dashboard/analytics/AnalyticsPerformance.vue'
-import AnalyticsProjectStatistics from '@/views/dashboard/analytics/AnalyticsProjectStatistics.vue'
-import AnalyticsSalesCountry from '@/views/dashboard/analytics/AnalyticsSalesCountry.vue'
-import AnalyticsTopReferralSources from '@/views/dashboard/analytics/AnalyticsTopReferralSources.vue'
-import AnalyticsTotalProfitLineCharts from '@/views/dashboard/analytics/AnalyticsTotalProfitLineCharts.vue'
-import AnalyticsTotalRevenueBarCharts from '@/views/dashboard/analytics/AnalyticsTotalRevenueBarCharts.vue'
-import AnalyticsTotalTransactions from '@/views/dashboard/analytics/AnalyticsTotalTransactions.vue'
-import AnalyticsVisitsByDay from '@/views/dashboard/analytics/AnalyticsVisitsByDay.vue'
-import AnalyticsWeeklySales from '@/views/dashboard/analytics/AnalyticsWeeklySales.vue'
+// Lazy load analytics components for better performance
+const AnalyticsActivityTimeline = defineAsyncComponent(() => import('@/views/dashboard/analytics/AnalyticsActivityTimeline.vue'))
+const AnalyticsCongratulationsJohn = defineAsyncComponent(() => import('@/views/dashboard/analytics/AnalyticsCongratulationsJohn.vue'))
+const AnalyticsOverviewRadialBarCharts = defineAsyncComponent(() => import('@/views/dashboard/analytics/AnalyticsOverviewRadialBarCharts.vue'))
+const AnalyticsPerformance = defineAsyncComponent(() => import('@/views/dashboard/analytics/AnalyticsPerformance.vue'))
+const AnalyticsProjectStatistics = defineAsyncComponent(() => import('@/views/dashboard/analytics/AnalyticsProjectStatistics.vue'))
+const AnalyticsSalesCountry = defineAsyncComponent(() => import('@/views/dashboard/analytics/AnalyticsSalesCountry.vue'))
+const AnalyticsTopReferralSources = defineAsyncComponent(() => import('@/views/dashboard/analytics/AnalyticsTopReferralSources.vue'))
+const AnalyticsTotalProfitLineCharts = defineAsyncComponent(() => import('@/views/dashboard/analytics/AnalyticsTotalProfitLineCharts.vue'))
+const AnalyticsTotalRevenueBarCharts = defineAsyncComponent(() => import('@/views/dashboard/analytics/AnalyticsTotalRevenueBarCharts.vue'))
+const AnalyticsTotalTransactions = defineAsyncComponent(() => import('@/views/dashboard/analytics/AnalyticsTotalTransactions.vue'))
+const AnalyticsVisitsByDay = defineAsyncComponent(() => import('@/views/dashboard/analytics/AnalyticsVisitsByDay.vue'))
+const AnalyticsWeeklySales = defineAsyncComponent(() => import('@/views/dashboard/analytics/AnalyticsWeeklySales.vue'))
 </script>
 
 <template>

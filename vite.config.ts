@@ -1,7 +1,7 @@
-import { fileURLToPath } from 'node:url'
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import { fileURLToPath } from 'node:url'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
@@ -9,7 +9,6 @@ import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
 import vuetify from 'vite-plugin-vuetify'
 
-// @ts-expect-error Known error: https://github.com/sxzz/unplugin-vue-macros/issues/257#issuecomment-1410752890
 import DefineOptions from 'unplugin-vue-define-options/vite'
 
 // https://vitejs.dev/config/
@@ -93,9 +92,56 @@ export default defineConfig({
     chunkSizeWarningLimit: 5000,
   },
   optimizeDeps: {
-    exclude: ['vuetify'],
     entries: [
       './src/**/*.vue',
+    ],
+    include: [
+      'vuetify',
+      'vuetify/components',
+      'vuetify/directives',
+      'vuetify/lib/iconsets/mdi',
+      'vuetify/components/VApp',
+      'vuetify/components/VBtn',
+      'vuetify/components/VCard',
+      'vuetify/components/VDialog',
+      'vuetify/components/VTextField',
+      'vuetify/components/VSelect',
+      'vuetify/components/VAutocomplete',
+        'vuetify/components/VDatePicker',
+      'vuetify/components/VCheckbox',
+      'vuetify/components/VRadio',
+      'vuetify/components/VSwitch',
+      'vuetify/components/VTooltip',
+      'vuetify/components/VMenu',
+      'vuetify/components/VNavigationDrawer',
+      'vuetify/components/VTable',
+      'vuetify/components/VDataTable',
+      'vuetify/components/VAlert',
+      'vuetify/components/VTimeline',
+      'vuetify/components/VWindow',
+      'vuetify/components/VTabs',
+      'vuetify/components/VGrid',
+      'vuetify/components/VAvatar',
+      'vuetify/components/VChip',
+      'vuetify/components/VImg',
+      'vuetify/components/VBadge',
+      'vuetify/components/VDivider',
+      'vuetify/components/VLabel',
+      'vuetify/components/VRadioGroup',
+      'vuetify/components/VLayout',
+      'vuetify/components/VMain',
+      'vuetify/components/VBtnGroup',
+      'vuetify/components/VTextarea',
+      'vuetify/components/VTimeline',
+      'vuetify/components/VSlideGroup',
+      'vuetify/components/VProgressCircular',
+      'vuetify/components/VCarousel',
+      'vuetify/components/VProgressLinear',
+      'vuetify/components/VLocaleProvider',
+      'vuetify/components/transitions',
+      'webfontloader',
+      '@iconify/vue',
+      'axios-mock-adapter'
     ],
   },
 })
