@@ -58,11 +58,12 @@ export default defineConfig({
     }),
     Components({
       dirs: ['src/@core/components', 'src/views/demos', 'src/components'],
-      dts: true,
+      dts: 'types/components.d.ts',
     }),
     AutoImport({
       imports: ['vue', 'vue-router', '@vueuse/core', '@vueuse/math', 'vue-i18n', 'pinia'],
       vueTemplate: true,
+      dts: 'types/auto-imports.d.ts',
     }),
     VueI18nPlugin({
       runtimeOnly: true,
