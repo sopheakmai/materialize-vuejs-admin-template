@@ -8,7 +8,7 @@ const route = useRoute()
 const { ctrl_k, meta_k } = useMagicKeys()
 
 // 👉 Tour initialization
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 let tour: any = null
 
 // 👉 watch command palette and route change

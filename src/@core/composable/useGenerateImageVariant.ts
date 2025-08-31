@@ -1,5 +1,5 @@
-import { useTheme } from 'vuetify'
 import { useThemeConfig } from '@core/composable/useThemeConfig'
+import { useTheme } from 'vuetify'
 
 const { skin } = useThemeConfig()
 

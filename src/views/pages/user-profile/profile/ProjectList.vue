@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { VDataTable } from 'vuetify/components/VDataTable'
 import figma from '@images/icons/project-icons/figma.png'
 import html5 from '@images/icons/project-icons/html5.png'
 import python from '@images/icons/project-icons/python.png'
@@ -7,6 +6,7 @@ import react from '@images/icons/project-icons/react.png'
 import sketch from '@images/icons/project-icons/sketch.png'
 import vue from '@images/icons/project-icons/vue.png'
 import xamarin from '@images/icons/project-icons/xamarin.png'
+import { VDataTable } from 'vuetify/components/VDataTable'
 
 // Project Table Header
 const projectTableHeaders = [
@@ -107,7 +107,7 @@ const moreList = [
       class="text-no-wrap rounded-0 text-sm text-high-emphasis"
     >
       <!-- projects -->
-      <template #item.project="{ item }">
+      <template #[`item.project`]="{ item }">
         <div class="d-flex">
           <VAvatar
             :size="34"
@@ -126,7 +126,7 @@ const moreList = [
       </template>
 
       <!-- Progress -->
-      <template #item.progress="{ item }">
+      <template #[`item.progress`]="{ item }">
         <div class="d-flex align-center gap-3">
           <div class="flex-grow-1">
             <VProgressLinear
@@ -141,7 +141,7 @@ const moreList = [
       </template>
 
       <!-- Action -->
-      <template #item.Action>
+      <template #[`item.Action`]>
         <MoreBtn :menu-list="moreList" />
       </template>
 

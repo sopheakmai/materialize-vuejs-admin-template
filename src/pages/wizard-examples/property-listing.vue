@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import type { PropertyListingData } from '@/views/wizard-examples/property-listing/types'
 import PersonalDetails from '@/views/wizard-examples/property-listing/PersonalDetails.vue'
 import PriceDetails from '@/views/wizard-examples/property-listing/PriceDetails.vue'
 import PropertyArea from '@/views/wizard-examples/property-listing/PropertyArea.vue'
 import PropertyDetails from '@/views/wizard-examples/property-listing/PropertyDetails.vue'
-import PropertyFeatures from '@/views/wizard-examples/property-listing/PropertyFeatures.vue'
 
-import type { PropertyListingData } from '@/views/wizard-examples/property-listing/types'
+import PropertyFeatures from '@/views/wizard-examples/property-listing/PropertyFeatures.vue'
 
 const propertyListingSteps = [
   {

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { useGenerateImageVariant } from '@/@core/composable/useGenerateImageVariant'
-
-import ErrorHeader from '@/components/ErrorHeader.vue'
 import pages500 from '@images/pages/500.png'
+
 import miscObj from '@images/pages/misc-500-object.png'
 import miscMaskDark from '@images/pages/misc-mask-dark.png'
 import miscMaskLight from '@images/pages/misc-mask-light.png'
+import { useGenerateImageVariant } from '@/@core/composable/useGenerateImageVariant'
+import ErrorHeader from '@/components/ErrorHeader.vue'
 
 const miscThemeMask = useGenerateImageVariant(miscMaskLight, miscMaskDark)
 </script>

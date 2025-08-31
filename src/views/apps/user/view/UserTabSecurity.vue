@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { VDataTable } from 'vuetify/components/VDataTable'
 import chrome from '@images/logos/chrome.png'
+import { VDataTable } from 'vuetify/components/VDataTable'
 
 const isNewPasswordVisible = ref(false)
 const isConfirmPasswordVisible = ref(false)
@@ -174,7 +174,7 @@ const recentDevices = [
 
   <!-- 👉 Enable One Time Password Dialog -->
   <TwoFactorAuthDialog
-    v-model:isDialogVisible="isTwoFactorDialogOpen"
+    v-model:is-dialog-visible="isTwoFactorDialogOpen"
     :sms-code="smsVerificationNumber"
   />
 </template>

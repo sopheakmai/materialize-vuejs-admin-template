@@ -1,11 +1,4 @@
-'use strict'
-
-// ------------------------------------------------------------------------------
-// Requirements
-// ------------------------------------------------------------------------------
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const utils = require('eslint-plugin-vue/lib/utils')
+import utils from 'eslint-plugin-vue/lib/utils/index.js'
 
 function toPascalCase(str) {
   const words = str.match(/[a-z]+/gi)
@@ -42,7 +35,7 @@ function findDemoElement(node) {
 // Rule Definition
 // ------------------------------------------------------------------------------
 
-module.exports = {
+export default {
   meta: {
     type: 'problem',
     docs: {

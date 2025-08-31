@@ -12,7 +12,6 @@ export interface DealDetails {
   }
 }
 
-
 export interface DealType {
   Offer: string
   discount: number | null
@@ -36,6 +35,6 @@ export interface DealReviewComplete {
 export interface CreateDealData {
   dealDetails: DealDetails
   dealType: DealType
-  dealUsage:DealUsage
-  dealReviewComplete:DealReviewComplete
+  dealUsage: DealUsage
+  dealReviewComplete: DealReviewComplete
 }

@@ -19,10 +19,10 @@ const isAddPaymentSidebarVisible = ref(false)
 const isSendPaymentSidebarVisible = ref(false)
 
 // 👉 fetchInvoice
-invoiceListStore.fetchInvoice(Number(route.params.id)).then(response => {
+invoiceListStore.fetchInvoice(Number(route.params.id)).then((response) => {
   invoiceData.value = response.data.invoice
   paymentDetails.value = response.data.paymentDetails
-}).catch(error => {
+}).catch((error) => {
   console.log(error)
 })
 
@@ -390,10 +390,10 @@ const printInvoice = () => {
     </VRow>
 
     <!-- 👉 Add Payment Sidebar -->
-    <InvoiceAddPaymentDrawer v-model:isDrawerOpen="isAddPaymentSidebarVisible" />
+    <InvoiceAddPaymentDrawer v-model:is-drawer-open="isAddPaymentSidebarVisible" />
 
     <!-- 👉 Send Invoice Sidebar -->
-    <InvoiceSendInvoiceDrawer v-model:isDrawerOpen="isSendPaymentSidebarVisible" />
+    <InvoiceSendInvoiceDrawer v-model:is-drawer-open="isSendPaymentSidebarVisible" />
   </section>
 </template>
 

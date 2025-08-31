@@ -1,6 +1,6 @@
-import { useTheme } from 'vuetify'
 import { useLayouts } from '@layouts'
 import { themeConfig } from '@themeConfig'
+import { useTheme } from 'vuetify'
 
 export const isDarkPreferred = usePreferredDark()
 
@@ -76,15 +76,15 @@ export const useThemeConfig = () => {
     const { themes } = useTheme()
 
     // Create skin default color so that we can revert back to original (default skin) color when switch to default skin from bordered skin
-    Object.values(themes.value).forEach(t => {
+    Object.values(themes.value).forEach((t) => {
       t.colors['skin-default-background'] = t.colors.background
       t.colors['skin-default-surface'] = t.colors.surface
     })
 
     watch(
       skin,
-      val => {
-        Object.values(themes.value).forEach(t => {
+      (val) => {
+        Object.values(themes.value).forEach((t) => {
           t.colors.background = t.colors[`skin-${val}-background`]
           t.colors.surface = t.colors[`skin-${val}-surface`]
         })

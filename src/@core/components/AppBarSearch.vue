@@ -5,7 +5,7 @@ import { VList, VListItem, VListSubheader } from 'vuetify/components/VList'
 interface Emit {
   (e: 'update:isDialogVisible', value: boolean): void
   (e: 'update:searchQuery', value: string): void
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   (e: 'itemSelected', value: any): void
 }
 
@@ -23,7 +23,7 @@ interface Suggestions {
 interface Props {
   isDialogVisible: boolean
   searchQuery: string
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   searchResults: any[]
   suggestions?: Suggestions[]
   noDataSuggestion?: Suggestion[]

@@ -6,7 +6,7 @@ import redditLogo from '@images/logos/reddit.png'
 
 interface Product {
   title: string
-  status: { text: string; color: string }
+  status: { text: string, color: string }
   conversion: number
   totalRevenue: string
 }

@@ -1,6 +1,4 @@
-import mock from '@/@fake-db/mock'
 import type { Invoice } from '@/@fake-db/types'
-import { paginateArray } from '@/@fake-db/utils'
 import avatar1 from '@images/avatars/avatar-1.png'
 import avatar2 from '@images/avatars/avatar-2.png'
 import avatar3 from '@images/avatars/avatar-3.png'
@@ -9,6 +7,8 @@ import avatar5 from '@images/avatars/avatar-5.png'
 import avatar6 from '@images/avatars/avatar-6.png'
 import avatar7 from '@images/avatars/avatar-7.png'
 import avatar8 from '@images/avatars/avatar-8.png'
+import mock from '@/@fake-db/mock'
+import { paginateArray } from '@/@fake-db/utils'
 
 const now = new Date()
 const currentMonth = now.toLocaleString('default', { month: '2-digit' })
@@ -917,8 +917,7 @@ const database: Invoice[] = [
 ]
 
 // 👉 Get invoice list
-// eslint-disable-next-line sonarjs/cognitive-complexity
-mock.onGet('/apps/invoices').reply(config => {
+mock.onGet('/apps/invoices').reply((config) => {
   const { q = '', status = null, startDate = '', endDate = '', options = {} } = config.params ?? {}
 
   const { sortBy = '', page = 1, itemsPerPage = 10 } = options
@@ -933,7 +932,7 @@ mock.onGet('/apps/invoices').reply(config => {
       (
         invoice.client.name.toLowerCase().includes(queryLowered)
         || invoice.client.companyEmail.toLowerCase().includes(queryLowered))
-        && invoice.invoiceStatus === (status || invoice.invoiceStatus)
+      && invoice.invoiceStatus === (status || invoice.invoiceStatus)
     ),
   ).reverse()
 
@@ -983,7 +982,7 @@ mock.onGet('/apps/invoices').reply(config => {
 
   // filtering invoices by date
   if (startDate && endDate) {
-    filteredInvoices = filteredInvoices.filter(invoiceObj => {
+    filteredInvoices = filteredInvoices.filter((invoiceObj) => {
       const start = new Date(startDate).getTime()
       const end = new Date(endDate).getTime()
       const issuedDate = new Date(invoiceObj.issuedDate).getTime()
@@ -998,7 +997,7 @@ mock.onGet('/apps/invoices').reply(config => {
 })
 
 // 👉 Get a single invoice
-mock.onGet(/\/apps\/invoices\/\d+/).reply(config => {
+mock.onGet(/\/apps\/invoices\/\d+/).reply((config) => {
   // Get event id from URL
   const invoiceId = config.url?.substring(config.url.lastIndexOf('/') + 1)
 
@@ -1032,7 +1031,7 @@ mock.onGet('/apps/invoice/clients').reply(() => {
 })
 
 // 👉 Delete Invoice
-mock.onDelete(/\/apps\/invoices\/\d+/).reply(config => {
+mock.onDelete(/\/apps\/invoices\/\d+/).reply((config) => {
   // Get event id from URL
   const invoiceId = config.url?.substring(config.url.lastIndexOf('/') + 1)
 

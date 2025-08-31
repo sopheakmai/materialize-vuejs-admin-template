@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import illustrationDaisyDark from '@images/cards/illustration-daisy-dark.png'
-import illustrationDaisyLight from '@images/cards/illustration-daisy-light.png'
-
 import { useGenerateImageVariant } from '@core/composable/useGenerateImageVariant'
+import illustrationDaisyDark from '@images/cards/illustration-daisy-dark.png'
+
+import illustrationDaisyLight from '@images/cards/illustration-daisy-light.png'
 
 const daisyImage = useGenerateImageVariant(illustrationDaisyLight, illustrationDaisyDark)
 </script>

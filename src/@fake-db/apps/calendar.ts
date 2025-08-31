@@ -1,5 +1,5 @@
-import mock from '@/@fake-db/mock'
 import type { CalendarEvent } from '@/@fake-db/types'
+import mock from '@/@fake-db/mock'
 import { genId } from '@/@fake-db/utils'
 
 const date = new Date()
@@ -125,7 +125,7 @@ const data: { events: CalendarEvent[] } = {
 // ------------------------------------------------
 // GET: Return calendar events
 // ------------------------------------------------
-mock.onGet('/apps/calendar/events').reply(config => {
+mock.onGet('/apps/calendar/events').reply((config) => {
   // Get requested calendars as Array
   const calendars = config.params.calendars.split(',')
 
@@ -135,7 +135,7 @@ mock.onGet('/apps/calendar/events').reply(config => {
 // ------------------------------------------------
 // POST: Add new event
 // ------------------------------------------------
-mock.onPost('/apps/calendar/events').reply(config => {
+mock.onPost('/apps/calendar/events').reply((config) => {
   // Get event from post data
   const { event } = JSON.parse(config.data)
 
@@ -149,7 +149,7 @@ mock.onPost('/apps/calendar/events').reply(config => {
 // ------------------------------------------------
 // POST: Update Event
 // ------------------------------------------------
-mock.onPost(/\/apps\/calendar\/events\/\d+/).reply(config => {
+mock.onPost(/\/apps\/calendar\/events\/\d+/).reply((config) => {
   const { event: eventData } = JSON.parse(config.data)
 
   const event = data.events.find(e => e.id === eventData.id)
@@ -165,7 +165,7 @@ mock.onPost(/\/apps\/calendar\/events\/\d+/).reply(config => {
 // ------------------------------------------------
 // DELETE: Remove Event
 // ------------------------------------------------
-mock.onDelete(/\/apps\/calendar\/events\/\d+/).reply(config => {
+mock.onDelete(/\/apps\/calendar\/events\/\d+/).reply((config) => {
   // Get event id from URL
   const eventId = config.url?.substring(config.url.lastIndexOf('/') + 1)
 

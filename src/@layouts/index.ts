@@ -1,9 +1,9 @@
 import type { Plugin } from 'vue'
+import type { UserConfig } from './types'
+import { useLayouts } from '@layouts'
 import { useDynamicVhCssProperty } from './composable/useDynamicVhCssProperty'
 import { config } from './config'
 import { ContentWidth } from './enums'
-import type { UserConfig } from './types'
-import { useLayouts } from '@layouts'
 
 const { _setAppDir } = useLayouts()
 

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { VIcon } from 'vuetify/components'
 import appleIphone from '@images/cards/apple-iphone-x.png'
 import appleWatch from '@images/cards/apple-watch-green.png'
 import ps4Joystick from '@images/cards/ps4-joystick.png'

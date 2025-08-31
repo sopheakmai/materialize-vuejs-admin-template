@@ -1,3 +1,4 @@
+import type { IconifyJSON, IconifyMetaData } from '@iconify/types'
 /**
  * This is an advanced example for creating icon bundles for Iconify SVG Framework.
  *
@@ -11,8 +12,8 @@
  * For Iconify Tools documentation visit https://docs.iconify.design/tools/tools2/
  */
 import { promises as fs } from 'node:fs'
-import { dirname, join } from 'node:path'
 
+import { dirname, join } from 'node:path'
 // Installation: npm install --save-dev @iconify/tools @iconify/utils @iconify/json @iconify/iconify
 import {
   cleanupSVG,
@@ -21,7 +22,6 @@ import {
   parseColors,
   runSVGO,
 } from '@iconify/tools'
-import type { IconifyJSON, IconifyMetaData } from '@iconify/types'
 import { getIcons, minifyIconSet, stringToIcon } from '@iconify/utils'
 
 /**
@@ -120,7 +120,6 @@ const target = join(__dirname, 'icons-bundle.js');
 /**
  * Do stuff!
  */
-// eslint-disable-next-line sonarjs/cognitive-complexity
 (async function () {
   let bundle = commonJS
     ? `const { addCollection } = require('${component}');\n\n`
@@ -133,7 +132,7 @@ const target = join(__dirname, 'icons-bundle.js');
       recursive: true,
     })
   }
-  catch (err) {
+  catch {
     //
   }
 
@@ -259,7 +258,7 @@ const target = join(__dirname, 'icons-bundle.js');
   await fs.writeFile(target, bundle, 'utf8')
 
   console.log(`Saved ${target} (${bundle.length} bytes)`)
-})().catch(err => {
+})().catch((err) => {
   console.error(err)
 })
 
@@ -276,7 +275,7 @@ function removeMetaData(iconSet: IconifyJSON) {
     'suffixes',
   ]
 
-  props.forEach(prop => {
+  props.forEach((prop) => {
     delete iconSet[prop]
   })
 }
@@ -287,7 +286,7 @@ function removeMetaData(iconSet: IconifyJSON) {
 function organizeIconsList(icons: string[]): Record<string, string[]> {
   const sorted: Record<string, string[]> = Object.create(null)
 
-  icons.forEach(icon => {
+  icons.forEach((icon) => {
     const item = stringToIcon(icon)
     if (!item)
       return

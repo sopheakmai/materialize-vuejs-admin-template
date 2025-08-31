@@ -1,9 +1,5 @@
 <script setup lang="ts">
-import { VForm } from 'vuetify/components/VForm'
-import { useGenerateImageVariant } from '@/@core/composable/useGenerateImageVariant'
 import type { LoginResponse } from '@/@fake-db/types'
-import { useAppAbility } from '@/plugins/casl/useAppAbility'
-import AuthProvider from '@/views/pages/authentication/AuthProvider.vue'
 import axios from '@axios'
 import authV2LoginIllustrationBorderedDark from '@images/pages/auth-v2-login-illustration-bordered-dark.png'
 import authV2LoginIllustrationBorderedLight from '@images/pages/auth-v2-login-illustration-bordered-light.png'
@@ -14,6 +10,10 @@ import authV2LoginMaskLight from '@images/pages/auth-v2-login-mask-light.png'
 import { VNodeRenderer } from '@layouts/components/VNodeRenderer'
 import { themeConfig } from '@themeConfig'
 import { emailValidator, requiredValidator } from '@validators'
+import { VForm } from 'vuetify/components/VForm'
+import { useGenerateImageVariant } from '@/@core/composable/useGenerateImageVariant'
+import { useAppAbility } from '@/plugins/casl/useAppAbility'
+import AuthProvider from '@/views/pages/authentication/AuthProvider.vue'
 
 const isPasswordVisible = ref(false)
 
@@ -37,7 +37,7 @@ const rememberMe = ref(false)
 
 const login = () => {
   axios.post<LoginResponse>('/auth/login', { email: email.value, password: password.value })
-    .then(r => {
+    .then((r) => {
       const { accessToken, userData, userAbilities } = r.data
 
       localStorage.setItem('userAbilities', JSON.stringify(userAbilities))
@@ -49,7 +49,7 @@ const login = () => {
       // Redirect to `to` query if exist or redirect to index route
       router.replace(route.query.to ? String(route.query.to) : '/')
     })
-    .catch(e => {
+    .catch((e) => {
       const { errors: formErrors } = e.response.data
 
       errors.value = formErrors

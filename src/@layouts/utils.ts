@@ -1,5 +1,5 @@
-import type { Router } from 'vue-router'
 import type { NavGroup, NavLink, NavLinkProps } from '@layouts/types'
+import type { Router } from 'vue-router'
 
 export const openGroups = ref<string[]>([])
 
@@ -40,7 +40,7 @@ export const resolveNavLinkRouteName = (link: NavLink, router: Router) => {
 
 /**
  * Check if nav-link is active
- * @param {Object} link nav-link object
+ * @param {object} link nav-link object
  */
 export const isNavLinkActive = (link: NavLink, router: Router) => {
   // Matched routes array of current route
@@ -52,7 +52,7 @@ export const isNavLinkActive = (link: NavLink, router: Router) => {
   if (!resolveRoutedName)
     return false
 
-  return matchedRoutes.some(route => {
+  return matchedRoutes.some((route) => {
     return route.name === resolveRoutedName || route.meta.navActiveLink === resolveRoutedName
   })
 }
@@ -62,7 +62,7 @@ export const isNavLinkActive = (link: NavLink, router: Router) => {
  * @param {Array} children Group children
  */
 export const isNavGroupActive = (children: (NavLink | NavGroup)[], router: Router): boolean =>
-  children.some(child => {
+  children.some((child) => {
     // If child have children => It's group => Go deeper(recursive)
     if ('children' in child)
       return isNavGroupActive(child.children, router)
@@ -86,11 +86,11 @@ export const hexToRgb = (hex: string) => {
 
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
 
-  return result ? `${parseInt(result[1], 16)},${parseInt(result[2], 16)},${parseInt(result[3], 16)}` : null
+  return result ? `${Number.parseInt(result[1], 16)},${Number.parseInt(result[2], 16)},${Number.parseInt(result[3], 16)}` : null
 }
 
 /**
- ** RGBA color to Hex color with / without opacity
+ *RGBA color to Hex color with / without opacity
  */
 export const rgbaToHex = (rgba: string, forceRemoveAlpha = false) => {
   return (
@@ -99,7 +99,7 @@ export const rgbaToHex = (rgba: string, forceRemoveAlpha = false) => {
         .replace(/^rgba?\(|\s+|\)$/g, '') // Get's rgba / rgb string values
         .split(',') // splits them at ","
         .filter((string, index) => !forceRemoveAlpha || index !== 3)
-        .map(string => parseFloat(string)) // Converts them to numbers
+        .map(string => Number.parseFloat(string)) // Converts them to numbers
         .map((number, index) => (index === 3 ? Math.round(number * 255) : number)) // Converts alpha to 255 number
         .map(number => number.toString(16)) // Converts numbers to hex
         .map(string => (string.length === 1 ? `0${string}` : string)) // Adds 0 when length of one number is 1

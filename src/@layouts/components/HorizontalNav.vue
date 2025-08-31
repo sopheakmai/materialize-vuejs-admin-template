@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { HorizontalNavGroup, HorizontalNavLink } from '@layouts/components'
 import type { HorizontalNavItems, NavGroup, NavLink } from '@layouts/types'
+import { HorizontalNavGroup, HorizontalNavLink } from '@layouts/components'
 
 defineProps<{
   navItems: HorizontalNavItems

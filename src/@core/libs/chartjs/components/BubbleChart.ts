@@ -1,6 +1,6 @@
 import type { PluginOptionsByType } from 'chart.js'
-import { Chart as ChartJS, Legend, LinearScale, PointElement, Title, Tooltip } from 'chart.js'
 import type { PropType } from 'vue'
+import { Chart as ChartJS, Legend, LinearScale, PointElement, Title, Tooltip } from 'chart.js'
 import { defineComponent } from 'vue'
 import { Bubble } from 'vue-chartjs'
 

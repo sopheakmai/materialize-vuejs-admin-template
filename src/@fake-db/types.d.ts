@@ -1,25 +1,25 @@
-import type { UserAbility } from '@/plugins/casl/AppAbility';
+import type { UserAbility } from '@/plugins/casl/AppAbility'
 
 // 👉 Help center
-export type HelpCenterSubcategoryArticlesType = {
+export interface HelpCenterSubcategoryArticlesType {
   slug: string
   title: string
   content: string
 }
-export type HelpCenterSubcategoriesType = {
+export interface HelpCenterSubcategoriesType {
   icon: string
   slug: string
   title: string
   articles: HelpCenterSubcategoryArticlesType[]
 }
-export type HelpCenterCategoriesType = {
+export interface HelpCenterCategoriesType {
   icon: string
   slug: string
   title: string
   avatarColor: string
   subCategories: HelpCenterSubcategoriesType[]
 }
-export type HelpCenterArticlesOverviewType = {
+export interface HelpCenterArticlesOverviewType {
   img: string
   slug: string
   title: string
@@ -38,31 +38,31 @@ export interface FaqCategory {
   faqs: Faq[]
 }
 
-export type ProfileChip = {
+export interface ProfileChip {
   title: string
   color: string
 }
 
-export type ProfileTabCommon = {
+export interface ProfileTabCommon {
   icon: string
   value: string
   property: string
 }
 export type ProfileTeams = ProfileTabCommon & { color: string }
 
-export type ProfileConnections = {
+export interface ProfileConnections {
   name: string
   avatar: string
   isFriend: boolean
   connections: string
 }
 
-export type ProfileAvatarGroup = {
+export interface ProfileAvatarGroup {
   name: string
   avatar: string
 }
 
-export type ProfileTeamsTech = {
+export interface ProfileTeamsTech {
   title: string
   avatar: string
   members: number
@@ -70,7 +70,7 @@ export type ProfileTeamsTech = {
   ChipColor: string
 }
 
-export type ConnectionsTab = {
+export interface ConnectionsTab {
   name: string
   tasks: string
   avatar: string
@@ -81,7 +81,7 @@ export type ConnectionsTab = {
   chips: ProfileChip[]
 }
 
-export type ProfileTab = {
+export interface ProfileTab {
   teams: ProfileTeams[]
   about: ProfileTabCommon[]
   contacts: ProfileTabCommon[]
@@ -90,7 +90,7 @@ export type ProfileTab = {
   connections: ProfileConnections[]
 }
 
-export type ProfileHeader = {
+export interface ProfileHeader {
   fullName: string
   coverImg: string
   location: string
@@ -100,7 +100,7 @@ export type ProfileHeader = {
   designationIcon?: string
 }
 
-export type ProjectTableRow = {
+export interface ProjectTableRow {
   id: number
   date: string
   name: string
@@ -111,7 +111,7 @@ export type ProjectTableRow = {
   avatarColor?: string
 }
 
-export type ProjectsTab = {
+export interface ProjectsTab {
   hours: string
   tasks: string
   title: string
@@ -132,7 +132,7 @@ export type ProjectsTab = {
   avatarGroup: ProfileAvatarGroup[]
 }
 
-export type TeamsTab = {
+export interface TeamsTab {
   title: string
   avatar: string
   description: string
@@ -141,7 +141,7 @@ export type TeamsTab = {
   avatarGroup: ProfileAvatarGroup[]
 }
 
-export type ProfileTab = {
+export interface ProfileTab {
   teams: ProfileTeams[]
   about: ProfileTabCommon[]
   contacts: ProfileTabCommon[]
@@ -209,7 +209,7 @@ export interface CalendarEvent {
   start: Date
   end: Date
   allDay: boolean
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   extendedProps: Record<string, any>
 }
 // !SECTION
@@ -228,24 +228,24 @@ export interface Client {
 
 // 👉 Invoice
 export interface Invoice {
-    id: number,
-    issuedDate: string
-    client: Client
-    service: string
-    total: number
-    avatar: string
-    invoiceStatus: string
-    balance: number
-    dueDate: string
+  id: number
+  issuedDate: string
+  client: Client
+  service: string
+  total: number
+  avatar: string
+  invoiceStatus: string
+  balance: number
+  dueDate: string
 }
 
 // 👉 PaymentDetails
 export interface PaymentDetails {
   totalDue: string
   bankName: string
-  country: string,
-  iban: string,
-  swiftCode: string,
+  country: string
+  iban: string
+  swiftCode: string
 }
 
 // !SECTION App: Invoice
@@ -369,73 +369,71 @@ export interface ChatContactWithChat extends ChatContact {
 }
 // !SECTION App: Chat
 
-
 // 👉 Template Search
-//----------------
-export type SearchItem = {
+// ----------------
+export interface SearchItem {
   id: number
-  url: { name:string, params?: object}
+  url: { name: string, params?: object }
   icon: string
   title: string
   category: string
 }
 
-export type SearchHeader = {
+export interface SearchHeader {
   header: string
-  title:string
+  title: string
 }
 
-
-export type Permission = {
+export interface Permission {
   id: number
   name: string
   createdDate: string
   assignedTo: string[]
 }
 
-export type Data = {
-  responsive_id: string,
-  id: number, 
-  avatar: string,
-  full_name: string,
-  post: string,
-  email: string,
-  city: string,
-  start_date: date,
-  salary: number,
-  age: string | number,
-  experience: string, 
-  status: number,
+export interface Data {
+  responsive_id: string
+  id: number
+  avatar: string
+  full_name: string
+  post: string
+  email: string
+  city: string
+  start_date: date
+  salary: number
+  age: string | number
+  experience: string
+  status: number
 }
 
 export interface Product {
-  id: number,
-  name: string,
-  slug: string,
-  brand: string,
-  category: string,
-  price: number,
-  image: string,
-  hasFreeShipping: boolean,
-  rating: number,
-  description: string,
+  id: number
+  name: string
+  slug: string
+  brand: string
+  category: string
+  price: number
+  image: string
+  hasFreeShipping: boolean
+  rating: number
+  description: string
 }
 
 export interface Buyer {
-  name: string,
-  avatar: string | null,
+  name: string
+  avatar: string | null
 }
 
-export interface Payment{
-  total: number,
-  received_payment_status: string,
-  paid_amount: number,
-  status: string,
+export interface Payment {
+  total: number
+  received_payment_status: string
+  paid_amount: number
+  status: string
 }
 
-export type SalesDetails= {
-  product: Product,
-  buyer: Buyer,
-  date: string,
-  payment: Payment,
+export interface SalesDetails {
+  product: Product
+  buyer: Buyer
+  date: string
+  payment: Payment
 }

@@ -1,5 +1,5 @@
-import mock from '@/@fake-db/mock'
 import type { FaqCategory } from '@/@fake-db/types'
+import mock from '@/@fake-db/mock'
 
 const database: FaqCategory[] = [
   {
@@ -109,7 +109,7 @@ const database: FaqCategory[] = [
   },
 ]
 
-mock.onGet('/pages/faqs').reply(config => {
+mock.onGet('/pages/faqs').reply((config) => {
   const { q = '' } = config.params ?? { }
 
   const queryLowered = q.toLowerCase()
@@ -117,7 +117,7 @@ mock.onGet('/pages/faqs').reply(config => {
   const filteredData: FaqCategory[] = []
 
   Object.entries(database).forEach(([_, faqObj]) => {
-    const filteredQAndA = faqObj.faqs.filter(obj => {
+    const filteredQAndA = faqObj.faqs.filter((obj) => {
       return obj.question.toLowerCase().includes(queryLowered)
     })
 

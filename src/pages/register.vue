@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import { VForm } from 'vuetify/components/VForm'
 import type { RegisterResponse } from '@/@fake-db/types'
-
-import { useGenerateImageVariant } from '@/@core/composable/useGenerateImageVariant'
-import { useAppAbility } from '@/plugins/casl/useAppAbility'
-import { VNodeRenderer } from '@layouts/components/VNodeRenderer'
-import { themeConfig } from '@themeConfig'
-
-import AuthProvider from '@/views/pages/authentication/AuthProvider.vue'
 import axios from '@axios'
+
 import authV2RegisterIllustrationBorderedDark from '@images/pages/auth-v2-register-illustration-bordered-dark.png'
 import authV2RegisterIllustrationBorderedLight from '@images/pages/auth-v2-register-illustration-bordered-light.png'
 import authV2RegisterIllustrationDark from '@images/pages/auth-v2-register-illustration-dark.png'
 import authV2RegisterIllustrationLight from '@images/pages/auth-v2-register-illustration-light.png'
+
 import authV2RegisterMaskDark from '@images/pages/auth-v2-register-mask-dark.png'
 import authV2RegisterMaskLight from '@images/pages/auth-v2-register-mask-light.png'
+import { VNodeRenderer } from '@layouts/components/VNodeRenderer'
+import { themeConfig } from '@themeConfig'
 import { alphaDashValidator, emailValidator, requiredValidator } from '@validators'
+import { VForm } from 'vuetify/components/VForm'
+import { useGenerateImageVariant } from '@/@core/composable/useGenerateImageVariant'
+import { useAppAbility } from '@/plugins/casl/useAppAbility'
+import AuthProvider from '@/views/pages/authentication/AuthProvider.vue'
 
 const refVForm = ref<VForm>()
 const username = ref('johnDoe')
@@ -42,7 +42,7 @@ const register = () => {
     email: email.value,
     password: password.value,
   })
-    .then(r => {
+    .then((r) => {
       const { accessToken, userData, userAbilities } = r.data
 
       localStorage.setItem('userAbilities', JSON.stringify(userAbilities))
@@ -56,7 +56,7 @@ const register = () => {
 
       return null
     })
-    .catch(e => {
+    .catch((e) => {
       const { errors: formErrors } = e.response.data
 
       errors.value = formErrors

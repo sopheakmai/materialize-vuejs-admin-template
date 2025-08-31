@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import 'prismjs'
-import 'prismjs/themes/prism-tomorrow.css'
 import type { Ref } from 'vue'
 import Prism from 'vue-prism-component'
+import 'prismjs'
+import 'prismjs/themes/prism-tomorrow.css'
 
 interface Props {
   title: string

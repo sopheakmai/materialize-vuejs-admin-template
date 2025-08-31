@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import CardStatisticsHorizontal from '@core/components/cards/CardStatisticsHorizontal.vue'
+import CardStatisticsVertical from '@core/components/cards/CardStatisticsVertical.vue'
+import illustration1 from '@images/cards/illustration-1.png'
+import illustration2 from '@images/cards/illustration-2.png'
+import illustration3 from '@images/cards/illustration-3.png'
+import illustration4 from '@images/cards/illustration-4.png'
 import CardStatisticsGrowthDonutCharts from '@/views/pages/cards/card-statistics/CardStatisticsGrowthDonutCharts.vue'
 import CardStatisticsLiveVisitors from '@/views/pages/cards/card-statistics/CardStatisticsLiveVisitors.vue'
 import CardStatisticsMarketingSales from '@/views/pages/cards/card-statistics/CardStatisticsMarketingSales.vue'
@@ -14,12 +20,6 @@ import CardStatisticsTotalRevenueBarCharts from '@/views/pages/cards/card-statis
 import CardStatisticsTotalVisits from '@/views/pages/cards/card-statistics/CardStatisticsTotalVisits.vue'
 import CardStatisticsWeeklySales from '@/views/pages/cards/card-statistics/CardStatisticsWeeklySales.vue'
 import CardStatisticsWeeklySalesBg from '@/views/pages/cards/card-statistics/CardStatisticsWeeklySalesBg.vue'
-import CardStatisticsHorizontal from '@core/components/cards/CardStatisticsHorizontal.vue'
-import CardStatisticsVertical from '@core/components/cards/CardStatisticsVertical.vue'
-import illustration1 from '@images/cards/illustration-1.png'
-import illustration2 from '@images/cards/illustration-2.png'
-import illustration3 from '@images/cards/illustration-3.png'
-import illustration4 from '@images/cards/illustration-4.png'
 
 const statisticsHorizontal = [
   {

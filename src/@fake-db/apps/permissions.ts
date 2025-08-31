@@ -1,5 +1,5 @@
-import mock from '@/@fake-db/mock'
 import type { Permission } from '@/@fake-db/types'
+import mock from '@/@fake-db/mock'
 import { paginateArray } from '@/@fake-db/utils'
 
 const data: { permissions: Permission[] } = {
@@ -64,7 +64,7 @@ const data: { permissions: Permission[] } = {
 // ------------------------------------------------
 // GET: Return Permissions List
 // ------------------------------------------------
-mock.onGet('/apps/permissions/data').reply(config => {
+mock.onGet('/apps/permissions/data').reply((config) => {
   const { q = '', options = {} } = config.params ?? {}
 
   const { sortBy = '', page = 1, itemsPerPage = 10 } = options

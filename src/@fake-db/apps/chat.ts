@@ -1,15 +1,15 @@
 import type { Chat, ChatContact, ChatContactWithChat, ChatMessage } from './../types.d'
-import mock from '@/@fake-db/mock'
-import { genId } from '@/@fake-db/utils'
-
 // Images
 import avatar1 from '@images/avatars/avatar-1.png'
 import avatar2 from '@images/avatars/avatar-2.png'
+
 import avatar3 from '@images/avatars/avatar-3.png'
 import avatar4 from '@images/avatars/avatar-4.png'
 import avatar5 from '@images/avatars/avatar-5.png'
 import avatar6 from '@images/avatars/avatar-6.png'
 import avatar8 from '@images/avatars/avatar-8.png'
+import mock from '@/@fake-db/mock'
+import { genId } from '@/@fake-db/utils'
 
 const previousDay = new Date(new Date().getTime() - 24 * 60 * 60 * 1000)
 const dayBeforePreviousDay = new Date(new Date().getTime() - 24 * 60 * 60 * 1000 * 2)
@@ -309,13 +309,13 @@ const database: Database = {
 // ------------------------------------------------
 // GET: Return Chats Contacts and Contacts
 // ------------------------------------------------
-mock.onGet('/apps/chat/chats-and-contacts').reply(config => {
+mock.onGet('/apps/chat/chats-and-contacts').reply((config) => {
   const { q = '' }: { q?: string } = config.params
 
   const qLowered = q.toLowerCase()
 
   const chatsContacts: ChatContactWithChat[] = database.chats
-    .map(chat => {
+    .map((chat) => {
       const contact = JSON.parse(JSON.stringify((database.contacts.find(c => c.id === chat.userId) as ChatContact)))
 
       contact.chat = { id: chat.id, unseenMsgs: chat.unseenMsgs, lastMessage: chat.messages.at(-1) }
@@ -343,7 +343,7 @@ mock.onGet('/apps/chat/users/profile-user').reply(() => [200, database.profileUs
 // ------------------------------------------------
 // GET: Return Single Chat
 // ------------------------------------------------
-mock.onGet(/\/apps\/chat\/chats\/\d+/).reply(config => {
+mock.onGet(/\/apps\/chat\/chats\/\d+/).reply((config) => {
   // Get user id from URL
   const userId = Number(config.url?.substring(config.url.lastIndexOf('/') + 1))
 
@@ -363,7 +363,7 @@ mock.onGet(/\/apps\/chat\/chats\/\d+/).reply(config => {
 // ------------------------------------------------
 // POST: Add new chat message
 // ------------------------------------------------
-mock.onPost(/\/apps\/chat\/chats\/\d+/).reply(config => {
+mock.onPost(/\/apps\/chat\/chats\/\d+/).reply((config) => {
   // Get user id from URL
   const contactId = Number(config.url?.substring(config.url.lastIndexOf('/') + 1))
 
@@ -400,7 +400,7 @@ mock.onPost(/\/apps\/chat\/chats\/\d+/).reply(config => {
     activeChat.messages.push(newMessageData)
   }
 
-  const response: { msg: ChatMessage; chat?: Chat } = { msg: newMessageData }
+  const response: { msg: ChatMessage, chat?: Chat } = { msg: newMessageData }
 
   if (isNewChat)
     response.chat = activeChat

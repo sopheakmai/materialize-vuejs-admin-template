@@ -1,6 +1,5 @@
 import type { Invoice, PaymentDetails } from '@/@fake-db/types'
 
-
 export interface PurchasedProduct {
   title: string
   cost: number
@@ -19,9 +18,9 @@ export interface InvoiceData {
 }
 
 export interface InvoiceParams {
-  q?: string,
-  status?: string,
-  startDate?: string,
-  endDate?: string,
-  options? : object,
+  q?: string
+  status?: string
+  startDate?: string
+  endDate?: string
+  options?: object
 }

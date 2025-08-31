@@ -1,15 +1,15 @@
 <script lang="ts" setup>
+import type { ChatContact as TypeChatContact } from '@/@fake-db/types'
+import { useResponsiveLeftSidebar } from '@core/composable/useResponsiveSidebar'
+import { avatarText } from '@core/utils/formatters'
 import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
 import { useDisplay } from 'vuetify'
-import type { ChatContact as TypeChatContact } from '@/@fake-db/types'
 import ChatActiveChatUserProfileSidebarContent from '@/views/apps/chat/ChatActiveChatUserProfileSidebarContent.vue'
 import ChatLeftSidebarContent from '@/views/apps/chat/ChatLeftSidebarContent.vue'
 import ChatLog from '@/views/apps/chat/ChatLog.vue'
 import ChatUserProfileSidebarContent from '@/views/apps/chat/ChatUserProfileSidebarContent.vue'
 import { useChat } from '@/views/apps/chat/useChat'
 import { useChatStore } from '@/views/apps/chat/useChatStore'
-import { useResponsiveLeftSidebar } from '@core/composable/useResponsiveSidebar'
-import { avatarText } from '@core/utils/formatters'
 
 // composables
 const vuetifyDisplays = useDisplay()
@@ -139,7 +139,7 @@ const moreList = [
       :permanent="$vuetify.display.mdAndUp"
     >
       <ChatLeftSidebarContent
-        v-model:isDrawerOpen="isLeftSidebarOpen"
+        v-model:is-drawer-open="isLeftSidebarOpen"
         v-model:search="q"
         @open-chat-of-contact="openChatOfContact"
         @show-user-profile="isUserProfileSidebarOpen = true"

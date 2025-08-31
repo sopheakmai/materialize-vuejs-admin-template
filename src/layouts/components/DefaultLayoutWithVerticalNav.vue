@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import navItems from '@/navigation/vertical'
 import { useThemeConfig } from '@core/composable/useThemeConfig'
+// @layouts plugin
+import { VerticalNavLayout } from '@layouts'
 
 // Components
 import Footer from '@/layouts/components/Footer.vue'
@@ -11,8 +12,7 @@ import NavbarThemeSwitcher from '@/layouts/components/NavbarThemeSwitcher.vue'
 import NavSearchBar from '@/layouts/components/NavSearchBar.vue'
 import UserProfile from '@/layouts/components/UserProfile.vue'
 
-// @layouts plugin
-import { VerticalNavLayout } from '@layouts'
+import navItems from '@/navigation/vertical'
 
 const { appRouteTransition, isLessThanOverlayNavBreakpoint, isVerticalNavCollapsed, isAppRtl } = useThemeConfig()
 const { width: windowWidth } = useWindowSize()
@@ -20,7 +20,7 @@ const { width: windowWidth } = useWindowSize()
 // ℹ️ Provide animation name for vertical nav collapse icon.
 const verticalNavHeaderActionAnimationName = ref<null | 'rotate-180' | 'rotate-back-180'>(null)
 
-watch([isVerticalNavCollapsed, isAppRtl], val => {
+watch([isVerticalNavCollapsed, isAppRtl], (val) => {
   if (isAppRtl.value)
     verticalNavHeaderActionAnimationName.value = val[0] ? 'rotate-back-180' : 'rotate-180'
   else

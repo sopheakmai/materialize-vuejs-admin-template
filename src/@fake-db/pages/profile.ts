@@ -1,14 +1,15 @@
-// ** Mock Adapter
-import mock from '@/@fake-db/mock'
-
 // ** Types
 import type {
   ConnectionsTab,
   ProfileHeader,
-  ProfileTab, ProjectTableRow, ProjectsTab, TeamsTab,
+  ProfileTab,
+  ProjectsTab,
+  ProjectTableRow,
+  TeamsTab,
 } from '@/@fake-db/types'
 
 import avatar1 from '@images/avatars/avatar-1.png'
+
 import avatar2 from '@images/avatars/avatar-2.png'
 import avatar3 from '@images/avatars/avatar-3.png'
 import avatar4 from '@images/avatars/avatar-4.png'
@@ -26,6 +27,8 @@ import twitterLabel from '@images/icons/project-icons/twitter.png'
 import vueLabel from '@images/icons/project-icons/vue.png'
 import xdLabel from '@images/icons/project-icons/xd.png'
 import UserProfileHeaderBg from '@images/pages/user-profile-header-bg.png'
+// ** Mock Adapter
+import mock from '@/@fake-db/mock'
 
 interface DataType {
   profileHeader: ProfileHeader
@@ -673,7 +676,7 @@ const projectTable: ProjectTableRow[] = [
   },
 ]
 
-mock.onGet('/pages/profile').reply(config => {
+mock.onGet('/pages/profile').reply((config) => {
   const { tab = '' } = config.params ?? ''
 
   return [200, data[tab as keyof typeof data]]
@@ -683,11 +686,11 @@ mock.onGet('/pages/profile-header').reply(() => {
   return [200, data.profileHeader]
 })
 
-mock.onGet('/pages/profile-table').reply(config => {
+mock.onGet('/pages/profile-table').reply((config) => {
   const { q = '' } = config.params ?? ''
   const queryLowered = q.toLowerCase()
 
-  const filteredData = projectTable.filter(row => {
+  const filteredData = projectTable.filter((row) => {
     return (
       row.name.toLowerCase().includes(queryLowered)
       || row.date.toLowerCase().includes(queryLowered)

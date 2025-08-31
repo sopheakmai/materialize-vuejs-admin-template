@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { VDataTable } from 'vuetify/components/VDataTable'
 import type { SalesDetails } from '@/@fake-db/types'
 import axios from '@axios'
+import { VDataTable } from 'vuetify/components/VDataTable'
 
 const search = ref('')
 const productList = ref<SalesDetails[]>([])
@@ -59,7 +59,8 @@ const resolveStatusColor = (status: string) => {
 
 const categoryIconFilter = (categoryName: string): {
   icon: string
-  color: string }[] => {
+  color: string
+}[] => {
   const index = categoryIcons.findIndex(category => category.name === categoryName)
 
   if (index !== -1)
@@ -69,7 +70,7 @@ const categoryIconFilter = (categoryName: string): {
 }
 
 onMounted(() => {
-  axios.get('pages/datatables').then(res => {
+  axios.get('pages/datatables').then((res) => {
     productList.value = res.data
   })
 })

@@ -29,7 +29,7 @@ const giftCardFormData = ref({
 })
 
 const selectedDeliveryAddress = computed(() => {
-  return checkoutPaymentDataLocal.value.addresses.filter(address => {
+  return checkoutPaymentDataLocal.value.addresses.filter((address) => {
     return address.value === checkoutPaymentDataLocal.value.deliveryAddress
   })
 })

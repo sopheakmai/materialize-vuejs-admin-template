@@ -1,24 +1,24 @@
 <script setup lang="ts">
-import Shepherd from 'shepherd.js'
 import type { SearchHeader, SearchItem } from '@/@fake-db/types'
 import axios from '@axios'
 import { useThemeConfig } from '@core/composable/useThemeConfig'
+import Shepherd from 'shepherd.js'
 
 interface Suggestion {
   icon: string
   title: string
   url: object
 }
+defineOptions({
+  inheritAttrs: false,
+})
+
 const { appContentLayoutNav } = useThemeConfig()
 
 interface SuggestionGroup {
   title: string
   content: Suggestion[]
 }
-
-defineOptions({
-  inheritAttrs: false,
-})
 
 // 👉 Is App Search Bar Visible
 const isAppSearchBarVisible = ref(false)
@@ -92,7 +92,7 @@ watchEffect(() => {
     params: {
       q: searchQuery.value,
     },
-  }).then(response => {
+  }).then((response) => {
     searchResult.value = response.data
   })
 })
@@ -136,7 +136,7 @@ const LazyAppBarSearch = defineAsyncComponent(() => import('@core/components/App
 
   <!-- 👉 App Bar Search -->
   <LazyAppBarSearch
-    v-model:isDialogVisible="isAppSearchBarVisible"
+    v-model:is-dialog-visible="isAppSearchBarVisible"
     v-model:search-query="searchQuery"
     :search-results="searchResult"
     :suggestions="suggestionGroups"

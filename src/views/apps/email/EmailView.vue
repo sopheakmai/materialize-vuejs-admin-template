@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
-import { useTheme } from 'vuetify'
 import type { Email } from '@/@fake-db/types'
 import type { MoveEmailToAction } from '@/views/apps/email/useEmail'
+import { formatDate } from '@core/utils/formatters'
+import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
+import { useTheme } from 'vuetify'
 import { useEmail } from '@/views/apps/email/useEmail'
 import { useEmailStore } from '@/views/apps/email/useEmailStore'
-import { formatDate } from '@core/utils/formatters'
 
 interface Props {
   email: Email | null

@@ -3,7 +3,7 @@ import type { GridColumn } from '@core/types'
 
 interface Props {
   selectedCheckbox: string[]
-  checkboxContent: { bgImage: string; value: string }[]
+  checkboxContent: { bgImage: string, value: string }[]
   gridColumn?: GridColumn
 }
 

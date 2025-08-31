@@ -366,21 +366,21 @@ const currentBillingAddress = {
 
   <!-- 👉 Edit Card Dialog -->
   <CardAddEditDialog
-    v-model:isDialogVisible="isCardEditDialogVisible"
+    v-model:is-dialog-visible="isCardEditDialogVisible"
     :card-details="currentCardDetails"
   />
 
   <!-- 👉 Add Card Dialog -->
-  <CardAddEditDialog v-model:isDialogVisible="isCardAddDialogVisible" />
+  <CardAddEditDialog v-model:is-dialog-visible="isCardAddDialogVisible" />
 
   <!-- 👉 Edit Address dialog -->
   <AddEditAddressDialog
-    v-model:isDialogVisible="isEditAddressDialogVisible"
+    v-model:is-dialog-visible="isEditAddressDialogVisible"
     :billing-address="currentBillingAddress"
   />
 
   <!-- 👉 Upgrade plan dialog -->
-  <UserUpgradePlanDialog v-model:isDialogVisible="isUpgradePlanDialogVisible" />
+  <UserUpgradePlanDialog v-model:is-dialog-visible="isUpgradePlanDialogVisible" />
 </template>
 
 <style lang="scss">

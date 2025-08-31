@@ -1,10 +1,10 @@
 <script setup lang="ts">
 interface Language {
-  'react': string
-  'bootstrap': string
-  'vue': string
-  'angular': string
-  'javascript': string
+  react: string
+  bootstrap: string
+  vue: string
+  angular: string
+  javascript: string
 }
 
 interface Progress {

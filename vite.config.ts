@@ -1,15 +1,15 @@
+import { fileURLToPath } from 'node:url'
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import { fileURLToPath } from 'node:url'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
+import DefineOptions from 'unplugin-vue-define-options/vite'
 import { defineConfig } from 'vite'
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
-import vuetify from 'vite-plugin-vuetify'
 
-import DefineOptions from 'unplugin-vue-define-options/vite'
+import vuetify from 'vite-plugin-vuetify'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -108,7 +108,7 @@ export default defineConfig({
       'vuetify/components/VTextField',
       'vuetify/components/VSelect',
       'vuetify/components/VAutocomplete',
-        'vuetify/components/VDatePicker',
+      'vuetify/components/VDatePicker',
       'vuetify/components/VCheckbox',
       'vuetify/components/VRadio',
       'vuetify/components/VSwitch',
@@ -142,7 +142,7 @@ export default defineConfig({
       'vuetify/components/transitions',
       'webfontloader',
       '@iconify/vue',
-      'axios-mock-adapter'
+      'axios-mock-adapter',
     ],
   },
 })

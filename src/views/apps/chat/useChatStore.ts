@@ -40,11 +40,10 @@ export const useChatStore = defineStore('chat', {
       const senderId = this.profileUser?.id
       const { data } = await axios.post(`/apps/chat/chats/${this.activeChat?.contact.id}`, { message, senderId })
 
-      const { msg, chat }: { msg: ChatMessage; chat: ChatOut } = data
+      const { msg, chat }: { msg: ChatMessage, chat: ChatOut } = data
 
       // ? If it's not undefined => New chat is created (Contact is not in list of chats)
       if (chat !== undefined) {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const activeChat = this.activeChat!
 
         this.chatsContacts.push({
@@ -71,7 +70,7 @@ export const useChatStore = defineStore('chat', {
       }
 
       // Set Last Message for active contact
-      const contact = this.chatsContacts.find(c => {
+      const contact = this.chatsContacts.find((c) => {
         if (this.activeChat)
           return c.id === this.activeChat.contact.id
 

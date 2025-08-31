@@ -1,6 +1,6 @@
 import type { Component, Ref, VNode } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'
-import { ContentWidth, FooterType, NavbarType } from './enums'
+import type { ContentWidth, FooterType, NavbarType } from './enums'
 
 export interface UserConfig {
   app: {
@@ -18,7 +18,7 @@ export interface UserConfig {
     navbarBlur: boolean
   }
   footer: {
-    type:typeof FooterType[keyof typeof FooterType]
+    type: typeof FooterType[keyof typeof FooterType]
   }
   verticalNav: {
     isVerticalNavCollapsed: boolean
@@ -90,20 +90,20 @@ export interface NavSectionTitle extends Partial<AclProperties> {
 
 // 👉 Vertical nav link
 declare type ATagTargetAttrValues = '_blank' | '_self' | '_parent' | '_top' | 'framename'
-declare type ATagRelAttrValues =
-  | 'alternate'
-  | 'author'
-  | 'bookmark'
-  | 'external'
-  | 'help'
-  | 'license'
-  | 'next'
-  | 'nofollow'
-  | 'noopener'
-  | 'noreferrer'
-  | 'prev'
-  | 'search'
-  | 'tag'
+declare type ATagRelAttrValues
+  = | 'alternate'
+    | 'author'
+    | 'bookmark'
+    | 'external'
+    | 'help'
+    | 'license'
+    | 'next'
+    | 'nofollow'
+    | 'noopener'
+    | 'noreferrer'
+    | 'prev'
+    | 'search'
+    | 'tag'
 
 export interface NavLinkProps {
   to?: RouteLocationRaw | string | null
@@ -143,16 +143,16 @@ interface I18nLanguage {
 // avatar | text | icon
 // Thanks: https://stackoverflow.com/a/60617060/10796681
 type Notification = {
-  id:number
+  id: number
   title: string
   subtitle: string
   time: string
   color?: string
   isSeen: boolean
 } & (
-  | { img: string; text?: never; icon?: never }
-  | { img?: never; text: string; icon?: never }
-  | { img?: never; text?: never; icon: string }
+  | { img: string, text?: never, icon?: never }
+  | { img?: never, text: string, icon?: never }
+  | { img?: never, text?: never, icon: string }
 )
 
 interface ThemeSwitcherTheme {

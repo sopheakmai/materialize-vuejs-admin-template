@@ -1,21 +1,26 @@
 <script setup lang="ts">
-import FlatPickr from 'vue-flatpickr-component'
-import { useTheme } from 'vuetify'
-
-import { VField, VInput } from 'vuetify/components'
-import { filterInputAttrs } from 'vuetify/lib/util/helpers'
-
 import { useThemeConfig } from '@core/composable/useThemeConfig'
+import FlatPickr from 'vue-flatpickr-component'
+
+import { useTheme } from 'vuetify'
+import { VField, VInput } from 'vuetify/components'
+
+import { filterInputAttrs } from 'vuetify/lib/util/helpers'
 
 interface Config {
   inline?: boolean
   [key: string]: any
 }
 
+// inherit Attribute make false
+defineOptions({
+  inheritAttrs: false,
+})
+
 const props = defineProps({
   autofocus: Boolean,
   counter: [Boolean, Number, String] as PropType<true | number | string>,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   counterValue: Function as PropType<(value: any) => number>,
   prefix: String,
   placeholder: String,
@@ -54,11 +59,6 @@ interface Emit {
   (e: 'update:modelValue', val: string): void
   (e: 'click:clear', el: MouseEvent): void
 }
-
-// inherit Attribute make false
-defineOptions({
-  inheritAttrs: false,
-})
 
 const attrs = useAttrs()
 
@@ -101,7 +101,7 @@ const updateThemeClassInCalendar = () => {
   if (!refFlatPicker.value.fp.calendarContainer)
     return
 
-  vuetifyThemesName.forEach(t => {
+  vuetifyThemesName.forEach((t) => {
     refFlatPicker.value.fp.calendarContainer.classList.remove(`v-theme--${t}`)
   })
   refFlatPicker.value.fp.calendarContainer.classList.add(`v-theme--${vuetifyTheme.global.name.value}`)

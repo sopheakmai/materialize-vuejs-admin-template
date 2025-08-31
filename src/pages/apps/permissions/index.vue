@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { VDataTableServer } from 'vuetify/components/VDataTable'
-import type { Permission } from '@/@fake-db/types'
-import { paginationMeta } from '@/@fake-db/utils'
-import axios from '@axios'
 import type { Options } from '@core/types'
+import type { Permission } from '@/@fake-db/types'
+import axios from '@axios'
+import { VDataTableServer } from 'vuetify/components/VDataTable'
+import { paginationMeta } from '@/@fake-db/utils'
 
 // 👉 headers
 const headers = [
@@ -30,7 +30,6 @@ const isPermissionDialogVisible = ref(false)
 const isAddPermissionDialogVisible = ref(false)
 const permissionName = ref('')
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const colors: any = {
   'support': { color: 'info', text: 'Support' },
   'users': { color: 'success', text: 'Users' },
@@ -45,10 +44,10 @@ const fetchPermissions = () => {
       q: search.value,
       options: options.value,
     },
-  }).then(response => {
+  }).then((response) => {
     permissions.value = response.data.permissions
     totalPermissions.value = response.data.totalPermissions
-  }).catch(error => {
+  }).catch((error) => {
     console.log(error)
   })
 }
@@ -190,10 +189,10 @@ const editPermission = (name: string) => {
       </VCard>
 
       <AddEditPermissionDialog
-        v-model:isDialogVisible="isPermissionDialogVisible"
+        v-model:is-dialog-visible="isPermissionDialogVisible"
         v-model:permission-name="permissionName"
       />
-      <AddEditPermissionDialog v-model:isDialogVisible="isAddPermissionDialogVisible" />
+      <AddEditPermissionDialog v-model:is-dialog-visible="isAddPermissionDialogVisible" />
     </VCol>
   </VRow>
 </template>

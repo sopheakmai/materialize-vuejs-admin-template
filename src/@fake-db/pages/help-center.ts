@@ -3,16 +3,16 @@ import type {
   HelpCenterCategoriesType,
   HelpCenterSubcategoryArticlesType,
 } from '../types.d'
-import mock from '@/@fake-db/mock'
-import { themeConfig } from '@themeConfig'
-
 // Images
 import discord from '@images/svg/discord.svg'
 import gift from '@images/svg/gift.svg'
+
 import keyboard from '@images/svg/keyboard.svg'
 import laptop from '@images/svg/laptop.svg'
 import lightbulb from '@images/svg/lightbulb.svg'
 import rocket from '@images/svg/rocket.svg'
+import { themeConfig } from '@themeConfig'
+import mock from '@/@fake-db/mock'
 
 interface Data {
   categories: HelpCenterCategoriesType[]
@@ -628,7 +628,7 @@ mock.onGet('/pages/help-center/landing').reply(() => {
   ]
 })
 
-mock.onGet('/pages/help-center/subcategory').reply(config => {
+mock.onGet('/pages/help-center/subcategory').reply((config) => {
   const { category, subcategory } = config.params
   const filteredData = data.categories.filter(item => item.slug === category)
 
@@ -642,7 +642,7 @@ mock.onGet('/pages/help-center/subcategory').reply(config => {
   ]
 })
 
-mock.onGet('/pages/help-center/article').reply(config => {
+mock.onGet('/pages/help-center/article').reply((config) => {
   const { article, category, subcategory } = config.params
 
   const activeCategory = data.categories.filter(item => item.slug === category)[0]

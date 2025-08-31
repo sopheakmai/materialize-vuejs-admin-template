@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-import navItems from '@/navigation/horizontal'
 import { useThemeConfig } from '@core/composable/useThemeConfig'
-import { themeConfig } from '@themeConfig'
+import { HorizontalNavLayout } from '@layouts'
+import { VNodeRenderer } from '@layouts/components/VNodeRenderer'
 
+import { themeConfig } from '@themeConfig'
 // Components
 import Footer from '@/layouts/components/Footer.vue'
 import NavBarI18n from '@/layouts/components/NavBarI18n.vue'
@@ -11,8 +12,7 @@ import NavbarShortcuts from '@/layouts/components/NavbarShortcuts.vue'
 import NavbarThemeSwitcher from '@/layouts/components/NavbarThemeSwitcher.vue'
 import NavSearchBar from '@/layouts/components/NavSearchBar.vue'
 import UserProfile from '@/layouts/components/UserProfile.vue'
-import { HorizontalNavLayout } from '@layouts'
-import { VNodeRenderer } from '@layouts/components/VNodeRenderer'
+import navItems from '@/navigation/horizontal'
 
 const { appRouteTransition } = useThemeConfig()
 </script>

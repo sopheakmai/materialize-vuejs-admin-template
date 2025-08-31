@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useTheme } from 'vuetify'
 import type { ChartJsCustomColors } from '@/views/charts/chartjs/types'
 import { getScatterChartConfig } from '@core/libs/chartjs/chartjsConfig'
 import ScatterChart from '@core/libs/chartjs/components/ScatterChart'
+import { useTheme } from 'vuetify'
 
 interface Props {
   colors: ChartJsCustomColors

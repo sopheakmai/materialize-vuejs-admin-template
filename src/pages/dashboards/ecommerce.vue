@@ -1,5 +1,8 @@
 <script setup lang="ts">
 // Lazy load ecommerce components for better performance
+import illustration1 from '@images/cards/illustration-1.png'
+import illustration2 from '@images/cards/illustration-2.png'
+
 const EcommerceActivityTimeline = defineAsyncComponent(() => import('@/views/dashboard/ecommerce/EcommerceActivityTimeline.vue'))
 const EcommerceLiveVisitors = defineAsyncComponent(() => import('@/views/dashboard/ecommerce/EcommerceLiveVisitors.vue'))
 const EcommerceMarketingSales = defineAsyncComponent(() => import('@/views/dashboard/ecommerce/EcommerceMarketingSales.vue'))
@@ -11,8 +14,6 @@ const EcommerceTotalVisits = defineAsyncComponent(() => import('@/views/dashboar
 const EcommerceUserList = defineAsyncComponent(() => import('@/views/dashboard/ecommerce/EcommerceUserList.vue'))
 const EcommerceVisitsByDay = defineAsyncComponent(() => import('@/views/dashboard/ecommerce/EcommerceVisitsByDay.vue'))
 const EcommerceWeeklySalesBg = defineAsyncComponent(() => import('@/views/dashboard/ecommerce/EcommerceWeeklySalesBg.vue'))
-import illustration1 from '@images/cards/illustration-1.png'
-import illustration2 from '@images/cards/illustration-2.png'
 
 const statisticsWithImages = [
   {

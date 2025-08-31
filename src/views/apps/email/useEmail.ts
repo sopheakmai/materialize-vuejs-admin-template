@@ -8,13 +8,13 @@ export const useEmail = () => {
   const route = useRoute()
   const store = useEmailStore()
 
-  const emailMoveToFolderActions: { action: MoveEmailToAction; icon: string }[] = [
+  const emailMoveToFolderActions: { action: MoveEmailToAction, icon: string }[] = [
     { action: 'inbox', icon: 'mdi-email-outline' },
     { action: 'spam', icon: 'mdi-alert-octagon-outline' },
     { action: 'trash', icon: 'mdi-delete-outline' },
   ]
 
-  const labels: { title: Email['labels'][number]; color: string }[] = [
+  const labels: { title: Email['labels'][number], color: string }[] = [
     {
       title: 'personal',
       color: 'success',

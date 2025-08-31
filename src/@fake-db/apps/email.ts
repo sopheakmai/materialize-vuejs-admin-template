@@ -1,3 +1,4 @@
+import type { Email, FetchEmailsPayload } from '@/@fake-db/types'
 import avatar1 from '@images/avatars/avatar-1.png'
 import avatar2 from '@images/avatars/avatar-2.png'
 import avatar3 from '@images/avatars/avatar-3.png'
@@ -5,12 +6,11 @@ import avatar4 from '@images/avatars/avatar-4.png'
 import avatar5 from '@images/avatars/avatar-5.png'
 import avatar6 from '@images/avatars/avatar-6.png'
 import avatar7 from '@images/avatars/avatar-7.png'
-import avatar8 from '@images/avatars/avatar-8.png'
 
-import mock from '@/@fake-db/mock'
-import type { Email, FetchEmailsPayload } from '@/@fake-db/types'
+import avatar8 from '@images/avatars/avatar-8.png'
 import txt from '@images/icons/file/txt.png'
 import xls from '@images/icons/file/xls.png'
+import mock from '@/@fake-db/mock'
 
 interface Database {
   emails: Email[]
@@ -2163,7 +2163,7 @@ const data: Database = {
 // ------------------------------------------------
 // GET: Return Emails
 // ------------------------------------------------
-mock.onGet('/apps/email/emails').reply(config => {
+mock.onGet('/apps/email/emails').reply((config) => {
   const { q = '', filter = 'inbox', label } = config.params as FetchEmailsPayload
 
   const queryLowered = q.toLowerCase()
@@ -2205,7 +2205,7 @@ mock.onGet('/apps/email/emails').reply(config => {
 // ------------------------------------------------
 // POST: Update Email
 // ------------------------------------------------
-mock.onPost('/apps/email/update-emails/').reply(config => {
+mock.onPost('/apps/email/update-emails/').reply((config) => {
   const { ids: emailIds, data: dataToUpdate } = JSON.parse(config.data)
 
   function updateMailData(email: Email) {
@@ -2223,7 +2223,7 @@ mock.onPost('/apps/email/update-emails/').reply(config => {
 // ------------------------------------------------
 // POST: Update Emails Label
 // ------------------------------------------------
-mock.onPost('/apps/email/update-emails-label').reply(config => {
+mock.onPost('/apps/email/update-emails-label').reply((config) => {
   const { ids: emailIds, label } = JSON.parse(config.data)
 
   function updateMailLabels(email: Email) {
@@ -2234,7 +2234,7 @@ mock.onPost('/apps/email/update-emails-label').reply(config => {
     else email.labels.splice(labelIndex, 1)
   }
 
-  data.emails.forEach(email => {
+  data.emails.forEach((email) => {
     if (emailIds.includes(email.id))
       updateMailLabels(email)
   })

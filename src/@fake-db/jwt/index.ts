@@ -1,8 +1,8 @@
-import mock from '@/@fake-db/mock'
 import type { User, UserOut } from '@/@fake-db/types.d'
-import { genId } from '@/@fake-db/utils'
 import avatar1 from '@images/avatars/avatar-1.png'
 import avatar2 from '@images/avatars/avatar-2.png'
+import mock from '@/@fake-db/mock'
+import { genId } from '@/@fake-db/utils'
 
 // TODO: Use jsonwebtoken pkg
 // ℹ️ Created from https://jwt.io/ using HS256 algorithm
@@ -62,7 +62,7 @@ const database: User[] = [
   },
 ]
 
-mock.onPost('/auth/login').reply(request => {
+mock.onPost('/auth/login').reply((request) => {
   const { email, password } = JSON.parse(request.data)
 
   let errors: Record<string, string[]> = {
@@ -108,7 +108,7 @@ mock.onPost('/auth/login').reply(request => {
   return [400, { errors }]
 })
 
-mock.onPost('/auth/register').reply(request => {
+mock.onPost('/auth/register').reply((request) => {
   const { username, email, password } = JSON.parse(request.data)
 
   // If not any of data is missing return 400
@@ -159,7 +159,6 @@ mock.onPost('/auth/register').reply(request => {
 
     const accessToken = userTokens[userData.id]
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password: _, abilities, ...user } = userData
 
     const response = {

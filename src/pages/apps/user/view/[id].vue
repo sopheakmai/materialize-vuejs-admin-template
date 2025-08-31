@@ -22,7 +22,7 @@ const tabs = [
   { icon: 'mdi-link-variant', title: 'Connections' },
 ]
 
-userListStore.fetchUser(Number(route.params.id)).then(response => {
+userListStore.fetchUser(Number(route.params.id)).then((response) => {
   userData.value = response.data
 })
 </script>

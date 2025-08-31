@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { VIcon } from 'vuetify/components'
 import accountLogo from '@images/cards/accounting-logo.png'
 import marketingExpense from '@images/cards/marketing-expense-logo.png'
 import salesOverview from '@images/cards/sales-overview-logo.png'
+import { VIcon } from 'vuetify/components'
 
 const websiteAnalytics = [
   {

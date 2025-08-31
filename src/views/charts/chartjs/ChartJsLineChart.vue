@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useTheme } from 'vuetify'
+import type { ChartJsCustomColors } from '@/views/charts/chartjs/types'
 import { getLineChartConfig } from '@core/libs/chartjs/chartjsConfig'
 import LineChart from '@core/libs/chartjs/components/LineChart'
 
-import type { ChartJsCustomColors } from '@/views/charts/chartjs/types'
+import { useTheme } from 'vuetify'
 
 interface Props {
   colors: ChartJsCustomColors

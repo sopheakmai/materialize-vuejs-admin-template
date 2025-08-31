@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { VIcon } from 'vuetify/components/VIcon'
 import appleIphone from '@images/cards/apple-iphone-x-lg.png'
 import appleWatch from '@images/cards/apple-watch-green-lg.png'
 import ps4Joystick from '@images/cards/ps4-joystick-lg.png'
+import { VIcon } from 'vuetify/components/VIcon'
 
 const websiteAnalytics = [
   {

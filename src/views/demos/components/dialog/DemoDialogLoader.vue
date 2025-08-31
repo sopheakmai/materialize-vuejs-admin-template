@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const isDialogVisible = ref(false)
 
-watch(isDialogVisible, value => {
+watch(isDialogVisible, (value) => {
   if (!value)
     return
 

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { VDataTable } from 'vuetify/components/VDataTable'
+import type { Options } from '@core/types'
 import type { Invoice } from '@/@fake-db/types'
+import { avatarText } from '@core/utils/formatters'
+import { VDataTable } from 'vuetify/components/VDataTable'
+
 import { paginationMeta } from '@/@fake-db/utils'
 import { useInvoiceStore } from '@/views/apps/invoice/useInvoiceStore'
-
-import type { Options } from '@core/types'
-import { avatarText } from '@core/utils/formatters'
 
 // 👉 Store
 const invoiceListStore = useInvoiceStore()
@@ -49,11 +49,11 @@ const fetchInvoices = (query: string, currentStatus: string, firstDate: string, 
       endDate: lastDate,
       options: option,
     },
-  ).then(response => {
+  ).then((response) => {
     invoices.value = response.data.invoices
     totalInvoices.value = response.data.totalInvoices
     options.value.page = response.data.page
-  }).catch(error => {
+  }).catch((error) => {
     console.log(error)
   })
 
@@ -114,7 +114,7 @@ const deleteInvoice = (id: number) => {
         options.value,
       )
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error)
     })
 }

@@ -58,8 +58,8 @@ const removeNotification = (notificationId: number) => {
 }
 
 const markRead = (notificationId: number[]) => {
-  notifications.value.forEach(item => {
-    notificationId.forEach(id => {
+  notifications.value.forEach((item) => {
+    notificationId.forEach((id) => {
       if (id === item.id)
         item.isSeen = true
     })
@@ -67,8 +67,8 @@ const markRead = (notificationId: number[]) => {
 }
 
 const markUnRead = (notificationId: number[]) => {
-  notifications.value.forEach(item => {
-    notificationId.forEach(id => {
+  notifications.value.forEach((item) => {
+    notificationId.forEach((id) => {
       if (id === item.id)
         item.isSeen = false
     })

@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { hexToRgb } from '@layouts/utils'
 import VueApexCharts from 'vue3-apexcharts'
 import { useDisplay, useTheme } from 'vuetify'
-import { hexToRgb } from '@layouts/utils'
 
 const moreList = [
   { title: 'Refresh', value: 'refresh' },

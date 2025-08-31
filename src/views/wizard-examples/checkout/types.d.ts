@@ -1,5 +1,5 @@
 export interface CartItem {
-  id:number
+  id: number
   name: string
   seller: string
   inStock: boolean
@@ -8,7 +8,7 @@ export interface CartItem {
   discountPrice: number
   image: string
   quantity: number
-  estimatedDelivery:  string
+  estimatedDelivery: string
 }
 export interface Addresses {
   title: string
@@ -16,8 +16,8 @@ export interface Addresses {
   subtitle: string
   value: string
 }
-  
-export interface CheckoutData { 
+
+export interface CheckoutData {
   cartItems: CartItem[]
   promoCode: string
   orderAmount: number

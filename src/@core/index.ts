@@ -1,10 +1,10 @@
+import type { UserConfig as LayoutConfig } from '@layouts/types'
 import type { ThemeConfig, UserThemeConfig } from './types'
 import { RouteTransitions, Skins } from '@core/enums'
-import type { UserConfig as LayoutConfig } from '@layouts/types'
 
 export const defineThemeConfig = (
   userConfig: UserThemeConfig,
-): { themeConfig: ThemeConfig; layoutConfig: LayoutConfig } => {
+): { themeConfig: ThemeConfig, layoutConfig: LayoutConfig } => {
   const localStorageTheme = localStorage.getItem(`${userConfig.app.title}-theme`)
   const localStorageIsVerticalNavSemiDark = localStorage.getItem(`${userConfig.app.title}-isVerticalNavSemiDark`)
 

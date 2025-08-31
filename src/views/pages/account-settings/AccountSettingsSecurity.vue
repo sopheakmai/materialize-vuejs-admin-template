@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { VDataTable } from 'vuetify/components/VDataTable'
 import boyWithTab from '@images/illustrations/account-settings-security-illustration.png'
+import { VDataTable } from 'vuetify/components/VDataTable'
 
 const isCurrentPasswordVisible = ref(false)
 const isNewPasswordVisible = ref(false)
@@ -347,6 +347,6 @@ const isOneTimePasswordDialogVisible = ref(false)
   </VRow>
 
   <!-- SECTION Enable One time password -->
-  <TwoFactorAuthDialog v-model:isDialogVisible="isOneTimePasswordDialogVisible" />
+  <TwoFactorAuthDialog v-model:is-dialog-visible="isOneTimePasswordDialogVisible" />
   <!-- !SECTION -->
 </template>

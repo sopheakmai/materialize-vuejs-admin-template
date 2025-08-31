@@ -10,5 +10,5 @@ router.replace({ name: 'apps-user-list' })
 
 <template>
   <!-- This component will redirect immediately, so no template content is needed -->
-  <div></div>
+  <div />
 </template>

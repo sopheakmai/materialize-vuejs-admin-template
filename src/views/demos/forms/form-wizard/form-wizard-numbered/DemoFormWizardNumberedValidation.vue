@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { VForm } from 'vuetify/components/VForm'
 import { confirmedValidator, emailValidator, passwordValidator, requiredValidator, urlValidator } from '@core/utils/validators'
+import { VForm } from 'vuetify/components/VForm'
 
 const numberedSteps = [
   {
@@ -48,7 +48,7 @@ const socialForm = ref({
 })
 
 const validateAccountForm = () => {
-  refAccountForm.value?.validate().then(valid => {
+  refAccountForm.value?.validate().then((valid) => {
     if (valid.valid) {
       currentStep.value++
       isCurrentStepValid.value = true
@@ -58,7 +58,7 @@ const validateAccountForm = () => {
 }
 
 const validatePersonalForm = () => {
-  refPersonalForm.value?.validate().then(valid => {
+  refPersonalForm.value?.validate().then((valid) => {
     if (valid.valid) {
       currentStep.value++
       isCurrentStepValid.value = true
@@ -68,7 +68,7 @@ const validatePersonalForm = () => {
 }
 
 const validateSocialLinkForm = () => {
-  refSocialLinkForm.value?.validate().then(valid => {
+  refSocialLinkForm.value?.validate().then((valid) => {
     if (valid.valid) {
       isCurrentStepValid.value = true
 

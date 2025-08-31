@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { PersonalDetails } from './types'
 import type { CustomInputContent } from '@core/types'
+import type { PersonalDetails } from './types'
 
 const props = defineProps<{
   formData: PersonalDetails

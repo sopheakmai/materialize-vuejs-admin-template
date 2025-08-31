@@ -3,7 +3,7 @@ interface Emit {
   (e: 'update:isDialogVisible', value: boolean): void
 }
 interface Props {
-  isDialogVisible: boolean
+  isDialogVisible?: boolean
   smsCode?: string
   authAppCode?: string
 }
@@ -119,11 +119,11 @@ const openSelectedMethodDialog = () => {
   </VDialog>
 
   <AddAuthenticatorAppDialog
-    v-model:isDialogVisible="isAuthAppDialogVisible"
+    v-model:is-dialog-visible="isAuthAppDialogVisible"
     :auth-code="props.authAppCode"
   />
   <EnableOneTimePasswordDialog
-    v-model:isDialogVisible="isSmsDialogVisible"
+    v-model:is-dialog-visible="isSmsDialogVisible"
     :mobile-number="props.smsCode"
   />
 </template>

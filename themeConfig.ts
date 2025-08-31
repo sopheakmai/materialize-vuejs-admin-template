@@ -1,13 +1,13 @@
-import { breakpointsVuetify } from '@vueuse/core'
+import { defineThemeConfig } from '@core'
 
-import { VIcon } from 'vuetify/components/VIcon'
+import { RouteTransitions, Skins } from '@core/enums'
 
 // ❗ Logo SVG must be imported with ?raw suffix
 import logo from '@images/logo.svg?raw'
 
-import { defineThemeConfig } from '@core'
-import { RouteTransitions, Skins } from '@core/enums'
 import { AppContentLayoutNav, ContentWidth, FooterType, NavbarType } from '@layouts/enums'
+import { breakpointsVuetify } from '@vueuse/core'
+import { VIcon } from 'vuetify/components/VIcon'
 
 export const { themeConfig, layoutConfig } = defineThemeConfig({
   app: {

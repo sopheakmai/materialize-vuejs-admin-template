@@ -1,6 +1,6 @@
 import type { PluginOptionsByType } from 'chart.js'
-import { ArcElement, Chart as ChartJS, Legend, RadialLinearScale, Title, Tooltip } from 'chart.js'
 import type { PropType } from 'vue'
+import { ArcElement, Chart as ChartJS, Legend, RadialLinearScale, Title, Tooltip } from 'chart.js'
 import { defineComponent } from 'vue'
 import { PolarArea } from 'vue-chartjs'
 

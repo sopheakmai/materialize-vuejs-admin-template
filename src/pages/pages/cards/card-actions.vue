@@ -1,13 +1,19 @@
 <script setup lang="ts">
 const tableData = [
   {
-    action: 'Collapse', icon: 'mdi-chevron-up', details: 'Collapse card content using collapse action.',
+    action: 'Collapse',
+    icon: 'mdi-chevron-up',
+    details: 'Collapse card content using collapse action.',
   },
   {
-    action: 'Refresh Content', icon: 'mdi-refresh', details: 'Refresh your card content using refresh action.',
+    action: 'Refresh Content',
+    icon: 'mdi-refresh',
+    details: 'Refresh your card content using refresh action.',
   },
   {
-    action: 'Remove Card', icon: 'mdi-close', details: 'Remove card from page using remove card action',
+    action: 'Remove Card',
+    icon: 'mdi-close',
+    details: 'Remove card from page using remove card action',
   },
 ]
 

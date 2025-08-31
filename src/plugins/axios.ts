@@ -10,7 +10,7 @@ const axiosIns = axios.create({
 })
 
 // ℹ️ Add request interceptor to send the authorization header on each subsequent request after login
-axiosIns.interceptors.request.use(config => {
+axiosIns.interceptors.request.use((config) => {
   // Retrieve token from localStorage
   const token = localStorage.getItem('accessToken')
 
@@ -29,9 +29,9 @@ axiosIns.interceptors.request.use(config => {
 })
 
 // ℹ️ Add response interceptor to handle 401 response
-axiosIns.interceptors.response.use(response => {
+axiosIns.interceptors.response.use((response) => {
   return response
-}, error => {
+}, (error) => {
   // Handle error
   if (error.response.status === 401) {
     // ℹ️ Logout user and redirect to login page

@@ -5,7 +5,7 @@ import axios from '@axios'
 const profileHeaderData = ref<ProfileHeader>()
 
 const fetchHeaderData = () => {
-  axios.get('/pages/profile-header').then(response => {
+  axios.get('/pages/profile-header').then((response) => {
     profileHeaderData.value = response.data
   })
 }

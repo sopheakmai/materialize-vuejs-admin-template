@@ -4,10 +4,10 @@ import type {
   HelpCenterCategoriesType,
 } from '@/@fake-db/types'
 
+import axios from '@axios'
 import HelpCenterLandingArticlesOverview from '@/views/pages/help-center/HelpCenterLandingArticlesOverview.vue'
 import HelpCenterLandingFooter from '@/views/pages/help-center/HelpCenterLandingFooter.vue'
 import HelpCenterLandingKnowledgeBase from '@/views/pages/help-center/HelpCenterLandingKnowledgeBase.vue'
-import axios from '@axios'
 
 interface ApiDataType {
   categories: HelpCenterCategoriesType[]
@@ -19,7 +19,7 @@ const apiData = ref<ApiDataType>()
 
 // fetching data from the @fake-db
 const fetchHelpCenterData = () => {
-  return axios.get('/pages/help-center/landing').then(res => {
+  return axios.get('/pages/help-center/landing').then((res) => {
     apiData.value = res.data
   })
 }

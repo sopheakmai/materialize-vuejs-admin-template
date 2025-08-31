@@ -5,7 +5,7 @@ const items = ref(5)
 
 const all = () => {
   // [...Array(5).keys()] => [0, 1, 2, 3, 4]
-  openedPanels.value = [...Array(items.value).keys()]
+  openedPanels.value = [...Array.from({ length: items.value }).keys()]
 }
 
 const none = () => {

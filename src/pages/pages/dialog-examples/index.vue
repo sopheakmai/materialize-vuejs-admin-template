@@ -56,7 +56,7 @@ const userData = {
           </VBtn>
         </VCardText>
 
-        <ShareProjectDialog v-model:isDialogVisible="isShareProjectDialogVisible" />
+        <ShareProjectDialog v-model:is-dialog-visible="isShareProjectDialogVisible" />
       </VCard>
     </VCol>
 
@@ -87,7 +87,7 @@ const userData = {
           </VBtn>
         </VCardText>
 
-        <CardAddEditDialog v-model:isDialogVisible="isCardAddDialogVisible" />
+        <CardAddEditDialog v-model:is-dialog-visible="isCardAddDialogVisible" />
       </VCard>
     </VCol>
 
@@ -183,7 +183,7 @@ const userData = {
         </VCardText>
 
         <!-- 👉 Edit Address dialog -->
-        <AddEditAddressDialog v-model:isDialogVisible="isEditAddressDialogVisible" />
+        <AddEditAddressDialog v-model:is-dialog-visible="isEditAddressDialogVisible" />
       </VCard>
     </VCol>
 
@@ -246,7 +246,7 @@ const userData = {
 
         <!-- 👉 Enable One Time Password Dialog -->
 
-        <TwoFactorAuthDialog v-model:isDialogVisible="isTwoFactorDialogOpen" />
+        <TwoFactorAuthDialog v-model:is-dialog-visible="isTwoFactorDialogOpen" />
       </VCard>
     </VCol>
 
@@ -279,7 +279,7 @@ const userData = {
 
         <!-- 👉 Edit user info dialog -->
         <UserInfoEditDialog
-          v-model:isDialogVisible="isUserInfoEditDialogVisible"
+          v-model:is-dialog-visible="isUserInfoEditDialogVisible"
           :user-data="userData"
         />
       </VCard>

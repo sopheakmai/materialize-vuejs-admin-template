@@ -1,3 +1,13 @@
+<script setup lang="ts">
+import { VPie } from 'vuetify/labs/VPie'
+
+const items = [
+  { key: 1, title: 'Yes', value: 45 },
+  { key: 2, title: 'No', value: 40 },
+  { key: 3, title: 'Maybe', value: 15 },
+]
+</script>
+
 <template>
   <div>
     <VPie
@@ -12,16 +22,6 @@
     1
   </div>
 </template>
-
-<script setup lang="ts">
-import { VPie } from 'vuetify/labs/VPie';
-
-  const items = [
-    { key: 1, title: "Yes", value: 45 },
-    { key: 2, title: "No", value: 40 },
-    { key: 3, title: "Maybe", value: 15 },
-  ]
-</script>
 
 <style scoped>
 

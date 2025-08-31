@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
-import { avatarText } from '@core/utils/formatters'
 import type { Notification } from '@layouts/types'
+import { avatarText } from '@core/utils/formatters'
+import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
 
 interface Props {
   notifications: Notification[]
-  badgeProps?: unknown
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  badgeProps?: Record<string, any>
+
   location?: any
 }
 interface Emit {
@@ -132,7 +132,7 @@ const markAllReadOrUnread = () => {
                       dot
                       :color="!notification.isSeen ? 'primary' : '#a8aaae'"
                       :class="`${notification.isSeen ? 'visible-in-hover' : ''} ms-1`"
-                      @click.stop="$emit(notification.isSeen ? 'unread' : 'read', [notification.id])"
+                      @click.stop="notification.isSeen ? $emit('unread', [notification.id]) : $emit('read', [notification.id])"
                     />
 
                     <div style="block-size: 28px; inline-size: 28px;">

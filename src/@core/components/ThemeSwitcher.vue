@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useThemeConfig } from '@core/composable/useThemeConfig'
 import type { ThemeSwitcherTheme } from '@layouts/types'
+import { useThemeConfig } from '@core/composable/useThemeConfig'
 
 const props = defineProps<{
   themes: ThemeSwitcherTheme[]
@@ -14,7 +14,7 @@ const changeTheme = () => {
 }
 
 // Update icon if theme is changed from other sources
-watch(theme, val => {
+watch(theme, (val) => {
   currentThemeName.value = val
 })
 </script>

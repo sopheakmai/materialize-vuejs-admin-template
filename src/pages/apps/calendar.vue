@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import FullCalendar from '@fullcalendar/vue3'
-import { blankEvent, useCalendar } from '@/views/apps/calendar/useCalendar'
-import { useCalendarStore } from '@/views/apps/calendar/useCalendarStore'
 import { useResponsiveLeftSidebar } from '@core/composable/useResponsiveSidebar'
-
+import FullCalendar from '@fullcalendar/vue3'
 // Components
 import CalendarEventHandler from '@/views/apps/calendar/CalendarEventHandler.vue'
+import { blankEvent, useCalendar } from '@/views/apps/calendar/useCalendar'
+
+import { useCalendarStore } from '@/views/apps/calendar/useCalendarStore'
 
 // 👉 Store
 const store = useCalendarStore()
@@ -14,7 +14,7 @@ const store = useCalendarStore()
 const event = ref(structuredClone(blankEvent))
 const isEventHandlerSidebarActive = ref(false)
 
-watch(isEventHandlerSidebarActive, val => {
+watch(isEventHandlerSidebarActive, (val) => {
   if (!val)
     event.value = structuredClone(blankEvent)
 })
@@ -33,7 +33,7 @@ const checkAll = computed({
           Else if => all filters are selected (by checking length of both array) => Empty Selected array  => Deselect All
   */
   get: () => store.selectedCalendars.length === store.availableCalendars.length,
-  set: val => {
+  set: (val) => {
     if (val)
       store.selectedCalendars = store.availableCalendars.map(i => i.label)
 
@@ -104,7 +104,7 @@ const checkAll = computed({
       </VLayout>
     </VCard>
     <CalendarEventHandler
-      v-model:isDrawerOpen="isEventHandlerSidebarActive"
+      v-model:is-drawer-open="isEventHandlerSidebarActive"
       :event="event"
       @add-event="addEvent"
       @update-event="updateEvent"

@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import type { CheckoutData } from '@/views/wizard-examples/checkout/types'
+import googleHome from '@images/pages/google-home.png'
+import iphone11 from '@images/pages/iphone-11.png'
 import AddressContent from '@/views/wizard-examples/checkout/Address.vue'
 import CartContent from '@/views/wizard-examples/checkout/Cart.vue'
 import ConfirmationContent from '@/views/wizard-examples/checkout/Confirmation.vue'
 import PaymentContent from '@/views/wizard-examples/checkout/Payment.vue'
-import type { CheckoutData } from '@/views/wizard-examples/checkout/types'
-import googleHome from '@images/pages/google-home.png'
-import iphone11 from '@images/pages/iphone-11.png'
 
 const checkoutSteps = [
   {

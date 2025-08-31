@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
 import type { HelpCenterSubcategoriesType, HelpCenterSubcategoryArticlesType } from '@/@fake-db/types'
 import axios from '@axios'
+import { useRoute } from 'vue-router'
 
 const route = useRoute()
 
@@ -16,7 +16,7 @@ const fetchHelpCenterArticlesData = () => {
       category: route.params.category,
       subcategory: route.params.subcategory,
     },
-  }).then(res => {
+  }).then((res) => {
     apiData.value = res.data.activeSubcategory
     activeArticle.value = res.data.activeArticle
   })

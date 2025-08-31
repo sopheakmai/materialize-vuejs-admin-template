@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useTheme } from 'vuetify'
 import { getRadarChartConfig } from '@core/libs/chartjs/chartjsConfig'
 import RadarChart from '@core/libs/chartjs/components/RadarChart'
+import { useTheme } from 'vuetify'
 
 const vuetifyTheme = useTheme()
 

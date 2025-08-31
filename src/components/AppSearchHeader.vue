@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import AppSearchHeaderBgDark from '@images/pages/app-search-header-bg-dark.png'
-import AppSearchHeaderBgLight from '@images/pages/app-search-header-bg-light.png'
-
 import { useGenerateImageVariant } from '@core/composable/useGenerateImageVariant'
+import AppSearchHeaderBgDark from '@images/pages/app-search-header-bg-dark.png'
+
+import AppSearchHeaderBgLight from '@images/pages/app-search-header-bg-light.png'
 
 interface Props {
   title?: string
@@ -10,11 +10,11 @@ interface Props {
   customClass?: string
 }
 
-const props = defineProps<Props>()
-
 defineOptions({
   inheritAttrs: false,
 })
+
+const props = defineProps<Props>()
 
 const themeBackgroundImg = useGenerateImageVariant(AppSearchHeaderBgLight, AppSearchHeaderBgDark)
 </script>

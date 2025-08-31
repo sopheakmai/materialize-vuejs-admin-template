@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import type { Data } from '@/@fake-db/types'
 import { VDataTable } from 'vuetify/components/VDataTable'
 import { avatarText } from '@/@core/utils/formatters'
-import type { Data } from '@/@fake-db/types'
 import data from '@/views/demos/forms/tables/data-table/datatable'
 
 const userList = ref<Data[]>([])

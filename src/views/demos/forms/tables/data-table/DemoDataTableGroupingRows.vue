@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { VDataTable } from 'vuetify/components/VDataTable'
-import { avatarText } from '@/@core/utils/formatters'
-
 import avatar1 from '@images/avatars/avatar-1.png'
 import avatar2 from '@images/avatars/avatar-2.png'
+
 import avatar4 from '@images/avatars/avatar-4.png'
 import avatar7 from '@images/avatars/avatar-7.png'
 import avatar8 from '@images/avatars/avatar-8.png'
+import { VDataTable } from 'vuetify/components/VDataTable'
+import { avatarText } from '@/@core/utils/formatters'
 
 const userList = [
   {

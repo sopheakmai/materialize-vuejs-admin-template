@@ -1,9 +1,9 @@
 <script lang="ts" setup>
+import type { NavGroup } from '@layouts/types'
 import { useLayouts } from '@layouts'
 import { HorizontalNavLink, HorizontalNavPopper } from '@layouts/components'
 import { config } from '@layouts/config'
 import { canViewNavMenuGroup } from '@layouts/plugins/casl'
-import type { NavGroup } from '@layouts/types'
 import { isNavGroupActive } from '@layouts/utils'
 
 interface Props {
@@ -14,13 +14,13 @@ interface Props {
   isSubItem?: boolean
 }
 
+defineOptions({
+  name: 'HorizontalNavGroup',
+})
+
 const props = withDefaults(defineProps<Props>(), {
   childrenAtEnd: false,
   isSubItem: false,
-})
-
-defineOptions({
-  name: 'HorizontalNavGroup',
 })
 
 const route = useRoute()

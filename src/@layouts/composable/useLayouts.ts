@@ -1,8 +1,8 @@
 import type { MaybeRef } from '@vueuse/shared'
 import type { Ref } from 'vue'
-import { AppContentLayoutNav, NavbarType } from '../enums'
-import { injectionKeyIsVerticalNavHovered } from '@layouts/symbols'
 import { config } from '@layouts/config'
+import { injectionKeyIsVerticalNavHovered } from '@layouts/symbols'
+import { AppContentLayoutNav, NavbarType } from '../enums'
 
 export const useLayouts = () => {
   const navbarType = computed({
@@ -130,7 +130,7 @@ export const useLayouts = () => {
       So when user comes back from `mdAndDown` to `lgAndUp` we can set updated nav type
       For this we need to update the `lgAndUpNav` value if screen is `lgAndUp`
     */
-    watch(appContentLayoutNav, value => {
+    watch(appContentLayoutNav, (value) => {
       if (!isLessThanOverlayNavBreakpoint.value(windowWidth))
         lgAndUpNav.value = value
     })
@@ -140,7 +140,7 @@ export const useLayouts = () => {
       If it's `mdAndDown` => We will use vertical nav no matter what previous nav type was
       Or if it's `lgAndUp` we need to switch back to `lgAndUp` nav type. For this we will tracker property `lgAndUpNav`
     */
-    watch(() => isLessThanOverlayNavBreakpoint.value(windowWidth), val => {
+    watch(() => isLessThanOverlayNavBreakpoint.value(windowWidth), (val) => {
       if (!val)
         appContentLayoutNav.value = lgAndUpNav.value
       else

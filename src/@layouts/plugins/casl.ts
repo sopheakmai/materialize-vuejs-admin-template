@@ -1,6 +1,6 @@
+import type { NavGroup } from '@layouts/types'
 import type { RouteLocationNormalized } from 'vue-router'
 import ability from '@/plugins/casl/ability'
-import type { NavGroup } from '@layouts/types'
 
 /**
  * Returns ability result if ACL is configured or else just return true
@@ -9,8 +9,8 @@ import type { NavGroup } from '@layouts/types'
  * Useful if you don't know if ACL is configured or not
  * Used in @core files to handle absence of ACL without errors
  *
- * @param {String} action CASL Actions // https://casl.js.org/v4/en/guide/intro#basics
- * @param {String} subject CASL Subject // https://casl.js.org/v4/en/guide/intro#basics
+ * @param {string} action CASL Actions // https://casl.js.org/v4/en/guide/intro#basics
+ * @param {string} subject CASL Subject // https://casl.js.org/v4/en/guide/intro#basics
  */
 export const can = (action: string | undefined, subject: string | undefined) => {
   const vm = getCurrentInstance()
@@ -27,7 +27,7 @@ export const can = (action: string | undefined, subject: string | undefined) => 
 /**
  * Check if user can view item based on it's ability
  * Based on item's action and subject & Hide group if all of it's children are hidden
- * @param {Object} item navigation object item
+ * @param {object} item navigation object item
  */
 export const canViewNavMenuGroup = (item: NavGroup) => {
   const hasAnyVisibleChild = item.children.some(i => can(i.action, i.subject))

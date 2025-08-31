@@ -1,5 +1,6 @@
 {
   "name": "materialize-vuejs-admin-template",
+  "type": "module",
   "version": "1.1.0",
   "private": true,
   "scripts": {
@@ -7,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview --port 5050",
     "typecheck": "vue-tsc --noEmit",
-    "lint": "eslint . -c .eslintrc.js --fix --rulesdir eslint-internal-rules/ --ext .ts,.js,.vue,.tsx,.jsx"
+    "lint": "eslint . --fix --ext .ts,.js,.vue,.tsx,.jsx"
   },
   "dependencies": {
     "@antfu/utils": "^9.2.0",

@@ -11,13 +11,13 @@ defineEmits<{
 
 interface Props {
   languages: I18nLanguage[]
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   location?: any
 }
 
 const { locale } = useI18n({ useScope: 'global' })
 
-watch(locale, val => {
+watch(locale, (val) => {
   document.documentElement.setAttribute('lang', val as string)
 })
 

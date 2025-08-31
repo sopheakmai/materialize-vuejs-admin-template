@@ -24,7 +24,6 @@ const defaultStyle = {
   style: 'max-width: 54px; text-align: center;',
 }
 
-// eslint-disable-next-line sonarjs/cognitive-complexity
 const handleKeyDown = (event: KeyboardEvent, index: number) => {
   if (event.code !== 'Tab' && event.code !== 'ArrowRight' && event.code !== 'ArrowLeft')
     event.preventDefault()
@@ -39,7 +38,7 @@ const handleKeyDown = (event: KeyboardEvent, index: number) => {
         inputEl.focus()
     }
   }
-  const numberRegExp = /^([0-9])$/
+  const numberRegExp = /^\d$/
 
   if (numberRegExp.test(event.key)) {
     digits.value[index - 1] = event.key

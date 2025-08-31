@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useGenerateImageVariant } from '@/@core/composable/useGenerateImageVariant'
-
 import miscMaskDark from '@images/pages/misc-mask-dark.png'
+
 import miscMaskLight from '@images/pages/misc-mask-light.png'
 import miscObj from '@images/pages/misc-under-maintenance-object.png'
 import miscUnderMaintenance from '@images/pages/misc-under-maintenance.png'
+import { useGenerateImageVariant } from '@/@core/composable/useGenerateImageVariant'
 
 const miscThemeMask = useGenerateImageVariant(miscMaskLight, miscMaskDark)
 </script>

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { VDataTableServer } from 'vuetify/components/VDataTable'
+import type { Options } from '@core/types'
 import type { UserProperties } from '@/@fake-db/types'
+import { avatarText } from '@core/utils/formatters'
+import { VDataTableServer } from 'vuetify/components/VDataTable'
 import { paginationMeta } from '@/@fake-db/utils'
 import AddNewUserDrawer from '@/views/apps/user/list/AddNewUserDrawer.vue'
 import { useUserListStore } from '@/views/apps/user/useUserListStore'
-import type { Options } from '@core/types'
-import { avatarText } from '@core/utils/formatters'
 
 // 👉 Store
 const userListStore = useUserListStore()
@@ -43,12 +43,12 @@ const fetchUsers = () => {
     plan: selectedPlan.value,
     role: selectedRole.value,
     options: options.value,
-  }).then(response => {
+  }).then((response) => {
     users.value = response.data.users
     totalPage.value = response.data.totalPage
     totalUsers.value = response.data.totalUsers
     options.value.page = response.data.page
-  }).catch(error => {
+  }).catch((error) => {
     console.error(error)
   })
 }
@@ -373,7 +373,7 @@ const deleteUser = (id: number) => {
 
     <!-- 👉 Add New User -->
     <AddNewUserDrawer
-      v-model:isDrawerOpen="isAddNewUserDrawerVisible"
+      v-model:is-drawer-open="isAddNewUserDrawerVisible"
       @user-data="addNewUser"
     />
   </section>

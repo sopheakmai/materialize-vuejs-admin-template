@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { PropertyDetails } from './types'
 import type { CustomInputContent } from '@core/types'
+import type { PropertyDetails } from './types'
 
 const props = defineProps<{
   formData: PropertyDetails

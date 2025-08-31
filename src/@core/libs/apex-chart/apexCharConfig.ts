@@ -62,7 +62,7 @@ export const getScatterChartConfig = (themeColors: ThemeInstance['themes']['valu
       },
       labels: {
         style: { colors: themeDisabledTextColor },
-        formatter: (val: string) => parseFloat(val).toFixed(1),
+        formatter: (val: string) => Number.parseFloat(val).toFixed(1),
       },
     },
   }
@@ -94,7 +94,7 @@ export const getLineChartSimpleConfig = (themeColors: ThemeInstance['themes']['v
       },
     },
     tooltip: {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
       custom(data: any) {
         return `<div class='bar-chart pa-2'>
           <span>${data.series[data.seriesIndex][data.dataPointIndex]}%</span>
@@ -282,8 +282,8 @@ export const getRadialBarChartConfig = (themeColors: ThemeInstance['themes']['va
             fontSize: '1.125rem',
 
             color: themePrimaryTextColor,
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            formatter(w: { globals: { seriesTotals: any[]; series: string | any[] } }) {
+
+            formatter(w: { globals: { seriesTotals: any[], series: string | any[] } }) {
               const totalValue
                 = w.globals.seriesTotals.reduce((a: number, b: number) => {
                   return a + b
@@ -324,7 +324,7 @@ export const getDonutChartConfig = (themeColors: ThemeInstance['themes']['value'
     colors: [donutColors.series1, donutColors.series5, donutColors.series3, donutColors.series2],
     dataLabels: {
       enabled: true,
-      formatter: (val: string) => `${parseInt(val, 10)}%`,
+      formatter: (val: string) => `${Number.parseInt(val, 10)}%`,
     },
     legend: {
       position: 'bottom',
@@ -346,7 +346,7 @@ export const getDonutChartConfig = (themeColors: ThemeInstance['themes']['value'
             value: {
               fontSize: '1.5rem',
               color: themeSecondaryTextColor,
-              formatter: (val: string) => `${parseInt(val, 10)}`,
+              formatter: (val: string) => `${Number.parseInt(val, 10)}`,
             },
             total: {
               show: true,

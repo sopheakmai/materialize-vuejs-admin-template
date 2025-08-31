@@ -1,8 +1,8 @@
 <script lang="ts" setup>
+import type { NavSectionTitle } from '@layouts/types'
 import { useLayouts } from '@layouts'
 import { config } from '@layouts/config'
 import { can } from '@layouts/plugins/casl'
-import type { NavSectionTitle } from '@layouts/types'
 
 defineProps<{
   item: NavSectionTitle

@@ -1,8 +1,8 @@
 <script lang="ts">
+import type { VerticalNavItems } from '@layouts/types'
 import type { PropType } from 'vue'
 import { useLayouts } from '@layouts'
 import { VerticalNav } from '@layouts/components'
-import type { VerticalNavItems } from '@layouts/types'
 
 export default defineComponent({
   props: {
@@ -39,7 +39,7 @@ export default defineComponent({
     // })
 
     // ℹ️ Hide overlay if user open overlay nav in <md and increase the window width without closing overlay nav
-    watch(windowWidth, value => {
+    watch(windowWidth, (value) => {
       if (!isLessThanOverlayNavBreakpoint.value(value) && isLayoutOverlayVisible.value)
         isLayoutOverlayVisible.value = false
     })

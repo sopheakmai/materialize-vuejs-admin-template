@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import InvoiceAddPaymentDrawer from '@/views/apps/invoice/InvoiceAddPaymentDrawer.vue'
-import InvoiceEditable from '@/views/apps/invoice/InvoiceEditable.vue'
-import InvoiceSendInvoiceDrawer from '@/views/apps/invoice/InvoiceSendInvoiceDrawer.vue'
-
 // Type: Invoice data
 import type { InvoiceData } from '@/views/apps/invoice/types'
+import InvoiceAddPaymentDrawer from '@/views/apps/invoice/InvoiceAddPaymentDrawer.vue'
+import InvoiceEditable from '@/views/apps/invoice/InvoiceEditable.vue'
+
+import InvoiceSendInvoiceDrawer from '@/views/apps/invoice/InvoiceSendInvoiceDrawer.vue'
 
 // Store
 import { useInvoiceStore } from '@/views/apps/invoice/useInvoiceStore'
@@ -15,7 +15,7 @@ const route = useRoute()
 const invoiceData = ref<InvoiceData>()
 
 // 👉 fetchInvoice
-invoiceListStore.fetchInvoice(Number(route.params.id)).then(response => {
+invoiceListStore.fetchInvoice(Number(route.params.id)).then((response) => {
   invoiceData.value = {
     invoice: response.data.invoice,
     paymentDetails: response.data.paymentDetails,
@@ -38,7 +38,7 @@ invoiceListStore.fetchInvoice(Number(route.params.id)).then(response => {
     salesperson: 'Tom Cook',
     thanksNote: 'Thanks for your business',
   }
-}).catch(error => {
+}).catch((error) => {
   console.log(error)
 })
 
@@ -161,9 +161,9 @@ const paymentMethods = ['Bank Account', 'PayPal', 'UPI Transfer']
     </VCol>
 
     <!-- 👉 Invoice send drawer -->
-    <InvoiceSendInvoiceDrawer v-model:isDrawerOpen="isSendSidebarActive" />
+    <InvoiceSendInvoiceDrawer v-model:is-drawer-open="isSendSidebarActive" />
 
     <!-- 👉 Invoice add payment drawer -->
-    <InvoiceAddPaymentDrawer v-model:isDrawerOpen="isAddPaymentSidebarActive" />
+    <InvoiceAddPaymentDrawer v-model:is-drawer-open="isAddPaymentSidebarActive" />
   </VRow>
 </template>

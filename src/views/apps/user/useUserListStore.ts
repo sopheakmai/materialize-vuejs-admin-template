@@ -1,8 +1,8 @@
 import type { AxiosResponse } from 'axios'
-import { defineStore } from 'pinia'
 import type { UserProperties } from '@/@fake-db/types'
 import type { UserParams } from '@/views/apps/user/types'
 import axios from '@axios'
+import { defineStore } from 'pinia'
 
 export const useUserListStore = defineStore('UserListStore', {
   actions: {
@@ -15,8 +15,7 @@ export const useUserListStore = defineStore('UserListStore', {
       return new Promise((resolve, reject) => {
         axios.post('/apps/users/user', {
           user: userData,
-        }).then(response => resolve(response))
-          .catch(error => reject(error))
+        }).then(response => resolve(response)).catch(error => reject(error))
       })
     },
 

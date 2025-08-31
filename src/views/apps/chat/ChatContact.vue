@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import type { ChatContact, ChatContactWithChat } from '@/@fake-db/types'
+import { avatarText, formatDateToMonthShort } from '@core/utils/formatters'
 import { useChat } from '@/views/apps/chat/useChat'
 import { useChatStore } from '@/views/apps/chat/useChatStore'
-import { avatarText, formatDateToMonthShort } from '@core/utils/formatters'
 
 interface Props {
   isChatContact?: boolean

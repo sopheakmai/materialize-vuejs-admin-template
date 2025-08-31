@@ -1,8 +1,8 @@
 <script lang="ts" setup>
+import type { NavLink } from '@layouts/types'
 import { useLayouts } from '@layouts'
 import { config } from '@layouts/config'
 import { can } from '@layouts/plugins/casl'
-import type { NavLink } from '@layouts/types'
 import { getComputedNavLinkToProp, isNavLinkActive } from '@layouts/utils'
 
 defineProps<{

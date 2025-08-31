@@ -1,8 +1,8 @@
-// ** Mock Adapter
-import mock from '@/@fake-db/mock'
-
 // ** Types
 import type { SearchHeader, SearchItem } from '@/@fake-db/types'
+
+// ** Mock Adapter
+import mock from '@/@fake-db/mock'
 
 const database: SearchItem[] = [
   {
@@ -659,8 +659,7 @@ const database: SearchItem[] = [
 ]
 
 // ** GET Search Data
-// eslint-disable-next-line sonarjs/cognitive-complexity
-mock.onGet('/app-bar/search').reply(config => {
+mock.onGet('/app-bar/search').reply((config) => {
   const { q = '' } = config.params
   const queryLowered = q.toLowerCase()
 
@@ -680,13 +679,13 @@ mock.onGet('/app-bar/search').reply(config => {
     chartsMisc: [],
   }
 
-  database.forEach(obj => {
+  database.forEach((obj) => {
     const isMatched = obj.title.toLowerCase().startsWith(queryLowered)
     if (isMatched && exactData[obj.category].length < 5)
       exactData[obj.category].push(obj)
   })
 
-  database.forEach(obj => {
+  database.forEach((obj) => {
     const isMatched
       = !obj.title.toLowerCase().startsWith(queryLowered) && obj.title.toLowerCase().includes(queryLowered)
 
@@ -696,12 +695,12 @@ mock.onGet('/app-bar/search').reply(config => {
 
   const categoriesCheck: string[] = []
 
-  Object.keys(exactData).forEach(category => {
+  Object.keys(exactData).forEach((category) => {
     if (exactData[category].length > 0)
       categoriesCheck.push(category)
   })
   if (categoriesCheck.length === 0) {
-    Object.keys(includeData).forEach(category => {
+    Object.keys(includeData).forEach((category) => {
       if (includeData[category].length > 0)
         categoriesCheck.push(category)
     })
@@ -711,7 +710,7 @@ mock.onGet('/app-bar/search').reply(config => {
 
   const mergedData: (SearchItem | SearchHeader)[] = []
 
-  Object.keys(exactData).forEach(element => {
+  Object.keys(exactData).forEach((element) => {
     if (exactData[element].length || includeData[element].length) {
       const r: (SearchItem | SearchHeader)[] = exactData[element].concat(includeData[element]).slice(0, resultsLength)
 

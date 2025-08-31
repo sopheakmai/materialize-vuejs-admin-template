@@ -3,7 +3,7 @@ import type { GridColumn } from '@core/types'
 
 interface Props {
   selectedRadio: string
-  radioContent: { bgImage: string; value: string }[]
+  radioContent: { bgImage: string, value: string }[]
   gridColumn?: GridColumn
 }
 

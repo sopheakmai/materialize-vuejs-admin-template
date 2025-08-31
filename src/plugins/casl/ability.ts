@@ -1,5 +1,5 @@
-import { Ability } from '@casl/ability'
 import type { UserAbility } from './AppAbility'
+import { Ability } from '@casl/ability'
 
 export const initialAbility: UserAbility[] = [
   {

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
+import { getColumnChartConfig } from '@core/libs/apex-chart/apexCharConfig'
 import VueApexCharts from 'vue3-apexcharts'
 import { useTheme } from 'vuetify'
-import { getColumnChartConfig } from '@core/libs/apex-chart/apexCharConfig'
 
 const vuetifyTheme = useTheme()
 

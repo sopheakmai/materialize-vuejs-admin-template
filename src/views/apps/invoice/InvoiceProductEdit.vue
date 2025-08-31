@@ -57,7 +57,7 @@ const selectedItem = ref('App Customization')
 const localProductData = ref(structuredClone(toRaw(props.data)))
 
 watch(selectedItem, () => {
-  const item = itemsOptions.filter(obj => {
+  const item = itemsOptions.filter((obj) => {
     return obj.title === selectedItem.value
   })
 

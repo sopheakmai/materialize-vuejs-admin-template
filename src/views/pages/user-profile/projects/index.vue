@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
 import type { ProjectsTab } from '@/@fake-db/types'
 import axios from '@axios'
+import { useRoute } from 'vue-router'
 
 const router = useRoute()
 const projectData = ref<ProjectsTab[]>([])
@@ -12,7 +12,7 @@ const fetchProjectData = () => {
       params: {
         tab: router.params.tab,
       },
-    }).then(response => {
+    }).then((response) => {
       projectData.value = response.data
     })
   }

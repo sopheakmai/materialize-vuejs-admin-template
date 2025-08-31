@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { FaqCategory } from '@/@fake-db/types'
-import AppSearchHeader from '@/components/AppSearchHeader.vue'
 import axios from '@axios'
 import faqIllustration from '@images/illustrations/faq-illustration.png'
+import AppSearchHeader from '@/components/AppSearchHeader.vue'
 
 const faqSearchQuery = ref('')
 
@@ -13,9 +13,9 @@ const fetchFaqs = () => {
     params: {
       q: faqSearchQuery.value,
     },
-  }).then(response => {
+  }).then((response) => {
     faqs.value = response.data
-  }).catch(error => {
+  }).catch((error) => {
     console.error(error)
   })
 }

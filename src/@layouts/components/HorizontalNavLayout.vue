@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { HorizontalNav } from '@layouts/components'
 import type { HorizontalNavItems } from '@layouts/types'
+import { HorizontalNav } from '@layouts/components'
 
 // ℹ️ Using import from `@layouts` causing build to hangup
 // import { useLayouts } from '@layouts'

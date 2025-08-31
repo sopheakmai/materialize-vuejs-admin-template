@@ -1,11 +1,11 @@
 import type { CalendarApi, CalendarOptions, EventApi, EventSourceFunc } from '@fullcalendar/core'
+import type { Ref } from 'vue'
+import type { Event, NewEvent } from './types'
+import { useThemeConfig } from '@core/composable/useThemeConfig'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import listPlugin from '@fullcalendar/list'
 import timeGridPlugin from '@fullcalendar/timegrid'
-import type { Ref } from 'vue'
-import type { Event, NewEvent } from './types'
-import { useThemeConfig } from '@core/composable/useThemeConfig'
 import { useCalendarStore } from '@/views/apps/calendar/useCalendarStore'
 
 export const blankEvent = {
@@ -81,7 +81,7 @@ export const useCalendar = (event: Ref<Event | NewEvent>, isEventHandlerSidebarA
       return
 
     store.fetchEvents()
-      .then(r => {
+      .then((r) => {
         successCallback(r.data.map((e: Event) => ({
           ...e,
 
@@ -90,7 +90,7 @@ export const useCalendar = (event: Ref<Event | NewEvent>, isEventHandlerSidebarA
           end: new Date(e.end),
         })))
       })
-      .catch(e => {
+      .catch((e) => {
         console.error('Error occurred while fetching calendar events', e)
       })
   }
@@ -156,7 +156,7 @@ export const useCalendar = (event: Ref<Event | NewEvent>, isEventHandlerSidebarA
   // 👉 Update event
   const updateEvent = (_event: Event) => {
     store.updateEvent(_event)
-      .then(r => {
+      .then((r) => {
         const propsToUpdate = ['id', 'title', 'url'] as (keyof Event)[]
         const extendedPropsToUpdate = ['calendar', 'guests', 'location', 'description'] as (keyof Event['extendedProps'])[]
 
@@ -271,7 +271,7 @@ export const useCalendar = (event: Ref<Event | NewEvent>, isEventHandlerSidebarA
     calendarApi.value = refCalendar.value.getApi()
   })
 
-  watch(isAppRtl, val => {
+  watch(isAppRtl, (val) => {
     calendarApi.value?.setOption('direction', val ? 'rtl' : 'ltr')
   }, { immediate: true })
 

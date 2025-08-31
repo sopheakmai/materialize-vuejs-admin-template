@@ -1,4 +1,4 @@
-<!-- eslint-disable @typescript-eslint/no-explicit-any -->
+<!-- eslint-disable ts/no-explicit-any -->
 <script setup lang="ts">
 import type { CheckoutData } from './types'
 
@@ -48,11 +48,12 @@ const resolveDeliveryBadgeData: any = {
   overnight: { color: 'secondary', price: 15 },
 }
 
-const totalPriceWithDeliveryCharges = computed(() => {
-  checkoutAddressDataLocal.value.deliveryCharges = 0
-  if (checkoutAddressDataLocal.value.deliverySpeed !== 'free')
-    checkoutAddressDataLocal.value.deliveryCharges = resolveDeliveryBadgeData[checkoutAddressDataLocal.value.deliverySpeed].price
+// Update delivery charges when delivery speed changes
+watch(() => checkoutAddressDataLocal.value.deliverySpeed, (newSpeed) => {
+  checkoutAddressDataLocal.value.deliveryCharges = newSpeed === 'free' ? 0 : resolveDeliveryBadgeData[newSpeed].price
+}, { immediate: true })
 
+const totalPriceWithDeliveryCharges = computed(() => {
   return checkoutAddressDataLocal.value.orderAmount + checkoutAddressDataLocal.value.deliveryCharges
 })
 

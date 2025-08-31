@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import type { ProfileTab } from '@/@fake-db/types'
+import axios from '@axios'
 import About from './About.vue'
 import ActivityTimeline from './ActivityTimeline.vue'
 import Connection from './Connection.vue'
 import ProjectList from './ProjectList.vue'
 import Teams from './Teams.vue'
-import axios from '@axios'
-import type { ProfileTab } from '@/@fake-db/types'
 
 const router = useRoute()
 const profileTabData = ref<ProfileTab>()
@@ -16,7 +16,7 @@ const fetchAboutData = () => {
       params: {
         tab: router.params.tab,
       },
-    }).then(response => {
+    }).then((response) => {
       profileTabData.value = response.data
     })
   }
