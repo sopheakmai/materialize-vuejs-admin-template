@@ -84,31 +84,30 @@
     "postcss",
     "iconify"
   ],
-  // Extensions：i18n Ally
-  // "i18n-ally.autoDetection": true,
-  "i18n-ally.localesPaths": [
-    "src/locales/lang/global",
-    "src/locales/lang/pages",
-    "src/pages/common/locales"
-  ],
-  // "i18n-ally.keystyle": "flat",
-  // "i18n-ally.sourceLanguage": "en-US",
-  // "i18n-ally.displayLanguage": "zh-CN",
-  "i18n-ally.enabledParsers": [
-    "ts"
-  ],
-  "i18n-ally.parsers.typescript.compilerOptions": {
-    "moduleResolution": "node" // Configure parsing strategy
-  },
   "cSpell.words": [
     "Attributify",
     "iconify",
     "jcsb",
     "jend",
     "unocss",
-    "vstart"
+    "vstart",
+    "Vitesse",
+    "Vite",
+    "unocss",
+    "vitest",
+    "vueuse",
+    "pinia",
+    "demi",
+    "antfu",
+    "iconify",
+    "intlify",
+    "vitejs",
+    "unplugin",
+    "pnpm"
   ],
-  "common-intellisense.ui": [
-    "auto"
-  ]
+  // Extensions：i18n Ally
+  "i18n-ally.sourceLanguage": "en",
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.localesPaths": "src/plugins/i18n/locales",
+  "i18n-ally.sortKeys": true
 }

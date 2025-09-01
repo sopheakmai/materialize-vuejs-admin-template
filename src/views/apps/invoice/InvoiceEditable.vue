@@ -263,51 +263,55 @@ const removeProduct = (id: number) => {
 
       <div>
         <table class="w-100">
-          <tr>
-            <td class="pe-16">
-              Subtotal:
-            </td>
-            <td :class="$vuetify.locale.isRtl ? 'text-start' : 'text-end'">
-              <h6 class="text-sm font-weight-medium">
-                $1800
-              </h6>
-            </td>
-          </tr>
-          <tr>
-            <td class="pe-16">
-              Discount:
-            </td>
-            <td :class="$vuetify.locale.isRtl ? 'text-start' : 'text-end'">
-              <h6 class="text-sm font-weight-medium">
-                $28
-              </h6>
-            </td>
-          </tr>
-          <tr>
-            <td class="pe-16">
-              Tax:
-            </td>
-            <td :class="$vuetify.locale.isRtl ? 'text-start' : 'text-end'">
-              <h6 class="text-sm font-weight-medium">
-                21%
-              </h6>
-            </td>
-          </tr>
+          <tbody>
+            <tr>
+              <td class="pe-16">
+                Subtotal:
+              </td>
+              <td :class="$vuetify.locale.isRtl ? 'text-start' : 'text-end'">
+                <h6 class="text-sm font-weight-medium">
+                  $1800
+                </h6>
+              </td>
+            </tr>
+            <tr>
+              <td class="pe-16">
+                Discount:
+              </td>
+              <td :class="$vuetify.locale.isRtl ? 'text-start' : 'text-end'">
+                <h6 class="text-sm font-weight-medium">
+                  $28
+                </h6>
+              </td>
+            </tr>
+            <tr>
+              <td class="pe-16">
+                Tax:
+              </td>
+              <td :class="$vuetify.locale.isRtl ? 'text-start' : 'text-end'">
+                <h6 class="text-sm font-weight-medium">
+                  21%
+                </h6>
+              </td>
+            </tr>
+          </tbody>
         </table>
 
         <VDivider class="mt-4 mb-3" />
 
         <table class="w-100">
-          <tr>
-            <td class="pe-16">
-              Total:
-            </td>
-            <td :class="$vuetify.locale.isRtl ? 'text-start' : 'text-end'">
-              <h6 class="text-sm font-weight-medium">
-                $1690
-              </h6>
-            </td>
-          </tr>
+          <tbody>
+            <tr>
+              <td class="pe-16">
+                Total:
+              </td>
+              <td :class="$vuetify.locale.isRtl ? 'text-start' : 'text-end'">
+                <h6 class="text-sm font-weight-medium">
+                  $1690
+                </h6>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </VCardText>

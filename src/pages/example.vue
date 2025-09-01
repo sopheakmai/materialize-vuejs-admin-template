@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { VPie } from 'vuetify/labs/VPie'
+
+const { t } = useI18n()
 
 const items = [
   { key: 1, title: 'Yes', value: 45 },
@@ -20,6 +23,7 @@ const items = [
       :items="items"
     />
     1
+    {{ t('Basic') }}
   </div>
 </template>
 
