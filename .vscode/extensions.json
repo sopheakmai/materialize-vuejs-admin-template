@@ -1,15 +1,30 @@
 {
   "recommendations": [
-    "dbaeumer.vscode-eslint",
-    "mgmcdermott.vscode-language-babel",
-    "editorconfig.editorconfig",
-    "xabikos.javascriptsnippets",
-    "stylelint.vscode-stylelint",
-    "fabiospampinato.vscode-highlight",
-    "github.vscode-pull-request-github",
-    "vue.volar",
     "antfu.iconify",
-    "cipchk.cssrem",
-    "matijao.vue-nuxt-snippets"
+    "antfu.unocss",
+    "antfu.where-am-i",
+    "lokalise.i18n-ally",
+    "antfu.goto-alias",
+    "johnsoncodehk.volarjs-labs",
+    // life savers!
+    "dbaeumer.vscode-eslint",
+    "Vue.volar",
+    "GitHub.copilot",
+    "usernamehw.errorlens",
+    "streetsidesoftware.code-spell-checker",
+    "fosshaas.fontsize-shortcuts",
+    // up to you
+    "eamodio.gitlens",
+    "EditorConfig.EditorConfig",
+    "github.vscode-github-actions",
+    "GitHub.vscode-pull-request-github",
+    "johnsoncodehk.vscode-tsconfig-helper",
+    "naumovs.color-highlight",
+    "znck.grammarly",
+    "esbenp.prettier-vscode",
+    "sdras.vue-vscode-snippets",
+    "mikestead.dotenv",
+    "simonhe.common-intellisense",
+    "csstools.postcss"
   ]
 }

@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/no-mutating-props -->
 <script setup lang="ts">
 interface Emit {
   (e: 'removeProduct', value: number): void
@@ -7,7 +6,7 @@ interface Emit {
 
 interface Props {
   id: number
-  data: {
+  data?: {
     title: string
     cost: number
     hours: number
@@ -54,14 +53,21 @@ const itemsOptions: Props['data'][] = [
 ]
 
 const selectedItem = ref('App Customization')
-const localProductData = ref(structuredClone(toRaw(props.data)))
+const localProductData = ref(structuredClone(toRaw(props.data || {
+  title: 'App Design',
+  cost: 24,
+  hours: 1,
+  description: 'Designed UI kit & app pages.',
+})))
 
 watch(selectedItem, () => {
-  const item = itemsOptions.filter((obj) => {
-    return obj.title === selectedItem.value
+  const item = itemsOptions.find((obj) => {
+    return obj?.title === selectedItem.value
   })
 
-  localProductData.value = item[0]
+  if (item) {
+    localProductData.value = item
+  }
 })
 
 const removeProduct = () => {

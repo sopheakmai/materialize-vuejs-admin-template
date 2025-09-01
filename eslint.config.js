@@ -1,5 +1,5 @@
-import antfu from '@antfu/eslint-config'
 import process from 'node:process'
+import antfu from '@antfu/eslint-config'
 
 export default antfu(
   {
@@ -7,12 +7,12 @@ export default antfu(
     typescript: true,
     jsonc: true,
     unicorn: true,
+    stylistic: true,
     ignores: [
       'src/@iconify/*.js',
       'node_modules',
       'dist',
       '*.d.ts',
-      'eslint-internal-rules',
     ],
   },
   {

@@ -1,114 +1,112 @@
 {
-  "editor.formatOnSave": true,
-  "files.insertFinalNewline": true,
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "[javascript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-    "editor.autoClosingBrackets": "always"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
-  },
-  // SCSS
-  "[scss]": {
-    "editor.defaultFormatter": "stylelint.vscode-stylelint"
-  },
-  // JSON
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  // Vue
-  "[vue]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  // Extension: Volar
-  "volar.preview.port": 3000,
-  "volar.completion.preferredTagNameCase": "pascal",
-  // Extension: ESLint
-  "eslint.options": {
-    "rulePaths": [
-      "eslint-internal-rules"
-    ]
-  },
+  // Disable the default formatter, use eslint instead
+  "prettier.enable": false,
+  "editor.formatOnSave": false,
+  // Auto fix
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
-    "source.fixAll.stylelint": "explicit",
-    "source.organizeImports": "explicit"
+    "source.organizeImports": "never"
   },
-  "eslint.alwaysShowStatus": true,
-  "eslint.format.enable": true,
-  "eslint.packageManager": "yarn",
-  // Extension: Stylelint
-  "stylelint.packageManager": "yarn",
-  "stylelint.validate": [
-    "css",
-    "scss",
-    "vue"
-  ],
-  // Extension: Spell Checker
-  "cSpell.words": [
-    "Composables",
-    "Customizer",
-    "flagpack",
-    "Iconify",
-    "psudo",
-    "stylelint",
-    "touchless",
-    "triggerer",
-    "vuetify"
-  ],
-  // Extension: Comment Anchors
-  "commentAnchors.tags.list": [
+  // Silent the stylistic rules in you IDE, but still auto fix them
+  "eslint.rules.customizations": [
     {
-      "tag": "ℹ️",
-      "scope": "hidden",
-      // This color is taken from "Better Comments" Extension (?)
-      "highlightColor": "#3498DB",
-      "styleComment": true,
-      "isItalic": false
+      "rule": "style/*",
+      "severity": "off",
+      "fixable": true
     },
     {
-      "tag": "👉",
-      "scope": "file",
-      // This color is taken from "Better Comments" Extension (*)
-      "highlightColor": "#98C379",
-      "styleComment": true,
-      "isItalic": false
+      "rule": "format/*",
+      "severity": "off",
+      "fixable": true
     },
     {
-      "tag": "❗",
-      "scope": "hidden",
-      // This color is taken from "Better Comments" Extension (*)
-      "highlightColor": "#FF2D00",
-      "styleComment": true,
-      "isItalic": false
+      "rule": "*-indent",
+      "severity": "off",
+      "fixable": true
+    },
+    {
+      "rule": "*-spacing",
+      "severity": "off",
+      "fixable": true
+    },
+    {
+      "rule": "*-spaces",
+      "severity": "off",
+      "fixable": true
+    },
+    {
+      "rule": "*-order",
+      "severity": "off",
+      "fixable": true
+    },
+    {
+      "rule": "*-dangle",
+      "severity": "off",
+      "fixable": true
+    },
+    {
+      "rule": "*-newline",
+      "severity": "off",
+      "fixable": true
+    },
+    {
+      "rule": "*quotes",
+      "severity": "off",
+      "fixable": true
+    },
+    {
+      "rule": "*semi",
+      "severity": "off",
+      "fixable": true
     }
   ],
-  // Extension: fabiospampinato.vscode-highlight
-  "highlight.regexFlags": "gi",
-  "highlight.regexes": {
-    // We flaged this for enforcing logical CSS properties
-    "(100vh|translate|margin:|padding:|margin-left|margin-right|rotate|text-align|border-top|border-right|border-bottom|border-left|float|background-position|transform|width|height|top|left|bottom|right|float|clear|(p|m)(l|r)-|border-(start|end)-(start|end)-radius)": [
-      {
-        // "rangeBehavior": 1,
-        "borderWidth": "1px",
-        "borderColor": "tomato",
-        "borderStyle": "solid"
-      }
-    ],
-    "(overflow-x:|overflow-y:)": [
-      {
-        // "rangeBehavior": 1,
-        "borderWidth": "1px",
-        "borderColor": "green",
-        "borderStyle": "solid"
-      }
-    ]
-  }
+  // Enable eslint for all supported languages
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "html",
+    "markdown",
+    "json",
+    "jsonc",
+    "yaml",
+    "toml",
+    "xml",
+    "gql",
+    "graphql",
+    "astro",
+    "css",
+    "less",
+    "scss",
+    "pcss",
+    "postcss"
+  ],
+  // Extensions：i18n Ally
+  // "i18n-ally.autoDetection": true,
+  "i18n-ally.localesPaths": [
+    "src/locales/lang/global",
+    "src/locales/lang/pages",
+    "src/pages/common/locales"
+  ],
+  // "i18n-ally.keystyle": "flat",
+  // "i18n-ally.sourceLanguage": "en-US",
+  // "i18n-ally.displayLanguage": "zh-CN",
+  "i18n-ally.enabledParsers": [
+    "ts"
+  ],
+  "i18n-ally.parsers.typescript.compilerOptions": {
+    "moduleResolution": "node" // Configure parsing strategy
+  },
+  "cSpell.words": [
+    "Attributify",
+    "jcsb",
+    "jend",
+    "unocss",
+    "vstart"
+  ],
+  "common-intellisense.ui": [
+    "auto"
+  ]
 }
