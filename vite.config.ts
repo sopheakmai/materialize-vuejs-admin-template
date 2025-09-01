@@ -69,7 +69,7 @@ export default defineConfig({
       runtimeOnly: true,
       compositionOnly: true,
       include: [
-        fileURLToPath(new URL('./src/plugins/i18n/locales/**', import.meta.url)),
+        fileURLToPath(new URL('./src/plugins/i18n/locales/**/index.ts', import.meta.url)),
       ],
     }),
     DefineOptions(),

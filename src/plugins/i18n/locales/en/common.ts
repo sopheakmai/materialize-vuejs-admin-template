@@ -1,0 +1,10 @@
+export default {
+  save: 'Save',
+  delete: 'Delete',
+  edit: 'Edit',
+  add: 'Add',
+  search: 'Search',
+  filter: 'Filter',
+  reset: 'Reset',
+  clear: 'Clear',
+}

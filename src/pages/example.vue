@@ -23,7 +23,7 @@ const items = [
       :items="items"
     />
     1
-    {{ t('Basic') }}
+    {{ t('save') }}
   </div>
 </template>
 
