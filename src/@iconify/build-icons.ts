@@ -12,7 +12,7 @@ import type { IconifyJSON, IconifyMetaData } from '@iconify/types'
  * For Iconify Tools documentation visit https://docs.iconify.design/tools/tools2/
  */
 import { promises as fs } from 'node:fs'
-
+import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 // Installation: npm install --save-dev @iconify/tools @iconify/utils @iconify/json @iconify/iconify
 import {
@@ -91,11 +91,11 @@ const sources: BundleScriptConfig = {
     // 'json/gg.json',
 
     // Iconify JSON file (@iconify/json is a package name, /json/ is directory where files are, then filename)
-    require.resolve('@iconify-json/mdi/icons.json'),
+    'node_modules/.pnpm/@iconify-json+mdi@1.2.3/node_modules/@iconify-json/mdi/icons.json',
 
     // Custom file with only few icons
     // {
-    //   filename: require.resolve('@iconify-json/line-md/icons.json'),
+    //   filename: '@iconify-json/line-md/icons.json',
     //   icons: [
     //     'home-twotone-alt',
     //     'github',
@@ -115,6 +115,8 @@ const component = '@iconify/vue'
 const commonJS = false
 
 // File to save bundle to
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 const target = join(__dirname, 'icons-bundle.js');
 
 /**
@@ -145,7 +147,7 @@ const target = join(__dirname, 'icons-bundle.js');
     // Sort icons by prefix
     const organizedList = organizeIconsList(sources.icons)
     for (const prefix in organizedList) {
-      const filename = require.resolve(`@iconify/json/json/${prefix}.json`)
+      const filename = `@iconify/json/json/${prefix}.json`
 
       sourcesJSON.push({
         filename,

@@ -2,8 +2,8 @@
   "compilerOptions": {
     "composite": false,
     "target": "ESNext",
-    "module": "CommonJS",
-    "moduleResolution": "node",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "strict": true,
     "declaration": false,
     "declarationMap": false,
