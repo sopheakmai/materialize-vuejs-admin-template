@@ -65,13 +65,13 @@ export default defineConfig({
       vueTemplate: true,
       dts: 'types/auto-imports.d.ts',
     }),
-    VueI18nPlugin({
-      runtimeOnly: true,
-      compositionOnly: true,
-      include: [
-        fileURLToPath(new URL('./src/plugins/i18n/locales/**/index.ts', import.meta.url)),
-      ],
-    }),
+    // VueI18nPlugin({
+    //   runtimeOnly: true,
+    //   compositionOnly: true,
+    //   include: [
+    //     fileURLToPath(new URL('./src/plugins/i18n/locales/**/*.ts', import.meta.url)),
+    //   ],
+    // }),
     DefineOptions(),
   ],
   define: { 'process.env': {} },
