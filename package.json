@@ -8,7 +8,9 @@
     "build": "vite build",
     "preview": "vite preview --port 5050",
     "typecheck": "vue-tsc --noEmit",
-    "lint": "eslint . --fix --ext .ts,.js,.vue,.tsx,.jsx"
+    "lint": "eslint . --fix --ext .ts,.js,.vue,.tsx,.jsx",
+    "build:icons": "tsc -b src/plugins/iconify && node src/plugins/iconify/build.ts",
+    "postinstall": "pnpm build:icons"
   },
   "dependencies": {
     "@antfu/utils": "^9.2.0",

@@ -12,6 +12,7 @@ import '@/@fake-db/db'
 import '@core/scss/template/index.scss'
 import '@styles/styles.scss'
 import 'vue3-perfect-scrollbar/style.css'
+import '@/plugins/iconify/icons-bundle.js'
 
 loadFonts()
 

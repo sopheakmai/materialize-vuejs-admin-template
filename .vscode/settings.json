@@ -81,7 +81,8 @@
     "less",
     "scss",
     "pcss",
-    "postcss"
+    "postcss",
+    "iconify"
   ],
   // Extensions：i18n Ally
   // "i18n-ally.autoDetection": true,
@@ -101,6 +102,7 @@
   },
   "cSpell.words": [
     "Attributify",
+    "iconify",
     "jcsb",
     "jend",
     "unocss",

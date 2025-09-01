@@ -9,7 +9,7 @@ export default antfu(
     unicorn: true,
     stylistic: true,
     ignores: [
-      'src/@iconify/*.js',
+      'src/plugins/iconify/*.js',
       'node_modules',
       'dist',
       '*.d.ts',
