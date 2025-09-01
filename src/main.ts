@@ -7,11 +7,10 @@ import vuetify from '@/plugins/vuetify'
 import { loadFonts } from '@/plugins/webfontloader'
 import router from '@/router'
 import { abilitiesPlugin } from '@casl/vue'
-import { createPinia } from 'pinia'
-import { createApp } from 'vue'
-// import '@/@iconify/icons-bundle.js'
 import '@core/scss/template/index.scss'
 import '@styles/styles.scss'
+import { createPinia } from 'pinia'
+import { createApp } from 'vue'
 import 'vue3-perfect-scrollbar/style.css'
 
 loadFonts()
