@@ -8,7 +8,6 @@ import DefineOptions from 'unplugin-vue-define-options/vite'
 import { defineConfig } from 'vite'
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
-
 import vuetify from 'vite-plugin-vuetify'
 
 // https://vitejs.dev/config/
@@ -65,18 +64,16 @@ export default defineConfig({
       vueTemplate: true,
       dts: 'types/auto-imports.d.ts',
     }),
-    // VueI18nPlugin({
-    //   runtimeOnly: true,
-    //   compositionOnly: true,
-    //   include: [
-    //     fileURLToPath(new URL('./src/plugins/i18n/locales/**/*.ts', import.meta.url)),
-    //   ],
-    // }),
+    VueI18nPlugin({
+      runtimeOnly: true,
+      compositionOnly: true,
+    }),
     DefineOptions(),
   ],
   define: { 'process.env': {} },
   resolve: {
     alias: {
+      '~': fileURLToPath(new URL('./', import.meta.url)),
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       '@themeConfig': fileURLToPath(new URL('./themeConfig.ts', import.meta.url)),
       '@core': fileURLToPath(new URL('./src/@core', import.meta.url)),

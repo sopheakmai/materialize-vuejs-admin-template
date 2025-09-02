@@ -15,6 +15,9 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "paths": {
+      "~/*": [
+        "./*"
+      ],
       "@/*": [
         "src/*"
       ],
@@ -51,7 +54,8 @@
       "vite/client",
       "vite-plugin-pages/client",
       "vite-plugin-vue-layouts/client",
-      "unplugin-vue-define-options/macros-global"
+      "unplugin-vue-define-options/macros-global",
+      "@intlify/unplugin-vue-i18n/messages"
     ],
     "strict": true,
     "sourceMap": true,

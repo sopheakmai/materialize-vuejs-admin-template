@@ -1,4 +1,4 @@
-const modules = import.meta.glob('./*.ts', { eager: true })
+const modules = (import.meta as any).glob('./*.json', { eager: true })
 
 const locales: Record<string, any> = {}
 

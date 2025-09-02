@@ -1,9 +1,7 @@
 import { createI18n } from 'vue-i18n'
 
 // Scan folders in locales directory and use folder names as locale keys
-const folders = import.meta.glob<{ default: any }>('./locales/*/index.ts', { eager: true })
-console.log('Folders found:', folders)
-
+const folders = import.meta.glob<{ default: any }>('~/locales/*/index.ts', { eager: true })
 const messages = Object.fromEntries(
   Object.entries(folders).map(([key, value]) => {
     // './locales/en/index.ts' -> 'en'
@@ -11,8 +9,6 @@ const messages = Object.fromEntries(
     return [localeName, value.default]
   }),
 )
-
-console.log('Messages:', messages)
 
 const localeLabels: Record<string, string> = {
   en: 'English',
