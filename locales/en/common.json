@@ -6,5 +6,24 @@
   "search": "Search",
   "filter": "Filter",
   "reset": "Reset",
-  "clear": "Clear"
+  "clear": "Clear",
+  "menu": {
+    "login": "Login",
+    "analytics_dashboard": "Analytics Dashboard",
+    "user_profile": "User Profile",
+    "dashboard": "Dashboard",
+    "home": "Home",
+    "settings": "Settings",
+    "profile": "Profile",
+    "logout": "Logout"
+  },
+  "tabs": {
+    "close_tab": "Close Tab",
+    "close_other_tabs": "Close Other Tabs",
+    "close_tabs_to_right": "Close Tabs to the Right",
+    "close_tabs_to_left": "Close Tabs to the Left",
+    "close_all_tabs": "Close All Tabs",
+    "duplicate_tab": "Duplicate Tab",
+    "keyboard_shortcuts": "Keyboard shortcuts: Ctrl+Tab (switch), Arrow keys (navigate)"
+  }
 }

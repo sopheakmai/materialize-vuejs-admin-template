@@ -6,5 +6,24 @@
   "search": "ស្វែងរក",
   "filter": "ត្រកូល",
   "reset": "កំណត់ឡើងវិញ",
-  "clear": "លុបទាំងអស់"
+  "clear": "លុបទាំងអស់",
+  "menu": {
+    "login": "ចូលប្រព័ន្ធ",
+    "analytics_dashboard": "ផ្ទាំងគ្រប់គ្រងវិភាគ",
+    "user_profile": "ប្រវត្តិរូបអ្នកប្រើប្រាស់",
+    "dashboard": "ផ្ទាំងគ្រប់គ្រង",
+    "home": "ទំព័រដើម",
+    "settings": "ការកំណត់",
+    "profile": "ប្រវត្តិរូប",
+    "logout": "ចាកចេញ"
+  },
+  "tabs": {
+    "close_tab": "បិទផ្ទាំង",
+    "close_other_tabs": "បិទផ្ទាំងផ្សេងទៀត",
+    "close_tabs_to_right": "បិទផ្ទាំងខាងស្តាំ",
+    "close_tabs_to_left": "បិទផ្ទាំងខាងឆ្វេង",
+    "close_all_tabs": "បិទផ្ទាំងទាំងអស់",
+    "duplicate_tab": "ចម្លងផ្ទាំង",
+    "keyboard_shortcuts": "គ្រាប់ចុចកាត់ៈ Ctrl+Tab (ប្តូរ), គ្រាប់ព្រួញ (រុករក)"
+  }
 }

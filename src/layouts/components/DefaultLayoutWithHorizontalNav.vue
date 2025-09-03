@@ -12,6 +12,7 @@ import NavbarShortcuts from '@/layouts/components/NavbarShortcuts.vue'
 import NavbarThemeSwitcher from '@/layouts/components/NavbarThemeSwitcher.vue'
 import NavSearchBar from '@/layouts/components/NavSearchBar.vue'
 import UserProfile from '@/layouts/components/UserProfile.vue'
+import TabBar from '@/components/TabBar.vue'
 import navItems from '@/navigation/horizontal'
 
 const { appRouteTransition } = useThemeConfig()
@@ -41,6 +42,9 @@ const { appRouteTransition } = useThemeConfig()
       <NavBarNotifications class="me-3" />
       <UserProfile />
     </template>
+
+    <!-- 👉 Tab Bar -->
+    <TabBar />
 
     <!-- 👉 Pages -->
     <RouterView v-slot="{ Component }">

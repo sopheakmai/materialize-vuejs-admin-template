@@ -11,6 +11,7 @@ import NavbarShortcuts from '@/layouts/components/NavbarShortcuts.vue'
 import NavbarThemeSwitcher from '@/layouts/components/NavbarThemeSwitcher.vue'
 import NavSearchBar from '@/layouts/components/NavSearchBar.vue'
 import UserProfile from '@/layouts/components/UserProfile.vue'
+import TabBar from '@/components/TabBar.vue'
 
 import navItems from '@/navigation/vertical'
 
@@ -53,6 +54,9 @@ watch([isVerticalNavCollapsed, isAppRtl], (val) => {
         <UserProfile />
       </div>
     </template>
+
+    <!-- 👉 Tab Bar -->
+    <TabBar />
 
     <!-- 👉 Pages -->
     <RouterView v-slot="{ Component }">

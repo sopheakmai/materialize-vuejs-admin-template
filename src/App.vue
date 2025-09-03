@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ScrollToTop from '@core/components/ScrollToTop.vue'
 import { useThemeConfig } from '@core/composable/useThemeConfig'
+import { useTabs } from '@/composables/useTabs'
 import { hexToRgb } from '@layouts/utils'
 import { useTheme } from 'vuetify'
 
@@ -8,10 +9,18 @@ const { syncInitialLoaderTheme, syncVuetifyThemeWithTheme: syncConfigThemeWithVu
 
 const { global } = useTheme()
 
+// Initialize tabs system
+const { initializeTabs } = useTabs()
+
 // ℹ️ Sync current theme with initial loader theme
 syncInitialLoaderTheme()
 syncConfigThemeWithVuetifyTheme()
 handleSkinChanges()
+
+// Initialize tabs when app is mounted
+onMounted(() => {
+  initializeTabs()
+})
 </script>
 
 <template>

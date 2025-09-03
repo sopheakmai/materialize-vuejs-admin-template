@@ -172,3 +172,8 @@ const AnalyticsWeeklySales = defineAsyncComponent(() => import('@/views/dashboar
 <style lang="scss">
 @use "@core/scss/template/libs/apex-chart.scss";
 </style>
+
+<route lang="yaml">
+meta:
+  # Title will be handled by i18n translation
+</route>

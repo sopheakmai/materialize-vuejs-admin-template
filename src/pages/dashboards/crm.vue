@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import CardStatisticsVertical from '@core/components/cards/CardStatisticsVertical.vue'
 import CrmAward from '@/views/dashboard/crm/CrmAward.vue'
 import CrmExternalLinks from '@/views/dashboard/crm/CrmExternalLinks.vue'
 import CrmGrowthDonutCharts from '@/views/dashboard/crm/CrmGrowthDonutCharts.vue'

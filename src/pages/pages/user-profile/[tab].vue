@@ -73,4 +73,5 @@ const tabs = [
 <route lang="yaml">
 meta:
   navActiveLink: pages-user-profile-tab
+  # Title will be handled by i18n translation
 </route>
