@@ -9,7 +9,7 @@
     "preview": "vite preview --port 5050",
     "typecheck": "vue-tsc --noEmit",
     "lint": "eslint . --fix --ext .ts,.js,.vue,.tsx,.jsx",
-    "build:icons": "tsc -b src/plugins/iconify && node src/plugins/iconify/build.ts",
+    "build:icons": "tsx src/plugins/iconify/build.ts",
     "postinstall": "pnpm build:icons"
   },
   "dependencies": {
@@ -64,6 +64,7 @@
     "eslint": "^9.33.0",
     "eslint-plugin-format": "^1.0.1",
     "postcss-html": "^1.8.0",
+    "tsx": "^4.19.2",
     "type-fest": "^4.41.0",
     "typescript": "^5.9.2",
     "unplugin-auto-import": "^20.1.0",
