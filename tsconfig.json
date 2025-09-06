@@ -13,6 +13,9 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "paths": {
+      "~/*": [
+        "./*"
+      ],
       "@/*": [
         "./src/*"
       ],
@@ -61,15 +64,11 @@
     ]
   },
   "include": [
-    "./typed-router.d.ts",
     "./vite.config.*",
-    "./env.d.ts",
-    "./shims.d.ts",
+    "types/*.d.ts",
     "./src/**/*",
     "./src/**/*.vue",
     "./themeConfig.ts",
-    "./auto-imports.d.ts",
-    "./components.d.ts"
   ],
   "exclude": [
     "./dist",
