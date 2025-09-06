@@ -1,5 +1,6 @@
 import axios from 'axios'
 import router from '@/router'
+import NProgress from '@/plugins/nprogress'
 
 const axiosIns = axios.create({
   // You can add your headers here
@@ -11,6 +12,9 @@ const axiosIns = axios.create({
 
 // ℹ️ Add request interceptor to send the authorization header on each subsequent request after login
 axiosIns.interceptors.request.use((config) => {
+  // Start progress bar for API requests
+  NProgress.start()
+
   // Retrieve token from localStorage
   const token = localStorage.getItem('accessToken')
 
@@ -30,8 +34,13 @@ axiosIns.interceptors.request.use((config) => {
 
 // ℹ️ Add response interceptor to handle 401 response
 axiosIns.interceptors.response.use((response) => {
+  // Complete progress bar for successful responses
+  NProgress.done()
   return response
 }, (error) => {
+  // Complete progress bar for error responses
+  NProgress.done()
+
   // Handle error
   if (error.response.status === 401) {
     // ℹ️ Logout user and redirect to login page

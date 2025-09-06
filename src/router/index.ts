@@ -3,6 +3,7 @@ import { setupLayouts } from 'virtual:generated-layouts'
 import { createRouter, createWebHistory } from 'vue-router'
 import routes from '~pages'
 import { isUserLoggedIn } from './utils'
+import NProgress from '@/plugins/nprogress'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,6 +28,9 @@ const router = createRouter({
 
 // Docs: https://router.vuejs.org/guide/advanced/navigation-guards.html#global-before-guards
 router.beforeEach((to, from, next) => {
+  // Start NProgress
+  NProgress.start()
+
   const isLoggedIn = isUserLoggedIn()
 
   /*
@@ -63,6 +67,11 @@ router.beforeEach((to, from, next) => {
     else
       return next({ name: 'login', query: { to: to.name !== 'index' ? to.fullPath : undefined } })
   }
+})
+
+// Complete the progress bar when route change is complete
+router.afterEach(() => {
+  NProgress.done()
 })
 
 export default router

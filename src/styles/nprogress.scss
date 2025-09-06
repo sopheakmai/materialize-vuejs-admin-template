@@ -1,0 +1,9 @@
+/* Custom NProgress styles */
+#nprogress .bar {
+  background: var(--v-primary-base, #9155FD) !important;
+  height: 3px;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px var(--v-primary-base, #9155FD), 0 0 5px var(--v-primary-base, #9155FD);
+}

@@ -25,6 +25,7 @@
     "chart.js": "^4.5.0",
     "flatpickr": "^4.6.13",
     "iconify-icon": "^3.0.0",
+    "nprogress": "^0.2.0",
     "pinia": "^3.0.3",
     "prismjs": "^1.30.0",
     "sass": "^1.91.0",
