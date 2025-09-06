@@ -9,7 +9,7 @@ const ratingColors = ['primary', 'secondary', 'success', 'info', 'warning', 'err
       v-for="color in ratingColors"
       :key="color"
       v-model="rating"
-      :active-color="color"
+      :color="color"
     />
   </div>
 </template>

@@ -32,13 +32,13 @@ export default {
     elevation: 0,
   },
   VList: {
-    activeColor: 'primary',
+    baseColor: 'primary',
     VIcon: {
       size: 24,
     },
   },
   VPagination: {
-    activeColor: 'primary',
+    baseColor: 'primary',
     density: 'comfortable',
     size: '32',
   },
@@ -83,7 +83,7 @@ export default {
   },
   VRating: {
     density: 'compact',
-    activeColor: 'warning',
+    baseColor: 'warning',
     color: 'disabled',
   },
   VProgressCircular: {

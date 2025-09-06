@@ -37,7 +37,7 @@ const currentLang = ref(['en'])
       <!-- List -->
       <VList
         v-model:selected="currentLang"
-        active-color="primary"
+        color="primary"
         min-width="175px"
       >
         <!-- List item -->

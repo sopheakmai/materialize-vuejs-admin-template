@@ -95,7 +95,7 @@ const moreList = [
             <VListItemAction>
               <VChip
                 :text="project.chipText"
-                color="primary"
+                base-color="primary"
                 size="x-small"
                 class="font-weight-medium"
               />
