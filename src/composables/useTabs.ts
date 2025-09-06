@@ -1,12 +1,14 @@
 import { useTabsStore } from '@/stores/tabs'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import { useTabsKeepAlive } from './useTabsKeepAlive'
 import type { RouteLocationNormalized } from 'vue-router'
 
 export function useTabs() {
   const tabsStore = useTabsStore()
   const router = useRouter()
   const { t } = useI18n()
+  const { refreshTab, clearTabCache, clearAllTabsCache } = useTabsKeepAlive()
 
   // Routes that should not create tabs
   const excludedRoutes = [
@@ -138,6 +140,14 @@ export function useTabs() {
   const refreshCurrentTab = () => {
     const currentRoute = router.currentRoute.value
     if (shouldCreateTab(currentRoute)) {
+      const tabId = tabsStore.generateTabId(currentRoute)
+
+      // Mark tab for refresh in store
+      tabsStore.markTabForRefresh(tabId)
+
+      // Clear tab cache to force re-render
+      clearTabCache(tabId)
+
       // Force re-render by navigating to the same route
       router.replace({
         name: String(currentRoute.name),
@@ -163,6 +173,11 @@ export function useTabs() {
     closeTabAndNavigate,
     closeOtherTabsAndNavigate,
     closeAllTabsAndNavigate,
+
+    // Keep alive
+    refreshTab,
+    clearTabCache,
+    clearAllTabsCache,
 
     // Utilities
     shouldCreateTab,

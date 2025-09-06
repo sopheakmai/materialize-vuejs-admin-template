@@ -16,6 +16,7 @@
   "menu.logout": "Logout",
   "tabs": "Tabs",
   "tabs.close_tab": "Close Tab",
+  "tabs.refresh_tab": "Refresh Tab",
   "tabs.close_other_tabs": "Close Other Tabs",
   "tabs.close_tabs_to_right": "Close Tabs to Right",
   "tabs.close_tabs_to_left": "Close Tabs to Left",

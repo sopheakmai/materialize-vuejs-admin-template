@@ -2,6 +2,8 @@
 import { useThemeConfig } from '@core/composable/useThemeConfig'
 // @layouts plugin
 import { VerticalNavLayout } from '@layouts'
+import { useTabsStore } from '@/stores/tabs'
+import { keepAliveConfig } from '@/config/keepAlive'
 
 // Components
 import Footer from '@/layouts/components/Footer.vue'
@@ -17,6 +19,10 @@ import navItems from '@/navigation/vertical'
 
 const { appRouteTransition, isLessThanOverlayNavBreakpoint, isVerticalNavCollapsed, isAppRtl } = useThemeConfig()
 const { width: windowWidth } = useWindowSize()
+const tabsStore = useTabsStore()
+
+// Use keepAlive config
+const { excludedRoutes, maxCachedComponents, useTabIdAsKey } = keepAliveConfig
 
 // ℹ️ Provide animation name for vertical nav collapse icon.
 const verticalNavHeaderActionAnimationName = ref<null | 'rotate-180' | 'rotate-back-180'>(null)
@@ -59,12 +65,20 @@ watch([isVerticalNavCollapsed, isAppRtl], (val) => {
     <TabBar />
 
     <!-- 👉 Pages -->
-    <RouterView v-slot="{ Component }">
+    <RouterView v-slot="{ Component, route }">
       <Transition
         :name="appRouteTransition"
         mode="out-in"
       >
-        <Component :is="Component" />
+        <KeepAlive
+          :exclude="excludedRoutes"
+          :max="maxCachedComponents"
+        >
+          <Component
+            :is="Component"
+            :key="useTabIdAsKey ? tabsStore.activeTabId : route.path"
+          />
+        </KeepAlive>
       </Transition>
     </RouterView>
 

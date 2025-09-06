@@ -2,7 +2,7 @@
 import { useTabs } from '@/composables/useTabs'
 import { useI18n } from 'vue-i18n'
 
-const { tabsStore, navigateToTab, closeTabAndNavigate, closeOtherTabsAndNavigate, closeAllTabsAndNavigate } = useTabs()
+const { tabsStore, navigateToTab, closeTabAndNavigate, closeOtherTabsAndNavigate, closeAllTabsAndNavigate, refreshTab } = useTabs()
 const { t } = useI18n()
 
 // Tooltip configuration
@@ -122,6 +122,11 @@ const closeAllTabs = () => {
 
 const closeCurrentTab = () => {
   closeTabAndNavigate(contextMenu.value.tabId)
+  closeContextMenu()
+}
+
+const refreshCurrentTab = () => {
+  refreshTab(contextMenu.value.tabId)
   closeContextMenu()
 }
 
@@ -288,6 +293,17 @@ onUnmounted(() => {
       offset="0"
     >
       <VList density="compact">
+        <VListItem
+          @click="refreshCurrentTab"
+        >
+          <template #prepend>
+            <VIcon icon="mdi-refresh" size="16" />
+          </template>
+          <VListItemTitle>{{ t('tabs.refresh_tab') }}</VListItemTitle>
+        </VListItem>
+
+        <VDivider />
+
         <VListItem
           :disabled="!tabsStore.getTabById(contextMenu.tabId)?.closable"
           @click="closeCurrentTab"

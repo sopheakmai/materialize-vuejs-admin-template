@@ -16,6 +16,7 @@
   "menu.logout": "ចាកចេញ",
   "tabs": "ផ្ទាំង",
   "tabs.close_tab": "បិទផ្ទាំង",
+  "tabs.refresh_tab": "ផ្ទុកផ្ទាំងឡើងវិញ",
   "tabs.close_other_tabs": "បិទផ្ទាំងផ្សេងទៀត",
   "tabs.close_tabs_to_right": "បិទផ្ទាំងខាងស្តាំ",
   "tabs.close_tabs_to_left": "បិទផ្ទាំងខាងឆ្វេង",
