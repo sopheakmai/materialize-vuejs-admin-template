@@ -28,6 +28,7 @@ export default defineConfig({
         root.insert('/apps/email/:filter', '/src/pages/apps/email/index.vue')
         root.insert('/apps/email/:label', '/src/pages/apps/email/index.vue')
       },
+      dts: 'types/typed-router.d.ts',
     }),
     vue({
       template: {
@@ -55,7 +56,7 @@ export default defineConfig({
     // Docs: https://github.com/antfu/unplugin-vue-components#unplugin-vue-components
     Components({
       dirs: ['src/@core/components', 'src/views/demos', 'src/components'],
-      dts: true,
+      dts: 'types/components.d.ts',
       resolvers: [
         componentName => {
           // Auto import `VueApexCharts`
@@ -75,6 +76,7 @@ export default defineConfig({
         './src/utils/',
         './src/plugins/*/composables/*',
       ],
+      dts: 'types/auto-imports.d.ts',
       vueTemplate: true,
 
       // ℹ️ Disabled to avoid confusion & accidental usage
