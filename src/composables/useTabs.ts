@@ -61,13 +61,23 @@ export function useTabs() {
   const navigateToTab = (tabId: string) => {
     const tab = tabsStore.getTabById(tabId)
     if (tab) {
+      // Skip navigation if we're already on this tab
+      if (tabsStore.activeTabId === tabId
+        && router.currentRoute.value.name === tab.name) {
+        return
+      }
+
       tabsStore.switchToTab(tabId)
       router.push({
         name: tab.name,
         params: tab.params || {},
         query: tab.query || {},
         replace: true, // Use replace to avoid adding to browser history
-      }).catch(err => console.error('Navigation error:', err))
+      }).catch((err) => {
+        console.error('Tab navigation error:', err)
+        // If navigation fails, still update tab state
+        tabsStore.switchToTab(tabId)
+      })
     }
   }
 

@@ -34,18 +34,38 @@ onBeforeMount(() => {
   document.addEventListener('click', (e) => {
     const target = e.target as HTMLElement
     const link = target.closest('a')
-    if (link && link.getAttribute('href')) {
-      const href = link.getAttribute('href')
-      if (href
-        && !link.getAttribute('target')
-        && !link.hasAttribute('download')
-        && !href.startsWith('javascript:')
-        && !href.startsWith('#')) {
-        e.preventDefault()
-        if (!href.includes('://')) {
-          router.push(href)
-        }
-      }
+
+    // Skip if it's not a link or has specific attributes
+    if (!link
+      || !link.getAttribute('href')
+      || link.getAttribute('target') === '_blank'
+      || link.hasAttribute('download')
+      || link.getAttribute('rel') === 'external') {
+      return
+    }
+
+    const href = link.getAttribute('href')
+    if (!href)
+      return
+
+    // Skip for javascript: links, hash links, and external links
+    if (href.startsWith('javascript:')
+      || href.startsWith('#')
+      || href.startsWith('mailto:')
+      || href.startsWith('tel:')
+      || href.includes('://')) {
+      return
+    }
+
+    // Handle internal links with Vue Router
+    e.preventDefault()
+    try {
+      router.push(href).catch((err) => {
+        console.warn('Navigation aborted:', err)
+      })
+    }
+    catch (err) {
+      console.error('Navigation error:', err)
     }
   }, true)
 })
