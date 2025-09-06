@@ -13,5 +13,4 @@ export const VNodeRenderer = defineComponent({
   },
 })
 
-// eslint-disable-next-line ts/no-redeclare
 export type VNodeRenderer = InstanceType<typeof VNodeRenderer>

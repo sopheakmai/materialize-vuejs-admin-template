@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import pixinventQr from '@images/pages/pixinvent-qr.png'
 
-interface Emit {
+type Emit = {
   (e: 'update:isDialogVisible', value: boolean): void
   (e: 'submit', value: string): void
 }
-interface Props {
+type Props = {
   authCode?: string
   isDialogVisible: boolean
 }

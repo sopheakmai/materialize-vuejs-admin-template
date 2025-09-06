@@ -9,7 +9,7 @@ import HelpCenterLandingArticlesOverview from '@/views/pages/help-center/HelpCen
 import HelpCenterLandingFooter from '@/views/pages/help-center/HelpCenterLandingFooter.vue'
 import HelpCenterLandingKnowledgeBase from '@/views/pages/help-center/HelpCenterLandingKnowledgeBase.vue'
 
-interface ApiDataType {
+type ApiDataType = {
   categories: HelpCenterCategoriesType[]
   keepLearning: HelpCenterArticlesOverviewType[]
   popularArticles: HelpCenterArticlesOverviewType[]

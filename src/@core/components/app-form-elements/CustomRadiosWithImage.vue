@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import type { GridColumn } from '@core/types'
 
-interface Props {
+type Props = {
   selectedRadio: string
   radioContent: { bgImage: string, value: string }[]
   gridColumn?: GridColumn
 }
 
-interface Emit {
+type Emit = {
   (e: 'update:selectedRadio', value: string): void
 }
 

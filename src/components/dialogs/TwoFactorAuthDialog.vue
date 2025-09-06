@@ -1,8 +1,8 @@
 <script setup lang="ts">
-interface Emit {
+type Emit = {
   (e: 'update:isDialogVisible', value: boolean): void
 }
-interface Props {
+type Props = {
   isDialogVisible?: boolean
   smsCode?: string
   authAppCode?: string

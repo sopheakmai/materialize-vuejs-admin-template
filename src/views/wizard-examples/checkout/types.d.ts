@@ -1,4 +1,4 @@
-export interface CartItem {
+export type CartItem = {
   id: number
   name: string
   seller: string
@@ -10,14 +10,14 @@ export interface CartItem {
   quantity: number
   estimatedDelivery: string
 }
-export interface Addresses {
+export type Addresses = {
   title: string
   desc: string
   subtitle: string
   value: string
 }
 
-export interface CheckoutData {
+export type CheckoutData = {
   cartItems: CartItem[]
   promoCode: string
   orderAmount: number

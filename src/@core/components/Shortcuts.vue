@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
 
-interface Shortcut {
+type Shortcut = {
   icon: string
   title: string
   subtitle: string
   to: object | string
 }
 
-interface Props {
+type Props = {
   togglerIcon?: string
   shortcuts: Shortcut[]
 }

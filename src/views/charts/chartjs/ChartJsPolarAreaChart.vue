@@ -4,7 +4,7 @@ import { getPolarChartConfig } from '@core/libs/chartjs/chartjsConfig'
 import PolarAreaChart from '@core/libs/chartjs/components/PolarAreaChart'
 import { useTheme } from 'vuetify'
 
-interface Props {
+type Props = {
   colors: ChartJsCustomColors
 }
 

@@ -29,18 +29,18 @@ onBeforeMount(() => {
       router.replace(router.currentRoute.value.path)
     }
   })
-  
+
   // Add listener to prevent link clicks from causing page reloads
   document.addEventListener('click', (e) => {
     const target = e.target as HTMLElement
     const link = target.closest('a')
     if (link && link.getAttribute('href')) {
       const href = link.getAttribute('href')
-      if (href && 
-          !link.getAttribute('target') && 
-          !link.hasAttribute('download') &&
-          !href.startsWith('javascript:') &&
-          !href.startsWith('#')) {
+      if (href
+        && !link.getAttribute('target')
+        && !link.hasAttribute('download')
+        && !href.startsWith('javascript:')
+        && !href.startsWith('#')) {
         e.preventDefault()
         if (!href.includes('://')) {
           router.push(href)

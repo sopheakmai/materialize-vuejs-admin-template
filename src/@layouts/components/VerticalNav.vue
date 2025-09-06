@@ -8,7 +8,7 @@ import { injectionKeyIsVerticalNavHovered } from '@layouts/symbols'
 import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
 import { VNodeRenderer } from './VNodeRenderer'
 
-interface Props {
+type Props = {
   tag?: string | Component
   navItems: VerticalNavItems
   isOverlayNavActive: boolean

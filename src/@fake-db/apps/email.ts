@@ -12,7 +12,7 @@ import txt from '@images/icons/file/txt.png'
 import xls from '@images/icons/file/xls.png'
 import mock from '@/@fake-db/mock'
 
-interface Database {
+type Database = {
   emails: Email[]
 }
 

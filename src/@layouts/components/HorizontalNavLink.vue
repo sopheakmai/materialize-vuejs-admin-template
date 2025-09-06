@@ -5,7 +5,7 @@ import { config } from '@layouts/config'
 import { can } from '@layouts/plugins/casl'
 import { getComputedNavLinkToProp, isNavLinkActive } from '@layouts/utils'
 
-interface Props {
+type Props = {
   item: NavLink
 
   // ℹ️ We haven't added this prop in vertical nav because we don't need such differentiation in vertical nav for styling

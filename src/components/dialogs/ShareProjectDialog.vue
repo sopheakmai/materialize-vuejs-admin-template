@@ -8,11 +8,11 @@ import avatar6 from '@images/avatars/avatar-6.png'
 import avatar7 from '@images/avatars/avatar-7.png'
 import avatar8 from '@images/avatars/avatar-8.png'
 
-interface Props {
+type Props = {
   isDialogVisible: boolean
 }
 
-interface Emit {
+type Emit = {
   (e: 'update:isDialogVisible', val: boolean): void
 }
 
@@ -26,7 +26,7 @@ const dialogVisibleUpdate = (val: boolean) => {
 
 type Permission = 'Owner' | 'Can Edit' | 'Can Comment' | 'Can View'
 
-interface Member {
+type Member = {
   avatar: string
   name: string
   email: string

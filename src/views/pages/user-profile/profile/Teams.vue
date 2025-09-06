@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { ProfileTeamsTech } from '@/@fake-db/types'
 
-interface Props {
+type Props = {
   teamsData: ProfileTeamsTech[]
 }
 

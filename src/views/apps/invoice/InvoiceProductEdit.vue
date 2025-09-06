@@ -1,10 +1,10 @@
 <script setup lang="ts">
-interface Emit {
+type Emit = {
   (e: 'removeProduct', value: number): void
   (e: 'totalAmount', value: number): void
 }
 
-interface Props {
+type Props = {
   id: number
   data?: {
     title: string

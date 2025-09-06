@@ -1,5 +1,5 @@
 <script setup lang="ts">
-interface Props {
+type Props = {
   confirmationQuestion: string
   isDialogVisible: boolean
   confirmTitle: string
@@ -8,7 +8,7 @@ interface Props {
   cancelMsg: string
 }
 
-interface Emit {
+type Emit = {
   (e: 'update:isDialogVisible', value: boolean): void
   (e: 'confirm', value: boolean): void
 }

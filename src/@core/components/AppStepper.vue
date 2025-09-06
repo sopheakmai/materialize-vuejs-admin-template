@@ -1,5 +1,5 @@
 <script setup lang="ts">
-interface Item {
+type Item = {
   title: string
   icon?: string
   size?: string
@@ -8,7 +8,7 @@ interface Item {
 
 type Direction = 'vertical' | 'horizontal'
 
-interface Props {
+type Props = {
   items: Item[]
   currentStep?: number
   direction?: Direction
@@ -17,7 +17,7 @@ interface Props {
   align?: 'start' | 'center' | 'end'
 }
 
-interface Emit {
+type Emit = {
   (e: 'update:currentStep', value: number): void
 }
 

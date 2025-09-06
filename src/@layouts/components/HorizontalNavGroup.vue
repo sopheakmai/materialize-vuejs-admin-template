@@ -6,7 +6,7 @@ import { config } from '@layouts/config'
 import { canViewNavMenuGroup } from '@layouts/plugins/casl'
 import { isNavGroupActive } from '@layouts/utils'
 
-interface Props {
+type Props = {
   item: NavGroup
   childrenAtEnd?: boolean
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-interface BillingAddress {
+type BillingAddress = {
   companyName: string
   billingEmail: string
   taxID: string
@@ -11,11 +11,11 @@ interface BillingAddress {
   zipCode: number | null
   isSaveDefaultAddress: boolean
 }
-interface Props {
+type Props = {
   billingAddress?: BillingAddress
   isDialogVisible: boolean
 }
-interface Emit {
+type Emit = {
   (e: 'update:isDialogVisible', value: boolean): void
   (e: 'submit', value: BillingAddress): void
 }

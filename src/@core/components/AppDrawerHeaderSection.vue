@@ -1,8 +1,8 @@
 <script setup lang="ts">
-interface Props {
+type Props = {
   title: string
 }
-interface Emit {
+type Emit = {
   (e: 'cancel', el: MouseEvent): void
 }
 const props = defineProps<Props>()

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { ProfileTab } from '@/@fake-db/types'
 
-interface Props {
+type Props = {
   data: ProfileTab
 }
 const props = defineProps<Props>()

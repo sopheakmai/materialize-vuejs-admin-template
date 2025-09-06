@@ -4,7 +4,7 @@ import AppSearchHeaderBgDark from '@images/pages/app-search-header-bg-dark.png'
 
 import AppSearchHeaderBgLight from '@images/pages/app-search-header-bg-light.png'
 
-interface Props {
+type Props = {
   title?: string
   subtitle?: string
   customClass?: string

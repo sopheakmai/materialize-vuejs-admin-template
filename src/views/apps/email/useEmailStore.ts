@@ -2,7 +2,7 @@ import type { PartialDeep } from 'type-fest'
 import type { Email, FetchEmailsPayload } from '@/@fake-db/types'
 import axios from '@axios'
 
-interface State {
+type State = {
   emails: Email[]
   emailsMeta: {
     draft: number

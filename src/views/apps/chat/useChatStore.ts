@@ -2,7 +2,7 @@ import type { ActiveChat } from './useChat'
 import type { ChatContact, ChatContactWithChat, ChatMessage, ChatOut } from '@/@fake-db/types'
 import axios from '@axios'
 
-interface State {
+type State = {
   chatsContacts: ChatContactWithChat[]
   contacts: ChatContact[]
   profileUser: ChatContact | undefined

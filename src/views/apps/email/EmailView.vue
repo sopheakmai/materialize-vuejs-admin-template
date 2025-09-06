@@ -7,7 +7,7 @@ import { useTheme } from 'vuetify'
 import { useEmail } from '@/views/apps/email/useEmail'
 import { useEmailStore } from '@/views/apps/email/useEmailStore'
 
-interface Props {
+type Props = {
   email: Email | null
   emailMeta: {
     hasPreviousEmail: boolean

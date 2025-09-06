@@ -4,14 +4,14 @@ import Prism from 'vue-prism-component'
 import 'prismjs'
 import 'prismjs/themes/prism-tomorrow.css'
 
-interface Props {
+type Props = {
   title: string
   code: CodeProp
   codeLanguage?: string
   noPadding?: boolean
 }
 
-interface CodeProp {
+type CodeProp = {
   ts: string
   js: string
 }

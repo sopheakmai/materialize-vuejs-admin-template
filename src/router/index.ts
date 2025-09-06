@@ -54,7 +54,7 @@ router.beforeEach((to, from, next) => {
   if (canNavigate(to)) {
     if (to.meta.redirectIfLoggedIn && isLoggedIn)
       return next('/')
-    
+
     return next()
   }
   else {

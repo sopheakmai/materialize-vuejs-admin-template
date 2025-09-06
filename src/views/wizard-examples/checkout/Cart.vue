@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import type { CartItem, CheckoutData } from './types'
 
-interface Props {
+type Props = {
   currentStep?: number
   checkoutData: CheckoutData
 }
 
-interface Emit {
+type Emit = {
   (e: 'update:currentStep', value: number): void
   (e: 'update:checkout-data', value: CheckoutData): void
 }

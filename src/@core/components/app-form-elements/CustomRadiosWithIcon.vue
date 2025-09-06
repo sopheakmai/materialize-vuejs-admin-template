@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import type { CustomInputContent, GridColumn } from '@core/types'
 
-interface Props {
+type Props = {
   selectedRadio: string
   radioContent: CustomInputContent[]
   gridColumn?: GridColumn
 }
 
-interface Emit {
+type Emit = {
   (e: 'update:selectedRadio', value: string): void
 }
 

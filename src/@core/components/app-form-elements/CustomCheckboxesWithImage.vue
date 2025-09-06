@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import type { GridColumn } from '@core/types'
 
-interface Props {
+type Props = {
   selectedCheckbox: string[]
   checkboxContent: { bgImage: string, value: string }[]
   gridColumn?: GridColumn
 }
 
-interface Emit {
+type Emit = {
   (e: 'update:selectedCheckbox', value: string[]): void
 }
 

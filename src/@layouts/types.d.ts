@@ -2,7 +2,7 @@ import type { Component, Ref, VNode } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'
 import type { ContentWidth, FooterType, NavbarType } from './enums'
 
-export interface UserConfig {
+export type UserConfig = {
   app: {
     title: Lowercase<string>
     logo: VNode
@@ -42,7 +42,7 @@ export interface UserConfig {
   TODO: use MergeDeep for DRY
    Waiting for https://github.com/sindresorhus/type-fest/issues/150
 */
-export interface Config {
+export type Config = {
   app: {
     title: UserConfig['app']['title']
     logo: UserConfig['app']['logo']
@@ -78,15 +78,15 @@ export interface Config {
   }
 }
 
-interface AclProperties {
+type AclProperties = {
   action: string
   subject: string
 }
 
 // 👉 Vertical nav section title
-export interface NavSectionTitle extends Partial<AclProperties> {
+export type NavSectionTitle = {
   heading: string
-}
+} & Partial<AclProperties>
 
 // 👉 Vertical nav link
 declare type ATagTargetAttrValues = '_blank' | '_self' | '_parent' | '_top' | 'framename'
@@ -105,37 +105,37 @@ declare type ATagRelAttrValues
     | 'search'
     | 'tag'
 
-export interface NavLinkProps {
+export type NavLinkProps = {
   to?: RouteLocationRaw | string | null
   href?: string
   target?: ATagTargetAttrValues
   rel?: ATagRelAttrValues
 }
 
-export interface NavLink extends NavLinkProps, Partial<AclProperties> {
+export type NavLink = {
   title: string
   icon?: unknown
   badgeContent?: string
   badgeClass?: string
   disable?: boolean
-}
+} & NavLinkProps & Partial<AclProperties>
 
 // 👉 Vertical nav group
-export interface NavGroup extends Partial<AclProperties> {
+export type NavGroup = {
   title: string
   icon?: unknown
   badgeContent?: string
   badgeClass?: string
   children: (NavLink | NavGroup)[]
   disable?: boolean
-}
+} & Partial<AclProperties>
 
 export declare type VerticalNavItems = (NavLink | NavGroup | NavSectionTitle)[]
 export declare type HorizontalNavItems = (NavLink | NavGroup)[]
 
 // 👉 Components ========================
 
-interface I18nLanguage {
+type I18nLanguage = {
   label: string
   i18nLang: string
 }
@@ -155,7 +155,7 @@ type Notification = {
   | { img?: never, text?: never, icon: string }
 )
 
-interface ThemeSwitcherTheme {
+type ThemeSwitcherTheme = {
   name: string
   icon: string
 }

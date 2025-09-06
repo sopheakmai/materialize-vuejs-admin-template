@@ -1,4 +1,4 @@
-export interface DealDetails {
+export type DealDetails = {
   title: string
   code: string
   description: string
@@ -12,13 +12,13 @@ export interface DealDetails {
   }
 }
 
-export interface DealType {
+export type DealType = {
   Offer: string
   discount: number | null
   region: string | null
 }
 
-export interface DealUsage {
+export type DealUsage = {
   userType: string | null
   maxUsers: number | null
   cartAmount: number | null
@@ -28,11 +28,11 @@ export interface DealUsage {
   isSingleUserCustomer: boolean
 }
 
-export interface DealReviewComplete {
+export type DealReviewComplete = {
   isDealDetailsConfirmed: boolean
 }
 
-export interface CreateDealData {
+export type CreateDealData = {
   dealDetails: DealDetails
   dealType: DealType
   dealUsage: DealUsage

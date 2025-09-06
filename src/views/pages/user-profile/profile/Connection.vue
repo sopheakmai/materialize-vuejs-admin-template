@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { ProfileConnections } from '@/@fake-db/types'
 
-interface Props {
+type Props = {
   connectionsData: ProfileConnections[]
 }
 

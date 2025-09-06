@@ -27,7 +27,7 @@ import { getIcons, minifyIconSet, stringToIcon } from '@iconify/utils'
 /**
  * Script configuration
  */
-interface BundleScriptCustomSVGConfig {
+type BundleScriptCustomSVGConfig = {
 
   // Path to SVG files
   dir: string
@@ -39,7 +39,7 @@ interface BundleScriptCustomSVGConfig {
   prefix: string
 }
 
-interface BundleScriptCustomJSONConfig {
+type BundleScriptCustomJSONConfig = {
 
   // Path to JSON file
   filename: string
@@ -48,7 +48,7 @@ interface BundleScriptCustomJSONConfig {
   icons?: string[]
 }
 
-interface BundleScriptConfig {
+type BundleScriptConfig = {
 
   // Custom SVG to import and bundle
   svg?: BundleScriptCustomSVGConfig[]

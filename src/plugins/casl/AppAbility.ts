@@ -7,10 +7,9 @@ export type Subjects = 'Auth' | 'Admin' | 'AclDemo' | 'all'
 
 export type AppAbility = Ability<[Actions, Subjects]>
 
-// eslint-disable-next-line ts/no-redeclare
 export const AppAbility = Ability as AbilityClass<AppAbility>
 
-export interface UserAbility {
+export type UserAbility = {
   action: Actions
   subject: Subjects
 }

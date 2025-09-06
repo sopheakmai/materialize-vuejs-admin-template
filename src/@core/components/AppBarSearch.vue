@@ -2,25 +2,25 @@
 import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
 import { VList, VListItem, VListSubheader } from 'vuetify/components/VList'
 
-interface Emit {
+type Emit = {
   (e: 'update:isDialogVisible', value: boolean): void
   (e: 'update:searchQuery', value: string): void
 
   (e: 'itemSelected', value: any): void
 }
 
-interface Suggestion {
+type Suggestion = {
   icon: string
   title: string
   url: object
 }
 
-interface Suggestions {
+type Suggestions = {
   title: string
   content: Suggestion[]
 }
 
-interface Props {
+type Props = {
   isDialogVisible: boolean
   searchQuery: string
 

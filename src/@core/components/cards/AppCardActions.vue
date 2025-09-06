@@ -1,5 +1,5 @@
 <script setup lang="ts">
-interface Props {
+type Props = {
   collapsed?: boolean
   noActions?: boolean
   actionCollapsed?: boolean
@@ -8,7 +8,7 @@ interface Props {
   title?: string
 }
 
-interface Emit {
+type Emit = {
   (e: 'collapsed', isContentCollapsed: boolean): void
   (e: 'refresh', hideOverlay: () => void): void
   (e: 'trash'): void

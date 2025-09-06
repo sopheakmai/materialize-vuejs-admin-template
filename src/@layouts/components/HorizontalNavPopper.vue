@@ -4,7 +4,7 @@ import { useLayouts } from '@layouts/composable/useLayouts'
 import { config } from '@layouts/config'
 import { themeConfig } from '@themeConfig'
 
-interface Props {
+type Props = {
   popperInlineEnd?: boolean
   tag?: string
   contentContainerTag?: string

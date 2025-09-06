@@ -1,5 +1,5 @@
 <script setup lang="ts">
-interface Props {
+type Props = {
   errorCode?: string
   errorTitle?: string
   errorDescription?: string

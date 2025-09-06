@@ -2,7 +2,7 @@ import type { UserConfig as UserLayoutConfig } from '@layouts/types'
 import type { Ref } from 'vue'
 import type { RouteTransitions, Skins } from './enums'
 
-export interface UserThemeConfig {
+export type UserThemeConfig = {
   app: {
     title: UserLayoutConfig['app']['title']
     logo: UserLayoutConfig['app']['logo']
@@ -46,7 +46,7 @@ export interface UserThemeConfig {
   TODO: use MergeDeep for DRY
    Waiting for https://github.com/sindresorhus/type-fest/issues/150
 */
-export interface ThemeConfig {
+export type ThemeConfig = {
   app: {
     title: UserThemeConfig['app']['title']
     logo: UserThemeConfig['app']['logo']
@@ -87,7 +87,7 @@ export interface ThemeConfig {
 }
 
 // SECTION Custom Input
-export interface CustomInputContent {
+export type CustomInputContent = {
   title: string
   desc: string
   value: string
@@ -96,7 +96,7 @@ export interface CustomInputContent {
   images?: string
 }
 
-export interface GridColumn {
+export type GridColumn = {
   cols?: string
   sm?: string
   md?: string
@@ -106,9 +106,9 @@ export interface GridColumn {
 }
 
 // Data table
-export interface SortItem { key: string, order?: boolean | 'asc' | 'desc' }
+export type SortItem = { key: string, order?: boolean | 'asc' | 'desc' }
 
-export interface Options {
+export type Options = {
   page: number
   itemsPerPage: number
   sortBy: readonly SortItem[]

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-interface Props {
+type Props = {
   totalInput?: number
   default?: string
 }
 
-interface Emit {
+type Emit = {
   (e: 'updateOtp', val: string): void
 }
 

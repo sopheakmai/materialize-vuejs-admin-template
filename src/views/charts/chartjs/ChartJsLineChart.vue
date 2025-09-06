@@ -5,7 +5,7 @@ import LineChart from '@core/libs/chartjs/components/LineChart'
 
 import { useTheme } from 'vuetify'
 
-interface Props {
+type Props = {
   colors: ChartJsCustomColors
 }
 

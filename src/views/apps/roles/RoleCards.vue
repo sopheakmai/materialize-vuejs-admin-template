@@ -11,19 +11,19 @@ import avatar9 from '@images/avatars/avatar-9.png'
 import avatar10 from '@images/avatars/avatar-10.png'
 import boyWithTab from '@images/illustrations/account-settings-security-illustration.png'
 
-interface Permission {
+type Permission = {
   name: string
   read: boolean
   write: boolean
   create: boolean
 }
 
-interface RoleDetails {
+type RoleDetails = {
   name: string
   permissions: Permission[]
 }
 
-interface Roles {
+type Roles = {
   role: string
   users: string[]
   details: RoleDetails

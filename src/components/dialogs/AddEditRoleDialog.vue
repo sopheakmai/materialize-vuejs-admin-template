@@ -1,23 +1,23 @@
 <script setup lang="ts">
 import { VForm } from 'vuetify/components/VForm'
 
-interface Permission {
+type Permission = {
   name: string
   read: boolean
   write: boolean
   create: boolean
 }
 
-interface Roles {
+type Roles = {
   name: string
   permissions: Permission[]
 }
 
-interface Props {
+type Props = {
   rolePermissions?: Roles
   isDialogVisible: boolean
 }
-interface Emit {
+type Emit = {
   (e: 'update:isDialogVisible', value: boolean): void
   (e: 'update:rolePermissions', value: Roles): void
 }

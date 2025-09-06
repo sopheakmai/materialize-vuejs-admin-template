@@ -23,7 +23,7 @@ const emit = defineEmits<{
   (e: 'removeEvent', eventId: string): void
 }>()
 
-interface Props {
+type Props = {
   isDrawerOpen: boolean
   event: (Event | NewEvent)
 }

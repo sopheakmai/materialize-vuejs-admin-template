@@ -3,7 +3,7 @@ import type {
   HelpCenterArticlesOverviewType,
 } from '@/@fake-db/types'
 
-interface Props {
+type Props = {
   articles: HelpCenterArticlesOverviewType[]
 }
 

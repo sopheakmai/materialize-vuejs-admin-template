@@ -4,7 +4,7 @@ import { getLatestBarChartConfig } from '@core/libs/chartjs/chartjsConfig'
 import { useTheme } from 'vuetify'
 import BarChart from '@/@core/libs/chartjs/components/BarChart'
 
-interface Props {
+type Props = {
   colors: ChartJsCustomColors
 }
 

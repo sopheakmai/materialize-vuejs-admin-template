@@ -4,7 +4,7 @@ import { getScatterChartConfig } from '@core/libs/chartjs/chartjsConfig'
 import ScatterChart from '@core/libs/chartjs/components/ScatterChart'
 import { useTheme } from 'vuetify'
 
-interface Props {
+type Props = {
   colors: ChartJsCustomColors
 }
 

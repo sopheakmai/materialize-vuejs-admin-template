@@ -66,7 +66,7 @@ export function useTabs() {
         name: tab.name,
         params: tab.params || {},
         query: tab.query || {},
-        replace: true // Use replace to avoid adding to browser history
+        replace: true, // Use replace to avoid adding to browser history
       }).catch(err => console.error('Navigation error:', err))
     }
   }
@@ -84,7 +84,7 @@ export function useTabs() {
           name: tabsStore.activeTab.name,
           params: tabsStore.activeTab.params || {},
           query: tabsStore.activeTab.query || {},
-          replace: true // Use replace to avoid adding to browser history
+          replace: true, // Use replace to avoid adding to browser history
         }).catch(err => console.error('Navigation error:', err))
       }
       else if (wasActive && tabsStore.tabs.length === 0) {
@@ -120,7 +120,7 @@ export function useTabs() {
       name: routeName,
       params: params || {},
       query: query || {},
-      replace: false // We want this one in history
+      replace: false, // We want this one in history
     }).catch(err => console.error('Navigation error:', err))
   }
 

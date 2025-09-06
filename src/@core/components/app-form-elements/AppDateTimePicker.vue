@@ -7,7 +7,7 @@ import { VField, VInput } from 'vuetify/components'
 
 import { filterInputAttrs } from 'vuetify/lib/util/helpers'
 
-interface Config {
+type Config = {
   inline?: boolean
   [key: string]: any
 }
@@ -52,7 +52,7 @@ const props = defineProps({
 
 const emit = defineEmits<Emit>()
 
-interface Emit {
+type Emit = {
   (e: 'click:control', val: MouseEvent): true
   (e: 'mousedown:control', val: MouseEvent): true
   (e: 'update:focused', val: MouseEvent): true

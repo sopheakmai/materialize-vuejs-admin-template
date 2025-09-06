@@ -1,9 +1,9 @@
 <script setup lang="ts">
-interface Props {
+type Props = {
   isDialogVisible: boolean
 }
 
-interface Emit {
+type Emit = {
   (e: 'update:isDialogVisible', val: boolean): void
 }
 

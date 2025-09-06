@@ -14,7 +14,7 @@ import rocket from '@images/svg/rocket.svg'
 import { themeConfig } from '@themeConfig'
 import mock from '@/@fake-db/mock'
 
-interface Data {
+type Data = {
   categories: HelpCenterCategoriesType[]
   keepLearning: HelpCenterArticlesOverviewType[]
   popularArticles: HelpCenterArticlesOverviewType[]

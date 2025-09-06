@@ -14,7 +14,7 @@ import { genId } from '@/@fake-db/utils'
 const previousDay = new Date(new Date().getTime() - 24 * 60 * 60 * 1000)
 const dayBeforePreviousDay = new Date(new Date().getTime() - 24 * 60 * 60 * 1000 * 2)
 
-interface Database {
+type Database = {
   profileUser: ChatContact & {
     settings: {
       isTwoStepAuthVerificationEnabled: boolean

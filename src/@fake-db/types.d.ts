@@ -1,68 +1,68 @@
 import type { UserAbility } from '@/plugins/casl/AppAbility'
 
 // 👉 Help center
-export interface HelpCenterSubcategoryArticlesType {
+export type HelpCenterSubcategoryArticlesType = {
   slug: string
   title: string
   content: string
 }
-export interface HelpCenterSubcategoriesType {
+export type HelpCenterSubcategoriesType = {
   icon: string
   slug: string
   title: string
   articles: HelpCenterSubcategoryArticlesType[]
 }
-export interface HelpCenterCategoriesType {
+export type HelpCenterCategoriesType = {
   icon: string
   slug: string
   title: string
   avatarColor: string
   subCategories: HelpCenterSubcategoriesType[]
 }
-export interface HelpCenterArticlesOverviewType {
+export type HelpCenterArticlesOverviewType = {
   img: string
   slug: string
   title: string
   subtitle: string
 }
 
-export interface Faq {
+export type Faq = {
   question: string
   answer: string
 }
 
-export interface FaqCategory {
+export type FaqCategory = {
   faqTitle: string
   faqIcon: string
   faqSubtitle: string
   faqs: Faq[]
 }
 
-export interface ProfileChip {
+export type ProfileChip = {
   title: string
   color: string
 }
 
-export interface ProfileTabCommon {
+export type ProfileTabCommon = {
   icon: string
   value: string
   property: string
 }
 export type ProfileTeams = ProfileTabCommon & { color: string }
 
-export interface ProfileConnections {
+export type ProfileConnections = {
   name: string
   avatar: string
   isFriend: boolean
   connections: string
 }
 
-export interface ProfileAvatarGroup {
+export type ProfileAvatarGroup = {
   name: string
   avatar: string
 }
 
-export interface ProfileTeamsTech {
+export type ProfileTeamsTech = {
   title: string
   avatar: string
   members: number
@@ -70,7 +70,7 @@ export interface ProfileTeamsTech {
   ChipColor: string
 }
 
-export interface ConnectionsTab {
+export type ConnectionsTab = {
   name: string
   tasks: string
   avatar: string
@@ -81,7 +81,7 @@ export interface ConnectionsTab {
   chips: ProfileChip[]
 }
 
-export interface ProfileTab {
+export type ProfileTab = {
   teams: ProfileTeams[]
   about: ProfileTabCommon[]
   contacts: ProfileTabCommon[]
@@ -90,7 +90,7 @@ export interface ProfileTab {
   connections: ProfileConnections[]
 }
 
-export interface ProfileHeader {
+export type ProfileHeader = {
   fullName: string
   coverImg: string
   location: string
@@ -100,7 +100,7 @@ export interface ProfileHeader {
   designationIcon?: string
 }
 
-export interface ProjectTableRow {
+export type ProjectTableRow = {
   id: number
   date: string
   name: string
@@ -111,7 +111,7 @@ export interface ProjectTableRow {
   avatarColor?: string
 }
 
-export interface ProjectsTab {
+export type ProjectsTab = {
   hours: string
   tasks: string
   title: string
@@ -132,7 +132,7 @@ export interface ProjectsTab {
   avatarGroup: ProfileAvatarGroup[]
 }
 
-export interface TeamsTab {
+export type TeamsTab = {
   title: string
   avatar: string
   description: string
@@ -141,7 +141,7 @@ export interface TeamsTab {
   avatarGroup: ProfileAvatarGroup[]
 }
 
-export interface ProfileTab {
+export type ProfileTab = {
   teams: ProfileTeams[]
   about: ProfileTabCommon[]
   contacts: ProfileTabCommon[]
@@ -153,7 +153,7 @@ export interface ProfileTab {
 // SECTION
 // 👉 JWT
 
-export interface User {
+export type User = {
   id: number
   fullName?: string
   username: string
@@ -164,19 +164,19 @@ export interface User {
   abilities: UserAbility[]
 }
 
-export interface UserOut {
+export type UserOut = {
   userAbilities: User['abilities']
   accessToken: string
   userData: Omit<User, 'abilities' | 'password'>
 }
 
-export interface LoginResponse {
+export type LoginResponse = {
   accessToken: string
   userData: AuthUserOut
   userAbilities: UserAbility[]
 }
 
-export interface RegisterResponse {
+export type RegisterResponse = {
   accessToken: string
   userData: AuthUserOut
   userAbilities: UserAbility[]
@@ -186,7 +186,7 @@ export interface RegisterResponse {
 
 // SECTION
 // App: User
-export interface UserProperties {
+export type UserProperties = {
   id: number
   fullName: string
   company: string
@@ -202,7 +202,7 @@ export interface UserProperties {
 // !SECTION
 
 // SECTION App: Calendar
-export interface CalendarEvent {
+export type CalendarEvent = {
   id: string
   url: string
   title: string
@@ -217,7 +217,7 @@ export interface CalendarEvent {
 // SECTION App: Invoice
 
 // 👉 Client
-export interface Client {
+export type Client = {
   address: string
   company: string
   companyEmail: string
@@ -227,7 +227,7 @@ export interface Client {
 }
 
 // 👉 Invoice
-export interface Invoice {
+export type Invoice = {
   id: number
   issuedDate: string
   client: Client
@@ -240,7 +240,7 @@ export interface Invoice {
 }
 
 // 👉 PaymentDetails
-export interface PaymentDetails {
+export type PaymentDetails = {
   totalDue: string
   bankName: string
   country: string
@@ -256,18 +256,18 @@ export type EmailFolder = 'inbox' | 'sent' | 'draft' | 'spam'
 export type EmailFilter = EmailFolder | 'trashed' | 'starred'
 export type EmailLabel = 'personal' | 'company' | 'important' | 'private'
 
-export interface EmailTo {
+export type EmailTo = {
   email: string
   name: string
 }
 
-export interface EmailFrom {
+export type EmailFrom = {
   email: string
   name: string
   avatar: any
 }
 
-export interface EmailAttachment {
+export type EmailAttachment = {
   fileName: string
   thumbnail: any
   url: string
@@ -296,7 +296,7 @@ export interface EmailAttachment {
   folders => inbox, sent, draft, spam
   flags: starred, trash
 */
-export interface Email {
+export type Email = {
   id: number
   to: EmailTo[]
   from: EmailFrom
@@ -318,7 +318,7 @@ export interface Email {
   isDeleted: boolean
 }
 
-export interface FetchEmailsPayload {
+export type FetchEmailsPayload = {
   q?: string
   filter?: EmailFilter
   label?: EmailLabel
@@ -329,7 +329,7 @@ export interface FetchEmailsPayload {
 // SECTION App: Chat
 export type ChatStatus = 'online' | 'offline' | 'busy' | 'away'
 
-export interface ChatContact {
+export type ChatContact = {
   id: number
   fullName: string
   role: string
@@ -338,7 +338,7 @@ export interface ChatContact {
   status: ChatStatus
 }
 
-export interface ChatMessage {
+export type ChatMessage = {
   message: string
   time: string
   senderId: number
@@ -349,7 +349,7 @@ export interface ChatMessage {
   }
 }
 
-export interface Chat {
+export type Chat = {
   id: number
   userId: number
   unseenMsgs: number
@@ -357,21 +357,21 @@ export interface Chat {
 }
 
 // ℹ️ This is chat type received in response of user chat
-export interface ChatOut {
+export type ChatOut = {
   id: Chat['id']
   unseenMsgs: Chat['unseenMsgs']
   messages: ChatMessage[]
   lastMessage: ChatMessage[number]
 }
 
-export interface ChatContactWithChat extends ChatContact {
+export type ChatContactWithChat = {
   chat: ChatOut
-}
+} & ChatContact
 // !SECTION App: Chat
 
 // 👉 Template Search
 // ----------------
-export interface SearchItem {
+export type SearchItem = {
   id: number
   url: { name: string, params?: object }
   icon: string
@@ -379,19 +379,19 @@ export interface SearchItem {
   category: string
 }
 
-export interface SearchHeader {
+export type SearchHeader = {
   header: string
   title: string
 }
 
-export interface Permission {
+export type Permission = {
   id: number
   name: string
   createdDate: string
   assignedTo: string[]
 }
 
-export interface Data {
+export type Data = {
   responsive_id: string
   id: number
   avatar: string
@@ -406,7 +406,7 @@ export interface Data {
   status: number
 }
 
-export interface Product {
+export type Product = {
   id: number
   name: string
   slug: string
@@ -419,19 +419,19 @@ export interface Product {
   description: string
 }
 
-export interface Buyer {
+export type Buyer = {
   name: string
   avatar: string | null
 }
 
-export interface Payment {
+export type Payment = {
   total: number
   received_payment_status: string
   paid_amount: number
   status: string
 }
 
-export interface SalesDetails {
+export type SalesDetails = {
   product: Product
   buyer: Buyer
   date: string

@@ -3,7 +3,7 @@ import pricingIllustration1 from '@images/misc/pricing-illustration-1.png'
 import pricingIllustration2 from '@images/misc/pricing-illustration-2.png'
 import pricingIllustration3 from '@images/misc/pricing-illustration-3.png'
 
-interface Pricing {
+type Pricing = {
   title?: string
   xs?: number | string
   sm?: number | string

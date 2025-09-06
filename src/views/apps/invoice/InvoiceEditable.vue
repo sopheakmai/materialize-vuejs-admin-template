@@ -6,7 +6,7 @@ import { themeConfig } from '@themeConfig'
 import InvoiceProductEdit from './InvoiceProductEdit.vue'
 import { useInvoiceStore } from './useInvoiceStore'
 
-interface Props {
+type Props = {
   data: InvoiceData
 }
 

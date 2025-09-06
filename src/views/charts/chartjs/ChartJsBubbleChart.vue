@@ -4,7 +4,7 @@ import { getBubbleChartConfig } from '@core/libs/chartjs/chartjsConfig'
 import BubbleChart from '@core/libs/chartjs/components/BubbleChart'
 import { useTheme } from 'vuetify'
 
-interface Props {
+type Props = {
   colors: ChartJsCustomColors
 }
 

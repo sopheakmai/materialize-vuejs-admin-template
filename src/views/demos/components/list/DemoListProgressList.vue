@@ -1,5 +1,5 @@
 <script setup lang="ts">
-interface Language {
+type Language = {
   react: string
   bootstrap: string
   vue: string
@@ -7,7 +7,7 @@ interface Language {
   javascript: string
 }
 
-interface Progress {
+type Progress = {
   avatar: string
   title: string
   language: keyof Language

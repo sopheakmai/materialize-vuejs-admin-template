@@ -3,13 +3,13 @@ import type { Notification } from '@layouts/types'
 import { avatarText } from '@core/utils/formatters'
 import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
 
-interface Props {
+type Props = {
   notifications: Notification[]
   badgeProps?: Record<string, any>
 
   location?: any
 }
-interface Emit {
+type Emit = {
   (e: 'read', value: number[]): void
   (e: 'unread', value: number[]): void
   (e: 'remove', value: number): void

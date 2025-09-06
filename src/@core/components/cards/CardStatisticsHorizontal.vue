@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { kFormatter } from '@core/utils/formatters'
 
-interface Props {
+type Props = {
   title: string
   color?: string
   icon: string

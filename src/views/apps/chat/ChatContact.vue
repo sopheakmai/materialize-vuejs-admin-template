@@ -4,7 +4,7 @@ import { avatarText, formatDateToMonthShort } from '@core/utils/formatters'
 import { useChat } from '@/views/apps/chat/useChat'
 import { useChatStore } from '@/views/apps/chat/useChatStore'
 
-interface Props {
+type Props = {
   isChatContact?: boolean
   user: ChatContact | ChatContactWithChat
 }

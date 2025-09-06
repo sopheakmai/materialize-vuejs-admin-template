@@ -30,7 +30,7 @@ import UserProfileHeaderBg from '@images/pages/user-profile-header-bg.png'
 // ** Mock Adapter
 import mock from '@/@fake-db/mock'
 
-interface DataType {
+type DataType = {
   profileHeader: ProfileHeader
   profile: ProfileTab
   teams: TeamsTab[]
