@@ -114,7 +114,7 @@ watch(() => props.currentStep, updateAddressData)
                 href="#"
                 class="me-3"
               >Edit</a>
-              <a href="#">Remove</a>
+              <a href="javascript:void(0)" @click.prevent="() => {}">Remove</a>
             </div>
           </div>
         </template>

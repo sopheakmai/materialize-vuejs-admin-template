@@ -19,6 +19,11 @@ loadFonts()
 // Create vue app
 const app = createApp(App)
 
+// Set up global error handler for router navigation
+router.onError((error) => {
+  console.error('Vue Router navigation error:', error)
+})
+
 // Use plugins
 app.use(vuetify)
 app.use(createPinia())

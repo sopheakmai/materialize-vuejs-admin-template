@@ -14,7 +14,8 @@ const tooltipConfig = {
 }
 
 // Handle tab click
-const handleTabClick = (tabId: string) => {
+const handleTabClick = (event: Event, tabId: string) => {
+  event.preventDefault()
   navigateToTab(tabId)
 }
 
@@ -164,7 +165,7 @@ onUnmounted(() => {
         role="tab"
         tabindex="0"
         draggable="true"
-        @click="handleTabClick(tab.id)"
+        @click="handleTabClick($event, tab.id)"
         @contextmenu="handleTabRightClick($event, tab.id)"
         @dragstart="onDragStart($event, tab.id, index)"
         @dragend="onDragEnd"
@@ -172,8 +173,8 @@ onUnmounted(() => {
         @dragenter="onDragEnter($event)"
         @dragleave="onDragLeave"
         @drop="onDrop($event, index)"
-        @keydown.enter="handleTabClick(tab.id)"
-        @keydown.space.prevent="handleTabClick(tab.id)"
+        @keydown.enter="handleTabClick($event, tab.id)"
+        @keydown.space.prevent="handleTabClick($event, tab.id)"
       >
         <div class="tab-content">
           <VTooltip

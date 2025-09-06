@@ -64,9 +64,10 @@ export function useTabs() {
       tabsStore.switchToTab(tabId)
       router.push({
         name: tab.name,
-        params: tab.params,
-        query: tab.query,
-      })
+        params: tab.params || {},
+        query: tab.query || {},
+        replace: true // Use replace to avoid adding to browser history
+      }).catch(err => console.error('Navigation error:', err))
     }
   }
 
@@ -81,13 +82,15 @@ export function useTabs() {
       if (wasActive && tabsStore.activeTab) {
         router.push({
           name: tabsStore.activeTab.name,
-          params: tabsStore.activeTab.params,
-          query: tabsStore.activeTab.query,
-        })
+          params: tabsStore.activeTab.params || {},
+          query: tabsStore.activeTab.query || {},
+          replace: true // Use replace to avoid adding to browser history
+        }).catch(err => console.error('Navigation error:', err))
       }
       else if (wasActive && tabsStore.tabs.length === 0) {
         // No tabs left, go to CRM dashboard
-        router.push('/dashboards/crm')
+        router.push({ path: '/dashboards/crm', replace: true })
+          .catch(err => console.error('Navigation error:', err))
       }
     }
   }
@@ -106,7 +109,8 @@ export function useTabs() {
       navigateToTab(tabsStore.activeTab.id)
     }
     else {
-      router.push('/dashboards/crm')
+      router.push({ path: '/dashboards/crm', replace: true })
+        .catch(err => console.error('Navigation error:', err))
     }
   }
 
@@ -114,9 +118,10 @@ export function useTabs() {
   const openTab = (routeName: string, params?: Record<string, any>, query?: Record<string, any>) => {
     router.push({
       name: routeName,
-      params,
-      query,
-    })
+      params: params || {},
+      query: query || {},
+      replace: false // We want this one in history
+    }).catch(err => console.error('Navigation error:', err))
   }
 
   // Refresh current tab

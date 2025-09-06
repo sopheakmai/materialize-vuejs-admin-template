@@ -26,7 +26,7 @@ const router = createRouter({
 })
 
 // Docs: https://router.vuejs.org/guide/advanced/navigation-guards.html#global-before-guards
-router.beforeEach((to) => {
+router.beforeEach((to, from, next) => {
   const isLoggedIn = isUserLoggedIn()
 
   /*
@@ -53,13 +53,15 @@ router.beforeEach((to) => {
 
   if (canNavigate(to)) {
     if (to.meta.redirectIfLoggedIn && isLoggedIn)
-      return '/'
+      return next('/')
+    
+    return next()
   }
   else {
     if (isLoggedIn)
-      return { name: 'not-authorized' }
+      return next({ name: 'not-authorized' })
     else
-      return { name: 'login', query: { to: to.name !== 'index' ? to.fullPath : undefined } }
+      return next({ name: 'login', query: { to: to.name !== 'index' ? to.fullPath : undefined } })
   }
 })
 

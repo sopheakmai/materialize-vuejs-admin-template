@@ -43,7 +43,7 @@ const authV1ThemeVerifyEmailMask = useGenerateImageVariant(authV1LoginMaskLight,
         </VBtn>
 
         <div class="d-flex align-center justify-center">
-          <span class="me-1">Didn't get the mail? </span><a href="#">Resend</a>
+          <span class="me-1">Didn't get the mail? </span><a href="javascript:void(0)" @click.prevent="() => {}">Resend</a>
         </div>
       </VCardText>
     </VCard>

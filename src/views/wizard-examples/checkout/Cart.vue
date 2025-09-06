@@ -169,7 +169,7 @@ watch(() => props.currentStep, updateCartData)
 
       <!-- 👉 Add more from wishlist -->
       <div class="d-flex align-center justify-space-between border rounded py-2 px-5 text-base mt-4">
-        <a href="#">Add more products from wishlist</a>
+        <a href="javascript:void(0)" @click.prevent="() => {}">Add more products from wishlist</a>
         <VIcon
           icon="mdi-chevron-right"
           class="flip-in-rtl"

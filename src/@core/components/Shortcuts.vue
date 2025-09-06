@@ -54,7 +54,7 @@ const router = useRouter()
               cols="6"
               class="text-center border-t cursor-pointer pa-4 shortcut-icon"
               :class="(index + 1) % 2 ? 'border-e' : ''"
-              @click="router.push(shortcut.to)"
+              @click.prevent="router.push(shortcut.to)"
             >
               <VAvatar
                 variant="tonal"

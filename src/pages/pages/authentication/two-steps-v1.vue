@@ -61,7 +61,7 @@ const authV1ThemeTwoStepMask = useGenerateImageVariant(authV1RegisterMaskLight, 
             <VCol cols="12">
               <div class="text-base d-flex justify-center align-center flex-wrap">
                 <span class="me-1">Didn't get the code?</span>
-                <a href="#">Resend</a>
+                <a href="javascript:void(0)" @click.prevent="() => {}">Resend</a>
               </div>
             </VCol>
           </VRow>
