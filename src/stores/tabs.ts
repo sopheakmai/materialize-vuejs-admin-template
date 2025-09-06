@@ -58,7 +58,7 @@ export const useTabsStore = defineStore('tabs', {
           .join(' ')
       }
 
-      return 'Dashboard CRM'
+      return ''
     },
 
     // Check if tab is closable (home/dashboard tabs might not be closable)
@@ -79,10 +79,16 @@ export const useTabsStore = defineStore('tabs', {
         return
       }
 
+      // Don't add tabs with empty titles
+      const title = this.getTabTitle(route, t)
+      if (!title) {
+        return
+      }
+
       // Create new tab
       const newTab: Tab = {
         id: tabId,
-        title: this.getTabTitle(route, t),
+        title,
         path: route.path,
         name: String(route.name),
         params: route.params,
@@ -137,6 +143,12 @@ export const useTabsStore = defineStore('tabs', {
       else {
         this.activeTabId = ''
       }
+    },
+
+    // Clear all tabs (used on page reload)
+    clearTabs() {
+      this.tabs = []
+      this.activeTabId = ''
     },
 
     // Switch to tab

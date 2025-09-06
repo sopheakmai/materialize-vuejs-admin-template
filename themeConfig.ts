@@ -22,7 +22,7 @@ export const { themeConfig, layoutConfig } = defineThemeConfig({
     theme: 'system',
     isRtl: false,
     skin: Skins.Default,
-    routeTransition: RouteTransitions.Fade,
+    routeTransition: RouteTransitions.None,
     iconRenderer: VIcon,
   },
   navbar: {

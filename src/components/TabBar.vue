@@ -5,6 +5,14 @@ import { useI18n } from 'vue-i18n'
 const { tabsStore, navigateToTab, closeTabAndNavigate, closeOtherTabsAndNavigate, closeAllTabsAndNavigate } = useTabs()
 const { t } = useI18n()
 
+// Tooltip configuration
+const tooltipConfig = {
+  enabled: true,
+  delay: 500,
+  location: 'bottom' as const, // Typed as literal
+  showDescription: true,
+}
+
 // Handle tab click
 const handleTabClick = (tabId: string) => {
   navigateToTab(tabId)
@@ -19,22 +27,61 @@ const handleTabClose = (event: Event, tabId: string) => {
 // Drag and drop functionality
 const isDragging = ref(false)
 const draggedTab = ref<string | null>(null)
+const draggedIndex = ref<number>(-1)
+const dragOverIndex = ref<number>(-1)
 
-const onDragStart = (tabId: string) => {
+const onDragStart = (event: DragEvent, tabId: string, index: number) => {
   isDragging.value = true
   draggedTab.value = tabId
+  draggedIndex.value = index
+
+  // Set data for drag operation
+  if (event.dataTransfer) {
+    event.dataTransfer.effectAllowed = 'move'
+    event.dataTransfer.setData('text/plain', tabId)
+
+    // Hide the drag image
+    const dragImage = document.createElement('div')
+    dragImage.style.position = 'absolute'
+    dragImage.style.top = '-9999px'
+    document.body.appendChild(dragImage)
+    event.dataTransfer.setDragImage(dragImage, 0, 0)
+    setTimeout(() => document.body.removeChild(dragImage), 0)
+  }
 }
 
 const onDragEnd = () => {
   isDragging.value = false
   draggedTab.value = null
+  draggedIndex.value = -1
+  dragOverIndex.value = -1
 }
 
-const onDragUpdate = (event: any) => {
-  const { newIndex, oldIndex } = event
-  if (newIndex !== oldIndex) {
-    tabsStore.reorderTabs(oldIndex, newIndex)
+const onDragOver = (event: DragEvent, index: number) => {
+  event.preventDefault()
+  dragOverIndex.value = index
+
+  if (event.dataTransfer) {
+    event.dataTransfer.dropEffect = 'move'
   }
+}
+
+const onDragEnter = (event: DragEvent) => {
+  event.preventDefault()
+}
+
+const onDragLeave = () => {
+  // We don't reset dragOverIndex here to keep the visual indicator
+}
+
+const onDrop = (event: DragEvent, targetIndex: number) => {
+  event.preventDefault()
+
+  if (draggedIndex.value !== -1 && draggedIndex.value !== targetIndex) {
+    tabsStore.reorderTabs(draggedIndex.value, targetIndex)
+  }
+
+  onDragEnd()
 }
 
 // Context menu state
@@ -110,6 +157,7 @@ onUnmounted(() => {
           'tab-active': tab.id === tabsStore.activeTabId,
           'tab-dragging': isDragging && draggedTab === tab.id,
           'tab-modified': tab.meta?.modified,
+          'tab-drag-over': isDragging && dragOverIndex === index && draggedTab !== tab.id,
         }"
         :aria-label="`Tab ${index + 1}: ${tab.title}`"
         :aria-selected="tab.id === tabsStore.activeTabId"
@@ -118,19 +166,65 @@ onUnmounted(() => {
         draggable="true"
         @click="handleTabClick(tab.id)"
         @contextmenu="handleTabRightClick($event, tab.id)"
-        @dragstart="onDragStart(tab.id)"
+        @dragstart="onDragStart($event, tab.id, index)"
         @dragend="onDragEnd"
+        @dragover="onDragOver($event, index)"
+        @dragenter="onDragEnter($event)"
+        @dragleave="onDragLeave"
+        @drop="onDrop($event, index)"
         @keydown.enter="handleTabClick(tab.id)"
         @keydown.space.prevent="handleTabClick(tab.id)"
       >
         <div class="tab-content">
+          <VTooltip
+            v-if="tab.meta?.icon && tooltipConfig.enabled"
+            :location="tooltipConfig.location"
+            :open-delay="tooltipConfig.delay"
+          >
+            <template #activator="{ props }">
+              <VIcon
+                :icon="tab.meta.icon"
+                size="16"
+                class="tab-icon mr-2"
+                v-bind="props"
+              />
+            </template>
+            <span>{{ tab.meta?.iconTooltip || tab.title }}</span>
+          </VTooltip>
           <VIcon
-            v-if="tab.meta?.icon"
+            v-if="tab.meta?.icon && !tooltipConfig.enabled"
             :icon="tab.meta.icon"
             size="16"
             class="tab-icon mr-2"
           />
-          <span class="tab-title" :title="tab.title">{{ tab.title }}</span>
+          <VTooltip
+            v-if="tooltipConfig.enabled"
+            :location="tooltipConfig.location"
+            :open-delay="tooltipConfig.delay"
+          >
+            <template #activator="{ props }">
+              <span
+                class="tab-title"
+                v-bind="props"
+              >
+                {{ tab.title }}
+              </span>
+            </template>
+            <span>{{ tab.title }}</span>
+            <small
+              v-if="tooltipConfig.showDescription && tab.meta?.description"
+              class="d-block mt-1"
+            >
+              {{ tab.meta.description }}
+            </small>
+          </VTooltip>
+          <span
+            v-else
+            class="tab-title"
+            :title="tab.title"
+          >
+            {{ tab.title }}
+          </span>
           <VChip
             v-if="tab.meta?.modified"
             size="x-small"
@@ -138,13 +232,40 @@ onUnmounted(() => {
             variant="tonal"
             class="tab-modified-indicator ml-1"
           />
+          <VTooltip
+            v-if="tooltipConfig.enabled"
+            :location="tooltipConfig.location"
+            :open-delay="tooltipConfig.delay"
+          >
+            <template #activator="{ props }">
+              <VBtn
+                v-if="tab.closable"
+                icon
+                size="x-small"
+                variant="text"
+                class="tab-close-btn ml-2"
+                :aria-label="`Close ${tab.title} tab`"
+                v-bind="props"
+                @click="handleTabClose($event, tab.id)"
+                @keydown.enter.stop="handleTabClose($event, tab.id)"
+                @keydown.space.stop.prevent="handleTabClose($event, tab.id)"
+              >
+                <VIcon
+                  size="14"
+                  icon="mdi-close"
+                />
+              </VBtn>
+            </template>
+            <span>{{ t('tabs.close_tab') }}</span>
+          </VTooltip>
           <VBtn
-            v-if="tab.closable"
+            v-if="tab.closable && !tooltipConfig.enabled"
             icon
             size="x-small"
             variant="text"
             class="tab-close-btn ml-2"
             :aria-label="`Close ${tab.title} tab`"
+            :title="t('tabs.close_tab')"
             @click="handleTabClose($event, tab.id)"
             @keydown.enter.stop="handleTabClose($event, tab.id)"
             @keydown.space.stop.prevent="handleTabClose($event, tab.id)"
@@ -211,19 +332,18 @@ onUnmounted(() => {
   position: relative;
   z-index: 10;
   margin-bottom: 24px;
-  padding-left: 20px;
 }
 
 .tab-bar-tabs {
   flex: 1;
-  min-height: 42px;
+  /* min-height: 42px; */
+  min-height: fit-content;
 }
 
 .tab-item {
   min-width: 120px;
   max-width: 180px;
   text-transform: none;
-  transition: background-color 0.15s ease;
   position: relative;
 }
 
@@ -244,6 +364,11 @@ onUnmounted(() => {
   opacity: 0.6;
   transform: rotate(2deg);
   z-index: 1000;
+}
+
+.tab-item.tab-drag-over {
+  border-left: 2px solid rgb(var(--v-theme-primary));
+  background-color: rgba(var(--v-theme-primary), 0.06);
 }
 
 .tab-item.tab-modified::before {
@@ -281,6 +406,7 @@ onUnmounted(() => {
   font-weight: 500;
   line-height: 1.2;
   max-width: 140px;
+  padding-left: 6px;
 }
 
 .tab-item.tab-active .tab-title {
@@ -295,7 +421,6 @@ onUnmounted(() => {
 
 .tab-close-btn {
   opacity: 0;
-  transition: all 0.2s ease;
   flex-shrink: 0;
   border-radius: 4px;
 }
@@ -303,7 +428,6 @@ onUnmounted(() => {
 .tab-close-btn:hover {
   opacity: 1 !important;
   background-color: rgba(var(--v-theme-error), 0.1) !important;
-  transform: scale(1.1);
 }
 
 .tab-item:hover .tab-close-btn {
@@ -323,22 +447,6 @@ onUnmounted(() => {
 .tab-close-btn:focus-visible {
   outline: 2px solid rgb(var(--v-theme-error));
   outline-offset: 1px;
-}
-
-/* Animation for tab transitions */
-.tab-item {
-  animation: fadeIn 0.2s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* Responsive design */

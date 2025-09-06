@@ -4,6 +4,7 @@ import { useThemeConfig } from '@core/composable/useThemeConfig'
 import { useTabs } from '@/composables/useTabs'
 import { hexToRgb } from '@layouts/utils'
 import { useTheme } from 'vuetify'
+import { onMounted } from 'vue'
 
 const { syncInitialLoaderTheme, syncVuetifyThemeWithTheme: syncConfigThemeWithVuetifyTheme, isAppRtl, handleSkinChanges } = useThemeConfig()
 

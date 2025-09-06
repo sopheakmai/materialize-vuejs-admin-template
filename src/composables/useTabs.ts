@@ -40,13 +40,16 @@ export function useTabs() {
 
   // Initialize tabs system
   const initializeTabs = () => {
-    // Add current route as initial tab if it should create one
+    // On initialization/reload, clear existing tabs and add only the current route as a tab
+    tabsStore.clearTabs()
+
+    // Add current route as the only tab if it should create one
     const currentRoute = router.currentRoute.value
     if (shouldCreateTab(currentRoute)) {
       tabsStore.addTab(currentRoute, t)
     }
 
-    // Listen to route changes (only for future navigation)
+    // Listen to route changes for future navigation
     router.afterEach((to) => {
       if (shouldCreateTab(to)) {
         tabsStore.addTab(to, t)
@@ -73,7 +76,7 @@ export function useTabs() {
     if (tab && tab.closable) {
       const wasActive = tabsStore.activeTabId === tabId
       tabsStore.closeTab(tabId)
-      
+
       // If we closed the active tab, navigate to the new active tab
       if (wasActive && tabsStore.activeTab) {
         router.push({
@@ -81,7 +84,8 @@ export function useTabs() {
           params: tabsStore.activeTab.params,
           query: tabsStore.activeTab.query,
         })
-      } else if (wasActive && tabsStore.tabs.length === 0) {
+      }
+      else if (wasActive && tabsStore.tabs.length === 0) {
         // No tabs left, go to CRM dashboard
         router.push('/dashboards/crm')
       }
@@ -97,10 +101,11 @@ export function useTabs() {
   // Close all tabs and navigate to home
   const closeAllTabsAndNavigate = () => {
     tabsStore.closeAllTabs()
-    
+
     if (tabsStore.activeTab) {
       navigateToTab(tabsStore.activeTab.id)
-    } else {
+    }
+    else {
       router.push('/dashboards/crm')
     }
   }
@@ -130,20 +135,20 @@ export function useTabs() {
   return {
     // Store access
     tabsStore,
-    
+
     // Initialization
     initializeTabs,
-    
+
     // Navigation
     navigateToTab,
     openTab,
     refreshCurrentTab,
-    
+
     // Tab management
     closeTabAndNavigate,
     closeOtherTabsAndNavigate,
     closeAllTabsAndNavigate,
-    
+
     // Utilities
     shouldCreateTab,
   }
