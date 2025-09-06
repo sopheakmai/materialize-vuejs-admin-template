@@ -77,4 +77,5 @@ const tabs = [
 <route lang="yaml">
 meta:
   navActiveLink: pages-account-settings-tab
+  title: "menu.user_profile_tab"
 </route>

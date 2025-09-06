@@ -213,10 +213,10 @@ onUnmounted(() => {
                 class="tab-title"
                 v-bind="props"
               >
-                {{ tab.title }}
+                {{ t(tab.title) }}
               </span>
             </template>
-            <span>{{ tab.title }}</span>
+            <span>{{ t(tab.title) }}</span>
             <small
               v-if="tooltipConfig.showDescription && tab.meta?.description"
               class="d-block mt-1"
@@ -227,9 +227,9 @@ onUnmounted(() => {
           <span
             v-else
             class="tab-title"
-            :title="tab.title"
+            :title="t(tab.title)"
           >
-            {{ tab.title }}
+            {{ t(tab.title) }}
           </span>
           <VChip
             v-if="tab.meta?.modified"

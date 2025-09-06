@@ -148,5 +148,8 @@
   "eCommerce": "ពាណិជ្ជកម្មអេឡិចត្រូនិក",
   "FAQ": "សំណួរញឹកញាប់",
   "CRM": "ការគ្រប់គ្រងទំនាក់ទំនងអតិថិជន",
-  "menu.dashboards_crm": "ផ្ទាំងគ្រប់គ្រង CRM"
+  "menu.dashboards_crm": "ផ្ទាំងគ្រប់គ្រង CRM",
+  "menu.user_profile_tab": "ផ្ទាំងប្រវត្តិរូបអ្នកប្រើប្រាស់",
+  "menu.pages_account_settings_tab": "ផ្ទាំងកំណត់គណនី",
+  "menu.not_authorized": "មិនមានការអនុញ្ញាត"
 }

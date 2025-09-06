@@ -148,5 +148,8 @@
   "eCommerce": "ECommerce",
   "FAQ": "FAQ",
   "CRM": "CRM",
-  "menu.dashboards_crm": "Dashboards CRM"
+  "menu.dashboards_crm": "Dashboards CRM",
+  "menu.user_profile_tab": "User Profile Tab",
+  "menu.pages_account_settings_tab": "Account Settings Tab",
+  "menu.not_authorized": "Not Authorized"
 }
