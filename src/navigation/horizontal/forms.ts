@@ -1,82 +1,82 @@
 export default [
   {
-    title: 'Forms',
+    title: 'forms',
     icon: { icon: 'mdi-checkbox-multiple-outline' },
     children: [
       {
-        title: 'Form Elements',
+        title: 'form-elements',
         icon: { icon: 'mdi-content-copy' },
         children: [
           {
-            title: 'Autocomplete',
+            title: 'autocomplete',
             to: 'forms-autocomplete',
           },
           {
-            title: 'Checkbox',
+            title: 'checkbox',
             to: 'forms-checkbox',
           },
           {
-            title: 'Combobox',
+            title: 'combobox',
             to: 'forms-combobox',
           },
           {
-            title: 'Date Time Picker',
+            title: 'date-time-picker',
             to: 'forms-date-time-picker',
           },
           {
-            title: 'File Input',
+            title: 'file-input',
             to: 'forms-file-input',
           },
           {
-            title: 'Radio',
+            title: 'radio',
             to: 'forms-radio',
           },
           {
-            title: 'Custom Input',
+            title: 'custom-input',
             to: 'forms-custom-input',
           },
           {
-            title: 'Range Slider',
+            title: 'range-slider',
             to: 'forms-range-slider',
           },
           {
-            title: 'Rating',
+            title: 'rating',
             to: 'forms-rating',
           },
           {
-            title: 'Select',
+            title: 'select',
             to: 'forms-select',
           },
-          { title: 'Slider', to: 'forms-slider' },
+          { title: 'slider', to: 'forms-slider' },
           {
-            title: 'Switch',
+            title: 'switch',
             to: 'forms-switch',
           },
           {
-            title: 'Textarea',
+            title: 'textarea',
             to: 'forms-textarea',
           },
           {
-            title: 'Textfield',
+            title: 'textfield',
             to: 'forms-textfield',
           },
         ],
       },
       {
-        title: 'Form Layouts',
+        title: 'form-layouts',
         icon: { icon: 'mdi-checkbox-marked-circle-outline' },
         to: 'forms-form-layouts',
       },
       {
-        title: 'Form Wizard',
+        title: 'form-wizard',
         icon: { icon: 'mdi-align-vertical-distribute' },
         children: [
-          { title: 'Numbered', to: 'forms-form-wizard-numbered' },
-          { title: 'Icons', to: 'forms-form-wizard-icons' },
+          { title: 'numbered', to: 'forms-form-wizard-numbered' },
+          { title: 'icons', to: 'forms-form-wizard-icons' },
         ],
       },
       {
-        title: 'Form Validation',
+        title: 'form-validation',
         icon: { icon: 'mdi-checkbox-marked-circle-outline' },
         to: 'forms-form-validation',
       },

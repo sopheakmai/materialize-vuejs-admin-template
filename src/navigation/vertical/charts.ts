@@ -1,11 +1,11 @@
 export default [
-  { heading: 'Charts' },
+  { heading: 'charts' },
   {
-    title: 'Charts',
+    title: 'charts',
     icon: { icon: 'mdi-chart-donut' },
     children: [
-      { title: 'Apex Chart', to: 'charts-apex-chart' },
-      { title: 'Chartjs', to: 'charts-chartjs' },
+      { title: 'apex-chart', to: 'charts-apex-chart' },
+      { title: 'chartjs', to: 'charts-chartjs' },
     ],
   },
 ]

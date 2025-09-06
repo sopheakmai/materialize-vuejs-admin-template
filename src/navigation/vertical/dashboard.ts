@@ -1,6 +1,6 @@
 export default [
   {
-    title: 'Dashboards',
+    title: 'dashboards',
     icon: { icon: 'mdi-home-outline' },
     children: [
       {
@@ -8,7 +8,7 @@ export default [
         to: 'dashboards-crm',
       },
       {
-        title: 'Analytics',
+        title: 'analytics',
         to: 'dashboards-analytics',
       },
       {
@@ -16,7 +16,7 @@ export default [
         to: 'dashboards-ecommerce',
       },
     ],
-    badgeContent: 'New',
+    badgeContent: 'new',
     badgeClass: 'bg-error',
   },
 ]

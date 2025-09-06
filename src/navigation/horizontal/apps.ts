@@ -1,47 +1,47 @@
 export default [
   {
-    title: 'Apps',
+    title: 'apps',
     icon: { icon: 'mdi-package-variant' },
     children: [
       {
-        title: 'Email',
+        title: 'email',
         icon: { icon: 'mdi-email-outline' },
         to: 'apps-email',
       },
       {
-        title: 'Chat',
+        title: 'chat',
         icon: { icon: 'mdi-message-outline' },
         to: 'apps-chat',
       },
       {
-        title: 'Calendar',
+        title: 'calendar',
         to: 'apps-calendar',
         icon: { icon: 'mdi-calendar-blank' },
       },
       {
-        title: 'Invoice',
+        title: 'invoice',
         icon: { icon: 'mdi-file-document-outline' },
         children: [
-          { title: 'List', to: 'apps-invoice-list' },
-          { title: 'Preview', to: { name: 'apps-invoice-preview-id', params: { id: '5036' } } },
-          { title: 'Edit', to: { name: 'apps-invoice-edit-id', params: { id: '5036' } } },
-          { title: 'Add', to: 'apps-invoice-add' },
+          { title: 'list', to: 'apps-invoice-list' },
+          { title: 'preview', to: { name: 'apps-invoice-preview-id', params: { id: '5036' } } },
+          { title: 'edit', to: { name: 'apps-invoice-edit-id', params: { id: '5036' } } },
+          { title: 'add', to: 'apps-invoice-add' },
         ],
       },
       {
-        title: 'User',
+        title: 'user',
         icon: { icon: 'mdi-account-outline' },
         children: [
-          { title: 'List', to: 'apps-user-list' },
-          { title: 'View', to: { name: 'apps-user-view-id', params: { id: 21 } } },
+          { title: 'list-0', to: 'apps-user-list' },
+          { title: 'view', to: { name: 'apps-user-view-id', params: { id: 21 } } },
         ],
       },
       {
-        title: 'Roles & Permissions',
+        title: 'roles-and-permissions',
         icon: { icon: 'mdi-shield-account-outline' },
         children: [
-          { title: 'Roles', to: 'apps-roles' },
-          { title: 'Permissions', to: 'apps-permissions' },
+          { title: 'roles', to: 'apps-roles' },
+          { title: 'permissions', to: 'apps-permissions' },
         ],
       },
     ],

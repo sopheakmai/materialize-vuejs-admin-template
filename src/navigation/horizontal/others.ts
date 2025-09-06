@@ -1,32 +1,32 @@
 export default [
   {
-    title: 'Others',
+    title: 'others',
     icon: { icon: 'mdi-dots-horizontal' },
     children: [
       {
-        title: 'Access Control',
+        title: 'access-control',
         icon: { icon: 'mdi-shield-outline' },
         to: 'access-control',
         action: 'read',
         subject: 'AclDemo',
       },
       {
-        title: 'Nav Levels',
+        title: 'nav-levels',
         icon: { icon: 'mdi-menu' },
         children: [
           {
-            title: 'Level 2.1',
+            title: 'level-2-1',
             to: null,
           },
           {
-            title: 'Level 2.2',
+            title: 'level-2-2',
             children: [
               {
-                title: 'Level 3.1',
+                title: 'level-3-1',
                 to: null,
               },
               {
-                title: 'Level 3.2',
+                title: 'level-3-2',
                 to: null,
               },
             ],
@@ -34,19 +34,19 @@ export default [
         ],
       },
       {
-        title: 'Disabled Menu',
+        title: 'disabled-menu',
         to: null,
         icon: { icon: 'mdi-eye-off-outline' },
         disable: true,
       },
       {
-        title: 'Raise Support',
+        title: 'raise-support',
         href: 'https://pixinvent.ticksy.com/',
         icon: { icon: 'mdi-lifebuoy' },
         target: '_blank',
       },
       {
-        title: 'Documentation',
+        title: 'documentation',
         href: 'https://pixinvent.com/demo/materialize-vuejs-admin-template/documentation/',
         icon: { icon: 'mdi-file-document-outline' },
         target: '_blank',

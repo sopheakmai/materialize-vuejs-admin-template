@@ -9,7 +9,7 @@ defineEmits<{
   (e: 'change', id: string): void
 }>()
 
-interface Props {
+type Props = {
   languages: I18nLanguage[]
 
   location?: any

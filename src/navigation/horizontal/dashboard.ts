@@ -1,6 +1,6 @@
 export default [
   {
-    title: 'Dashboards',
+    title: 'dashboards',
     icon: { icon: 'mdi-home-outline' },
     children: [
       {
@@ -8,10 +8,10 @@ export default [
         to: 'dashboards-crm',
         icon: { icon: 'mdi-monitor-dashboard' },
         action: 'read',
-        subject: 'Auth',
+        subject: 'auth',
       },
       {
-        title: 'Analytics',
+        title: 'analytics',
         to: 'dashboards-analytics',
         icon: { icon: 'mdi-chart-timeline-variant' },
       },
@@ -20,7 +20,7 @@ export default [
         to: 'dashboards-ecommerce',
         icon: { icon: 'mdi-cart-outline' },
         action: 'read',
-        subject: 'Admin',
+        subject: 'admin',
       },
     ],
   },
