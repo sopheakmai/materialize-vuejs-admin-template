@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import type { CustomInputContent } from '@core/types'
 
-interface Emit {
+type Emit = {
   (e: 'update:isDialogVisible', value: boolean): void
 }
-interface Props {
-  isDialogVisible: boolean
+type Props = {
+  isDialogVisible?: boolean
   smsCode?: string
   authAppCode?: string
 }
@@ -55,7 +55,7 @@ const openSelectedMethodDialog = () => {
   <VDialog
     max-width="800"
     :model-value="props.isDialogVisible"
-    @update:model-value="(val) => $emit('update:isDialogVisible', val)"
+    @update:model-value="(val: boolean) => $emit('update:isDialogVisible', val)"
   >
     <VCard class="pa-sm-11 pa-3">
       <!-- 👉 dialog close btn -->

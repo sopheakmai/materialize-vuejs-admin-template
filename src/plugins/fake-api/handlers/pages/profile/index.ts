@@ -1,4 +1,4 @@
-import { HttpResponse, http } from 'msw'
+import { http, HttpResponse } from 'msw'
 import { db } from '@db/pages/profile/db'
 
 // Handler for pages/profile
@@ -9,13 +9,11 @@ export const handlerPagesProfile = [
 
     const tab = url.searchParams.get('tab') || ''
 
-    return HttpResponse.json(db.data[tab as keyof typeof db.data],
-      { status: 200 })
+    return HttpResponse.json(db.data[tab as keyof typeof db.data], { status: 200 })
   }),
 
   // GET /pages/profile/header
   http.get(('/api/pages/profile/header'), () => {
-    return HttpResponse.json(db.data.profileHeader,
-      { status: 200 })
+    return HttpResponse.json(db.data.profileHeader, { status: 200 })
   }),
 ]

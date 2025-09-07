@@ -1,6 +1,6 @@
 export type ChatStatus = 'online' | 'offline' | 'busy' | 'away'
 
-export interface ChatContact {
+export type ChatContact = {
   id: number
   fullName: string
   role: string
@@ -9,7 +9,7 @@ export interface ChatContact {
   status: ChatStatus
 }
 
-export interface ChatMessage {
+export type ChatMessage = {
   message: string
   time: string
   senderId: number
@@ -20,7 +20,7 @@ export interface ChatMessage {
   }
 }
 
-export interface Chat {
+export type Chat = {
   id: number
   userId: number
   unseenMsgs: number
@@ -28,7 +28,7 @@ export interface Chat {
 }
 
 // ℹ️ This is chat type received in response of user chat
-export interface ChatOut {
+export type ChatOut = {
   id: Chat['id']
   unseenMsgs: Chat['unseenMsgs']
   messages: ChatMessage[]
@@ -37,6 +37,6 @@ export interface ChatOut {
   lastMessage: ChatMessage[number]
 }
 
-export interface ChatContactWithChat extends ChatContact {
+export type ChatContactWithChat = {
   chat: ChatOut
-}
+} & ChatContact

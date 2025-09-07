@@ -12,7 +12,7 @@ defineEmits<{
 }>()
 
 const selectedDeliveryAddress = computed(() => {
-  return props.checkoutData.addresses.filter(address => {
+  return props.checkoutData.addresses.filter((address) => {
     return address.value === props.checkoutData.deliveryAddress
   })
 })

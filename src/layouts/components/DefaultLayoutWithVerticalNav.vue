@@ -23,7 +23,7 @@ const verticalNavHeaderActionAnimationName = ref<'rotate-180' | 'rotate-back-180
 watch([
   () => configStore.isVerticalNavCollapsed,
   () => configStore.isAppRTL,
-], val => {
+], (val) => {
   if (configStore.isAppRTL)
     verticalNavHeaderActionAnimationName.value = val[0] ? 'rotate-back-180' : 'rotate-180'
   else

@@ -1,11 +1,11 @@
 import { canNavigate } from '@layouts/plugins/casl'
-import type { RouteNamedMap, _RouterTyped } from 'unplugin-vue-router'
+import type { _RouterTyped, RouteNamedMap } from 'unplugin-vue-router'
 import { tabsMiddleware } from './tabs-middleware'
 
 export const setupGuards = (router: _RouterTyped<RouteNamedMap & { [key: string]: any }>) => {
   // 👉 router.beforeEach
   // Docs: https://router.vuejs.org/guide/advanced/navigation-guards.html#global-before-guards
-  router.beforeEach(to => {
+  router.beforeEach((to) => {
     /*
      * If it's a public route, continue navigation. This kind of pages are allowed to visited by login & non-login users. Basically, without any restrictions.
      * Examples of public routes are, 404, under maintenance, etc.
@@ -32,20 +32,18 @@ export const setupGuards = (router: _RouterTyped<RouteNamedMap & { [key: string]
     }
 
     if (!canNavigate(to) && to.matched.length) {
-      /* eslint-disable indent */
       return isLoggedIn
         ? { name: 'not-authorized' }
         : {
-            name: 'login',
-            query: {
-              ...to.query,
-              to: to.fullPath !== '/' ? to.path : undefined,
-            },
-          }
-      /* eslint-enable indent */
+          name: 'login',
+          query: {
+            ...to.query,
+            to: to.fullPath !== '/' ? to.path : undefined,
+          },
+        }
     }
   })
-  
+
   // Register tabs middleware
   router.beforeEach(tabsMiddleware)
 }

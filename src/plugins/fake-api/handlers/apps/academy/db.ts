@@ -19,7 +19,7 @@ import tutorImg4 from '@images/pages/app-academy-tutor-4.png'
 import tutorImg5 from '@images/pages/app-academy-tutor-5.png'
 import tutorImg6 from '@images/pages/app-academy-tutor-6.png'
 
-interface DB {
+type DB = {
   courses: Course[]
   courseDetails: CourseDetails
 }

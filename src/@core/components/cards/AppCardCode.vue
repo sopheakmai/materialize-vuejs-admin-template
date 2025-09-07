@@ -4,7 +4,7 @@ import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
 
 type CodeLanguages = 'ts' | 'js'
 
-interface Props {
+type Props = {
   title: string
   code: CodeProp
   codeLanguage?: string

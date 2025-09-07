@@ -2,7 +2,7 @@
 import { useDropZone, useFileDialog, useObjectUrl } from '@vueuse/core'
 
 const dropZoneRef = ref<HTMLDivElement>()
-interface FileData {
+type FileData = {
   file: File
   url: string
 }
@@ -11,7 +11,7 @@ const fileData = ref<FileData[]>([])
 const { open, onChange } = useFileDialog({ accept: 'image/*' })
 
 function onDrop(DroppedFiles: File[] | null) {
-  DroppedFiles?.forEach(file => {
+  DroppedFiles?.forEach((file) => {
     if (file.type.slice(0, 6) !== 'image/') {
       // eslint-disable-next-line no-alert
       alert('Only image files are allowed')

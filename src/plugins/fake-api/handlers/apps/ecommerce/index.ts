@@ -1,6 +1,6 @@
 import is from '@sindresorhus/is'
 import { destr } from 'destr'
-import { HttpResponse, http } from 'msw'
+import { http, HttpResponse } from 'msw'
 import { db } from '@db/apps/ecommerce/db'
 import { paginateArray } from '@api-utils/paginateArray'
 
@@ -41,9 +41,9 @@ export const handlerAppsEcommerce = [
     // Filtering Products
     let filteredProducts = db.products.filter(product => (
       (product.productName.toLowerCase().includes(queryLower) || product.productBrand.toLowerCase().includes(queryLower))
-        && product.category === (category || product.category)
-        && (product.status === (status || product.status))
-        && (typeof stockLocal === 'undefined' ? true : (product.stock === stockLocal))
+      && product.category === (category || product.category)
+      && (product.status === (status || product.status))
+      && (typeof stockLocal === 'undefined' ? true : (product.stock === stockLocal))
     )).reverse()
 
     // Sort
@@ -117,7 +117,8 @@ export const handlerAppsEcommerce = [
 
     return HttpResponse.json(
       {
-        products: paginateArray(filteredProducts, itemsPerPageLocal, pageLocal), total: filteredProducts.length,
+        products: paginateArray(filteredProducts, itemsPerPageLocal, pageLocal),
+        total: filteredProducts.length,
       },
       {
         status: 200,
@@ -191,11 +192,11 @@ export const handlerAppsEcommerce = [
     const itemsPerPageLocal = is.number(parsedItemsPerPage) ? parsedItemsPerPage : 10
     const pageLocal = is.number(parsedPage) ? parsedPage : 1
 
-    const filterOrders = db.orderData.filter(order => {
+    const filterOrders = db.orderData.filter((order) => {
       return (
         order.customer.toLowerCase().includes(queryLower)
-            || order.email.toLowerCase().includes(queryLower)
-            || order.order.toString().includes(queryLower)
+        || order.email.toLowerCase().includes(queryLower)
+        || order.order.toString().includes(queryLower)
       )
     }).reverse()
 
@@ -247,11 +248,13 @@ export const handlerAppsEcommerce = [
 
     return HttpResponse.json(
       {
-        orders: paginateArray(filterOrders, itemsPerPageLocal, pageLocal), total: filterOrders.length,
+        orders: paginateArray(filterOrders, itemsPerPageLocal, pageLocal),
+        total: filterOrders.length,
       },
       {
         status: 200,
-      })
+      },
+    )
   }),
 
   // Delete Order
@@ -318,11 +321,11 @@ export const handlerAppsEcommerce = [
     const searchQuery = is.string(q) ? q : undefined
     const queryLowered = (searchQuery ?? '').toString().toLowerCase()
 
-    const filteredCustomers = db.customerData.filter(customer => {
+    const filteredCustomers = db.customerData.filter((customer) => {
       return (
         customer.customer.toLowerCase().includes(queryLowered)
-              || customer.country.toLowerCase().includes(queryLowered)
-              || customer.email.toLowerCase().includes(queryLowered)
+        || customer.country.toLowerCase().includes(queryLowered)
+        || customer.email.toLowerCase().includes(queryLowered)
       )
     }).reverse()
 
@@ -375,11 +378,13 @@ export const handlerAppsEcommerce = [
 
     return HttpResponse.json(
       {
-        customers: paginateArray(filteredCustomers, itemsPerPageLocal, pageLocal), total: filteredCustomers.length,
+        customers: paginateArray(filteredCustomers, itemsPerPageLocal, pageLocal),
+        total: filteredCustomers.length,
       },
       {
         status: 200,
-      })
+      },
+    )
   }),
 
   // 👉 Manage Reviews.
@@ -411,7 +416,7 @@ export const handlerAppsEcommerce = [
 
     // Filtering Reviews
 
-    const filteredReviews = db.reviews.filter(review => {
+    const filteredReviews = db.reviews.filter((review) => {
       const { product, reviewer, email } = review
 
       return (
@@ -469,7 +474,8 @@ export const handlerAppsEcommerce = [
 
     return HttpResponse.json(
       {
-        reviews: paginateArray(filteredReviews, itemsPerPageLocal, pageLocal), total: filteredReviews.length,
+        reviews: paginateArray(filteredReviews, itemsPerPageLocal, pageLocal),
+        total: filteredReviews.length,
       },
       {
         status: 200,

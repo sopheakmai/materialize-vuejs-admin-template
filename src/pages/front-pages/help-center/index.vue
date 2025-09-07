@@ -19,7 +19,7 @@ definePage({
   },
 })
 
-interface ApiDataType {
+type ApiDataType = {
   keepLearning: HelpCenterArticlesOverview[]
   popularArticles: HelpCenterArticlesOverview[]
   allArticles: HelpCenterAllCategoryArticles[]

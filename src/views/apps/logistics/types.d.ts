@@ -1,3 +1,3 @@
-export interface vehicleParams{
-  options: object,
+export type vehicleParams = {
+  options: object
 }

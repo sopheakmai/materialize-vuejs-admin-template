@@ -46,7 +46,7 @@ export const registerPlugins = (app: App) => {
 
   const importPaths = Object.keys(imports).sort()
 
-  importPaths.forEach(path => {
+  importPaths.forEach((path) => {
     const pluginImportModule = imports[path]
 
     pluginImportModule.default?.(app)

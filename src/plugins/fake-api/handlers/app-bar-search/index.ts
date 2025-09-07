@@ -1,5 +1,5 @@
 import is from '@sindresorhus/is'
-import { HttpResponse, http } from 'msw'
+import { http, HttpResponse } from 'msw'
 import { db } from '@db/app-bar-search/db'
 import type { SearchResults } from '@db/app-bar-search/types'
 
@@ -14,7 +14,7 @@ export const handlerAppBarSearch = [
 
     const filteredSearchData = [] as SearchResults[]
 
-    db.searchItems.forEach(item => {
+    db.searchItems.forEach((item) => {
       if (item.children) {
         const matchingChildren = item.children.filter(
           child => child.title.toLowerCase().includes(queryLowered),
@@ -41,7 +41,6 @@ export const handlerAppBarSearch = [
       })
     }
 
-    return HttpResponse.json([...filteredSearchData],
-      { status: 200 })
+    return HttpResponse.json([...filteredSearchData], { status: 200 })
   }),
 ]

@@ -5,12 +5,12 @@ import type { VForm } from 'vuetify/components/VForm'
 
 import type { UserProperties } from '@db/apps/users/types'
 
-interface Emit {
+type Emit = {
   (e: 'update:isDrawerOpen', value: boolean): void
   (e: 'userData', value: UserProperties): void
 }
 
-interface Props {
+type Props = {
   isDrawerOpen: boolean
 }
 

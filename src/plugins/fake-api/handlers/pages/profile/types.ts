@@ -1,28 +1,28 @@
-export interface ProfileChip {
+export type ProfileChip = {
   title: string
   color: string
 }
 
-export interface ProfileTabCommon {
+export type ProfileTabCommon = {
   icon: string
   value: string
   property: string
 }
 export type ProfileTeams = ProfileTabCommon & { color: string }
 
-export interface ProfileConnections {
+export type ProfileConnections = {
   name: string
   avatar: string
   isFriend: boolean
   connections: string
 }
 
-export interface ProfileAvatarGroup {
+export type ProfileAvatarGroup = {
   name: string
   avatar: string
 }
 
-export interface ProfileTeamsTech {
+export type ProfileTeamsTech = {
   title: string
   avatar: string
   members: number
@@ -30,7 +30,7 @@ export interface ProfileTeamsTech {
   ChipColor: string
 }
 
-export interface ConnectionsTab {
+export type ConnectionsTab = {
   name: string
   tasks: string
   avatar: string
@@ -41,7 +41,7 @@ export interface ConnectionsTab {
   chips: ProfileChip[]
 }
 
-export interface ProfileTab {
+export type ProfileTab = {
   teams: ProfileTeams[]
   about: ProfileTabCommon[]
   contacts: ProfileTabCommon[]
@@ -50,7 +50,7 @@ export interface ProfileTab {
   connections: ProfileConnections[]
 }
 
-export interface ProfileHeader {
+export type ProfileHeader = {
   fullName: string
   coverImg: string
   location: string
@@ -60,7 +60,7 @@ export interface ProfileHeader {
   designationIcon?: string
 }
 
-export interface ProjectTableRow {
+export type ProjectTableRow = {
   id: number
   date: string
   name: string
@@ -71,7 +71,7 @@ export interface ProjectTableRow {
   avatarColor?: string
 }
 
-export interface ProjectsTab {
+export type ProjectsTab = {
   hours: string
   tasks: string
   title: string
@@ -92,7 +92,7 @@ export interface ProjectsTab {
   avatarGroup: ProfileAvatarGroup[]
 }
 
-export interface TeamsTab {
+export type TeamsTab = {
   title: string
   avatar: string
   description: string

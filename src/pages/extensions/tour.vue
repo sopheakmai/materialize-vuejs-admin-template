@@ -4,14 +4,14 @@ import { useShepherd } from 'vue-shepherd'
 const route = useRoute()
 
 // 👉 Hotkey
-// eslint-disable-next-line camelcase
+
 const { ctrl_k, meta_k } = useMagicKeys()
 
 // 👉 Tour initialization
 let tour: any = null
 
 // 👉 watch command palette and route change
-/* eslint-disable camelcase */
+
 watch([
   ctrl_k,
   meta_k,
@@ -20,7 +20,6 @@ watch([
   if (tour.isActive())
     tour.cancel()
 })
-/* eslint-enable */
 
 onMounted(() => {
   const navbar = document.querySelector('.layout-navbar')

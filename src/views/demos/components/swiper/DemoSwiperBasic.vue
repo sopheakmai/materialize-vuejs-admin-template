@@ -11,8 +11,8 @@ register()
 </script>
 
 <template>
-  <swiper-container events-prefix="swiper-">
-    <swiper-slide
+  <SwiperContainer events-prefix="swiper-">
+    <SwiperSlide
       v-for="swiperImg in [
         swiper1,
         swiper2,
@@ -23,6 +23,6 @@ register()
       :key="swiperImg"
     >
       <VImg :src="swiperImg" />
-    </swiper-slide>
-  </swiper-container>
+    </SwiperSlide>
+  </SwiperContainer>
 </template>

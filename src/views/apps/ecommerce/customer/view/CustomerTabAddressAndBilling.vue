@@ -11,7 +11,7 @@ const visa = useGenerateImageVariant(visaLight, visaDark)
 const masterCard = useGenerateImageVariant(masterCardLight, masterCardDark)
 const americanExpress = useGenerateImageVariant(americanExLight, americanExDark)
 
-interface CardDetails {
+type CardDetails = {
   number: string
   name: string
   expiry: string
@@ -20,7 +20,7 @@ interface CardDetails {
   type: string
 }
 
-interface BillingAddress {
+type BillingAddress = {
   firstName: string
   lastName: string
   selectedCountry: string | null

@@ -1,5 +1,5 @@
 // Customer Types
-export interface Customer {
+export type Customer = {
   id: number
   customer: string
   customerId: number
@@ -14,7 +14,7 @@ export interface Customer {
   contact?: string
 }
 
-export interface Referrals {
+export type Referrals = {
   id: number
   user: string
   email: string
@@ -26,7 +26,7 @@ export interface Referrals {
 
 }
 
-export interface Review {
+export type Review = {
   id: number
   product: string
   companyName: string
@@ -41,7 +41,7 @@ export interface Review {
   para: string
 }
 
-export interface ECommerceProduct {
+export type ECommerceProduct = {
   id: number
   productName: string
   category: string
@@ -54,7 +54,7 @@ export interface ECommerceProduct {
   productBrand: string
 }
 
-export interface Order {
+export type Order = {
   id: number
   order: number
   customer: string

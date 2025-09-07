@@ -4,7 +4,7 @@ import googlePlayImg from '@images/front-pages/landing-page/google-play-icon.png
 import { VNodeRenderer } from '@layouts/components/VNodeRenderer'
 import { themeConfig } from '@themeConfig'
 
-interface Menu {
+type Menu = {
   name: string
   to: any
   isNew?: boolean

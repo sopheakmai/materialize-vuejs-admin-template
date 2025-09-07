@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { ProfileTab } from '@db/pages/profile/types'
 
-interface Props {
+type Props = {
   data: ProfileTab
 }
 const props = defineProps<Props>()

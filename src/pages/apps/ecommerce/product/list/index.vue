@@ -82,20 +82,18 @@ const resolveStatus = (statusMsg: string) => {
     return { text: 'Inactive', color: 'error' }
 }
 
-const { data: productsData, execute: fetchProducts } = await useApi<any>(createUrl('/apps/ecommerce/products',
-  {
-    query: {
-      q: searchQuery,
-      stock: selectedStock,
-      category: selectedCategory,
-      status: selectedStatus,
-      page,
-      itemsPerPage,
-      sortBy,
-      orderBy,
-    },
+const { data: productsData, execute: fetchProducts } = await useApi<any>(createUrl('/apps/ecommerce/products', {
+  query: {
+    q: searchQuery,
+    stock: selectedStock,
+    category: selectedCategory,
+    status: selectedStatus,
+    page,
+    itemsPerPage,
+    sortBy,
+    orderBy,
   },
-))
+}))
 
 const products = computed((): ECommerceProduct[] => productsData.value.products)
 const totalProduct = computed(() => productsData.value.total)

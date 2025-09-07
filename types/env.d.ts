@@ -1,6 +1,7 @@
 import 'vue-router'
+
 declare module 'vue-router' {
-  interface RouteMeta {
+  type RouteMeta = {
     action?: string
     subject?: string
     layoutWrapperClasses?: string

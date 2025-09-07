@@ -18,11 +18,11 @@ const americanEx = useGenerateImageVariant(americanExLight, americanExDark)
 const jcb = useGenerateImageVariant(jcbLight, jcbDark)
 const dc = useGenerateImageVariant(dcLight, dcDark)
 
-interface Props {
+type Props = {
   isDialogVisible: boolean
 }
 
-interface Emit {
+type Emit = {
   (e: 'update:isDialogVisible', val: boolean): void
 }
 

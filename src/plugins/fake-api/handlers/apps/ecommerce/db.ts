@@ -44,7 +44,7 @@ import product7 from '@images/ecommerce-images/product-7.png'
 import product8 from '@images/ecommerce-images/product-8.png'
 import product9 from '@images/ecommerce-images/product-9.png'
 
-interface DB {
+type DB = {
   products: ECommerceProduct[]
   orderData: Order[]
   customerData: Customer[]

@@ -12,7 +12,7 @@ import avatar7 from '@images/avatars/avatar-7.png'
 import avatar8 from '@images/avatars/avatar-8.png'
 import avatar9 from '@images/avatars/avatar-9.png'
 
-interface DB {
+type DB = {
   users: UserProperties[]
 }
 

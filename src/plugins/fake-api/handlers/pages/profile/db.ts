@@ -1,7 +1,10 @@
 import type {
   ConnectionsTab,
   ProfileHeader,
-  ProfileTab, ProjectTableRow, ProjectsTab, TeamsTab,
+  ProfileTab,
+  ProjectsTab,
+  ProjectTableRow,
+  TeamsTab,
 } from '@/plugins/fake-api/handlers/pages/profile/types'
 
 import avatar1 from '@images/avatars/avatar-1.png'
@@ -23,7 +26,7 @@ import vueLabel from '@images/icons/project-icons/vue.png'
 import xdLabel from '@images/icons/project-icons/xd.png'
 import UserProfileHeaderBg from '@images/pages/user-profile-header-bg.png'
 
-interface DataType {
+type DataType = {
   profileHeader: ProfileHeader
   profile: ProfileTab
   teams: TeamsTab[]
@@ -31,7 +34,7 @@ interface DataType {
   connections: ConnectionsTab[]
 }
 
-interface DB {
+type DB = {
   data: DataType
   projectTable: ProjectTableRow[]
 }

@@ -1,5 +1,5 @@
 import is from '@sindresorhus/is'
-import { HttpResponse, http } from 'msw'
+import { http, HttpResponse } from 'msw'
 import { db } from '@db/pages/faq/db'
 import type { FaqCategory } from '@db/pages/faq/types'
 
@@ -16,7 +16,7 @@ export const handlerPagesFaq = [
     const filteredData: FaqCategory[] = []
 
     Object.entries(db.faqs).forEach(([_, faqObj]) => {
-      const filteredQAndA = faqObj.faqs.filter(obj => {
+      const filteredQAndA = faqObj.faqs.filter((obj) => {
         return obj.question.toLowerCase().includes(queryLowered)
       })
 
@@ -24,8 +24,7 @@ export const handlerPagesFaq = [
         filteredData.push({ ...faqObj, faqs: filteredQAndA })
     })
 
-    return HttpResponse.json(filteredData,
-      { status: 200 })
+    return HttpResponse.json(filteredData, { status: 200 })
   }),
 
 ]

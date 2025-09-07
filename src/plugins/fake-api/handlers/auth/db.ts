@@ -1,6 +1,6 @@
 import type { User } from '@/plugins/fake-api/handlers/auth/types'
 
-interface DB {
+type DB = {
   userTokens: string[]
   users: User[]
 }

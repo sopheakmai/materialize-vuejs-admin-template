@@ -1,5 +1,5 @@
 <script setup lang="ts">
-interface UserData {
+type UserData = {
   id: number | undefined
   fullName: string | undefined
   company: string
@@ -17,12 +17,12 @@ interface UserData {
   language: string[]
 }
 
-interface Props {
+type Props = {
   userData?: UserData
   isDialogVisible: boolean
 }
 
-interface Emit {
+type Emit = {
   (e: 'submit', value: UserData): void
   (e: 'update:isDialogVisible', val: boolean): void
 }

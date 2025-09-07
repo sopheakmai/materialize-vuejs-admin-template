@@ -4,7 +4,7 @@ import type { ChartJsCustomColors } from '@/views/charts/chartjs/types'
 import { getScatterChartConfig } from '@core/libs/chartjs/chartjsConfig'
 import ScatterChart from '@core/libs/chartjs/components/ScatterChart'
 
-interface Props {
+type Props = {
   colors: ChartJsCustomColors
 }
 

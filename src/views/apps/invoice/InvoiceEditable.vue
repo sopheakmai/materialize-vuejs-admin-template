@@ -5,7 +5,7 @@ import type { Client } from '@db/apps/invoice/types'
 import { VNodeRenderer } from '@layouts/components/VNodeRenderer'
 import { themeConfig } from '@themeConfig'
 
-interface Props {
+type Props = {
   data: InvoiceData
 }
 

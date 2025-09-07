@@ -10,7 +10,7 @@ import type { Email } from '@db/apps/email/types'
 import { useEmail } from '@/views/apps/email/useEmail'
 import type { MoveEmailToAction } from '@/views/apps/email/useEmail'
 
-interface Props {
+type Props = {
   email: Email | null
   emailMeta: {
     hasPreviousEmail: boolean

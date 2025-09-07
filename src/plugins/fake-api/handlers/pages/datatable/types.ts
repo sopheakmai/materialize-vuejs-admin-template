@@ -1,11 +1,11 @@
-export interface SalesDetails {
+export type SalesDetails = {
   product: Product
   buyer: Buyer
   date: string
   payment: Payment
 }
 
-export interface Product {
+export type Product = {
   id: number
   name: string
   slug: string
@@ -18,19 +18,19 @@ export interface Product {
   description: string
 }
 
-export interface Buyer {
+export type Buyer = {
   name: string
   avatar: string | null
 }
 
-export interface Payment {
+export type Payment = {
   total: number
   receivedPaymentStatus: string
   paidAmount: number
   status: string
 }
 
-export interface Data {
+export type Data = {
   responsiveId: string
   id: number
   avatar: string

@@ -1,7 +1,7 @@
 // Kanban Data
-interface Member { name: string; img: string }
+type Member = { name: string, img: string }
 
-export interface KanbanItem {
+export type KanbanItem = {
   id: number
   title: string
   comments?: string
@@ -12,36 +12,36 @@ export interface KanbanItem {
   commentsCount?: number
   image?: string
 }
-export interface KanbanBoard {
+export type KanbanBoard = {
   id: number
   title: string
   itemsIds: number[]
 }
 
-export interface RenameKanbanBoard {
+export type RenameKanbanBoard = {
   oldName: string
   boardId: number
   newName: string
 }
 
-export interface AddNewKanbanItem {
+export type AddNewKanbanItem = {
   itemTitle: string
   boardName: string
   boardId: number
 }
 
-export interface EditKanbanItem {
+export type EditKanbanItem = {
   item: KanbanItem | undefined
   boardName: string
   boardId: number
 }
 
-export interface KanbanData {
+export type KanbanData = {
   boards: KanbanBoard[]
   items: KanbanItem[]
 }
 
-export interface KanbanState {
+export type KanbanState = {
   ids: number[]
   boardId: number
 }

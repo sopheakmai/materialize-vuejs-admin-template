@@ -17,7 +17,8 @@ const authThemeImg = useGenerateImageVariant(
   authV2RegisterIllustrationDark,
   authV2RegisterIllustrationBorderedLight,
   authV2RegisterIllustrationBorderedDark,
-  true)
+  true,
+)
 
 definePage({
   meta: {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-interface BillingAddress {
+type BillingAddress = {
   firstName: string | undefined
   lastName: string | undefined
   selectedCountry: string | null
@@ -11,11 +11,11 @@ interface BillingAddress {
   state: string
   zipCode: number | null
 }
-interface Props {
+type Props = {
   billingAddress?: BillingAddress
   isDialogVisible: boolean
 }
-interface Emit {
+type Emit = {
   (e: 'update:isDialogVisible', value: boolean): void
   (e: 'submit', value: BillingAddress): void
 }

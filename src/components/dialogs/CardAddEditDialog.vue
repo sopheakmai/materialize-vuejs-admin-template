@@ -1,5 +1,5 @@
 <script setup lang="ts">
-interface Details {
+type Details = {
   number: string
   name: string
   expiry: string
@@ -7,12 +7,12 @@ interface Details {
   isPrimary: boolean
   type: string
 }
-interface Emit {
+type Emit = {
   (e: 'submit', value: Details): void
   (e: 'update:isDialogVisible', value: boolean): void
 }
 
-interface Props {
+type Props = {
   cardDetails?: Details
   isDialogVisible: boolean
 }

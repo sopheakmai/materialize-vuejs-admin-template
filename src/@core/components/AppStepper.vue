@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import stepperCheck from '@images/svg/stepper-check.svg'
 
-interface Item {
+type Item = {
   title: string
   icon?: string | object
   size?: string
@@ -10,7 +10,7 @@ interface Item {
 
 type Direction = 'vertical' | 'horizontal'
 
-interface Props {
+type Props = {
   items: Item[]
   currentStep?: number
   direction?: Direction
@@ -19,7 +19,7 @@ interface Props {
   align?: 'start' | 'center' | 'end' | 'default'
 }
 
-interface Emit {
+type Emit = {
   (e: 'update:currentStep', value: number): void
 }
 
@@ -59,8 +59,9 @@ watchEffect(() => {
     props.currentStep !== undefined
     && props.currentStep < props.items.length
     && props.currentStep >= 0
-  )
+  ) {
     currentStep.value = props.currentStep
+  }
 
   emit('update:currentStep', currentStep.value)
 })

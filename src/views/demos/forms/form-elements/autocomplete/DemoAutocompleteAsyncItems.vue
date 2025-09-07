@@ -77,7 +77,7 @@ const querySelections = (query: string) => {
   }, 500)
 }
 
-watch(search, query => {
+watch(search, (query) => {
   query && query !== select.value && querySelections(query)
 })
 </script>

@@ -1,6 +1,6 @@
 import type { FaqCategory } from '@/plugins/fake-api/handlers/pages/faq/types'
 
-interface DB {
+type DB = {
   faqs: FaqCategory[]
 }
 

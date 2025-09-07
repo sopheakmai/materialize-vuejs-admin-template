@@ -3,7 +3,7 @@ const items = ['Gaming', 'Programming', 'Vue', 'Vuetify']
 const selectedList = ref(['Vuetify'])
 const search = ref(null)
 
-watch(selectedList, value => {
+watch(selectedList, (value) => {
   if (value.length > 5)
     nextTick(() => selectedList.value.pop())
 })

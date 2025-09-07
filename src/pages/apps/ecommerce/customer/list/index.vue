@@ -28,16 +28,15 @@ const updateOptions = (options: any) => {
 }
 
 // Fetch customers Data
-const { data: customerData } = await useApi<any>(createUrl('/apps/ecommerce/customers',
-  {
-    query: {
-      q: searchQuery,
-      itemsPerPage,
-      page,
-      sortBy,
-      orderBy,
-    },
-  }),
+const { data: customerData } = await useApi<any>(createUrl('/apps/ecommerce/customers', {
+  query: {
+    q: searchQuery,
+    itemsPerPage,
+    page,
+    sortBy,
+    orderBy,
+  },
+}),
 )
 
 const customers = computed((): Customer[] => customerData.value.customers)

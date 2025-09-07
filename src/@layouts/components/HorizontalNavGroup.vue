@@ -6,7 +6,7 @@ import { useLayoutConfigStore } from '@layouts/stores/config'
 import type { NavGroup } from '@layouts/types'
 import { getDynamicI18nProps, isNavGroupActive } from '@layouts/utils'
 
-interface Props {
+type Props = {
   item: NavGroup
   childrenAtEnd?: boolean
 

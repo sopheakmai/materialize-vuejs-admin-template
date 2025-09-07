@@ -3,7 +3,7 @@ import { VerticalNav } from '@layouts/components'
 import { useLayoutConfigStore } from '@layouts/stores/config'
 import type { VerticalNavItems } from '@layouts/types'
 
-interface Props {
+type Props = {
   navItems: VerticalNavItems
   verticalNavAttrs?: {
     wrapper?: string

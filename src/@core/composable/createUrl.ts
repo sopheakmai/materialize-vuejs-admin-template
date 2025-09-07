@@ -1,7 +1,7 @@
 import { stringifyQuery } from 'ufo'
 import type { MaybeRefOrGetter } from 'vue'
 
-interface Options {
+type Options = {
   query: MaybeRefOrGetter<Record<string, any>>
 }
 

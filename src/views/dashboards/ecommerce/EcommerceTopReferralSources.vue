@@ -13,7 +13,7 @@ import catImg2 from '@images/cards/tabs-desktop.png'
 import catImg1 from '@images/cards/tabs-mobile.png'
 import console2 from '@images/cards/xbox-series-x.png'
 
-interface Product {
+type Product = {
   status: string
   revenue: string
   conversion: number
@@ -21,7 +21,7 @@ interface Product {
   image: string
 }
 
-interface ProductData {
+type ProductData = {
   mobile: Product[]
   desktop: Product[]
   console: Product[]

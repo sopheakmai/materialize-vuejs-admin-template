@@ -6,13 +6,13 @@ import avatar4 from '@images/avatars/avatar-4.png'
 import avatar7 from '@images/avatars/avatar-7.png'
 import avatar8 from '@images/avatars/avatar-8.png'
 
-interface UiColors {
+type UiColors = {
   Business: string
   Meditation: string
   Meetup: string
   Dinner: string
 }
-interface MeetingSchedule {
+type MeetingSchedule = {
   profile: string
   with: string
   dateTime: string

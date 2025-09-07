@@ -5,7 +5,7 @@ import rocketImg from '@images/eCommerce/rocket.png'
 const props = defineProps<Props>()
 const isUserInfoEditDialogVisible = ref(false)
 const isUpgradePlanDialogVisible = ref(false)
-interface Props {
+type Props = {
   customerData: Customer
 }
 

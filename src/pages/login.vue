@@ -16,7 +16,8 @@ const authThemeImg = useGenerateImageVariant(
   authV2LoginIllustrationDark,
   authV2LoginIllustrationBorderedLight,
   authV2LoginIllustrationBorderedDark,
-  true)
+  true,
+)
 
 const authThemeMask = useGenerateImageVariant(authV2LoginMaskLight, authV2LoginMaskDark)
 

@@ -49,7 +49,7 @@ const boardActions = [
 
 // 👉 emit rename board event
 const renameBoard = () => {
-  refKanbanBoardTitle.value?.validate().then(valid => {
+  refKanbanBoardTitle.value?.validate().then((valid) => {
     if (valid.valid) {
       emit('renameBoard', {
         oldName: props.boardName,
@@ -63,7 +63,7 @@ const renameBoard = () => {
 
 // 👉 emit add new item event
 const addNewItem = () => {
-  refForm.value?.validate().then(valid => {
+  refForm.value?.validate().then((valid) => {
     if (valid.valid) {
       emit('addNewItem', { itemTitle: newTaskTitle.value, boardName: props.boardName, boardId: props.boardId })
       isAddNewFormVisible.value = false
@@ -85,7 +85,7 @@ dragAndDrop({
     // 👉 update items state after transfer perform
     emit('updateItemsState', { boardId: props.boardId, ids: localIds.value })
   },
-  handleEnd: data => {
+  handleEnd: (data) => {
     handleEnd(data)
 
     // 👉 update items state after sorting perform
@@ -126,7 +126,7 @@ const hideResetBoardNameForm = () => {
 }
 
 // 👉 submit form on enter and new line on shift-enter
-const handleEnterKeydown = (event: { key: string; shiftKey: any }) => {
+const handleEnterKeydown = (event: { key: string, shiftKey: any }) => {
   if (event.key === 'Enter' && !event.shiftKey)
     addNewItem()
 }

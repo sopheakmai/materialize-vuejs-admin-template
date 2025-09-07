@@ -1,23 +1,23 @@
 <script setup lang="ts">
 import { VForm } from 'vuetify/components/VForm'
 
-interface Permission {
+type Permission = {
   name: string
   read: boolean
   write: boolean
   create: boolean
 }
 
-interface Roles {
+type Roles = {
   name: string
   permissions: Permission[]
 }
 
-interface Props {
+type Props = {
   rolePermissions?: Roles
   isDialogVisible: boolean
 }
-interface Emit {
+type Emit = {
   (e: 'update:isDialogVisible', value: boolean): void
   (e: 'update:rolePermissions', value: Roles): void
 }
@@ -96,7 +96,7 @@ const refPermissionForm = ref<VForm>()
 const checkedCount = computed(() => {
   let counter = 0
 
-  permissions.value.forEach(permission => {
+  permissions.value.forEach((permission) => {
     Object.entries(permission).forEach(([key, value]) => {
       if (key !== 'name' && value)
         counter++
@@ -109,7 +109,7 @@ const checkedCount = computed(() => {
 const isIndeterminate = computed(() => checkedCount.value > 0 && checkedCount.value < (permissions.value.length * 3))
 
 // select all
-watch(isSelectAll, val => {
+watch(isSelectAll, (val) => {
   permissions.value = permissions.value.map(permission => ({
     ...permission,
     read: val,
@@ -134,7 +134,7 @@ watch(permissions, () => {
 watch(() => props, () => {
   if (props.rolePermissions && props.rolePermissions.permissions.length) {
     role.value = props.rolePermissions.name
-    permissions.value = permissions.value.map(permission => {
+    permissions.value = permissions.value.map((permission) => {
       const rolePermission = props.rolePermissions?.permissions.find(item => item.name === permission.name)
 
       if (rolePermission) {

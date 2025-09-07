@@ -1,4 +1,4 @@
-export interface ProductParams {
+export type ProductParams = {
   q: string
   stock: string
   category: string
@@ -6,21 +6,21 @@ export interface ProductParams {
   options: object
 }
 
-export interface OrderParams {
+export type OrderParams = {
   q: string
   options: object
 }
 
-export interface CustomerParams {
+export type CustomerParams = {
   q: string
   options: object
 }
 
-export interface ReviewParams {
+export type ReviewParams = {
   q: string
   options: object
 }
 
-export interface ReferralParams {
+export type ReferralParams = {
   options: object
 }

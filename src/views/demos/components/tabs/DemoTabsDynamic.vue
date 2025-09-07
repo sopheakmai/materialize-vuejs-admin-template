@@ -2,7 +2,7 @@
 const totalTabs = ref(3)
 const currentTab = ref(0)
 
-watch(totalTabs, newValue => {
+watch(totalTabs, (newValue) => {
   currentTab.value = newValue - 1
 })
 </script>

@@ -1,7 +1,7 @@
 import is from '@sindresorhus/is'
 import { destr } from 'destr'
 import type { PathParams } from 'msw'
-import { HttpResponse, http } from 'msw'
+import { http, HttpResponse } from 'msw'
 import { database } from '@db/apps/invoice/db'
 import { paginateArray } from '@api-utils/paginateArray'
 
@@ -42,7 +42,7 @@ export const handlerAppsInvoice = [
     const itemsPerPageLocal = is.number(parsedItemsPerPage) ? parsedItemsPerPage : 10
     const pageLocal = is.number(parsedPage) ? parsedPage : 1
 
-    const parsedDateRange = destr(selectedDateRange) as unknown as { start?: string; end?: string }
+    const parsedDateRange = destr(selectedDateRange) as unknown as { start?: string, end?: string }
     const startDateLocal = parsedDateRange?.start
     const endDateLocal = parsedDateRange?.end
 
@@ -51,9 +51,9 @@ export const handlerAppsInvoice = [
       invoice => (
         (
           invoice.client.name.toLowerCase().includes(queryLowered)
-                  || invoice.client.companyEmail.toLowerCase().includes(queryLowered) || invoice.id.toString().includes(queryLowered)
+          || invoice.client.companyEmail.toLowerCase().includes(queryLowered) || invoice.id.toString().includes(queryLowered)
         )
-              && invoice.invoiceStatus === (status || invoice.invoiceStatus)
+        && invoice.invoiceStatus === (status || invoice.invoiceStatus)
       ),
     ).reverse()
 
@@ -103,7 +103,7 @@ export const handlerAppsInvoice = [
 
     // filtering invoices by date
     if (startDateLocal && endDateLocal) {
-      filteredInvoices = filteredInvoices.filter(invoiceObj => {
+      filteredInvoices = filteredInvoices.filter((invoiceObj) => {
         const start = new Date(startDateLocal).getTime()
         const end = new Date(endDateLocal).getTime()
         const issuedDate = new Date(invoiceObj.issuedDate).getTime()
@@ -132,9 +132,7 @@ export const handlerAppsInvoice = [
     const invoice = database.find(e => e.id === Number(invoiceId))
 
     if (!invoice) {
-      return HttpResponse.json('No invoice found with this id',
-        { status: 404 },
-      )
+      return HttpResponse.json('No invoice found with this id', { status: 404 })
     }
 
     const responseData = {

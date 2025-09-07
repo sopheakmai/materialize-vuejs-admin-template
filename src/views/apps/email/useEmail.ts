@@ -20,13 +20,13 @@ export const useEmail = () => {
     })
   }
 
-  const emailMoveToFolderActions: { action: MoveEmailToAction; icon: string }[] = [
+  const emailMoveToFolderActions: { action: MoveEmailToAction, icon: string }[] = [
     { action: 'inbox', icon: 'ri-mail-line' },
     { action: 'spam', icon: 'ri-spam-2-line' },
     { action: 'trash', icon: 'ri-delete-bin-line' },
   ]
 
-  const labels: { title: Email['labels'][number]; color: string }[] = [
+  const labels: { title: Email['labels'][number], color: string }[] = [
     {
       title: 'personal',
       color: 'success',

@@ -60,17 +60,15 @@ const resolveStatus = (status: string) => {
 }
 
 // Fetch Orders
-const { data: ordersData, execute: fetchOrders } = await useApi<any>(createUrl('/apps/ecommerce/orders',
-  {
-    query: {
-      q: searchQuery,
-      page,
-      itemsPerPage,
-      sortBy,
-      orderBy,
-    },
+const { data: ordersData, execute: fetchOrders } = await useApi<any>(createUrl('/apps/ecommerce/orders', {
+  query: {
+    q: searchQuery,
+    page,
+    itemsPerPage,
+    sortBy,
+    orderBy,
   },
-))
+}))
 
 const orders = computed((): Order[] => ordersData.value.orders)
 const totalOrder = computed(() => ordersData.value.total)

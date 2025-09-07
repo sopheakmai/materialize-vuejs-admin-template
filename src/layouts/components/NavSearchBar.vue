@@ -5,7 +5,7 @@ import type { RouteLocationRaw } from 'vue-router'
 import type { SearchResults } from '@db/app-bar-search/types'
 import { useConfigStore } from '@core/stores/config'
 
-interface Suggestion {
+type Suggestion = {
   icon: string
   title: string
   url: RouteLocationRaw
@@ -17,7 +17,7 @@ defineOptions({
 
 const configStore = useConfigStore()
 
-interface SuggestionGroup {
+type SuggestionGroup = {
   title: string
   content: Suggestion[]
 }

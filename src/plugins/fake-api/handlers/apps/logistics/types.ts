@@ -1,4 +1,4 @@
-export interface Vehicle {
+export type Vehicle = {
   id: number
   location: number
   startCity: string

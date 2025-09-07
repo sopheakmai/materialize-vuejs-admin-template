@@ -1,13 +1,19 @@
 <script setup lang="ts">
 const tableData = [
   {
-    action: 'Collapse', icon: 'ri-arrow-up-s-line', details: 'Collapse card content using collapse action.',
+    action: 'Collapse',
+    icon: 'ri-arrow-up-s-line',
+    details: 'Collapse card content using collapse action.',
   },
   {
-    action: 'Refresh Content', icon: 'ri-refresh-line', details: 'Refresh your card content using refresh action.',
+    action: 'Refresh Content',
+    icon: 'ri-refresh-line',
+    details: 'Refresh your card content using refresh action.',
   },
   {
-    action: 'Remove Card', icon: 'ri-close-line', details: 'Remove card from page using remove card action',
+    action: 'Remove Card',
+    icon: 'ri-close-line',
+    details: 'Remove card from page using remove card action',
   },
 ]
 

@@ -281,7 +281,7 @@ export const getRadialBarChartConfig = (themeColors: ThemeInstance['themes']['va
 
             color: themePrimaryTextColor,
 
-            formatter(w: { globals: { seriesTotals: any[]; series: string | any[] } }) {
+            formatter(w: { globals: { seriesTotals: any[], series: string | any[] } }) {
               const totalValue
                 = w.globals.seriesTotals.reduce((a: number, b: number) => {
                   return a + b

@@ -28,7 +28,7 @@ const appendSlide = () => {
 
 <template>
   <section class="swiper-virtual">
-    <swiper-container
+    <SwiperContainer
       ref="swiperEl"
       virtual="true"
       :slides="slides"
@@ -56,15 +56,15 @@ const appendSlide = () => {
         },
       }"
     >
-      <swiper-slide
+      <SwiperSlide
         v-for="(item, index) in slides"
         :key="index"
       >
         <div class="text-secondary">
           {{ item }}
         </div>
-      </swiper-slide>
-    </swiper-container>
+      </SwiperSlide>
+    </SwiperContainer>
 
     <div class="d-flex justify-center gap-4 flex-wrap">
       <VBtn

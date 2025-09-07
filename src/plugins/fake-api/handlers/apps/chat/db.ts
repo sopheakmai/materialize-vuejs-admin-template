@@ -8,7 +8,7 @@ import avatar5 from '@images/avatars/avatar-5.png'
 import avatar6 from '@images/avatars/avatar-6.png'
 import avatar8 from '@images/avatars/avatar-8.png'
 
-interface DB {
+type DB = {
   profileUser: ChatContact & {
     settings: {
       isTwoStepAuthVerificationEnabled: boolean

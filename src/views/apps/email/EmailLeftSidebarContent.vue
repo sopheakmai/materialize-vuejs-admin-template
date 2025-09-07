@@ -11,7 +11,7 @@ defineEmits<{
   (e: 'toggleComposeDialogVisibility'): void
 }>()
 
-interface Props {
+type Props = {
   emailsMeta: {
     inbox: number
     draft: number
@@ -20,7 +20,7 @@ interface Props {
   }
 }
 
-interface Folder {
+type Folder = {
   title: string
   prependIcon: string
   to: any
@@ -30,7 +30,7 @@ interface Folder {
   }
 }
 
-interface Label {
+type Label = {
   title: string
   color: string
   to: any
@@ -41,7 +41,7 @@ const draftEmails = ref(0)
 const spamEmails = ref(0)
 const starredEmails = ref(0)
 
-watch(() => props.emailsMeta, emailsMeta => {
+watch(() => props.emailsMeta, (emailsMeta) => {
   if (!emailsMeta)
     return
 

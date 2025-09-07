@@ -11,19 +11,19 @@ import avatar8 from '@images/avatars/avatar-8.png'
 import avatar9 from '@images/avatars/avatar-9.png'
 import poseM from '@images/pages/pose_m1.png'
 
-interface Permission {
+type Permission = {
   name: string
   read: boolean
   write: boolean
   create: boolean
 }
 
-interface RoleDetails {
+type RoleDetails = {
   name: string
   permissions: Permission[]
 }
 
-interface Roles {
+type Roles = {
   role: string
   users: string[]
   details: RoleDetails

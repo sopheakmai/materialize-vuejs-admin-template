@@ -6,12 +6,12 @@ import { destr } from 'destr'
 
 type _CookieOptions = Omit<CookieSerializeOptions & CookieParseOptions, 'decode' | 'encode'>
 
-export interface CookieOptions<T = any> extends _CookieOptions {
-  decode?(value: string): T
-  encode?(value: T): string
+export type CookieOptions<T = any> = {
+  decode?: (value: string) => T
+  encode?: (value: T) => string
   default?: () => T | Ref<T>
   watch?: boolean | 'shallow'
-}
+} & _CookieOptions
 
 export type CookieRef<T> = Ref<T>
 

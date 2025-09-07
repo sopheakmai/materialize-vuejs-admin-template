@@ -5,7 +5,7 @@ register()
 </script>
 
 <template>
-  <swiper-container
+  <SwiperContainer
     centered-slides="true"
     space-between="30"
     slides-per-view="1"
@@ -25,7 +25,7 @@ register()
       },
     }"
   >
-    <swiper-slide
+    <SwiperSlide
       v-for="{ icon, text } in [
         { icon: 'ri-github-fill', text: 'Getting Started' },
         { icon: 'ri-facebook-circle-line', text: 'Pricing & Plans' },
@@ -46,8 +46,8 @@ register()
           </div>
         </VCardText>
       </VCard>
-    </swiper-slide>
-  </swiper-container>
+    </SwiperSlide>
+  </SwiperContainer>
 </template>
 
 <style lang="scss" scoped>

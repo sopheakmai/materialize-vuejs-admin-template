@@ -1,4 +1,4 @@
-export interface PersonalDetails {
+export type PersonalDetails = {
   userType: 'builder' | 'owner' | 'broker'
   firstName: string
   lastName: string
@@ -8,7 +8,7 @@ export interface PersonalDetails {
   contact: number | null
 }
 
-export interface PriceDetails {
+export type PriceDetails = {
   expectedPrice: number | null
   pricePerSqft: number | null
   maintenanceCharge: number | null
@@ -19,7 +19,7 @@ export interface PriceDetails {
   priceIncludes: string[]
 }
 
-export interface PropertyArea {
+export type PropertyArea = {
   totalArea: number | null
   carpetArea: number | null
   plotArea: number | null
@@ -30,7 +30,7 @@ export interface PropertyArea {
   isGatedColony: string
 }
 
-export interface PropertyDetails {
+export type PropertyDetails = {
   propertyDealType: 'sell' | 'rent'
   propertyType: string | null
   zipCode: number | null
@@ -41,7 +41,7 @@ export interface PropertyDetails {
   address: string
 }
 
-export interface PropertyFeatures {
+export type PropertyFeatures = {
   bedroomCount: string
   floorNo: string
   bathroomCount: string
@@ -52,7 +52,7 @@ export interface PropertyFeatures {
   isCommonArea2: string
 }
 
-export interface PropertyListingData {
+export type PropertyListingData = {
   personalDetails: PersonalDetails
   propertyDetails: PropertyDetails
   propertyFeatures: PropertyFeatures

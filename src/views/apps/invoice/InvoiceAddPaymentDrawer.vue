@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
 
-interface SubmitData {
+type SubmitData = {
   invoiceBalance: string
   paymentAmount: string
   paymentDate: string
   paymentMethod: string
   paymentNote: string
 }
-interface Emit {
+type Emit = {
   (e: 'update:isDrawerOpen', value: boolean): void
   (e: 'submit', value: SubmitData): void
 }
 
-interface Props {
+type Props = {
   isDrawerOpen: boolean
 }
 const props = defineProps<Props>()

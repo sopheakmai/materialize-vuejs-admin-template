@@ -5,7 +5,7 @@ import LineChart from '@core/libs/chartjs/components/LineChart'
 
 import type { ChartJsCustomColors } from '@/views/charts/chartjs/types'
 
-interface Props {
+type Props = {
   colors: ChartJsCustomColors
 }
 

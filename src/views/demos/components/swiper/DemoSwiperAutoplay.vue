@@ -11,14 +11,14 @@ register()
 </script>
 
 <template>
-  <swiper-container
+  <SwiperContainer
     pagination="true"
     navigation="true"
     autoplay="true"
     centered-slides="true"
     events-prefix="swiper-"
   >
-    <swiper-slide
+    <SwiperSlide
       v-for="swiperImg in
         [
           swiper7,
@@ -34,6 +34,6 @@ register()
         :src="swiperImg"
         cover
       />
-    </swiper-slide>
-  </swiper-container>
+    </SwiperSlide>
+  </SwiperContainer>
 </template>

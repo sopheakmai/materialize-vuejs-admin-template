@@ -4,7 +4,7 @@ import BarChart from '@/@core/libs/chartjs/components/BarChart'
 import type { ChartJsCustomColors } from '@/views/charts/chartjs/types'
 import { getLatestBarChartConfig } from '@core/libs/chartjs/chartjsConfig'
 
-interface Props {
+type Props = {
   colors: ChartJsCustomColors
 }
 

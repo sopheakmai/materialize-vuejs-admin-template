@@ -14,25 +14,24 @@ import { promises as fs } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
-
 // Installation: npm install --save-dev @iconify/tools @iconify/utils @iconify/json @iconify/iconify
 import { cleanupSVG, importDirectory, isEmptyColor, parseColors, runSVGO } from '@iconify/tools'
 import type { IconifyJSON } from '@iconify/types'
 import { getIcons, getIconsCSS, stringToIcon } from '@iconify/utils'
 
-// Paths to icon packages
-const nodeModules = resolve(__dirname, '../../../node_modules');
-const riIconsPath = join(nodeModules, '@iconify-json/ri/icons.json');
-const mdiIconsPath = join(nodeModules, '@iconify-json/mdi/icons.json');
-const bxlIconsPath = join(nodeModules, '@iconify-json/bxl/icons.json');
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
+// Paths to icon packages
+const nodeModules = resolve(__dirname, '../../../node_modules')
+const riIconsPath = join(nodeModules, '@iconify-json/ri/icons.json')
+const mdiIconsPath = join(nodeModules, '@iconify-json/mdi/icons.json')
+const bxlIconsPath = join(nodeModules, '@iconify-json/bxl/icons.json')
 
 /**
  * Script configuration
  */
-interface BundleScriptCustomSVGConfig {
+type BundleScriptCustomSVGConfig = {
 
   // Path to SVG files
   dir: string
@@ -44,7 +43,7 @@ interface BundleScriptCustomSVGConfig {
   prefix: string
 }
 
-interface BundleScriptCustomJSONConfig {
+type BundleScriptCustomJSONConfig = {
 
   // Path to JSON file
   filename: string
@@ -53,7 +52,7 @@ interface BundleScriptCustomJSONConfig {
   icons?: string[]
 }
 
-interface BundleScriptConfig {
+type BundleScriptConfig = {
 
   // Custom SVG to import and bundle
   svg?: BundleScriptCustomSVGConfig[]
@@ -285,7 +284,7 @@ const target = join(dirname(__filename), 'icons.css')
   await fs.writeFile(target, cssContent, 'utf8')
 
   console.log(`Saved CSS to ${target}!`)
-})().catch(err => {
+})().catch((err) => {
   console.error(err)
 })
 
@@ -295,7 +294,7 @@ const target = join(dirname(__filename), 'icons.css')
 function organizeIconsList(icons: string[]): Record<string, string[]> {
   const sorted: Record<string, string[]> = Object.create(null)
 
-  icons.forEach(icon => {
+  icons.forEach((icon) => {
     const item = stringToIcon(icon)
 
     if (!item)

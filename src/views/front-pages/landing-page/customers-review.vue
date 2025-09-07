@@ -132,7 +132,7 @@ const reviewData = [
 
     <div class="swiper-reviews-carousel py-4 mb-6">
       <!-- eslint-disable vue/attribute-hyphenation -->
-      <swiper-container
+      <SwiperContainer
         slides-per-view="1"
         space-between="10"
         centered-slides="true"
@@ -169,7 +169,7 @@ const reviewData = [
           },
         }"
       >
-        <swiper-slide
+        <SwiperSlide
           v-for="(data, index) in reviewData"
           :key="index"
         >
@@ -203,13 +203,13 @@ const reviewData = [
               </div>
             </VCardText>
           </VCard>
-        </swiper-slide>
-      </swiper-container>
+        </SwiperSlide>
+      </SwiperContainer>
     </div>
 
     <!-- 👉 Brand-logo Swiper  -->
     <div class="swiper-brands-carousel mt-4">
-      <swiper-container
+      <SwiperContainer
         slides-per-view="1"
         loop="true"
         events-prefix="swiper-"
@@ -227,7 +227,7 @@ const reviewData = [
           },
         }"
       >
-        <swiper-slide
+        <SwiperSlide
           v-for="(img, index) in [brandLogo1, brandLogo2, brandLogo3, brandLogo4, brandLogo5, brandLogo1, brandLogo2, brandLogo3, brandLogo4, brandLogo5]"
           :key="index"
         >
@@ -235,8 +235,8 @@ const reviewData = [
             :src="img"
             height="28"
           />
-        </swiper-slide>
-      </swiper-container>
+        </SwiperSlide>
+      </SwiperContainer>
     </div>
   </div>
 </template>

@@ -4,14 +4,14 @@ import avatar2 from '@images/avatars/avatar-2.png'
 import avatar3 from '@images/avatars/avatar-3.png'
 import avatar4 from '@images/avatars/avatar-4.png'
 
-interface Status {
+type Status = {
   'Online': string
   'Away': string
   'Offline': string
   'In Meeting': string
 }
 
-interface Users {
+type Users = {
   avatar: string
   name: string
   status: keyof Status

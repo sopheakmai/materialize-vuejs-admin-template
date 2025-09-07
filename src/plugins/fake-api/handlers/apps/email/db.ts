@@ -12,7 +12,7 @@ import avatar8 from '@images/avatars/avatar-8.png'
 import txt from '@images/icons/file/txt.png'
 import xls from '@images/icons/file/xls.png'
 
-interface DB {
+type DB = {
   emails: Email[]
 }
 

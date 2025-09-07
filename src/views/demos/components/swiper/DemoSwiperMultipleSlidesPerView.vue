@@ -10,13 +10,13 @@ register()
 </script>
 
 <template>
-  <swiper-container
+  <SwiperContainer
     pagination="true"
     slides-per-view="3"
     space-between="25"
     events-prefix="swiper-"
   >
-    <swiper-slide
+    <SwiperSlide
       v-for="swiperImg in [
         swiper31,
         swiper32,
@@ -27,6 +27,6 @@ register()
       :key="swiperImg"
     >
       <VImg :src="swiperImg" />
-    </swiper-slide>
-  </swiper-container>
+    </SwiperSlide>
+  </SwiperContainer>
 </template>

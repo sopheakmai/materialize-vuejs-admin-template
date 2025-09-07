@@ -1,6 +1,6 @@
 import type { Vehicle } from '@/plugins/fake-api/handlers/apps/logistics/types'
 
-interface DB {
+type DB = {
   vehicles: Vehicle[]
 }
 

@@ -1,7 +1,7 @@
 import type { ActiveChat } from './useChat'
 import type { ChatContact, ChatContactWithChat, ChatMessage, ChatOut } from '@/plugins/fake-api/handlers/apps/chat/types'
 
-interface State {
+type State = {
   chatsContacts: ChatContactWithChat[]
   contacts: ChatContact[]
   profileUser: ChatContact | undefined
@@ -50,7 +50,7 @@ export const useChatStore = defineStore('chat', {
         body: { message, senderId },
       })
 
-      const { msg, chat }: { msg: ChatMessage; chat: ChatOut } = response
+      const { msg, chat }: { msg: ChatMessage, chat: ChatOut } = response
 
       // ? If it's not undefined => New chat is created (Contact is not in list of chats)
       if (chat !== undefined) {
@@ -80,7 +80,7 @@ export const useChatStore = defineStore('chat', {
       }
 
       // Set Last Message for active contact
-      const contact = this.chatsContacts.find(c => {
+      const contact = this.chatsContacts.find((c) => {
         if (this.activeChat)
           return c.id === this.activeChat.contact.id
 

@@ -40,7 +40,6 @@ export const i18nOptions = Object.keys(messages).map(locale => ({
   i18nLang: locale,
 }))
 
-
 export default function (app: App) {
   app.use(getI18n())
 }

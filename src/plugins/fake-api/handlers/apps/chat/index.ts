@@ -1,4 +1,4 @@
-import { HttpResponse, http } from 'msw'
+import { http, HttpResponse } from 'msw'
 import { db } from '@db/apps/chat/db'
 import type { Chat, ChatContact, ChatContactWithChat, ChatMessage } from '@db/apps/chat/types'
 
@@ -11,7 +11,7 @@ export const handlerAppsChat = [
     const qLowered = q.toLowerCase()
 
     const chatsContacts: ChatContactWithChat[] = db.chats
-      .map(chat => {
+      .map((chat) => {
         const contact = JSON.parse(JSON.stringify((db.contacts.find(c => c.id === chat.userId) as ChatContact)))
 
         contact.chat = { id: chat.id, unseenMsgs: chat.unseenMsgs, lastMessage: chat.messages.at(-1) }
@@ -42,8 +42,7 @@ export const handlerAppsChat = [
     return HttpResponse.json({
       chat,
       contact: db.contacts.find(c => c.id === userId),
-    },
-    {
+    }, {
       status: 200,
     })
   }),
@@ -53,7 +52,7 @@ export const handlerAppsChat = [
     const chatId = Number(params.userId)
 
     // Get message from post data
-    const { message, senderId } = await request.json() as { message: string; senderId: number }
+    const { message, senderId } = await request.json() as { message: string, senderId: number }
 
     let activeChat = db.chats.find(chat => chat.userId === chatId)
 
@@ -85,7 +84,7 @@ export const handlerAppsChat = [
       activeChat.messages.push(newMessageData)
     }
 
-    const response: { msg: ChatMessage; chat?: Chat } = { msg: newMessageData }
+    const response: { msg: ChatMessage, chat?: Chat } = { msg: newMessageData }
 
     if (isNewChat)
       response.chat = activeChat

@@ -9,11 +9,11 @@ import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
 
 import { VForm } from 'vuetify/components/VForm'
 
-interface Props {
+type Props = {
   isDrawerOpen: boolean
 }
 
-interface Emit {
+type Emit = {
   (e: 'update:isDrawerOpen', value: boolean): void
 }
 

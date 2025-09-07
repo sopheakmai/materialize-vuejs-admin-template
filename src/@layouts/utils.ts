@@ -56,7 +56,7 @@ export const isNavLinkActive = (link: NavLink, router: Router) => {
   if (!resolveRoutedName)
     return false
 
-  return matchedRoutes.some(route => {
+  return matchedRoutes.some((route) => {
     return route.name === resolveRoutedName || route.meta.navActiveLink === resolveRoutedName
   })
 }
@@ -66,7 +66,7 @@ export const isNavLinkActive = (link: NavLink, router: Router) => {
  * @param {Array} children Group children
  */
 export const isNavGroupActive = (children: (NavLink | NavGroup)[], router: Router): boolean =>
-  children.some(child => {
+  children.some((child) => {
     // If child have children => It's group => Go deeper(recursive)
     if ('children' in child)
       return isNavGroupActive(child.children, router)
@@ -127,7 +127,7 @@ export const switchToVerticalNavOnLtOverlayNavBreakpoint = () => {
     */
   watch(
     () => configStore.appContentLayoutNav,
-    value => {
+    (value) => {
       if (!configStore.isLessThanOverlayNavBreakpoint)
         lgAndUpNav.value = value
     },
@@ -138,7 +138,7 @@ export const switchToVerticalNavOnLtOverlayNavBreakpoint = () => {
       If it's `mdAndDown` => We will use vertical nav no matter what previous nav type was
       Or if it's `lgAndUp` we need to switch back to `lgAndUp` nav type. For this we will tracker property `lgAndUpNav`
     */
-  watch(() => configStore.isLessThanOverlayNavBreakpoint, val => {
+  watch(() => configStore.isLessThanOverlayNavBreakpoint, (val) => {
     configStore.appContentLayoutNav = val ? AppContentLayoutNav.Vertical : lgAndUpNav.value
   }, { immediate: true })
 }

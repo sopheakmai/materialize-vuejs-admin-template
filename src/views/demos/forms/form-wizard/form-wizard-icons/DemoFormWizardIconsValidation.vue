@@ -67,7 +67,7 @@ const addressForm = ref({
 })
 
 const validateAccountForm = () => {
-  refAccountForm.value?.validate().then(valid => {
+  refAccountForm.value?.validate().then((valid) => {
     if (valid.valid) {
       currentStep.value++
       isCurrentStepValid.value = true
@@ -77,7 +77,7 @@ const validateAccountForm = () => {
 }
 
 const validatePersonalForm = () => {
-  refPersonalForm.value?.validate().then(valid => {
+  refPersonalForm.value?.validate().then((valid) => {
     if (valid.valid) {
       currentStep.value++
       isCurrentStepValid.value = true
@@ -87,7 +87,7 @@ const validatePersonalForm = () => {
 }
 
 const validateAddressForm = () => {
-  refAddressForm.value?.validate().then(valid => {
+  refAddressForm.value?.validate().then((valid) => {
     if (valid.valid) {
       currentStep.value++
       isCurrentStepValid.value = true
@@ -97,7 +97,7 @@ const validateAddressForm = () => {
 }
 
 const validateSocialLinkForm = () => {
-  refSocialLinkForm.value?.validate().then(valid => {
+  refSocialLinkForm.value?.validate().then((valid) => {
     if (valid.valid) {
       currentStep.value++
       isCurrentStepValid.value = true

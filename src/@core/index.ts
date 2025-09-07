@@ -8,7 +8,7 @@ export { useTabs } from './composable/useTabs'
 export { useTabsStore } from './stores/tabs'
 export type { TabItem } from './stores/tabs'
 
-export const defineThemeConfig = (userConfig: UserThemeConfig): { themeConfig: UserThemeConfig; layoutConfig: LayoutConfig } => {
+export const defineThemeConfig = (userConfig: UserThemeConfig): { themeConfig: UserThemeConfig, layoutConfig: LayoutConfig } => {
   return {
     themeConfig: userConfig,
     layoutConfig: {

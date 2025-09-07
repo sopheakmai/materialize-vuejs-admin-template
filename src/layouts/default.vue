@@ -53,7 +53,7 @@ watch([isFallbackStateActive, refLoadingIndicator], () => {
         >
           <Component :is="Component" />
         </LayoutWithTabs>
-        <Component v-else :is="Component" />
+        <Component :is="Component" v-else />
       </Suspense>
     </RouterView>
   </Component>

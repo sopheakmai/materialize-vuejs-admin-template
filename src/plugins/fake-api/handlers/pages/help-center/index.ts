@@ -1,4 +1,4 @@
-import { HttpResponse, http } from 'msw'
+import { http, HttpResponse } from 'msw'
 import { db } from '@db/pages/help-center/db'
 
 // Handler for pages/help-center
@@ -11,8 +11,6 @@ export const handlerPagesHelpCenter = [
   }),
 
   http.get(('/api/pages/help-center/article'), () => {
-    return HttpResponse.json(db.articleData,
-      { status: 200 })
-  },
-  ),
+    return HttpResponse.json(db.articleData, { status: 200 })
+  }),
 ]

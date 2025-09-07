@@ -4,7 +4,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import { fileURLToPath } from 'node:url'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-import { VueRouterAutoImports, getPascalCaseRouteName } from 'unplugin-vue-router'
+import { getPascalCaseRouteName, VueRouterAutoImports } from 'unplugin-vue-router'
 import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig } from 'vite'
 import VueDevTools from 'vite-plugin-vue-devtools'
@@ -18,13 +18,13 @@ export default defineConfig({
     // Docs: https://github.com/posva/unplugin-vue-router
     // ℹ️ This plugin should be placed before vue plugin
     VueRouter({
-      getRouteName: routeNode => {
+      getRouteName: (routeNode) => {
         // Convert pascal case to kebab case
         return getPascalCaseRouteName(routeNode)
           .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
           .toLowerCase()
       },
-      beforeWriteFiles: root => {
+      beforeWriteFiles: (root) => {
         root.insert('/apps/email/:filter', '/src/pages/apps/email/index.vue')
         root.insert('/apps/email/:label', '/src/pages/apps/email/index.vue')
       },
@@ -58,7 +58,7 @@ export default defineConfig({
       dirs: ['src/@core/components', 'src/views/demos', 'src/components'],
       dts: 'types/components.d.ts',
       resolvers: [
-        componentName => {
+        (componentName) => {
           // Auto import `VueApexCharts`
           if (componentName === 'VueApexCharts')
             return { name: 'default', from: 'vue3-apexcharts', as: 'VueApexCharts' }

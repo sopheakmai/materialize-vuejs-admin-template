@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { basic, clearable, counter, customColors, density, iconEvents, iconSlots, icons, labelSlot, passwordInput, prefixesAndSuffixes, singleLine, state, validation, variant } from '@/views/demos/forms/form-elements/textfield/demoCodeTextfield'
+import { basic, clearable, counter, customColors, density, iconEvents, icons, iconSlots, labelSlot, passwordInput, prefixesAndSuffixes, singleLine, state, validation, variant } from '@/views/demos/forms/form-elements/textfield/demoCodeTextfield'
 </script>
 
 <template>

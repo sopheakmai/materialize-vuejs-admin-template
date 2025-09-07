@@ -1,5 +1,5 @@
 // 👉 Client
-export interface Client {
+export type Client = {
   address: string
   company: string
   companyEmail: string
@@ -9,7 +9,7 @@ export interface Client {
 }
 
 // 👉 Invoice
-export interface Invoice {
+export type Invoice = {
   id: number
   issuedDate: string
   client: Client
@@ -22,7 +22,7 @@ export interface Invoice {
 }
 
 // Payment details
-export interface PaymentDetails {
+export type PaymentDetails = {
   totalDue: string
   bankName: string
   country: string

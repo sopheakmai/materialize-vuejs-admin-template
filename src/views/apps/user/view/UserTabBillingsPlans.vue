@@ -3,7 +3,7 @@ import americanExpress from '@images/icons/payments/american-express.png'
 import mastercard from '@images/icons/payments/mastercard.png'
 import visa from '@images/icons/payments/visa.png'
 
-interface CardDetail {
+type CardDetail = {
   name: string
   number: string
   expiry: string
@@ -13,7 +13,7 @@ interface CardDetail {
   image: string
 }
 
-interface BillingAddress {
+type BillingAddress = {
   firstName: string
   lastName: string
   selectedCountry: string | null

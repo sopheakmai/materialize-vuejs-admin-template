@@ -61,7 +61,8 @@ const resolveStatusColor = (status: string) => {
 
 const categoryIconFilter = (categoryName: string): {
   icon: string
-  color: string }[] => {
+  color: string
+}[] => {
   const index = categoryIcons.findIndex(category => category.name === categoryName)
 
   if (index !== -1)

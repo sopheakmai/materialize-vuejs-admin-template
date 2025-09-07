@@ -1,4 +1,4 @@
-export interface Course {
+export type Course = {
   id: number
   image: string
   user: string
@@ -18,7 +18,7 @@ export interface Course {
   ratingCount: number
 }
 
-export interface CourseDetails {
+export type CourseDetails = {
   title: string
   about: string
   instructor: string
@@ -34,7 +34,7 @@ export interface CourseDetails {
   description: string
 }
 
-export interface CourseContent {
+export type CourseContent = {
   title: string
   status: string
   time: string
@@ -42,7 +42,7 @@ export interface CourseContent {
   topics: CourseTopic[]
 }
 
-export interface CourseTopic {
+export type CourseTopic = {
   title: string
   time: string
   isCompleted: boolean

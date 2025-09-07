@@ -4,7 +4,7 @@ import type { ChartJsCustomColors } from '@/views/charts/chartjs/types'
 import { getBubbleChartConfig } from '@core/libs/chartjs/chartjsConfig'
 import BubbleChart from '@core/libs/chartjs/components/BubbleChart'
 
-interface Props {
+type Props = {
   colors: ChartJsCustomColors
 }
 

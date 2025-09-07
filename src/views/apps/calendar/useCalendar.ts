@@ -83,7 +83,7 @@ export const useCalendar = (event: Ref<Event | NewEvent>, isEventHandlerSidebarA
       return
 
     store.fetchEvents()
-      .then(r => {
+      .then((r) => {
         successCallback(r.map((e: Event) => ({
           ...e,
 
@@ -92,7 +92,7 @@ export const useCalendar = (event: Ref<Event | NewEvent>, isEventHandlerSidebarA
           end: new Date(e.end),
         })))
       })
-      .catch(e => {
+      .catch((e) => {
         console.error('Error occurred while fetching calendar events', e)
       })
   }
@@ -161,7 +161,7 @@ export const useCalendar = (event: Ref<Event | NewEvent>, isEventHandlerSidebarA
   const updateEvent = (_event: Event) => {
     // ℹ️ Making API call using $api('', { method: ... })
     store.updateEvent(_event)
-      .then(r => {
+      .then((r) => {
         const propsToUpdate = ['id', 'title', 'url'] as (keyof Event)[]
         const extendedPropsToUpdate = ['calendar', 'guests', 'location', 'description'] as (keyof Event['extendedProps'])[]
 
@@ -295,7 +295,7 @@ export const useCalendar = (event: Ref<Event | NewEvent>, isEventHandlerSidebarA
 
   watch(
     () => configStore.isAppRTL,
-    val => {
+    (val) => {
       calendarApi.value?.setOption('direction', val ? 'rtl' : 'ltr')
     },
     { immediate: true },

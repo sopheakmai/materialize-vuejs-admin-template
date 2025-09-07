@@ -1,5 +1,5 @@
 import { destr } from 'destr'
-import { HttpResponse, http } from 'msw'
+import { http, HttpResponse } from 'msw'
 import { db } from '@db/apps/email/db'
 import type { Email, EmailLabel } from '@db/apps/email/types'
 
@@ -26,8 +26,8 @@ export const handlerAppsEmail = [
     const filteredData = db.emails.filter(
       email =>
         (email.from.name.toLowerCase().includes(queryLowered) || email.subject.toLowerCase().includes(queryLowered))
-            && isInFolder(email as Email)
-            && (label ? email.labels.includes(label as EmailLabel) : true),
+        && isInFolder(email as Email)
+        && (label ? email.labels.includes(label as EmailLabel) : true),
     )
 
     // ------------------------------------------------
@@ -45,7 +45,7 @@ export const handlerAppsEmail = [
 
   // 👉 Update Email Meta
   http.post(('/api/apps/email'), async ({ request }) => {
-    const { ids, data, label } = await request.json() as { ids: Email['id'] | Email['id'][]; data: Partial<Email>; label: EmailLabel }
+    const { ids, data, label } = await request.json() as { ids: Email['id'] | Email['id'][], data: Partial<Email>, label: EmailLabel }
 
     const labelLocal = destr(label)
 
@@ -72,7 +72,7 @@ export const handlerAppsEmail = [
         else email.labels.splice(labelIndex, 1)
       }
 
-      db.emails.forEach(email => {
+      db.emails.forEach((email) => {
         if (Array.isArray(ids) ? ids.includes(email.id) : ids === email.id)
           updateMailLabels(email)
       })

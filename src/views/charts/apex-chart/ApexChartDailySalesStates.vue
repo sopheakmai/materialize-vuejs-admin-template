@@ -6,7 +6,7 @@ const vuetifyTheme = useTheme()
 
 const chartConfig = computed(() => getHeatMapChartConfig(vuetifyTheme.current.value))
 
-interface YRange {
+type YRange = {
   min: number
   max: number
 }

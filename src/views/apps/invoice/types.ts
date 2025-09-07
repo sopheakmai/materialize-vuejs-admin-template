@@ -1,13 +1,13 @@
 import type { Invoice, PaymentDetails } from '@/plugins/fake-api/handlers/apps/invoice/types'
 
-export interface PurchasedProduct {
+export type PurchasedProduct = {
   title: string
   cost: number
   hours: number
   description: string
 }
 
-export interface InvoiceData {
+export type InvoiceData = {
   invoice: Invoice
   paymentDetails: PaymentDetails
   purchasedProducts: PurchasedProduct[]
@@ -17,7 +17,7 @@ export interface InvoiceData {
   thanksNote: string
 }
 
-export interface InvoiceParams {
+export type InvoiceParams = {
   q?: string
   status?: string
   startDate?: string

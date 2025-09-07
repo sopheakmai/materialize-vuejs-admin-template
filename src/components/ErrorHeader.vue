@@ -1,5 +1,5 @@
 <script setup lang="ts">
-interface Props {
+type Props = {
   statusCode?: string | number
   title?: string
   description?: string

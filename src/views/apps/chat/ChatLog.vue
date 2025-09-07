@@ -4,7 +4,7 @@ import type { ChatOut } from '@db/apps/chat/types'
 
 const store = useChatStore()
 
-interface MessageGroup {
+type MessageGroup = {
   senderId: ChatOut['messages'][number]['senderId']
   messages: Omit<ChatOut['messages'][number], 'senderId'>[]
 }

@@ -9,7 +9,7 @@ register()
 </script>
 
 <template>
-  <swiper-container
+  <SwiperContainer
     pagination="true"
     centered-slides="true"
     effect="cube"
@@ -19,7 +19,7 @@ register()
     cube-effect-shadow-scale="0.94"
     events-prefix="swiper-"
   >
-    <swiper-slide
+    <SwiperSlide
       v-for="swiperImg in [
         swiper21,
         swiper32,
@@ -29,8 +29,8 @@ register()
       :key="swiperImg"
     >
       <VImg :src="swiperImg" />
-    </swiper-slide>
-  </swiper-container>
+    </SwiperSlide>
+  </SwiperContainer>
 </template>
 
 <style lang="scss" scoped>

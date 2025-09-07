@@ -1,4 +1,4 @@
-import { HttpResponse, http } from 'msw'
+import { http, HttpResponse } from 'msw'
 import { database } from '@db/apps/kanban/db'
 import type { AddNewKanbanItem, EditKanbanItem, KanbanBoard, KanbanState, RenameKanbanBoard } from '@db/apps/kanban/types'
 
@@ -13,7 +13,7 @@ export const handlerAppsKanban = [
   http.put('/api/apps/kanban/board/rename', async ({ request }) => {
     const boardData = await request.json() as RenameKanbanBoard
 
-    database.boards = database.boards.map(board => {
+    database.boards = database.boards.map((board) => {
       if (board.id === boardData.boardId)
         board.title = boardData.newName
 
@@ -95,7 +95,7 @@ export const handlerAppsKanban = [
   http.put('/api/apps/kanban/item/update', async ({ request }) => {
     const itemData = await request.json() as EditKanbanItem
 
-    database.items.forEach(item => {
+    database.items.forEach((item) => {
       if (itemData.item && item.id === itemData.item.id) {
         item.title = itemData.item.title
         item.attachments = itemData.item.attachments
@@ -116,7 +116,7 @@ export const handlerAppsKanban = [
 
     database.items = database.items.filter(item => item.id !== itemId)
 
-    database.boards.forEach(board => {
+    database.boards.forEach((board) => {
       board.itemsIds = board.itemsIds.filter(id => id !== itemId)
     })
 
@@ -127,7 +127,7 @@ export const handlerAppsKanban = [
   http.put('/api/apps/kanban/item/state-update', async ({ request }) => {
     const stateData = await request.json() as KanbanState
 
-    database.boards.forEach(board => {
+    database.boards.forEach((board) => {
       if (board.id === stateData.boardId)
         board.itemsIds = stateData.ids
     })
@@ -140,7 +140,7 @@ export const handlerAppsKanban = [
     const boardState = await request.json() as number[]
 
     // sort board as per boardState
-    const sortedBoards: KanbanBoard[] = boardState.map(boardId => {
+    const sortedBoards: KanbanBoard[] = boardState.map((boardId) => {
       return database.boards.find(board => board.id === boardId) as KanbanBoard
     })
 

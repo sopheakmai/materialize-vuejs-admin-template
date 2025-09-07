@@ -4,7 +4,7 @@ import BillingHistoryTable from './BillingHistoryTable.vue'
 import mastercard from '@images/icons/payments/mastercard.png'
 import visa from '@images/icons/payments/visa.png'
 
-interface CardDetails {
+type CardDetails = {
   name: string
   number: string
   expiry: string

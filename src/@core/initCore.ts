@@ -17,7 +17,7 @@ const _syncAppRtl = () => {
   // watch and change lang attribute of html on language change
   watch(
     locale,
-    val => {
+    (val) => {
       // Update lang attribute of html tag
       if (typeof document !== 'undefined')
         document.documentElement.setAttribute('lang', val as string)
@@ -27,7 +27,7 @@ const _syncAppRtl = () => {
 
       // set isAppRtl value based on selected language
       if (themeConfig.app.i18n.langConfig && themeConfig.app.i18n.langConfig.length) {
-        themeConfig.app.i18n.langConfig.forEach(lang => {
+        themeConfig.app.i18n.langConfig.forEach((lang) => {
           if (lang.i18nLang === storedLang.value)
             configStore.isAppRTL = lang.isRTL
         })
@@ -42,15 +42,15 @@ const _handleSkinChanges = () => {
   const configStore = useConfigStore()
 
   // Create skin default color so that we can revert back to original (default skin) color when switch to default skin from bordered skin
-  Object.values(themes.value).forEach(t => {
+  Object.values(themes.value).forEach((t) => {
     t.colors['skin-default-background'] = t.colors.background
     t.colors['skin-default-surface'] = t.colors.surface
   })
 
   watch(
     () => configStore.skin,
-    val => {
-      Object.values(themes.value).forEach(t => {
+    (val) => {
+      Object.values(themes.value).forEach((t) => {
         t.colors.background = t.colors[`skin-${val}-background`]
         t.colors.surface = t.colors[`skin-${val}-surface`]
       })

@@ -1,4 +1,4 @@
-export interface ChartJsCustomColors {
+export type ChartJsCustomColors = {
   white: string
   yellow: string
   primary: string

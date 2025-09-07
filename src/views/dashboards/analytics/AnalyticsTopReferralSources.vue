@@ -4,14 +4,14 @@ import googleLogo from '@images/logos/google.png'
 import instagramLogo from '@images/logos/instagram.png'
 import redditLogo from '@images/logos/reddit.png'
 
-interface Product {
+type Product = {
   title: string
-  status: { text: string; color: string }
+  status: { text: string, color: string }
   conversion: number
   totalRevenue: string
 }
 
-interface ProductData {
+type ProductData = {
   google: Product[]
   facebook: Product[]
   instagram: Product[]

@@ -1,6 +1,6 @@
 import is from '@sindresorhus/is'
 import { destr } from 'destr'
-import { HttpResponse, http } from 'msw'
+import { http, HttpResponse } from 'msw'
 import { db } from '@db/apps/academy/db'
 import { paginateArray } from '@api-utils/paginateArray'
 
@@ -36,14 +36,14 @@ export const handlerAppsAcademy = [
     const itemsPerPageLocal = is.number(parsedItemsPerPage) ? parsedItemsPerPage : 10
     const pageLocal = is.number(parsedPage) ? parsedPage : 1
 
-    const filteredCourses = db.courses.filter(course => {
+    const filteredCourses = db.courses.filter((course) => {
       return (
         (
           course.courseTitle.toLowerCase().includes(queryLowered)
-                || course.user.toLowerCase().includes(queryLowered)
+          || course.user.toLowerCase().includes(queryLowered)
         )
-            && !((course.completedTasks === course.totalTasks) && hideCompletedLocal)
-            && (label !== 'All Courses' ? course.tags.toLocaleLowerCase() === label?.toLowerCase() : true)
+        && !((course.completedTasks === course.totalTasks) && hideCompletedLocal)
+        && (label !== 'All Courses' ? course.tags.toLocaleLowerCase() === label?.toLowerCase() : true)
       )
     })
 
@@ -70,8 +70,7 @@ export const handlerAppsAcademy = [
       totalCourse: filteredCourses,
       courses: paginateArray(filteredCourses, itemsPerPageLocal, pageLocal),
       total: filteredCourses.length,
-    },
-    { status: 200 })
+    }, { status: 200 })
   }),
 
   // 👉 Course Details

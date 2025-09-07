@@ -1,9 +1,9 @@
-export interface Faq {
+export type Faq = {
   question: string
   answer: string
 }
 
-export interface FaqCategory {
+export type FaqCategory = {
   faqTitle: string
   faqIcon: string
   faqSubtitle: string

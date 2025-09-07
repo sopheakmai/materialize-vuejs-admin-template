@@ -1,5 +1,5 @@
 import type { PathParams } from 'msw'
-import { HttpResponse, http } from 'msw'
+import { http, HttpResponse } from 'msw'
 import { db } from '@db/auth/db'
 import type { UserOut } from '@db/auth/types'
 
@@ -7,7 +7,7 @@ import type { UserOut } from '@db/auth/types'
 export const handlerAuth = [
 
   http.post<PathParams>(('/api/auth/login'), async ({ request }) => {
-    const { email, password } = await request.json() as { email: string; password: string }
+    const { email, password } = await request.json() as { email: string, password: string }
 
     let errors: Record<string, string[]> = {
       email: ['Something went wrong'],
@@ -35,8 +35,7 @@ export const handlerAuth = [
           userData: userOutData,
         }
 
-        return HttpResponse.json(response,
-          { status: 201 })
+        return HttpResponse.json(response, { status: 201 })
       }
       catch (e: unknown) {
         errors = { email: [e as string] }

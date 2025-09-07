@@ -33,7 +33,7 @@ const configStore = useConfigStore()
 // 👉 Primary Color
 const vuetifyTheme = useTheme()
 
-const colors: { main: string; darken: string }[] = [
+const colors: { main: string, darken: string }[] = [
   { main: staticPrimaryColor, darken: staticPrimaryDarkenColor },
   { main: '#0D9394', darken: '#0C8485' },
   { main: '#FFB400', darken: '#E6A200' },
@@ -55,7 +55,7 @@ watch(
 )
 
 // ℹ️ It will set primary color for current theme only
-const setPrimaryColor = useDebounceFn((color: { main: string; darken: string }) => {
+const setPrimaryColor = useDebounceFn((color: { main: string, darken: string }) => {
   vuetifyTheme.themes.value[vuetifyTheme.name.value].colors.primary = color.main
   vuetifyTheme.themes.value[vuetifyTheme.name.value].colors['primary-darken-1'] = color.darken
 

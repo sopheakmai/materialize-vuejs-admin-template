@@ -2,12 +2,12 @@
 import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
 import type { Notification } from '@layouts/types'
 
-interface Props {
+type Props = {
   notifications: Notification[]
   badgeProps?: object
   location?: any
 }
-interface Emit {
+type Emit = {
   (e: 'read', value: number[]): void
   (e: 'unread', value: number[]): void
   (e: 'remove', value: number): void

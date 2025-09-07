@@ -8,7 +8,7 @@ import { useLayoutConfigStore } from '@layouts/stores/config'
 import { injectionKeyIsVerticalNavHovered } from '@layouts/symbols'
 import type { NavGroup, NavLink, NavSectionTitle, VerticalNavItems } from '@layouts/types'
 
-interface Props {
+type Props = {
   tag?: string | Component
   navItems: VerticalNavItems
   isOverlayNavActive: boolean

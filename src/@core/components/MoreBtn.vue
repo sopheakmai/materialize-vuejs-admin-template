@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-interface Props {
+type Props = {
   menuList?: unknown[]
   itemProps?: boolean
   iconSize?: string

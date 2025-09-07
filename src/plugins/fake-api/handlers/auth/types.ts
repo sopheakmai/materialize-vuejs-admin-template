@@ -2,12 +2,12 @@ export type Actions = 'create' | 'read' | 'update' | 'delete' | 'manage'
 
 export type Subjects = 'Auth' | 'Admin' | 'AclDemo' | 'all'
 
-export interface UserAbilityRule {
+export type UserAbilityRule = {
   action: Actions
   subject: Subjects
 }
 
-export interface User {
+export type User = {
   id: number
   fullName?: string
   username: string
@@ -18,19 +18,19 @@ export interface User {
   abilityRules: UserAbilityRule[]
 }
 
-export interface UserOut {
+export type UserOut = {
   userAbilityRules: User['abilityRules']
   accessToken: string
   userData: Omit<User, 'abilities' | 'password'>
 }
 
-export interface LoginResponse {
+export type LoginResponse = {
   accessToken: string
   userData: User
   userAbilityRules: User['abilityRules']
 }
 
-export interface RegisterResponse {
+export type RegisterResponse = {
   accessToken: string
   userData: User
   userAbilityRules: User['abilityRules']

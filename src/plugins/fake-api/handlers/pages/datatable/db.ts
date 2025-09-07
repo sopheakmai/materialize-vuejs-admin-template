@@ -30,7 +30,7 @@ import product7 from '@images/eCommerce/7.png'
 import product8 from '@images/eCommerce/8.png'
 import product9 from '@images/eCommerce/9.png'
 
-interface DB {
+type DB = {
   salesDetails: SalesDetails[]
 }
 

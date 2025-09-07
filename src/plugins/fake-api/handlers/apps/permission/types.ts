@@ -1,4 +1,4 @@
-export interface Permission {
+export type Permission = {
   id: number
   name: string
   createdDate: string

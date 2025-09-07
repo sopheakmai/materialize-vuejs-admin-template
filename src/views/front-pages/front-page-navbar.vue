@@ -8,7 +8,7 @@ import navImg from '@images/front-pages/misc/nav-img.png'
 import { VNodeRenderer } from '@layouts/components/VNodeRenderer'
 import { themeConfig } from '@themeConfig'
 
-interface Props {
+type Props = {
   activeId?: string
   navbarInitialOpacity?: number
 }
@@ -19,12 +19,12 @@ const props = withDefaults(defineProps<Props>(), {
 
 const display = useDisplay()
 
-interface navItem {
+type navItem = {
   name: string
   to: RouteLocationRaw
 }
 
-interface MenuItem {
+type MenuItem = {
   listTitle: string
   listIcon: string
   navItems: navItem[]

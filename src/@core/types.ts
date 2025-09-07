@@ -2,7 +2,7 @@ import type { LiteralUnion, ValueOf } from 'type-fest'
 import type { Skins } from './enums'
 import type { I18nLanguage, LayoutConfig } from '@layouts/types'
 
-interface ExplicitThemeConfig {
+type ExplicitThemeConfig = {
   app: {
     i18n: {
       defaultLocale: string
@@ -19,7 +19,7 @@ interface ExplicitThemeConfig {
 export type UserThemeConfig = LayoutConfig & ExplicitThemeConfig
 
 // SECTION Custom Input
-export interface CustomInputContent {
+export type CustomInputContent = {
   title: string
   desc?: string
   value: string
@@ -28,7 +28,7 @@ export interface CustomInputContent {
   images?: string
 }
 
-export interface GridColumn {
+export type GridColumn = {
   cols?: string
   sm?: string
   md?: string
@@ -38,9 +38,9 @@ export interface GridColumn {
 }
 
 // Data table
-export interface SortItem { key: string; order?: boolean | 'asc' | 'desc' }
+export type SortItem = { key: string, order?: boolean | 'asc' | 'desc' }
 
-export interface Options {
+export type Options = {
   page: number
   itemsPerPage: number
   sortBy: readonly SortItem[]

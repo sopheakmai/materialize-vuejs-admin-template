@@ -11,7 +11,7 @@ register()
 </script>
 
 <template>
-  <swiper-container
+  <SwiperContainer
     class="mySwiper"
     thumbs-swiper=".mySwiper2"
     loop="true"
@@ -20,7 +20,7 @@ register()
     centered-slides="true"
     events-prefix="swiper-"
   >
-    <swiper-slide
+    <SwiperSlide
       v-for="swiperImg in [
         swiper11,
         swiper12,
@@ -38,17 +38,17 @@ register()
         :src="swiperImg"
         cover
       />
-    </swiper-slide>
-  </swiper-container>
+    </SwiperSlide>
+  </SwiperContainer>
 
-  <swiper-container
+  <SwiperContainer
     class="mySwiper2"
     loop="true"
     free-mode="true"
     events-prefix="swiper-"
     slides-per-view="4"
   >
-    <swiper-slide
+    <SwiperSlide
       v-for="swiperImg in [
         swiper11,
         swiper12,
@@ -65,8 +65,8 @@ register()
         :src="swiperImg"
         cover
       />
-    </swiper-slide>
-  </swiper-container>
+    </SwiperSlide>
+  </SwiperContainer>
 </template>
 
 <style lang="scss" scoped>

@@ -1,4 +1,4 @@
-export interface CalendarEvent {
+export type CalendarEvent = {
   id: number
   url: string
   title: string

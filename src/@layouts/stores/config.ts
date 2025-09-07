@@ -29,7 +29,7 @@ export const useLayoutConfigStore = defineStore('layoutConfig', () => {
   // 👉 App Content Layout Nav
   const appContentLayoutNav = ref(layoutConfig.app.contentLayoutNav)
 
-  watch(appContentLayoutNav, val => {
+  watch(appContentLayoutNav, (val) => {
     // If Navbar type is hidden while switching to horizontal nav => Reset it to sticky
     if (val === AppContentLayoutNav.Horizontal) {
       if (navbarType.value === NavbarType.Hidden)
@@ -93,7 +93,7 @@ export const useLayoutConfigStore = defineStore('layoutConfig', () => {
   // const isAppRTL = ref(layoutConfig.app.isRTL)
   const isAppRTL = ref(false)
 
-  watch(isAppRTL, val => {
+  watch(isAppRTL, (val) => {
     _setDirAttr(val ? 'rtl' : 'ltr')
   })
 

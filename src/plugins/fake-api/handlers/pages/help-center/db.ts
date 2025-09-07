@@ -4,7 +4,7 @@ import productImg from '@images/front-pages/misc/product-image.png'
 
 // Images
 
-interface DB {
+type DB = {
   allArticles: HelpCenterAllCategoryArticles[]
   keepLearning: HelpCenterArticlesOverview[]
   popularArticles: HelpCenterArticlesOverview[]

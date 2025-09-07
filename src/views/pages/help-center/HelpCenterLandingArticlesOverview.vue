@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { HelpCenterArticlesOverview } from '@db/pages/help-center/types'
 
-interface Props {
+type Props = {
   articles: HelpCenterArticlesOverview[]
 }
 

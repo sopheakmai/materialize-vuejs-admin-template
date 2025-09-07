@@ -4,8 +4,8 @@ const openedPanels = ref<number[]>([])
 const items = ref(5)
 
 const all = () => {
-  // [...Array(5).keys()] => [0, 1, 2, 3, 4]
-  openedPanels.value = [...Array(items.value).keys()]
+  // Array.from({length: 5}, (_, i) => i) => [0, 1, 2, 3, 4]
+  openedPanels.value = Array.from({ length: items.value }, (_, i) => i)
 }
 
 const none = () => {

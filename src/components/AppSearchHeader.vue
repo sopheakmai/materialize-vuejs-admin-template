@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AppSearchHeaderBg from '@images/pages/app-search-header-bg.png'
 
-interface Props {
+type Props = {
   title?: string
   subtitle?: string
   customClass?: string

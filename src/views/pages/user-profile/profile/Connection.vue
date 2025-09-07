@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { ProfileConnections } from '@db/pages/profile/types'
 
-interface Props {
+type Props = {
   connectionsData: ProfileConnections[]
 }
 

@@ -1,6 +1,6 @@
 import type { Permission } from '@/plugins/fake-api/handlers/apps/permission/types'
 
-interface DB {
+type DB = {
   permissions: Permission[]
 }
 

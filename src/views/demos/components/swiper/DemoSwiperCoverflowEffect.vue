@@ -14,7 +14,7 @@ register()
 </script>
 
 <template>
-  <swiper-container
+  <SwiperContainer
     pagination="true"
     effect="coverflow"
     grab-cursor="true"
@@ -27,7 +27,7 @@ register()
     coverflow-effect-slide-shadows="true"
     events-prefix="swiper-"
   >
-    <swiper-slide
+    <SwiperSlide
       v-for="swiperImg in [
         swiper31,
         swiper32,
@@ -42,8 +42,8 @@ register()
       :key="swiperImg"
     >
       <VImg :src="swiperImg" />
-    </swiper-slide>
-  </swiper-container>
+    </SwiperSlide>
+  </SwiperContainer>
 </template>
 
 <style lang="scss" scoped>

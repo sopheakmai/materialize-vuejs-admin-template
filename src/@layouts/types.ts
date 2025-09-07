@@ -2,7 +2,7 @@ import type { OffsetOptions } from '@floating-ui/dom'
 import type { RouteLocationRaw } from 'vue-router'
 import type { AppContentLayoutNav, ContentWidth, FooterType, HorizontalNavType, NavbarType } from '@layouts/enums'
 
-export interface LayoutConfig {
+export type LayoutConfig = {
   app: {
     title: Lowercase<string>
     logo: VNode
@@ -42,64 +42,64 @@ export interface LayoutConfig {
   }
 }
 
-export interface AclProperties {
+export type AclProperties = {
   action: string
   subject: string
 }
 
 // 👉 Vertical nav section title
-export interface NavSectionTitle extends Partial<AclProperties> {
+export type NavSectionTitle = {
   heading: string
-}
+} & Partial<AclProperties>
 
 // 👉 Vertical nav link
 declare type ATagTargetAttrValues = '_blank' | '_self' | '_parent' | '_top' | 'framename'
-declare type ATagRelAttrValues =
-  | 'alternate'
-  | 'author'
-  | 'bookmark'
-  | 'external'
-  | 'help'
-  | 'license'
-  | 'next'
-  | 'nofollow'
-  | 'noopener'
-  | 'noreferrer'
-  | 'prev'
-  | 'search'
-  | 'tag'
+declare type ATagRelAttrValues
+  = | 'alternate'
+    | 'author'
+    | 'bookmark'
+    | 'external'
+    | 'help'
+    | 'license'
+    | 'next'
+    | 'nofollow'
+    | 'noopener'
+    | 'noreferrer'
+    | 'prev'
+    | 'search'
+    | 'tag'
 
-export interface NavLinkProps {
+export type NavLinkProps = {
   to?: RouteLocationRaw | string | null
   href?: string
   target?: ATagTargetAttrValues
   rel?: ATagRelAttrValues
 }
 
-export interface NavLink extends NavLinkProps, Partial<AclProperties> {
+export type NavLink = {
   title: string
   icon?: unknown
   badgeContent?: string
   badgeClass?: string
   disable?: boolean
-}
+} & NavLinkProps & Partial<AclProperties>
 
 // 👉 Vertical nav group
-export interface NavGroup extends Partial<AclProperties> {
+export type NavGroup = {
   title: string
   icon?: unknown
   badgeContent?: string
   badgeClass?: string
   children: (NavLink | NavGroup)[]
   disable?: boolean
-}
+} & Partial<AclProperties>
 
 export declare type VerticalNavItems = (NavLink | NavGroup | NavSectionTitle)[]
 export declare type HorizontalNavItems = (NavLink | NavGroup)[]
 
 // 👉 Components ========================
 
-export interface I18nLanguage {
+export type I18nLanguage = {
   label: string
   i18nLang: string
   isRTL: boolean
@@ -115,12 +115,12 @@ export type Notification = {
   color?: string
   isSeen: boolean
 } & (
-  | { img: string; text?: never; icon?: never }
-  | { img?: never; text: string; icon?: never }
-  | { img?: never; text?: never; icon: string }
+  | { img: string, text?: never, icon?: never }
+  | { img?: never, text: string, icon?: never }
+  | { img?: never, text?: never, icon: string }
 )
 
-export interface ThemeSwitcherTheme {
+export type ThemeSwitcherTheme = {
   name: string
   icon: string
 }

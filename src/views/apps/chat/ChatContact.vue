@@ -3,7 +3,7 @@ import { useChat } from '@/views/apps/chat/useChat'
 import { useChatStore } from '@/views/apps/chat/useChatStore'
 import type { ChatContact, ChatContactWithChat } from '@db/apps/chat/types'
 
-interface Props {
+type Props = {
   isChatContact?: boolean
   user: ChatContact | ChatContactWithChat
 }

@@ -9,7 +9,8 @@ const content = ref(
     </p>
     <p>
       The paragraph extension is not really required, but you need at least one node. Sure, that node can be something different.
-    </p>`)
+    </p>`,
+)
 
 const activeTab = ref('Restock')
 

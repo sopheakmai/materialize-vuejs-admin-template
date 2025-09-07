@@ -3,7 +3,7 @@ import bg1 from '@images/pages/background-1.jpg'
 import bg2 from '@images/pages/background-2.jpg'
 import bg3 from '@images/pages/background-3.jpg'
 
-const radioContent: { bgImage: string; value: string }[] = [
+const radioContent: { bgImage: string, value: string }[] = [
   {
     bgImage: bg1,
     value: 'basic',

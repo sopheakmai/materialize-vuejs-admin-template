@@ -36,7 +36,7 @@ const editKanbanItem = ref<EditKanbanItem>()
 
 // 👉 Add new board function that emit the name and id of new board
 const addNewBoard = () => {
-  refAddNewBoard.value?.validate().then(valid => {
+  refAddNewBoard.value?.validate().then((valid) => {
     if (valid.valid) {
       emit('addNewBoard', boardTitle.value)
       isAddNewFormVisible.value = false

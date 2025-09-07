@@ -2,18 +2,18 @@ export type EmailFolder = 'inbox' | 'sent' | 'draft' | 'spam'
 export type EmailFilter = EmailFolder | 'trashed' | 'starred'
 export type EmailLabel = 'personal' | 'company' | 'important' | 'private'
 
-export interface EmailTo {
+export type EmailTo = {
   email: string
   name: string
 }
 
-export interface EmailFrom {
+export type EmailFrom = {
   email: string
   name: string
   avatar: any
 }
 
-export interface EmailAttachment {
+export type EmailAttachment = {
   fileName: string
   thumbnail: any
   url: string
@@ -43,7 +43,7 @@ export interface EmailAttachment {
   flags: starred, trash
 */
 
-export interface Email {
+export type Email = {
   id: number
   to: EmailTo[]
   from: EmailFrom
@@ -65,7 +65,7 @@ export interface Email {
   isDeleted: boolean
 }
 
-export interface FetchEmailsPayload {
+export type FetchEmailsPayload = {
   q?: string
   filter?: EmailFilter
   label?: EmailLabel

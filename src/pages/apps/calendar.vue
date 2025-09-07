@@ -13,7 +13,7 @@ const store = useCalendarStore()
 const event = ref(structuredClone(blankEvent))
 const isEventHandlerSidebarActive = ref(false)
 
-watch(isEventHandlerSidebarActive, val => {
+watch(isEventHandlerSidebarActive, (val) => {
   if (!val)
     event.value = structuredClone(blankEvent)
 })
@@ -32,7 +32,7 @@ const checkAll = computed({
           Else if => all filters are selected (by checking length of both array) => Empty Selected array  => Deselect All
   */
   get: () => store.selectedCalendars.length === store.availableCalendars.length,
-  set: val => {
+  set: (val) => {
     if (val)
       store.selectedCalendars = store.availableCalendars.map(i => i.label)
 

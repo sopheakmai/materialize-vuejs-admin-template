@@ -1,25 +1,3 @@
-<template>
-  <div class="layout-with-tabs">
-    <!-- Tabs navigation -->
-    <AppTabs
-      v-if="showTabs"
-      class="tabs-navigation mb-4"
-      :align-tabs="tabsPosition"
-      :border="tabsBorder"
-      :color="tabsColor"
-      :tabs-bg-color="tabsBgColor"
-      :tabs-color="tabsTextColor"
-      :slider-color="tabsSliderColor"
-      :max-tabs="maxTabs"
-      :show-pin-action="showPinAction"
-      :show-more-menu="showMoreMenu"
-    />
-    
-    <!-- Slot for page content -->
-    <slot />
-  </div>
-</template>
-
 <script setup lang="ts">
 import AppTabs from '@core/components/AppTabs.vue'
 import { useTabs } from '@core/composable/useTabs'
@@ -32,13 +10,13 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
-  
+
   // Add current route as tab on component mount
   addCurrentRouteAsTab: {
     type: Boolean,
     default: true,
   },
-  
+
   // Tab options
   tabsPosition: {
     type: String as PropType<'start' | 'center' | 'end'>,
@@ -72,13 +50,13 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
-  
+
   // Make the current route a permanent tab
   pinCurrentTab: {
     type: Boolean,
     default: false,
   },
-  
+
   // Maximum number of tabs
   maxTabs: {
     type: Number,
@@ -97,6 +75,28 @@ onMounted(() => {
   }
 })
 </script>
+
+<template>
+  <div class="layout-with-tabs">
+    <!-- Tabs navigation -->
+    <AppTabs
+      v-if="showTabs"
+      class="tabs-navigation mb-4"
+      :align-tabs="tabsPosition"
+      :border="tabsBorder"
+      :color="tabsColor"
+      :tabs-bg-color="tabsBgColor"
+      :tabs-color="tabsTextColor"
+      :slider-color="tabsSliderColor"
+      :max-tabs="maxTabs"
+      :show-pin-action="showPinAction"
+      :show-more-menu="showMoreMenu"
+    />
+
+    <!-- Slot for page content -->
+    <slot />
+  </div>
+</template>
 
 <style lang="scss">
 .layout-with-tabs {

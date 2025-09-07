@@ -4,7 +4,7 @@ import { computePosition, flip, offset, shift } from '@floating-ui/dom'
 import { useLayoutConfigStore } from '@layouts/stores/config'
 import { themeConfig } from '@themeConfig'
 
-interface Props {
+type Props = {
   popperInlineEnd?: boolean
   tag?: string
   contentContainerTag?: string
@@ -29,17 +29,16 @@ const popperContentStyles = ref({
 
 const updatePopper = async () => {
   if (refPopperContainer.value !== undefined && refPopper.value !== undefined) {
-    const { x, y } = await computePosition(refPopperContainer.value,
-      refPopper.value, {
-        placement: props.popperInlineEnd ? (props.isRtl ? 'left-start' : 'right-start') : 'bottom-start',
-        middleware: [
-          ...(configStore.horizontalNavPopoverOffset ? [offset(configStore.horizontalNavPopoverOffset)] : []),
-          flip({ boundary: document.querySelector('body')! }),
+    const { x, y } = await computePosition(refPopperContainer.value, refPopper.value, {
+      placement: props.popperInlineEnd ? (props.isRtl ? 'left-start' : 'right-start') : 'bottom-start',
+      middleware: [
+        ...(configStore.horizontalNavPopoverOffset ? [offset(configStore.horizontalNavPopoverOffset)] : []),
+        flip({ boundary: document.querySelector('body')! }),
 
-          shift({ boundary: document.querySelector('body')! }),
-        ],
+        shift({ boundary: document.querySelector('body')! }),
+      ],
 
-        /*
+      /*
       ℹ️ Why we are not using fixed positioning?
 
       `position: fixed` doesn't work as expected when some CSS properties like `transform` is applied on its parent element.
@@ -52,8 +51,8 @@ const updatePopper = async () => {
 
       NOTE: This issue starts from third level children (Top Level > Sub item > Sub item).
     */
-        // strategy: 'fixed',
-      })
+      // strategy: 'fixed',
+    })
 
     popperContentStyles.value.left = `${x}px`
     popperContentStyles.value.top = `${y}px`

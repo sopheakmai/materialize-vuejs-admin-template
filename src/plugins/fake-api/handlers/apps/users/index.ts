@@ -1,7 +1,7 @@
 import is from '@sindresorhus/is'
 import { destr } from 'destr'
 import type { PathParams } from 'msw'
-import { HttpResponse, http } from 'msw'
+import { http, HttpResponse } from 'msw'
 import { db } from '@db/apps/users/db'
 import { paginateArray } from '@api-utils/paginateArray'
 

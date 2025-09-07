@@ -14,7 +14,7 @@ register()
 </script>
 
 <template>
-  <swiper-container
+  <SwiperContainer
     pagination-clickable="true"
     slides-per-view="5"
     space-between="50"
@@ -38,7 +38,7 @@ register()
       },
     }"
   >
-    <swiper-slide
+    <SwiperSlide
       v-for="swiperImg in [
         swiper31,
         swiper32,
@@ -53,6 +53,6 @@ register()
       :key="swiperImg"
     >
       <VImg :src="swiperImg" />
-    </swiper-slide>
-  </swiper-container>
+    </SwiperSlide>
+  </SwiperContainer>
 </template>

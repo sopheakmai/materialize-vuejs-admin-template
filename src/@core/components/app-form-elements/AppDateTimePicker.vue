@@ -3,10 +3,10 @@ import FlatPickr from 'vue-flatpickr-component'
 import { useTheme } from 'vuetify'
 
 // @ts-expect-error There won't be declaration file for it
-import { VField, makeVFieldProps } from 'vuetify/lib/components/VField/VField'
+import { makeVFieldProps, VField } from 'vuetify/lib/components/VField/VField'
 
 // @ts-expect-error There won't be declaration file for it
-import { VInput, makeVInputProps } from 'vuetify/lib/components/VInput/VInput'
+import { makeVInputProps, VInput } from 'vuetify/lib/components/VInput/VInput'
 
 // @ts-expect-error There won't be declaration file for it
 import { filterInputAttrs } from 'vuetify/lib/util/helpers'
@@ -44,7 +44,7 @@ const props = defineProps({
 
 const emit = defineEmits<Emit>()
 
-interface Emit {
+type Emit = {
   (e: 'click:control', val: MouseEvent): true
   (e: 'mousedown:control', val: MouseEvent): true
   (e: 'update:focused', val: MouseEvent): true
@@ -98,7 +98,7 @@ const updateThemeClassInCalendar = () => {
   if (!refFlatPicker.value.fp.calendarContainer)
     return
 
-  vuetifyThemesName.forEach(t => {
+  vuetifyThemesName.forEach((t) => {
     refFlatPicker.value.fp.calendarContainer.classList.remove(`v-theme--${t}`)
   })
   refFlatPicker.value.fp.calendarContainer.classList.add(`v-theme--${vuetifyTheme.global.name.value}`)
@@ -117,8 +117,7 @@ const emitModelValue = (val: string) => {
 watch(() => props, () => {
   fieldProps.value = VField.filterProps((props))
   inputProps.value = VInput.filterProps(props)
-},
-{
+}, {
   deep: true,
   immediate: true,
 })

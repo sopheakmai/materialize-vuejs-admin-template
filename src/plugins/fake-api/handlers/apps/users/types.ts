@@ -1,4 +1,4 @@
-export interface UserProperties {
+export type UserProperties = {
   id: number
   fullName: string
   company: string
