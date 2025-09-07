@@ -12,9 +12,15 @@ import AnalyticsTotalTransactions from '@/views/dashboards/analytics/AnalyticsTo
 import AnalyticsVisitsByDay from '@/views/dashboards/analytics/AnalyticsVisitsByDay.vue'
 import AnalyticsWeeklySales from '@/views/dashboards/analytics/AnalyticsWeeklySales.vue'
 
+definePage({
+  meta: {
+    title: 'analytics.dashboard',
+  },
+})
+
 const statisticsVertical = [
   {
-    title: 'Total Orders',
+    title: 'Total Orders AAA',
     color: 'primary',
     icon: 'ri-shopping-cart-line',
     stats: '155k',
@@ -169,5 +175,5 @@ const statisticsVertical = [
 </template>
 
 <style lang="scss">
-@use "@core/scss/template/libs/apex-chart.scss";
+@use "@core/scss/template/libs/apex-chart";
 </style>

@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import LayoutWithTabs from '@core/components/LayoutWithTabs.vue'
 import { useConfigStore } from '@core/stores/config'
 import { AppContentLayoutNav } from '@layouts/enums'
 import { switchToVerticalNavOnLtOverlayNavBreakpoint } from '@layouts/utils'
@@ -44,7 +45,15 @@ watch([isFallbackStateActive, refLoadingIndicator], () => {
         @fallback="isFallbackStateActive = true"
         @resolve="isFallbackStateActive = false"
       >
-        <Component :is="Component" />
+        <LayoutWithTabs
+          v-if="!$route.meta.disableTabs"
+          :show-tabs="!$route.meta.hideTabs"
+          :add-current-route-as-tab="$route.meta.addToTabs !== false"
+          :pin-current-tab="!!$route.meta.pinTab"
+        >
+          <Component :is="Component" />
+        </LayoutWithTabs>
+        <Component v-else :is="Component" />
       </Suspense>
     </RouterView>
   </Component>

@@ -1,5 +1,12 @@
-import type { UserThemeConfig } from './types'
 import type { LayoutConfig } from '@layouts/types'
+import type { UserThemeConfig } from './types'
+
+// Export tabs components and composables
+export { default as AppTabs } from './components/AppTabs.vue'
+export { default as LayoutWithTabs } from './components/LayoutWithTabs.vue'
+export { useTabs } from './composable/useTabs'
+export { useTabsStore } from './stores/tabs'
+export type { TabItem } from './stores/tabs'
 
 export const defineThemeConfig = (userConfig: UserThemeConfig): { themeConfig: UserThemeConfig; layoutConfig: LayoutConfig } => {
   return {

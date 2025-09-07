@@ -93,10 +93,11 @@ const sources: BundleScriptConfig = {
   ],
   json: [
     riIconsPath,
-    {
-      filename: mdiIconsPath,
-      icons: ['language-typescript', 'language-javascript'],
-    },
+    mdiIconsPath,
+    // {
+    //   filename: mdiIconsPath,
+    //   icons: ['language-typescript', 'language-javascript'],
+    // },
     {
       filename: bxlIconsPath,
       icons: ['facebook', 'twitter', 'github', 'google', 'linkedin'],
