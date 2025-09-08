@@ -58,9 +58,10 @@ const props = defineProps({
   },
 
   // Maximum number of tabs
+  // Set to 0 for unlimited tabs
   maxTabs: {
     type: Number,
-    default: 10,
+    default: 30,
   },
 })
 
@@ -69,13 +70,10 @@ const emit = defineEmits(['update:keepAlive', 'keepAliveInclude', 'keepAliveExcl
 // Get route and tabs API
 const route = useRoute()
 const router = useRouter()
-const { addCurrentRouteTab, tabs } = useTabs()
+const { addCurrentRouteTab } = useTabs()
 
 // Keep-alive state
 const keepAliveEnabled = ref(props.keepAlive)
-
-// Check if we're in development mode
-const isDevelopment = computed(() => import.meta.env.DEV)
 
 // Add current route as tab on component mount if enabled
 onMounted(() => {
@@ -113,12 +111,6 @@ const onTabRemoved = (tab: any) => {
     emit('keepAliveExclude', tab.route)
   }
 }
-
-// Toggle keep-alive functionality
-const toggleKeepAlive = () => {
-  keepAliveEnabled.value = !keepAliveEnabled.value
-  emit('update:keepAlive', keepAliveEnabled.value)
-}
 </script>
 
 <template>
@@ -147,21 +139,6 @@ const toggleKeepAlive = () => {
     <div class="tab-content">
       <slot />
     </div>
-
-    <!-- Keep-alive toggle button (for development) -->
-    <div v-if="isDevelopment" class="keep-alive-toggle">
-      <VBtn
-        icon
-        size="small"
-        :color="keepAliveEnabled ? 'success' : 'error'"
-        variant="tonal"
-        :title="keepAliveEnabled ? 'Disable keep-alive' : 'Enable keep-alive'"
-        @click="toggleKeepAlive"
-      >
-        <VIcon>{{ keepAliveEnabled ? 'mdi-cached' : 'mdi-cached-off' }}</VIcon>
-      </VBtn>
-      <span class="keep-alive-status ms-2">Keep-alive: {{ keepAliveEnabled ? 'ON' : 'OFF' }}</span>
-    </div>
   </div>
 </template>
 
@@ -179,24 +156,6 @@ const toggleKeepAlive = () => {
 
   .tab-content {
     flex: 1;
-  }
-
-  .keep-alive-toggle {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    display: flex;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.8);
-    padding: 4px 8px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 100;
-    font-size: 0.75rem;
-
-    .v-theme--dark & {
-      background: rgba(30, 30, 30, 0.8);
-    }
   }
 }
 </style>

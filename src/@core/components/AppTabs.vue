@@ -28,6 +28,7 @@ const props = defineProps({
   keepAlive: { type: Boolean, default: true },
 
   // Maximum number of tabs to show
+  // Set to 0 for unlimited tabs
   maxTabs: { type: Number, default: 30 },
 })
 
@@ -47,6 +48,11 @@ const {
 
 // Set maximum tabs from props
 setMaxTabs(props.maxTabs)
+
+// Watch for changes to maxTabs prop
+watch(() => props.maxTabs, (newValue) => {
+  setMaxTabs(newValue)
+})
 
 // Handle tab closure with notification to parent
 const handleTabClose = (tabId: string) => {

@@ -101,20 +101,6 @@ watch([isFallbackStateActive, refLoadingIndicator], () => {
         <Component :is="Component" v-else />
       </Suspense>
     </RouterView>
-
-    <!-- Debug info (only visible in development) -->
-    <div v-if="isDevelopment && keepAliveEnabled" class="keep-alive-debug pa-2 mt-4" style="border: 1px dashed #ccc; font-size: 0.8rem; position: fixed; bottom: 0; right: 0; z-index: 9999; background: rgba(255,255,255,0.9); max-width: 300px;">
-      <div><strong>Keep-Alive Debug:</strong></div>
-      <div>Enabled: {{ keepAliveEnabled }}</div>
-      <div>Current Route: {{ $route.path }}</div>
-      <div>Wrapper Name: RoutePageKeepAliveWrapper</div>
-      <div>Cached Components: {{ cachedViews.includes('RoutePageKeepAliveWrapper') ? 'Yes' : 'No' }}</div>
-      <div>
-        <VBtn size="x-small" color="primary" variant="outlined" class="mt-1" @click="addCachedView($route.path)">
-          Enable Caching
-        </VBtn>
-      </div>
-    </div>
   </Component>
 </template>
 

@@ -135,8 +135,9 @@ export const useTabsStore = defineStore('tabs', () => {
     // Add to tabs array
     tabs.value.push(newTab)
 
-    // If we exceed max tabs, remove the oldest closable tab
-    if (tabs.value.length > maxTabs.value) {
+    // If maxTabs is 0, there's no limit
+    // Otherwise, if we exceed max tabs, remove the oldest closable tab
+    if (maxTabs.value > 0 && tabs.value.length > maxTabs.value) {
       const closableTabIndex = tabs.value.findIndex(tab => tab.closable)
       if (closableTabIndex !== -1)
         tabs.value.splice(closableTabIndex, 1)
