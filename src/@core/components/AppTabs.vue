@@ -218,11 +218,11 @@ const activeTabModel = computed({
       offset="0"
     >
       <VList density="compact">
-        <VListItem
+        <!-- <VListItem
           prepend-icon="mdi-refresh"
           :title="t('Refresh Current Tab')"
           @click="refreshCurrentTab"
-        />
+        /> -->
         <VListItem
           prepend-icon="mdi-close-box-multiple-outline"
           :title="t('Close Other Tabs')"
