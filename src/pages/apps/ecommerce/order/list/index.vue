@@ -3,6 +3,12 @@ import type { Order } from '@db/apps/ecommerce/types'
 import mastercard from '@images/logos/mastercard.png'
 import paypal from '@images/logos/paypal.png'
 
+definePage({
+  meta: {
+    title: 'order.list',
+  },
+})
+
 const widgetData = ref([
   { title: 'Pending Payment', value: 56, icon: 'ri-calendar-2-line' },
   { title: 'Completed', value: 12689, icon: 'ri-check-double-line' },

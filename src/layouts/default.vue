@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import LayoutWithTabs from '@core/components/LayoutWithTabs.vue'
+import PageKeepAliveWrapper from '@core/components/PageKeepAliveWrapper.vue'
 import { useConfigStore } from '@core/stores/config'
 import { AppContentLayoutNav } from '@layouts/enums'
 import { switchToVerticalNavOnLtOverlayNavBreakpoint } from '@layouts/utils'
@@ -16,6 +17,40 @@ switchToVerticalNavOnLtOverlayNavBreakpoint()
 const { layoutAttrs, injectSkinClasses } = useSkins()
 
 injectSkinClasses()
+
+// Keep-alive state
+const keepAliveEnabled = ref(true)
+const cachedViews = ref<string[]>(['RoutePageKeepAliveWrapper'])
+
+// Get component name from route
+const getComponentNameFromRoute = (routePath: string) => {
+  // Extract the last part of the route path to use as the component name
+  // Strip leading slash and any query parameters
+  const path = routePath.replace(/^\//, '').split('?')[0]
+  return path || 'default'
+}
+
+// Method to add a route to cached views
+const addCachedView = (routePath: string) => {
+  // Use RoutePageKeepAliveWrapper as the component name to include
+  if (!cachedViews.value.includes('RoutePageKeepAliveWrapper')) {
+    console.log(`[KeepAlive] Adding RoutePageKeepAliveWrapper to cache`)
+    cachedViews.value.push('RoutePageKeepAliveWrapper')
+  }
+
+  // Log for debugging
+  console.log(`[KeepAlive] Current cached views:`, cachedViews.value)
+}
+
+// Method to remove a route from cached views
+const removeCachedView = (routePath: string) => {
+  // With our approach, we don't need to remove individual routes
+  // Just keep the wrapper component cached
+  console.log(`[KeepAlive] Keeping wrapper component cached (ignoring request to remove ${routePath})`)
+}
+
+// Check if we're in development mode
+const isDevelopment = computed(() => import.meta.env.DEV)
 
 // SECTION: Loading Indicator
 const isFallbackStateActive = ref(false)
@@ -45,17 +80,41 @@ watch([isFallbackStateActive, refLoadingIndicator], () => {
         @fallback="isFallbackStateActive = true"
         @resolve="isFallbackStateActive = false"
       >
-        <LayoutWithTabs
-          v-if="!$route.meta.disableTabs"
-          :show-tabs="!$route.meta.hideTabs"
-          :add-current-route-as-tab="$route.meta.addToTabs !== false"
-          :pin-current-tab="!!$route.meta.pinTab"
-        >
-          <Component :is="Component" />
-        </LayoutWithTabs>
+        <template v-if="!$route.meta.disableTabs">
+          <LayoutWithTabs
+            :show-tabs="!$route.meta.hideTabs"
+            :add-current-route-as-tab="$route.meta.addToTabs !== false"
+            :keep-alive="keepAliveEnabled"
+            @keep-alive-include="addCachedView"
+            @keep-alive-exclude="removeCachedView"
+            @update:keep-alive="val => keepAliveEnabled = val"
+          >
+            <!-- Use the wrapper component to ensure proper component naming when keep-alive is enabled -->
+            <KeepAlive v-if="keepAliveEnabled" :include="cachedViews">
+              <PageKeepAliveWrapper :key="$route.path" :page-name="getComponentNameFromRoute($route.path)">
+                <Component :is="Component" />
+              </PageKeepAliveWrapper>
+            </KeepAlive>
+            <Component :is="Component" v-else :key="$route.path" />
+          </LayoutWithTabs>
+        </template>
         <Component :is="Component" v-else />
       </Suspense>
     </RouterView>
+
+    <!-- Debug info (only visible in development) -->
+    <div v-if="isDevelopment && keepAliveEnabled" class="keep-alive-debug pa-2 mt-4" style="border: 1px dashed #ccc; font-size: 0.8rem; position: fixed; bottom: 0; right: 0; z-index: 9999; background: rgba(255,255,255,0.9); max-width: 300px;">
+      <div><strong>Keep-Alive Debug:</strong></div>
+      <div>Enabled: {{ keepAliveEnabled }}</div>
+      <div>Current Route: {{ $route.path }}</div>
+      <div>Wrapper Name: RoutePageKeepAliveWrapper</div>
+      <div>Cached Components: {{ cachedViews.includes('RoutePageKeepAliveWrapper') ? 'Yes' : 'No' }}</div>
+      <div>
+        <VBtn size="x-small" color="primary" variant="outlined" class="mt-1" @click="addCachedView($route.path)">
+          Enable Caching
+        </VBtn>
+      </div>
+    </div>
   </Component>
 </template>
 

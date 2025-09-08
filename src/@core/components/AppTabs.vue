@@ -21,19 +21,23 @@ const props = defineProps({
   sliderColor: { type: String, default: undefined },
 
   // Feature toggles
-  showPinAction: { type: Boolean, default: true },
   showMoreMenu: { type: Boolean, default: true },
+  showPinAction: { type: Boolean, default: false }, // Pin functionality disabled
+
+  // Keep-alive functionality
+  keepAlive: { type: Boolean, default: true },
 
   // Maximum number of tabs to show
-  maxTabs: { type: Number, default: 10 },
+  maxTabs: { type: Number, default: 30 },
 })
+
+const emit = defineEmits(['tab-removed', 'update:keepAlive', 'keep-alive-include', 'keep-alive-exclude'])
 const { t } = useI18n()
 const {
   tabs,
   activeTabId,
   closeTab,
   activateTab,
-  togglePinTab,
   closeAllTabs,
   closeOtherTabs,
   closeTabsToLeft,
@@ -44,6 +48,56 @@ const {
 // Set maximum tabs from props
 setMaxTabs(props.maxTabs)
 
+// Handle tab closure with notification to parent
+const handleTabClose = (tabId: string) => {
+  // Get the tab before closing it
+  const tabToClose = tabs.value.find(tab => tab.id === tabId)
+
+  // Close the tab
+  closeTab(tabId)
+
+  // Notify parent component about tab removal
+  if (tabToClose) {
+    emit('tab-removed', tabToClose)
+  }
+}
+
+// Close all tabs with parent notification
+const handleCloseAllTabs = () => {
+  // Notify parent about all tabs being closed
+  tabs.value.forEach((tab) => {
+    if (tab.closable) {
+      emit('tab-removed', tab)
+    }
+  })
+  closeAllTabs()
+}
+
+// Close other tabs with parent notification
+const handleCloseOtherTabs = () => {
+  // Notify parent about which tabs are being closed
+  tabs.value.forEach((tab) => {
+    if (tab.id !== activeTabId.value && tab.closable) {
+      emit('tab-removed', tab)
+    }
+  })
+  closeOtherTabs()
+}
+
+// Close tabs to the left with parent notification
+const handleCloseTabsToLeft = (tabId: string) => {
+  const tabIndex = tabs.value.findIndex(tab => tab.id === tabId)
+  if (tabIndex > 0) {
+    // Notify parent about which tabs are being closed
+    tabs.value.slice(0, tabIndex).forEach((tab) => {
+      if (tab.closable) {
+        emit('tab-removed', tab)
+      }
+    })
+  }
+  closeTabsToLeft(tabId)
+}
+
 // Menu state
 const menuState = ref({
   isOpen: false,
@@ -52,24 +106,28 @@ const menuState = ref({
   tabId: '',
 })
 
+// Keep-alive state
+const keepAliveEnabled = computed({
+  get: () => props.keepAlive,
+  set: (value) => {
+    emit('update:keepAlive', value)
+  },
+})
+
+// Toggle keep-alive functionality
+const toggleKeepAlive = () => {
+  keepAliveEnabled.value = !keepAliveEnabled.value
+}
+
 // Open context menu for a tab
 const openTabMenu = (event: MouseEvent, tabId: string) => {
-  // Don't open menu if clicking on an icon
-  if ((event.target as HTMLElement).closest('.tab-actions')) {
-    return
-  }
-
-  // Show the context menu
+  event.preventDefault()
   menuState.value = {
     isOpen: true,
     x: event.clientX,
     y: event.clientY,
     tabId,
   }
-
-  // Let the default tab activation happen
-  // No need to prevent default or stop propagation
-  // The tab will be activated by the v-tabs component
 }
 
 // Two-way binding for active tab
@@ -80,11 +138,6 @@ const activeTabModel = computed({
       activateTab(val)
   },
 })
-
-// Handle tab change
-const onTabChange = (tabId: string) => {
-  activateTab(tabId)
-}
 </script>
 
 <template>
@@ -105,7 +158,6 @@ const onTabChange = (tabId: string) => {
       :slider-color="props.sliderColor"
       :direction="props.direction"
       show-arrows
-      @update:model-value="(val: any) => onTabChange(val as string)"
     >
       <VTab
         v-for="tab in tabs"
@@ -113,7 +165,7 @@ const onTabChange = (tabId: string) => {
         :value="tab.id"
         class="tab-item d-flex align-center"
         :ripple="false"
-        @click="openTabMenu($event, tab.id)"
+        @contextmenu="openTabMenu($event, tab.id)"
       >
         <div class="d-flex align-center">
           <VIcon
@@ -122,59 +174,18 @@ const onTabChange = (tabId: string) => {
             size="16"
             class="me-2"
           />
+          <span class="tab-title" :class="{ 'tab-title-active': tab.id === activeTabModel }">
+            {{ t(tab.title) }}
+          </span>
 
-          <VMenu
-            v-model="menuState.isOpen"
-            close-on-content-click
-          >
-            <template #activator>
-              <span class="tab-title" :class="{ 'tab-title-active': tab.id === activeTabModel }">
-                {{ t(tab.title) }}
-              </span>
-            </template>
-            <VList density="compact">
-              <VListItem
-                prepend-icon="mdi-refresh"
-                :title="t('Refresh Current Tab')"
-                @click="refreshCurrentTab"
-              />
-              <VListItem
-                prepend-icon="mdi-close-box-multiple"
-                :title="t('Close All Tabs')"
-                @click="closeAllTabs"
-              />
-              <VListItem
-                prepend-icon="mdi-arrow-left-box"
-                :title="t('Close Tabs to the Left')"
-                @click="closeTabsToLeft(menuState.tabId)"
-              />
-            </VList>
-          </VMenu>
-
-          <!-- Pin/Close actions -->
+          <!-- Tab actions -->
           <div class="tab-actions ms-2">
-            <VIcon
-              v-if="tab.closable && showPinAction"
-              icon="mdi-pin-outline"
-              size="16"
-              class="pin-icon mr-1"
-              @click.stop="togglePinTab(tab.id)"
-            />
-            <VIcon
-              v-if="!tab.closable && showPinAction"
-              icon="mdi-pin"
-              size="16"
-              class="pin-icon mr-1"
-              @click.stop="togglePinTab(tab.id)"
-            >
-              <template #default />
-            </VIcon>
             <VIcon
               v-if="tab.closable && tabs.length > 1"
               icon="mdi-close"
               size="16"
               class="close-icon"
-              @click.stop="closeTab(tab.id)"
+              @click.stop="handleTabClose(tab.id)"
             />
           </div>
         </div>
@@ -182,6 +193,35 @@ const onTabChange = (tabId: string) => {
     </VTabs>
 
     <!-- Context Menu for tabs -->
+    <VMenu
+      v-model="menuState.isOpen"
+      :style="{ position: 'fixed', left: `${menuState.x}px`, top: `${menuState.y}px` }"
+      location="bottom start"
+      offset="0"
+    >
+      <VList density="compact">
+        <VListItem
+          prepend-icon="mdi-refresh"
+          :title="t('Refresh Current Tab')"
+          @click="refreshCurrentTab"
+        />
+        <VListItem
+          :prepend-icon="keepAliveEnabled ? 'mdi-cached' : 'mdi-cached-off'"
+          :title="t(keepAliveEnabled ? 'Disable Keep-Alive' : 'Enable Keep-Alive')"
+          @click="toggleKeepAlive"
+        />
+        <VListItem
+          prepend-icon="mdi-close-box-multiple"
+          :title="t('Close All Tabs')"
+          @click="handleCloseAllTabs"
+        />
+        <VListItem
+          prepend-icon="mdi-arrow-left-box"
+          :title="t('Close Tabs to the Left')"
+          @click="handleCloseTabsToLeft(menuState.tabId)"
+        />
+      </VList>
+    </VMenu>
   </VCard>
 </template>
 
@@ -222,8 +262,7 @@ const onTabChange = (tabId: string) => {
       opacity: 1;
     }
 
-    .close-icon,
-    .pin-icon {
+    .close-icon {
       cursor: pointer;
       opacity: 0.7;
 
