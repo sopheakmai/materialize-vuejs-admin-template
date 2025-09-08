@@ -110,6 +110,7 @@ export function useTabs() {
     closeAllTabs: tabsStore.closeAllTabs,
     closeOtherTabs: tabsStore.closeOtherTabs,
     closeTabsToLeft: tabsStore.closeTabsToLeft,
+    closeTabsToRight: tabsStore.closeTabsToRight,
     togglePinTab: tabsStore.togglePinTab,
     refreshCurrentTab,
     refreshTabTranslations,

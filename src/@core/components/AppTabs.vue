@@ -42,6 +42,7 @@ const {
   closeAllTabs,
   closeOtherTabs,
   closeTabsToLeft,
+  closeTabsToRight,
   refreshCurrentTab,
   setMaxTabs,
 } = useTabs()
@@ -68,15 +69,17 @@ const handleTabClose = (tabId: string) => {
   }
 }
 
-// Close all tabs with parent notification
+// Close all tabs except the active tab with parent notification
 const handleCloseAllTabs = () => {
-  // Notify parent about all tabs being closed
+  // Notify parent about all tabs being closed except the active tab
   tabs.value.forEach((tab) => {
-    if (tab.closable) {
+    if (tab.closable && tab.id !== activeTabId.value) {
       emit('tab-removed', tab)
     }
   })
-  closeAllTabs()
+
+  // Use the closeOtherTabs function which already preserves the active tab
+  closeOtherTabs()
 }
 
 // Close other tabs with parent notification
@@ -104,6 +107,20 @@ const handleCloseTabsToLeft = (tabId: string) => {
   closeTabsToLeft(tabId)
 }
 
+// Close tabs to the right with parent notification
+const handleCloseTabsToRight = (tabId: string) => {
+  const tabIndex = tabs.value.findIndex(tab => tab.id === tabId)
+  if (tabIndex >= 0 && tabIndex < tabs.value.length - 1) {
+    // Notify parent about which tabs are being closed
+    tabs.value.slice(tabIndex + 1).forEach((tab) => {
+      if (tab.closable) {
+        emit('tab-removed', tab)
+      }
+    })
+  }
+  closeTabsToRight(tabId)
+}
+
 // Menu state
 const menuState = ref({
   isOpen: false,
@@ -119,11 +136,6 @@ const keepAliveEnabled = computed({
     emit('update:keepAlive', value)
   },
 })
-
-// Toggle keep-alive functionality
-const toggleKeepAlive = () => {
-  keepAliveEnabled.value = !keepAliveEnabled.value
-}
 
 // Open context menu for a tab
 const openTabMenu = (event: MouseEvent, tabId: string) => {
@@ -212,19 +224,19 @@ const activeTabModel = computed({
           @click="refreshCurrentTab"
         />
         <VListItem
-          :prepend-icon="keepAliveEnabled ? 'mdi-cached' : 'mdi-cached-off'"
-          :title="t(keepAliveEnabled ? 'Disable Keep-Alive' : 'Enable Keep-Alive')"
-          @click="toggleKeepAlive"
-        />
-        <VListItem
-          prepend-icon="mdi-close-box-multiple"
-          :title="t('Close All Tabs')"
+          prepend-icon="mdi-close-box-multiple-outline"
+          :title="t('Close Other Tabs')"
           @click="handleCloseAllTabs"
         />
         <VListItem
           prepend-icon="mdi-arrow-left-box"
           :title="t('Close Tabs to the Left')"
           @click="handleCloseTabsToLeft(menuState.tabId)"
+        />
+        <VListItem
+          prepend-icon="mdi-arrow-right-box"
+          :title="t('Close Tabs to the Right')"
+          @click="handleCloseTabsToRight(menuState.tabId)"
         />
       </VList>
     </VMenu>

@@ -23,8 +23,10 @@ export const useTabsStore = defineStore('tabs', () => {
   const activeTab = computed(() => tabs.value.find(tab => tab.id === activeTabId.value) || null)
 
   function addTab(route: RouteLocationNormalized, options: { closable?: boolean } = {}) {
-    // Generate unique ID based on full path
-    const id = route.fullPath
+    // Generate unique ID based on path only (ignore _refresh param)
+    const id = route.path
+    // If you want to distinguish tabs by params (but not _refresh), you can add them here
+    // For now, just use route.path
 
     // Check if tab already exists
     const existingTab = tabs.value.find(tab => tab.id === id)
@@ -126,7 +128,7 @@ export const useTabsStore = defineStore('tabs', () => {
       id,
       title: titleInfo.title,
       titleKey: titleInfo.titleKey,
-      route: route.fullPath,
+      route: route.fullPath, // keep fullPath for navigation, but id is only path
       icon: route.meta?.icon as string | undefined,
       closable: options.closable !== undefined ? options.closable : true,
       meta: { ...route.meta },
@@ -243,6 +245,19 @@ export const useTabsStore = defineStore('tabs', () => {
   }
 
   /**
+   * Close tabs to the right of the specified tab, except pinned ones
+   */
+  function closeTabsToRight(tabId: string) {
+    const tabIndex = tabs.value.findIndex(tab => tab.id === tabId)
+
+    if (tabIndex === -1)
+      return
+
+    // Keep tabs that are either pinned or at/before the target tab's index
+    tabs.value = tabs.value.filter((tab, index) => !tab.closable || index <= tabIndex)
+  }
+
+  /**
    * Pin/unpin a tab
    */
   function togglePinTab(tabId: string) {
@@ -309,6 +324,7 @@ export const useTabsStore = defineStore('tabs', () => {
     closeAllTabs,
     closeOtherTabs,
     closeTabsToLeft,
+    closeTabsToRight,
     togglePinTab,
     updateTab,
     updateTabTitles,

@@ -93,3 +93,12 @@ const updateBoardState = async (kanbanBoardIds: number[]) => {
     @update-board-state="updateBoardState"
   />
 </template>
+
+<route lang="json">
+{
+  "name": "apps-kanban",
+  "meta": {
+    "title": "kanban"
+  }
+}
+</route>
