@@ -7,6 +7,7 @@
 export {}
 declare global {
   const $api: typeof import('../src/utils/api')['$api']
+  const ACCESS_TOKEN_KEY: typeof import('../src/utils/constants')['ACCESS_TOKEN_KEY']
   const COOKIE_MAX_AGE_1_YEAR: typeof import('../src/utils/constants')['COOKIE_MAX_AGE_1_YEAR']
   const EffectScope: typeof import('vue')['EffectScope']
   const LOADER_BG_COLOR_KEY: typeof import('../src/utils/constants')['LOADER_BG_COLOR_KEY']
@@ -14,6 +15,8 @@ declare global {
   const LOCALE_KEY: typeof import('../src/utils/constants')['LOCALE_KEY']
   const PRIMARY_COLOR_KEY: typeof import('../src/utils/constants')['PRIMARY_COLOR_KEY']
   const THEME_KEY: typeof import('../src/utils/constants')['THEME_KEY']
+  const USER_ABILITY_RULES_KEY: typeof import('../src/utils/constants')['USER_ABILITY_RULES_KEY']
+  const USER_DATA_KEY: typeof import('../src/utils/constants')['USER_DATA_KEY']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
   const alphaDashValidator: typeof import('../src/@core/utils/validators')['alphaDashValidator']
   const alphaValidator: typeof import('../src/@core/utils/validators')['alphaValidator']
@@ -375,12 +378,15 @@ declare module 'vue' {
   interface GlobalComponents {}
   interface ComponentCustomProperties {
     readonly $api: UnwrapRef<typeof import('../src/utils/api')['$api']>
+    readonly ACCESS_TOKEN_KEY: UnwrapRef<typeof import('../src/utils/constants')['ACCESS_TOKEN_KEY']>
     readonly COOKIE_MAX_AGE_1_YEAR: UnwrapRef<typeof import('../src/utils/constants')['COOKIE_MAX_AGE_1_YEAR']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly LOADER_COLOR_KEY: UnwrapRef<typeof import('../src/utils/constants')['LOADER_COLOR_KEY']>
     readonly LOCALE_KEY: UnwrapRef<typeof import('../src/utils/constants')['LOCALE_KEY']>
     readonly PRIMARY_COLOR_KEY: UnwrapRef<typeof import('../src/utils/constants')['PRIMARY_COLOR_KEY']>
     readonly THEME_KEY: UnwrapRef<typeof import('../src/utils/constants')['THEME_KEY']>
+    readonly USER_ABILITY_RULES_KEY: UnwrapRef<typeof import('../src/utils/constants')['USER_ABILITY_RULES_KEY']>
+    readonly USER_DATA_KEY: UnwrapRef<typeof import('../src/utils/constants')['USER_DATA_KEY']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
     readonly alphaDashValidator: UnwrapRef<typeof import('../src/@core/utils/validators')['alphaDashValidator']>
     readonly alphaValidator: UnwrapRef<typeof import('../src/@core/utils/validators')['alphaValidator']>

@@ -5,7 +5,7 @@ import { abilitiesPlugin } from '@casl/vue'
 import type { Rule } from './ability'
 
 export default function (app: App) {
-  const userAbilityRules = useCookie<Rule[]>('userAbilityRules')
+  const userAbilityRules = useCookie<Rule[]>(USER_ABILITY_RULES_KEY)
   const initialAbility = createMongoAbility(userAbilityRules.value ?? [])
 
   app.use(abilitiesPlugin, initialAbility, {

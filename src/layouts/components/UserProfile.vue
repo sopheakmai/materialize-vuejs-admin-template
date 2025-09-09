@@ -5,11 +5,11 @@ const router = useRouter()
 const ability = useAbility()
 
 // TODO: Get type from backend
-const userData = useCookie<any>('userData')
+const userData = useCookie<any>(USER_DATA_KEY)
 
 const logout = async () => {
   // Remove "accessToken" from cookie
-  useCookie('accessToken').value = null
+  useCookie(ACCESS_TOKEN_KEY).value = null
 
   // Remove "userData" from cookie
   userData.value = null
@@ -19,7 +19,7 @@ const logout = async () => {
 
   // ℹ️ We had to remove abilities in then block because if we don't nav menu items mutation is visible while redirecting user to login page
   // Remove "userAbilities" from cookie
-  useCookie('userAbilityRules').value = null
+  useCookie(USER_ABILITY_RULES_KEY).value = null
 
   // Reset ability to initial ability
   ability.update([])
