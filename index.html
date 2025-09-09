@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <link rel="icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Materialize - Vuejs Admin Template</title>
+  <title>%VITE_APP_NAME%</title>
   <link rel="stylesheet" type="text/css" href="/loader.css" />
 </head>
 
@@ -48,13 +48,16 @@
   </div>
   <script type="module" src="/src/main.ts"></script>
   <script>
-    const loaderColor = localStorage.getItem('materialize-initial-loader-bg') || '#FFFFFF'
-    const primaryColor = localStorage.getItem('materialize-initial-loader-color') || '#666CFF'
+    const appName = '%VITE_APP_NAME%'
+    const toSnakeCase = (str) => str && str.match(/[A-Z]{2,}(?=[A-Z][a-z]+\d*|\b)|[A-Z]?[a-z]+\d*|[A-Z]|\d+/g)?.map(x => x.toLowerCase()).join('_')
+    const loaderColor = localStorage.getItem(`${toSnakeCase(appName)}_loader_color`) || '#FFFFFF'
+    const primaryColor = localStorage.getItem(`${toSnakeCase(appName)}_primary_color`) || '#666CFF'
 
     if (loaderColor)
       document.documentElement.style.setProperty('--initial-loader-bg', loaderColor)
-    if (loaderColor)
-      document.documentElement.style.setProperty('--initial-loader-bg', loaderColor)
+
+    if (primaryColor)
+      document.documentElement.style.setProperty('--initial-loader-color', primaryColor)
 
     if (primaryColor)
       document.documentElement.style.setProperty('--initial-loader-color', primaryColor)

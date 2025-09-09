@@ -9,6 +9,11 @@ declare global {
   const $api: typeof import('../src/utils/api')['$api']
   const COOKIE_MAX_AGE_1_YEAR: typeof import('../src/utils/constants')['COOKIE_MAX_AGE_1_YEAR']
   const EffectScope: typeof import('vue')['EffectScope']
+  const LOADER_BG_COLOR_KEY: typeof import('../src/utils/constants')['LOADER_BG_COLOR_KEY']
+  const LOADER_COLOR_KEY: typeof import('../src/utils/constants')['LOADER_COLOR_KEY']
+  const LOCALE_KEY: typeof import('../src/utils/constants')['LOCALE_KEY']
+  const PRIMARY_COLOR_KEY: typeof import('../src/utils/constants')['PRIMARY_COLOR_KEY']
+  const THEME_KEY: typeof import('../src/utils/constants')['THEME_KEY']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
   const alphaDashValidator: typeof import('../src/@core/utils/validators')['alphaDashValidator']
   const alphaValidator: typeof import('../src/@core/utils/validators')['alphaValidator']
@@ -145,6 +150,7 @@ declare global {
   const toReactive: typeof import('@vueuse/core')['toReactive']
   const toRef: typeof import('vue')['toRef']
   const toRefs: typeof import('vue')['toRefs']
+  const toSnakeCase: typeof import('../src/utils/formatters')['toSnakeCase']
   const toValue: typeof import('vue')['toValue']
   const triggerRef: typeof import('vue')['triggerRef']
   const tryOnBeforeMount: typeof import('@vueuse/core')['tryOnBeforeMount']
@@ -371,6 +377,10 @@ declare module 'vue' {
     readonly $api: UnwrapRef<typeof import('../src/utils/api')['$api']>
     readonly COOKIE_MAX_AGE_1_YEAR: UnwrapRef<typeof import('../src/utils/constants')['COOKIE_MAX_AGE_1_YEAR']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
+    readonly LOADER_COLOR_KEY: UnwrapRef<typeof import('../src/utils/constants')['LOADER_COLOR_KEY']>
+    readonly LOCALE_KEY: UnwrapRef<typeof import('../src/utils/constants')['LOCALE_KEY']>
+    readonly PRIMARY_COLOR_KEY: UnwrapRef<typeof import('../src/utils/constants')['PRIMARY_COLOR_KEY']>
+    readonly THEME_KEY: UnwrapRef<typeof import('../src/utils/constants')['THEME_KEY']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
     readonly alphaDashValidator: UnwrapRef<typeof import('../src/@core/utils/validators')['alphaDashValidator']>
     readonly alphaValidator: UnwrapRef<typeof import('../src/@core/utils/validators')['alphaValidator']>
@@ -506,6 +516,7 @@ declare module 'vue' {
     readonly toReactive: UnwrapRef<typeof import('@vueuse/core')['toReactive']>
     readonly toRef: UnwrapRef<typeof import('vue')['toRef']>
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
+    readonly toSnakeCase: UnwrapRef<typeof import('../src/utils/formatters')['toSnakeCase']>
     readonly toValue: UnwrapRef<typeof import('vue')['toValue']>
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
     readonly tryOnBeforeMount: UnwrapRef<typeof import('@vueuse/core')['tryOnBeforeMount']>

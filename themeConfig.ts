@@ -9,6 +9,7 @@ import logo from '@images/logo.svg?raw'
 
 import { AppContentLayoutNav, ContentWidth, FooterType, NavbarType } from '@layouts/enums'
 
+const { VITE_APP_NAME } = import.meta.env
 export const { themeConfig, layoutConfig } = defineThemeConfig({
   tabBar: {
     enable: true,
@@ -20,7 +21,7 @@ export const { themeConfig, layoutConfig } = defineThemeConfig({
     keepAliveEnabled: true,
   },
   app: {
-    title: 'materialize',
+    title: VITE_APP_NAME,
 
     // ❗ if you have SVG logo and want it to adapt according to theme color, you have to apply color as `color: rgb(var(--v-global-theme-primary))`
     logo: h('div', { innerHTML: logo, style: 'line-height:0; color: rgb(var(--v-global-theme-primary))' }),
