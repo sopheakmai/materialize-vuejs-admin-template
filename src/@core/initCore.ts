@@ -1,7 +1,7 @@
 import { useStorage } from '@vueuse/core'
 import { useTheme } from 'vuetify'
 import { useConfigStore } from '@core/stores/config'
-import { cookieRef, namespaceConfig } from '@layouts/stores/config'
+import { cookieRef } from '@layouts/stores/config'
 import { themeConfig } from '@themeConfig'
 
 const _syncAppRtl = () => {

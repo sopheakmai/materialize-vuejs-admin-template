@@ -6,7 +6,7 @@ import { staticPrimaryColor, staticPrimaryDarkenColor } from '@/plugins/vuetify/
 import { Direction, Layout, Skins, Theme } from '@core/enums'
 import { useConfigStore } from '@core/stores/config'
 import { AppContentLayoutNav, ContentWidth } from '@layouts/enums'
-import { cookieRef, namespaceConfig } from '@layouts/stores/config'
+import { cookieRef } from '@layouts/stores/config'
 import { themeConfig } from '@themeConfig'
 
 import borderSkinDark from '@images/customizer-icons/border-dark.svg'
