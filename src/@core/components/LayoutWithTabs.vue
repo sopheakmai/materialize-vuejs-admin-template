@@ -18,10 +18,6 @@ const props = defineProps({
   },
 
   // Tab options
-  tabsPosition: {
-    type: String as PropType<'start' | 'center' | 'end'>,
-    default: 'start',
-  },
   tabsBorder: {
     type: Boolean,
     default: false,
@@ -41,6 +37,35 @@ const props = defineProps({
   tabsSliderColor: {
     type: String,
     default: 'primary',
+  },
+  tabsElevation: {
+    type: Number,
+    default: 0,
+  },
+  tabsRounded: {
+    type: String,
+    default: 'sm',
+  },
+  tabsDensity: {
+    type: String as PropType<'default' | 'comfortable' | 'compact'>,
+    default: 'default',
+  },
+  tabsGrow: {
+    type: Boolean,
+    default: false,
+  },
+  // Tab actions
+  closeLeftTabs: {
+    type: Boolean,
+    default: false,
+  },
+  closeRightTabs: {
+    type: Boolean,
+    default: true,
+  },
+  closeOtherTabs: {
+    type: Boolean,
+    default: true,
   },
   showPinAction: {
     type: Boolean,
@@ -119,15 +144,22 @@ const onTabRemoved = (tab: any) => {
     <AppTabs
       v-if="showTabs"
       class="tabs-navigation mb-4"
-      :align-tabs="tabsPosition"
+      align-tabs="start"
       :border="tabsBorder"
       :color="tabsColor"
       :tabs-bg-color="tabsBgColor"
       :tabs-color="tabsTextColor"
       :slider-color="tabsSliderColor"
+      :elevation="tabsElevation"
+      :rounded="tabsRounded"
+      :density="tabsDensity"
+      :grow="tabsGrow"
       :max-tabs="maxTabs"
       :show-pin-action="showPinAction"
       :show-more-menu="showMoreMenu"
+      :close-left-tabs="closeLeftTabs"
+      :close-right-tabs="closeRightTabs"
+      :close-other-tabs="closeOtherTabs"
       :keep-alive="keepAliveEnabled"
       @update:keep-alive="val => keepAliveEnabled = val"
       @keep-alive-include="(name) => $emit('keepAliveInclude', name)"

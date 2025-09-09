@@ -10,6 +10,15 @@ import logo from '@images/logo.svg?raw'
 import { AppContentLayoutNav, ContentWidth, FooterType, NavbarType } from '@layouts/enums'
 
 export const { themeConfig, layoutConfig } = defineThemeConfig({
+  tabBar: {
+    enable: true,
+    // 0 means unlimited tabs
+    maxTabs: 0,
+    closeLeftTabs: true,
+    closeRightTabs: true,
+    closeOtherTabs: true,
+    keepAliveEnabled: true,
+  },
   app: {
     title: 'materialize',
 

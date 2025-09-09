@@ -19,10 +19,15 @@ const props = defineProps({
   tabsBgColor: { type: String, default: undefined },
   tabsColor: { type: String, default: undefined },
   sliderColor: { type: String, default: undefined },
+  elevation: { type: Number, default: 0 },
+  rounded: { type: String, default: 'sm' },
 
   // Feature toggles
   showMoreMenu: { type: Boolean, default: true },
   showPinAction: { type: Boolean, default: false }, // Pin functionality disabled
+  closeLeftTabs: { type: Boolean, default: false },
+  closeRightTabs: { type: Boolean, default: true },
+  closeOtherTabs: { type: Boolean, default: true },
 
   // Keep-alive functionality
   keepAlive: { type: Boolean, default: true },
@@ -166,6 +171,8 @@ const activeTabModel = computed({
     :border="props.border"
     :color="props.color"
     :density="props.density"
+    :elevation="props.elevation"
+    :rounded="props.rounded"
   >
     <VTabs
       v-model="activeTabModel"
@@ -173,6 +180,7 @@ const activeTabModel = computed({
       :bg-color="props.tabsBgColor"
       :color="props.tabsColor"
       :grow="props.grow"
+      :density="props.density"
       :slider-color="props.sliderColor"
       :direction="props.direction"
       show-arrows
@@ -224,16 +232,19 @@ const activeTabModel = computed({
           @click="refreshCurrentTab"
         /> -->
         <VListItem
+          v-if="props.showMoreMenu && props.closeOtherTabs"
           prepend-icon="mdi-close-box-multiple-outline"
           :title="t('Close Other Tabs')"
           @click="handleCloseAllTabs"
         />
         <VListItem
+          v-if="props.showMoreMenu && props.closeLeftTabs"
           prepend-icon="mdi-arrow-left-box"
           :title="t('Close Tabs to the Left')"
           @click="handleCloseTabsToLeft(menuState.tabId)"
         />
         <VListItem
+          v-if="props.showMoreMenu && props.closeRightTabs"
           prepend-icon="mdi-arrow-right-box"
           :title="t('Close Tabs to the Right')"
           @click="handleCloseTabsToRight(menuState.tabId)"

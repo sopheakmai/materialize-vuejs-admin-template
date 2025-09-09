@@ -12,6 +12,14 @@ export const defineThemeConfig = (userConfig: UserThemeConfig): { themeConfig: U
   return {
     themeConfig: userConfig,
     layoutConfig: {
+      tabBar: {
+        enable: userConfig.tabBar?.enable ?? true,
+        maxTabs: userConfig.tabBar?.maxTabs ?? 15,
+        closeLeftTabs: userConfig.tabBar?.closeLeftTabs ?? false,
+        closeRightTabs: userConfig.tabBar?.closeRightTabs ?? false,
+        closeOtherTabs: userConfig.tabBar?.closeOtherTabs ?? false,
+        keepAliveEnabled: userConfig.tabBar?.keepAliveEnabled ?? true,
+      },
       app: {
         title: userConfig.app.title,
         logo: userConfig.app.logo,

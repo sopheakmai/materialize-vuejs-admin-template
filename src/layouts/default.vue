@@ -4,11 +4,24 @@ import PageKeepAliveWrapper from '@core/components/PageKeepAliveWrapper.vue'
 import { useConfigStore } from '@core/stores/config'
 import { AppContentLayoutNav } from '@layouts/enums'
 import { switchToVerticalNavOnLtOverlayNavBreakpoint } from '@layouts/utils'
+import { themeConfig } from '@themeConfig'
 
 const DefaultLayoutWithHorizontalNav = defineAsyncComponent(() => import('./components/DefaultLayoutWithHorizontalNav.vue'))
 const DefaultLayoutWithVerticalNav = defineAsyncComponent(() => import('./components/DefaultLayoutWithVerticalNav.vue'))
 
 const configStore = useConfigStore()
+
+// Get the tab bar configuration or use defaults if not provided
+const tabBarConfig = computed(() => {
+  return themeConfig.tabBar || {
+    enable: true,
+    maxTabs: 0,
+    closeLeftTabs: true,
+    closeRightTabs: true,
+    closeOtherTabs: true,
+    keepAliveEnabled: true,
+  }
+})
 
 // ℹ️ This will switch to vertical nav when define breakpoint is reached when in horizontal nav layout
 // Remove below composable usage if you are not using horizontal nav layout in your app
@@ -82,9 +95,14 @@ watch([isFallbackStateActive, refLoadingIndicator], () => {
       >
         <template v-if="!$route.meta.disableTabs">
           <LayoutWithTabs
-            :show-tabs="!$route.meta.hideTabs"
+            :show-tabs="!$route.meta.hideTabs && tabBarConfig.enable"
             :add-current-route-as-tab="$route.meta.addToTabs !== false"
-            :keep-alive="keepAliveEnabled"
+            :keep-alive="keepAliveEnabled && tabBarConfig.keepAliveEnabled"
+            :max-tabs="tabBarConfig.maxTabs"
+            :show-more-menu="tabBarConfig.closeLeftTabs || tabBarConfig.closeRightTabs || tabBarConfig.closeOtherTabs"
+            :close-left-tabs="tabBarConfig.closeLeftTabs"
+            :close-right-tabs="tabBarConfig.closeRightTabs"
+            :close-other-tabs="tabBarConfig.closeOtherTabs"
             @keep-alive-include="addCachedView"
             @keep-alive-exclude="removeCachedView"
             @update:keep-alive="val => keepAliveEnabled = val"

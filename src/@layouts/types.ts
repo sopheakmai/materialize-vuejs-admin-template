@@ -3,6 +3,14 @@ import type { RouteLocationRaw } from 'vue-router'
 import type { AppContentLayoutNav, ContentWidth, FooterType, HorizontalNavType, NavbarType } from '@layouts/enums'
 
 export type LayoutConfig = {
+  tabBar?: {
+    enable?: boolean
+    maxTabs?: number
+    keepAliveEnabled?: boolean
+    closeLeftTabs?: boolean
+    closeRightTabs?: boolean
+    closeOtherTabs?: boolean
+  }
   app: {
     title: Lowercase<string>
     logo: VNode
