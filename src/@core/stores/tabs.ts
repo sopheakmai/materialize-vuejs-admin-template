@@ -33,7 +33,6 @@ export const useTabsStore = defineStore('tabs', () => {
     if (existingTab) {
       // If exists, just activate it and update meta if changed
       activeTabId.value = id
-      console.log(route)
       // Update meta if it has changed
       if (route.meta && (!existingTab.meta || JSON.stringify(existingTab.meta) !== JSON.stringify(route.meta))) {
         existingTab.meta = { ...route.meta }

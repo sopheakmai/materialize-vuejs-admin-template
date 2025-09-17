@@ -201,7 +201,7 @@ const activeTabModel = computed({
             class="me-2"
           />
           <span class="tab-title" :class="{ 'tab-title-active': tab.id === activeTabModel }">
-            {{ t(tab.title) }}
+            {{ tab.title }}
           </span>
 
           <!-- Tab actions -->

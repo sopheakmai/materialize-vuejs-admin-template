@@ -1,4 +1,9 @@
 {
-  "analytics.dashboard": "វិភាគ",
-  "order.list": "បញ្ជីការបញ្ជាទិញ"
+  "reset": "កំណត់ឡើងវិញ",
+  "create": "បង្កើត",
+  "update": "ធ្វើបច្ចុប្បន្នភាព",
+  "delete": "លុប",
+  "view": "មើល",
+  "duplicate": "ចម្លង",
+  "submit": "ដាក់ស្នើ"
 }

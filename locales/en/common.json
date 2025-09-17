@@ -1,4 +1,21 @@
 {
-  "analytics.dashboard": "Analytics Dashboard",
-  "order.list": "Order List"
+  "reset": "Reset",
+  "create": "Create",
+  "update": "Update",
+  "delete": "Delete",
+  "view": "View",
+  "duplicate": "Duplicate",
+  "submit": "Submit",
+  "user.information": "User Information",
+  "user.address": "User Address",
+  "user.social": "User Social",
+  "name": "Name",
+  "email": "Email",
+  "phone": "Phone",
+  "address": "Address",
+  "city": "City",
+  "country": "Country",
+  "twitter": "Twitter",
+  "form": "Form",
+  "enter": "Enter"
 }

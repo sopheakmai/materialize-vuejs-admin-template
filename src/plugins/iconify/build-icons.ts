@@ -27,6 +27,7 @@ const nodeModules = resolve(__dirname, '../../../node_modules')
 const riIconsPath = join(nodeModules, '@iconify-json/ri/icons.json')
 const mdiIconsPath = join(nodeModules, '@iconify-json/mdi/icons.json')
 const bxlIconsPath = join(nodeModules, '@iconify-json/bxl/icons.json')
+const solarIconsPath = join(nodeModules, '@iconify-json/solar/icons.json')
 
 /**
  * Script configuration
@@ -91,6 +92,7 @@ const sources: BundleScriptConfig = {
     // 'octicon:code-square-24',
   ],
   json: [
+    solarIconsPath,
     riIconsPath,
     mdiIconsPath,
     // {

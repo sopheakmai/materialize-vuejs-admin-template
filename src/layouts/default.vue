@@ -50,9 +50,6 @@ const addCachedView = (routePath: string) => {
     console.log(`[KeepAlive] Adding RoutePageKeepAliveWrapper to cache`)
     cachedViews.value.push('RoutePageKeepAliveWrapper')
   }
-
-  // Log for debugging
-  console.log(`[KeepAlive] Current cached views:`, cachedViews.value)
 }
 
 // Method to remove a route from cached views
