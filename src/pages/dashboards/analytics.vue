@@ -12,12 +12,6 @@ import AnalyticsTotalTransactions from '@/views/dashboards/analytics/AnalyticsTo
 import AnalyticsVisitsByDay from '@/views/dashboards/analytics/AnalyticsVisitsByDay.vue'
 import AnalyticsWeeklySales from '@/views/dashboards/analytics/AnalyticsWeeklySales.vue'
 
-definePage({
-  meta: {
-    title: 'analytics.dashboard',
-  },
-})
-
 const statisticsVertical = [
   {
     title: 'Total Orders AAA',

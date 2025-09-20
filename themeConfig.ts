@@ -1,7 +1,7 @@
 import { breakpointsVuetifyV3 } from '@vueuse/core'
 import { VIcon } from 'vuetify/components/VIcon'
 import { defineThemeConfig } from '@core'
-import { Skins } from '@core/enums'
+import { Skins, Theme } from '@core/enums'
 import VerticalNavHeaderArrow from '@images/svg/vertical-nav-header-arrow.svg'
 
 // ❗ Logo SVG must be imported with ?raw suffix
@@ -38,18 +38,13 @@ export const { themeConfig, layoutConfig } = defineThemeConfig({
           isRTL: false,
         },
         {
-          label: 'French',
-          i18nLang: 'fr',
+          label: 'ភាសាខ្មែរ',
+          i18nLang: 'km',
           isRTL: false,
-        },
-        {
-          label: 'Arabic',
-          i18nLang: 'ar',
-          isRTL: true,
         },
       ],
     },
-    theme: 'system',
+    theme: Theme.Light,
     skin: Skins.Bordered,
     iconRenderer: VIcon,
   },

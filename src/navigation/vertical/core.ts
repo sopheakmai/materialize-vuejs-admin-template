@@ -1,13 +1,13 @@
 export default [
   {
-    title: 'Analytics',
-    icon: { icon: 'ri-bar-chart-line' },
+    title: 'analytics',
+    icon: { icon: 'solar-chart-square-outline' },
     to: 'dashboards-analytics',
   },
-  { heading: 'Apps & Pages' },
+  { heading: 'apps.and.pages' },
   {
-    title: 'Dashboards',
-    icon: { icon: 'ri-home-smile-line' },
+    title: 'dashboards',
+    icon: { icon: 'solar-home-angle-outline' },
     children: [
       {
         title: 'CRM',
@@ -17,20 +17,25 @@ export default [
     badgeContent: '5',
     badgeClass: 'bg-error',
   },
-  { heading: 'UI Elements' },
+  { heading: 'ui.elements' },
   {
-    title: 'Typography',
-    icon: { icon: 'ri-text' },
-    to: 'pages-typography',
+    title: 'typography',
+    icon: { icon: 'solar-document-text-outline' },
+    to: 'core-typography',
   },
   {
-    title: 'Icons',
-    icon: { icon: 'ri-remixicon-line' },
-    to: 'pages-icons',
+    title: 'icons',
+    icon: { icon: 'solar-cosmetic-outline' },
+    to: 'core-icons',
   },
   {
     title: 'form',
-    icon: { icon: 'ri-remixicon-line' },
-    to: 'form',
+    icon: { icon: 'solar-pen-new-square-outline' },
+    to: 'core-form',
+  },
+  {
+    title: 'table',
+    icon: { icon: 'solar-database-outline' },
+    to: 'core-table',
   },
 ]

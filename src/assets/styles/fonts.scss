@@ -1,0 +1,42 @@
+/* Rethink Sans Variable Font */
+@font-face {
+  font-family: "Rethink Sans";
+  src: url("/fonts/RethinkSans-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 100 900; /* supports all weights */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Rethink Sans";
+  src: url("/fonts/RethinkSans-Italic-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Kantumruy Pro Variable Font */
+@font-face {
+  font-family: "Kantumruy Pro";
+  src: url("/fonts/KantumruyPro-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 100 900; /* supports all weights */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Kantumruy Pro";
+  src: url("/fonts/KantumruyPro-Italic-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+
+html[lang="en"] {
+  font-family: "Rethink Sans", sans-serif;
+}
+
+html[lang="km"] {
+  font-family: "Kantumruy Pro", sans-serif;
+}

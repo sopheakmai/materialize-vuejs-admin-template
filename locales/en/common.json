@@ -18,5 +18,11 @@
   "twitter": "Twitter",
   "form": "Form",
   "enter": "Enter",
-  "analytics.dashboard": "Analytics Dashboard"
+  "analytics": "Analytics",
+  "dashboards": "Dashboards",
+  "typography": "Typography",
+  "icons": "Icons",
+  "apps.and.pages": "Apps & Pages",
+  "ui.elements": "UI Elements",
+  "table": "Table"
 }

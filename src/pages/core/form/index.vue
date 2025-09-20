@@ -1,12 +1,6 @@
 <script setup lang="ts">
 import AppCoreForm from '@/components/app/core/form/index.vue'
 import { EnumActionType, EnumFieldType } from '~/src/components/app/core/form/type'
-
-definePage({
-  meta: {
-    title: 'Form Example',
-  },
-})
 </script>
 
 <template>
