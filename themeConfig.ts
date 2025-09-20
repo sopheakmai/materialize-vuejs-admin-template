@@ -50,7 +50,7 @@ export const { themeConfig, layoutConfig } = defineThemeConfig({
       ],
     },
     theme: 'system',
-    skin: Skins.Default,
+    skin: Skins.Bordered,
     iconRenderer: VIcon,
   },
   navbar: {

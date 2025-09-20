@@ -1,153 +1,62 @@
-/**
- * This is an advanced example for creating icon bundles for Iconify SVG Framework.
- *
- * It creates a bundle from:
- * - All SVG files in a directory.
- * - Custom JSON files.
- * - Iconify icon sets.
- * - SVG framework.
- *
- * This example uses Iconify Tools to import and clean up icons.
- * For Iconify Tools documentation visit https://docs.iconify.design/tools/tools2/
- */
 import { promises as fs } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-
-// Installation: npm install --save-dev @iconify/tools @iconify/utils @iconify/json @iconify/iconify
 import { cleanupSVG, importDirectory, isEmptyColor, parseColors, runSVGO } from '@iconify/tools'
 import type { IconifyJSON } from '@iconify/types'
 import { getIcons, getIconsCSS, stringToIcon } from '@iconify/utils'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
-
-// Paths to icon packages
 const nodeModules = resolve(__dirname, '../../../node_modules')
 const riIconsPath = join(nodeModules, '@iconify-json/ri/icons.json')
 const mdiIconsPath = join(nodeModules, '@iconify-json/mdi/icons.json')
-const bxlIconsPath = join(nodeModules, '@iconify-json/bxl/icons.json')
-const solarIconsPath = join(nodeModules, '@iconify-json/solar/icons.json')
 
-/**
- * Script configuration
- */
 type BundleScriptCustomSVGConfig = {
-
-  // Path to SVG files
   dir: string
-
-  // True if icons should be treated as monotone: colors replaced with currentColor
   monotone: boolean
-
-  // Icon set prefix
   prefix: string
 }
 
 type BundleScriptCustomJSONConfig = {
-
-  // Path to JSON file
   filename: string
-
-  // List of icons to import. If missing, all icons will be imported
   icons?: string[]
 }
 
 type BundleScriptConfig = {
-
-  // Custom SVG to import and bundle
   svg?: BundleScriptCustomSVGConfig[]
-
-  // Icons to bundled from @iconify/json packages
   icons?: string[]
-
-  // List of JSON files to bundled
-  // Entry can be a string, pointing to filename or a BundleScriptCustomJSONConfig object (see type above)
-  // If entry is a string or object without 'icons' property, an entire JSON file will be bundled
   json?: (string | BundleScriptCustomJSONConfig)[]
 }
 
 const sources: BundleScriptConfig = {
-
+  // monitone: true - replaces all colors with currentColor
+  // monotone: false - keeps original colors
   svg: [
-    // {
-    //   dir: 'src/assets/images/iconify-svg',
-    //   monotone: true,
-    //   prefix: 'custom',
-    // },
-
-    // {
-    //   dir: 'emojis',
-    //   monotone: false,
-    //   prefix: 'emoji',
-    // },
-  ],
-
-  icons: [
-    // 'mdi:home',
-    // 'mdi:account',
-    // 'mdi:login',
-    // 'mdi:logout',
-    // 'octicon:book-24',
-    // 'octicon:code-square-24',
-  ],
-  json: [
-    solarIconsPath,
-    riIconsPath,
-    mdiIconsPath,
-    // {
-    //   filename: mdiIconsPath,
-    //   icons: ['language-typescript', 'language-javascript'],
-    // },
     {
-      filename: bxlIconsPath,
-      icons: ['facebook', 'twitter', 'github', 'google', 'linkedin'],
+      dir: 'src/assets/svg/uiw',
+      monotone: true,
+      prefix: 'uiw',
+    },
+    {
+      dir: 'src/assets/svg/solar',
+      monotone: true,
+      prefix: 'solar',
+    },
+    {
+      dir: 'src/assets/svg/bxl',
+      monotone: true,
+      prefix: 'bxl',
     },
   ],
-  // json: [
-  //   // Custom JSON file
-  //   // 'json/gg.json',
-
-  //   // Iconify JSON file (@iconify/json is a package name, /json/ is directory where files are, then filename)
-  //   require.resolve('@iconify-json/ri/icons.json'),
-  //   {
-  //     filename: require.resolve('@iconify-json/mdi/icons.json'),
-  //     icons: [
-  //       'language-typescript',
-  //       'language-javascript',
-  //     ],
-  //   },
-  //   {
-  //     filename: require.resolve('@iconify-json/bxl/icons.json'),
-  //     icons: [
-  //       'facebook',
-  //       'twitter',
-  //       'github',
-  //       'google',
-  //       'linkedin',
-  //     ],
-  //   },
-
-  //   // Custom file with only few icons
-  //   // {
-  //   //   filename: require.resolve('@iconify-json/line-md/icons.json'),
-  //   //   icons: [
-  //   //     'home-twotone-alt',
-  //   //     'github',
-  //   //     'document-list',
-  //   //     'document-code',
-  //   //     'image-twotone',
-  //   //   ],
-  //   // },
-  // ],
+  icons: [],
+  json: [
+    riIconsPath,
+    mdiIconsPath,
+  ],
 }
 
 // File to save bundle to
 const target = join(dirname(__filename), 'icons.css')
-
-/**
- * Do stuff!
- */
 
 ;(async function () {
   // Create directory for output if missing

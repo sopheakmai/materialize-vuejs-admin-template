@@ -51,7 +51,7 @@
     const appName = '%VITE_APP_NAME%'
     const toSnakeCase = (str) => str && str.match(/[A-Z]{2,}(?=[A-Z][a-z]+\d*|\b)|[A-Z]?[a-z]+\d*|[A-Z]|\d+/g)?.map(x => x.toLowerCase()).join('_')
     const loaderColor = localStorage.getItem(`${toSnakeCase(appName)}_loader_color`) || '#FFFFFF'
-    const primaryColor = localStorage.getItem(`${toSnakeCase(appName)}_primary_color`) || '#666CFF'
+    const primaryColor = localStorage.getItem(`${toSnakeCase(appName)}_primary_color`) || '#1A959F'
 
     if (loaderColor)
       document.documentElement.style.setProperty('--initial-loader-bg', loaderColor)
