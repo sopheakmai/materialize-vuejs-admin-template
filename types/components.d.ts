@@ -7,7 +7,6 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    Actions: typeof import('./../src/components/app/core/form/actions.vue')['default']
     AddAuthenticatorAppDialog: typeof import('./../src/components/dialogs/AddAuthenticatorAppDialog.vue')['default']
     AddEditAddressDialog: typeof import('./../src/components/dialogs/AddEditAddressDialog.vue')['default']
     AddEditPermissionDialog: typeof import('./../src/components/dialogs/AddEditPermissionDialog.vue')['default']
@@ -361,11 +360,7 @@ declare module 'vue' {
     DropZone: typeof import('./../src/@core/components/DropZone.vue')['default']
     EnableOneTimePasswordDialog: typeof import('./../src/components/dialogs/EnableOneTimePasswordDialog.vue')['default']
     ErrorHeader: typeof import('./../src/components/ErrorHeader.vue')['default']
-    Field: typeof import('./../src/components/app/core/form/field.vue')['default']
-    FieldRender: typeof import('./../src/components/app/core/form/field-render.vue')['default']
     Fields: typeof import('./../src/components/app/core/form/fields.vue')['default']
-    Fixed: typeof import('./../src/components/app/core/form/fixed.vue')['default']
-    Fixed2: typeof import('./../src/components/app/core/form/fixed2.vue')['default']
     Form: typeof import('./../src/components/app/core/form/index.vue')['default']
     I18n: typeof import('./../src/@core/components/I18n.vue')['default']
     KeepAliveExample: typeof import('./../src/components/keep-alive-example.vue')['default']
@@ -384,7 +379,6 @@ declare module 'vue' {
     ScrollToTop: typeof import('./../src/@core/components/ScrollToTop.vue')['default']
     ShareProjectDialog: typeof import('./../src/components/dialogs/ShareProjectDialog.vue')['default']
     Shortcuts: typeof import('./../src/@core/components/Shortcuts.vue')['default']
-    TabRender: typeof import('./../src/components/app/core/form/tab-render.vue')['default']
     Text: typeof import('./../src/components/app/core/field/text.vue')['default']
     TheCustomizer: typeof import('./../src/@core/components/TheCustomizer.vue')['default']
     ThemeSwitcher: typeof import('./../src/@core/components/ThemeSwitcher.vue')['default']
