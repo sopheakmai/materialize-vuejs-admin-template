@@ -288,7 +288,7 @@ const pinCurrentTab = () => {
                 color="error"
                 @click.stop="closeTab(tab.id)"
               >
-                <VIcon icon="mdi-close" />
+                <VIcon icon="solar-close-square-outline" />
               </VBtn>
             </template>
           </VListItem>

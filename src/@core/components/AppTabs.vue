@@ -228,19 +228,19 @@ const activeTabModel = computed({
       <VList density="compact">
         <VListItem
           v-if="props.showMoreMenu && props.closeOtherTabs"
-          prepend-icon="mdi-close-box-multiple-outline"
+          prepend-icon="solar-close-square"
           :title="t('Close Other Tabs')"
           @click="handleCloseAllTabs"
         />
         <VListItem
           v-if="props.showMoreMenu && props.closeLeftTabs"
-          prepend-icon="mdi-arrow-left-box"
+          prepend-icon="solar-square-arrow-left"
           :title="t('Close Tabs to the Left')"
           @click="handleCloseTabsToLeft(menuState.tabId)"
         />
         <VListItem
           v-if="props.showMoreMenu && props.closeRightTabs"
-          prepend-icon="mdi-arrow-right-box"
+          prepend-icon="solar-square-arrow-right"
           :title="t('Close Tabs to the Right')"
           @click="handleCloseTabsToRight(menuState.tabId)"
         />

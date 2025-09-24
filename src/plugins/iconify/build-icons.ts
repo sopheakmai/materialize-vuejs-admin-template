@@ -9,7 +9,6 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const nodeModules = resolve(__dirname, '../../../node_modules')
 const riIconsPath = join(nodeModules, '@iconify-json/ri/icons.json')
-const mdiIconsPath = join(nodeModules, '@iconify-json/mdi/icons.json')
 
 type BundleScriptCustomSVGConfig = {
   dir: string
@@ -47,11 +46,15 @@ const sources: BundleScriptConfig = {
       monotone: true,
       prefix: 'bxl',
     },
+    {
+      dir: 'src/assets/svg/mdi',
+      monotone: true,
+      prefix: 'mdi',
+    },
   ],
   icons: [],
   json: [
     riIconsPath,
-    mdiIconsPath,
   ],
 }
 
