@@ -1,43 +1,70 @@
 <script setup lang="ts">
 import { useTabs } from '@core/composable/useTabs'
-import type { PropType } from 'vue'
 
-const props = defineProps({
-  // Tabs positioning
-  alignTabs: {
-    type: String as PropType<'start' | 'center' | 'end'>,
-    default: 'start',
-    validator: (value: string) => ['start', 'center', 'end'].includes(value),
-  },
+type TabsProps = {
+  alignTabs?: 'start' | 'center' | 'end'
+  border?: boolean
+  color?: string
+  density?: 'default' | 'comfortable' | 'compact'
+  grow?: boolean
+  direction?: 'horizontal' | 'vertical'
+  tabsBgColor?: string
+  tabsColor?: string
+  sliderColor?: string
+  elevation?: number
+  rounded?: string
+  showMoreMenu?: boolean
+  showPinAction?: boolean
+  closeLeftTabs?: boolean
+  closeRightTabs?: boolean
+  closeOtherTabs?: boolean
+  keepAlive?: boolean
+  maxTabs?: number
+}
 
-  // Tab styles
-  border: { type: Boolean, default: false },
-  color: { type: String, default: undefined },
-  density: { type: String as PropType<'default' | 'comfortable' | 'compact'>, default: 'default' },
-  grow: { type: Boolean, default: false },
-  direction: { type: String as PropType<'horizontal' | 'vertical'>, default: 'horizontal' },
-  tabsBgColor: { type: String, default: undefined },
-  tabsColor: { type: String, default: undefined },
-  sliderColor: { type: String, default: undefined },
-  elevation: { type: Number, default: 0 },
-  rounded: { type: String, default: 'sm' },
+type TabEmits = {
+  (event: 'tab-removed', tab: Tab): void
+  (event: 'update:keepAlive', value: boolean): void
+  (event: 'keep-alive-include', value: string[]): void
+  (event: 'keep-alive-exclude', value: string[]): void
+}
 
-  // Feature toggles
-  showMoreMenu: { type: Boolean, default: true },
-  showPinAction: { type: Boolean, default: false }, // Pin functionality disabled
-  closeLeftTabs: { type: Boolean, default: false },
-  closeRightTabs: { type: Boolean, default: true },
-  closeOtherTabs: { type: Boolean, default: true },
+type Tab = {
+  id: string
+  title: string
+  icon?: string
+  closable?: boolean
+}
 
-  // Keep-alive functionality
-  keepAlive: { type: Boolean, default: true },
+type MenuState = {
+  isOpen: boolean
+  x: number
+  y: number
+  tabId: string
+}
 
-  // Maximum number of tabs to show
-  // Set to 0 for unlimited tabs
-  maxTabs: { type: Number, default: 30 },
+const props = withDefaults(defineProps<TabsProps>(), {
+  alignTabs: 'start',
+  border: false,
+  color: undefined,
+  density: 'default',
+  grow: false,
+  direction: 'horizontal',
+  tabsBgColor: undefined,
+  tabsColor: undefined,
+  sliderColor: undefined,
+  elevation: 0,
+  rounded: 'sm',
+  showMoreMenu: true,
+  showPinAction: false,
+  closeLeftTabs: false,
+  closeRightTabs: true,
+  closeOtherTabs: true,
+  keepAlive: true,
+  maxTabs: 30,
 })
 
-const emit = defineEmits(['tab-removed', 'update:keepAlive', 'keep-alive-include', 'keep-alive-exclude'])
+const emit = defineEmits<TabEmits>()
 const { t } = useI18n()
 const {
   tabs,
@@ -52,45 +79,32 @@ const {
   setMaxTabs,
 } = useTabs()
 
-// Set maximum tabs from props
 setMaxTabs(props.maxTabs)
 
-// Watch for changes to maxTabs prop
-watch(() => props.maxTabs, (newValue) => {
+watch(() => props.maxTabs, (newValue: number) => {
   setMaxTabs(newValue)
 })
 
-// Handle tab closure with notification to parent
-const handleTabClose = (tabId: string) => {
-  // Get the tab before closing it
-  const tabToClose = tabs.value.find(tab => tab.id === tabId)
-
-  // Close the tab
+const handleTabClose = (tabId: string): void => {
+  const tabToClose = tabs.value.find((tab: Tab) => tab.id === tabId)
   closeTab(tabId)
 
-  // Notify parent component about tab removal
   if (tabToClose) {
     emit('tab-removed', tabToClose)
   }
 }
 
-// Close all tabs except the active tab with parent notification
-const handleCloseAllTabs = () => {
-  // Notify parent about all tabs being closed except the active tab
-  tabs.value.forEach((tab) => {
+const handleCloseAllTabs = (): void => {
+  tabs.value.forEach((tab: Tab) => {
     if (tab.closable && tab.id !== activeTabId.value) {
       emit('tab-removed', tab)
     }
   })
-
-  // Use the closeOtherTabs function which already preserves the active tab
   closeOtherTabs()
 }
 
-// Close other tabs with parent notification
-const handleCloseOtherTabs = () => {
-  // Notify parent about which tabs are being closed
-  tabs.value.forEach((tab) => {
+const handleCloseOtherTabs = (): void => {
+  tabs.value.forEach((tab: Tab) => {
     if (tab.id !== activeTabId.value && tab.closable) {
       emit('tab-removed', tab)
     }
@@ -98,12 +112,10 @@ const handleCloseOtherTabs = () => {
   closeOtherTabs()
 }
 
-// Close tabs to the left with parent notification
-const handleCloseTabsToLeft = (tabId: string) => {
-  const tabIndex = tabs.value.findIndex(tab => tab.id === tabId)
+const handleCloseTabsToLeft = (tabId: string): void => {
+  const tabIndex = tabs.value.findIndex((tab: Tab) => tab.id === tabId)
   if (tabIndex > 0) {
-    // Notify parent about which tabs are being closed
-    tabs.value.slice(0, tabIndex).forEach((tab) => {
+    tabs.value.slice(0, tabIndex).forEach((tab: Tab) => {
       if (tab.closable) {
         emit('tab-removed', tab)
       }
@@ -112,12 +124,10 @@ const handleCloseTabsToLeft = (tabId: string) => {
   closeTabsToLeft(tabId)
 }
 
-// Close tabs to the right with parent notification
-const handleCloseTabsToRight = (tabId: string) => {
-  const tabIndex = tabs.value.findIndex(tab => tab.id === tabId)
+const handleCloseTabsToRight = (tabId: string): void => {
+  const tabIndex = tabs.value.findIndex((tab: Tab) => tab.id === tabId)
   if (tabIndex >= 0 && tabIndex < tabs.value.length - 1) {
-    // Notify parent about which tabs are being closed
-    tabs.value.slice(tabIndex + 1).forEach((tab) => {
+    tabs.value.slice(tabIndex + 1).forEach((tab: Tab) => {
       if (tab.closable) {
         emit('tab-removed', tab)
       }
@@ -126,24 +136,21 @@ const handleCloseTabsToRight = (tabId: string) => {
   closeTabsToRight(tabId)
 }
 
-// Menu state
-const menuState = ref({
+const menuState = ref<MenuState>({
   isOpen: false,
   x: 0,
   y: 0,
   tabId: '',
 })
 
-// Keep-alive state
-const keepAliveEnabled = computed({
+const keepAliveEnabled = computed<boolean>({
   get: () => props.keepAlive,
-  set: (value) => {
+  set: (value: boolean) => {
     emit('update:keepAlive', value)
   },
 })
 
-// Open context menu for a tab
-const openTabMenu = (event: MouseEvent, tabId: string) => {
+const openTabMenu = (event: MouseEvent, tabId: string): void => {
   event.preventDefault()
   menuState.value = {
     isOpen: true,
@@ -153,12 +160,12 @@ const openTabMenu = (event: MouseEvent, tabId: string) => {
   }
 }
 
-// Two-way binding for active tab
-const activeTabModel = computed({
+const activeTabModel = computed<string | undefined>({
   get: () => activeTabId.value,
-  set: (val) => {
-    if (val)
+  set: (val: string | undefined) => {
+    if (val) {
       activateTab(val)
+    }
   },
 })
 </script>
@@ -228,19 +235,19 @@ const activeTabModel = computed({
       <VList density="compact">
         <VListItem
           v-if="props.showMoreMenu && props.closeOtherTabs"
-          prepend-icon="solar-close-square"
+          prepend-icon="mdi-close-box-multiple-outline"
           :title="t('Close Other Tabs')"
           @click="handleCloseAllTabs"
         />
         <VListItem
           v-if="props.showMoreMenu && props.closeLeftTabs"
-          prepend-icon="solar-square-arrow-left"
+          prepend-icon="mdi-arrow-left-box"
           :title="t('Close Tabs to the Left')"
           @click="handleCloseTabsToLeft(menuState.tabId)"
         />
         <VListItem
           v-if="props.showMoreMenu && props.closeRightTabs"
-          prepend-icon="solar-square-arrow-right"
+          prepend-icon="mdi-arrow-right-box"
           :title="t('Close Tabs to the Right')"
           @click="handleCloseTabsToRight(menuState.tabId)"
         />
@@ -265,7 +272,7 @@ const activeTabModel = computed({
     .tab-title {
       display: inline-block;
       overflow: hidden;
-      max-inline-size: 120px; /* Adjust this value based on your design */
+      max-inline-size: 120px;
       text-overflow: ellipsis;
       transition: max-inline-size 0.2s ease;
       vertical-align: middle;
@@ -273,7 +280,7 @@ const activeTabModel = computed({
     }
 
     .tab-title-active {
-      max-inline-size: 100%; /* Show full text when active */
+      max-inline-size: 100%;
     }
 
     .tab-actions {

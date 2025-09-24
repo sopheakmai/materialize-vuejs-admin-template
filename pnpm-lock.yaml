@@ -153,9 +153,6 @@ importers:
       '@fullcalendar/vue3':
         specifier: 6.1.17
         version: 6.1.17(@fullcalendar/core@6.1.17)(vue@3.5.14(typescript@5.8.3))
-      '@iconify-json/mdi':
-        specifier: 1.2.3
-        version: 1.2.3
       '@iconify-json/ri':
         specifier: 1.2.5
         version: 1.2.5
@@ -791,9 +788,6 @@ packages:
   '@humanwhocodes/retry@0.4.3':
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
-
-  '@iconify-json/mdi@1.2.3':
-    resolution: {integrity: sha512-O3cLwbDOK7NNDf2ihaQOH5F9JglnulNDFV7WprU2dSoZu3h3cWH//h74uQAB87brHmvFVxIOkuBX2sZSzYhScg==}
 
   '@iconify-json/ri@1.2.5':
     resolution: {integrity: sha512-kWGimOXMZrlYusjBKKXYOWcKhbOHusFsmrmRGmjS7rH0BpML5A9/fy8KHZqFOwZfC4M6amObQYbh8BqO5cMC3w==}
@@ -4566,10 +4560,6 @@ snapshots:
   '@humanwhocodes/module-importer@1.0.1': {}
 
   '@humanwhocodes/retry@0.4.3': {}
-
-  '@iconify-json/mdi@1.2.3':
-    dependencies:
-      '@iconify/types': 2.0.0
 
   '@iconify-json/ri@1.2.5':
     dependencies:
