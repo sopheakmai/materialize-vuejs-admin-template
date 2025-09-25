@@ -1,3 +1,0 @@
-<template>
-  <VProgressLinear indeterminate />
-</template>
