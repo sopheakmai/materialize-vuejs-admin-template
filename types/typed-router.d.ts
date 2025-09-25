@@ -29,6 +29,5 @@ declare module 'vue-router/auto-routes' {
     'dashboards-ecommerce': RouteRecordInfo<'dashboards-ecommerce', '/dashboards/ecommerce', Record<never, never>, Record<never, never>>,
     'login': RouteRecordInfo<'login', '/login', Record<never, never>, Record<never, never>>,
     'not-authorized': RouteRecordInfo<'not-authorized', '/not-authorized', Record<never, never>, Record<never, never>>,
-    'tabs-demo': RouteRecordInfo<'tabs-demo', '/tabs-demo', Record<never, never>, Record<never, never>>,
   }
 }
