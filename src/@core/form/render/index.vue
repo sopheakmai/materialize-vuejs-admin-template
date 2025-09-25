@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { EnumFieldType } from '../type'
+import { EnumFieldType } from '../enum/field'
 import type { TCoreFormField } from '../type'
 import { formatOptionLabel } from '../utils'
 

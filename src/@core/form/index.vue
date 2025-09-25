@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import type { TCoreFormField, TCoreFormProps } from '@core/form/type'
+import type { TCoreFormProps } from '@core/form/type'
 import type { VForm } from 'vuetify/components'
 import { triggerRules } from '~/src/@core/form/helpers'
-import { EnumActionType, EnumFieldType } from '@core/form/type'
 import FieldRender from '@core/form/render/index.vue'
 import { formatLabel } from './utils'
+import { EnumFieldType } from './enum/field'
+import { EnumActionType } from './enum/action'
+import { useForm } from '@core/form/useForm'
 
 const props = withDefaults(defineProps<TCoreFormProps>(), {})
 const emit = defineEmits<{
@@ -17,12 +19,58 @@ const { loading: submitting, setLoading: setSubmitting } = useLoading()
 const { loading, setLoading } = useLoading()
 const refForm = ref<VForm | null>(null)
 
-const density = ref<'comfortable' | 'compact' | 'default'>('comfortable')
-const currentTab = ref(0)
-const formData = ref<Record<string, any>>({})
-const formErrors = ref<Record<string, boolean>>({})
-const errorTabs = ref<number[]>([])
-const userInteracted = ref(false)
+// Deep clone the schema for safe manipulation
+const schema = computed(() => {
+  if (!props.schema)
+    return null
+  return structuredClone(props.schema)
+})
+
+// Use the form composable
+const {
+  formData,
+  formErrors,
+  errorTabs,
+  currentTab,
+  userInteracted,
+  density,
+  validateField,
+  validateAllFields,
+  handleFieldChange,
+  handleSubmit: formHandleSubmit,
+  resetForm,
+  resetFormErrors,
+  getValidationSummary,
+  isFormValid,
+  hasErrors,
+} = useForm({
+  schema,
+  formRef: refForm,
+  onSubmit: async (data) => {
+    setSubmitting(true)
+    try {
+      console.log('Form submission successful', data)
+      console.log('Form data by field:', JSON.stringify(data, null, 2))
+      emit('onResponse')
+    }
+    catch (error) {
+      console.error('Form submission error:', error)
+      emit('onResponseError', error)
+      throw error
+    }
+    finally {
+      setSubmitting(false)
+    }
+  },
+  onError: (errors) => {
+    console.warn('Form validation failed:', errors)
+    emit('onResponseError', errors)
+  },
+  onFieldChange: (field, prevValue, newValue) => {
+    console.log(`Field changed: ${field.label} (${prevValue} -> ${newValue})`)
+  },
+  validateOnChange: true,
+})
 
 async function fetchData() {
   setFetching(true)
@@ -34,151 +82,26 @@ async function fetchData() {
   }
 }
 
-watch(currentTab, (newVal) => {
-  console.log('Tab changed to:', newVal)
-  if (errorTabs.value.length > 0) {
-    console.log('Tabs with errors:', errorTabs.value)
-  }
+// Handle form submission
+const handleSubmit = async () => {
+  await formHandleSubmit()
+}
+
+// Expose validation functions for external use
+defineExpose({
+  validateAllFields,
+  validateField,
+  getValidationSummary,
+  resetForm,
+  resetFormErrors,
+  formData: readonly(formData),
+  formErrors: readonly(formErrors),
+  schema: readonly(schema),
+  isFormValid,
+  hasErrors,
 })
 
-function handleFieldChange({
-  field,
-  prevValue,
-  newValue,
-}: {
-  field: TCoreFormField
-  prevValue: any
-  newValue: any
-}) {
-  userInteracted.value = true
-  console.log(`Field changed: ${field.label}` + `(value: ${prevValue} -> ${newValue})`)
-  if (field.value && formErrors.value[field.value]) {
-    console.log(`Clearing error for field: ${field.label}`)
-    formErrors.value[field.value] = false
-    updateErrorTabs()
-  }
-}
-
-function updateErrorTabs() {
-  errorTabs.value = []
-  if (!props.schema?.tabs)
-    return
-
-  for (let i = 0; i < props.schema.tabs.length; i++) {
-    const tab = props.schema.tabs[i]
-    const hasTabError = tab.fields.some((field) => {
-      return field.value && formErrors.value[field.value] === true
-    })
-
-    if (hasTabError && !errorTabs.value.includes(i))
-      errorTabs.value.push(i)
-  }
-}
-
-async function handleSubmit() {
-  setSubmitting(true)
-  try {
-    console.log('Form submission successful', formData.value)
-    console.log('Form data by field:', JSON.stringify(formData.value, null, 2))
-  }
-  catch (error) {
-    console.error('Form submission error:', error)
-  }
-  finally {
-    setSubmitting(false)
-  }
-}
-
-async function validateAndSubmit() {
-  resetFormErrors()
-  const isValid = await validateAllTabsAndHighlightErrors(true)
-
-  if (isValid) {
-    console.log('Form validation successful, submitting...')
-    handleSubmit()
-  }
-  else {
-    console.warn('Form validation failed - found errors')
-  }
-}
-
-function resetFormErrors() {
-  formErrors.value = {}
-  errorTabs.value = []
-  refForm.value?.resetValidation()
-}
-
-function resetForm() {
-  console.log('Resetting form data and validation state')
-  refForm.value?.reset()
-  resetFormErrors()
-  userInteracted.value = false
-
-  if (props.schema?.tabs) {
-    props.schema.tabs.forEach((tab) => {
-      tab.fields.forEach((field) => {
-        if (field.value) {
-          formData.value[field.value] = ''
-        }
-      })
-    })
-  }
-}
-
-async function validateAllTabsAndHighlightErrors(isSubmitting = false) {
-  if (isSubmitting) {
-    formErrors.value = {}
-    errorTabs.value = []
-    userInteracted.value = true
-    await refForm.value?.validate()
-    await nextTick()
-  }
-
-  if (!userInteracted.value && !isSubmitting)
-    return true
-
-  let isValid = true
-
-  if (props.schema?.tabs) {
-    for (let i = 0; i < props.schema.tabs.length; i++) {
-      const tab = props.schema.tabs[i]
-      let hasTabError = false
-
-      for (const field of tab.fields) {
-        if (field.value && field.required && (!formData.value[field.value] || formData.value[field.value].trim() === '')) {
-          formErrors.value[field.value] = true
-          isValid = false
-          hasTabError = true
-        }
-      }
-
-      if (hasTabError)
-        errorTabs.value.push(i)
-    }
-  }
-
-  if (isSubmitting && errorTabs.value.length > 0 && !errorTabs.value.includes(currentTab.value)) {
-    console.log(`Switching to tab ${errorTabs.value[0]} with validation errors`)
-    currentTab.value = errorTabs.value[0]
-    await nextTick()
-    await refForm.value?.validate()
-  }
-
-  return isValid
-}
-
 onMounted(() => {
-  if (props.schema?.tabs) {
-    props.schema.tabs.forEach((tab) => {
-      tab.fields.forEach((field) => {
-        if (field.value) {
-          formData.value[field.value] = ''
-        }
-      })
-    })
-  }
-
-  resetForm()
   fetchData()
 })
 </script>
@@ -222,17 +145,14 @@ onMounted(() => {
           type="submit"
           :loading="submitting"
           :disabled="loading"
-          @click="validateAndSubmit"
+          @click="handleSubmit"
         >
           {{ t("submit") }}
         </VBtn>
       </div>
     </template>
     <template #default>
-      <VForm
-        ref="refForm"
-        @submit.prevent="handleSubmit"
-      >
+      <VForm ref="refForm">
         <VTabs v-model="currentTab">
           <VTab
             v-for="(tab, index) in schema?.tabs"
@@ -261,39 +181,49 @@ onMounted(() => {
                     v-for="(field, fieldIndex) in tab.fields"
                     :key="fieldIndex"
                   >
-                    <div
-                      v-if="field.type === EnumFieldType.DIVIDER || field.type === EnumFieldType.DIVIDER_DASHED"
-                      class="divider"
-                      :class="{
-                        'divider-dashed': field.type === EnumFieldType.DIVIDER_DASHED,
-                      }"
-                    />
-                    <VCol
-                      v-else
-                      cols="12"
-                      sm="6"
-                    >
-                      <FieldRender
-                        :id="`field-${field.value}`"
-                        :name="`field-${field.value}`"
-                        :field="field"
-                        :value="formData[field.value]"
-                        :label="formatLabel({ label: t(field.label), isRequired: field.required })"
-                        :placeholder="isEmpty(field?.placeholder) ? t('enter') : field.placeholder"
-                        :rules="triggerRules(field)"
-                        :density="density"
-                        :error="userInteracted && formErrors[field.value] === true"
-                        @update:model-value="(newValue: any) => {
-                          let prevValue = formData[field.value];
-                          formData[field.value] = newValue;
-                          handleFieldChange({
-                            field,
-                            prevValue,
-                            newValue,
-                          })
+                    <!-- Divider -->
+                    <template v-if="field.type === EnumFieldType.DIVIDER || field.type === EnumFieldType.DIVIDER_DASHED">
+                      <div
+                        class="divider"
+                        :class="{
+                          'divider-dashed': field.type === EnumFieldType.DIVIDER_DASHED,
                         }"
                       />
-                    </VCol>
+                    </template>
+                    <!-- Section Header -->
+                    <template v-else-if="field.type === EnumFieldType.SECTION_HEADER">
+                      <VCol cols="12">
+                        <h3 class="text-h6 mb-2">
+                          {{ t(field.label || '') }}
+                        </h3>
+                        <p v-if="field.description" class="text-body-2 text--secondary mb-4">
+                          {{ t(field.description) }}
+                        </p>
+                      </VCol>
+                    </template>
+                    <!-- Regular Field -->
+                    <template v-else>
+                      <VCol
+                        cols="12"
+                        sm="6"
+                      >
+                        <FieldRender
+                          :id="`field-${field.value}`"
+                          :name="`field-${field.value}`"
+                          :field="field"
+                          :value="formData[field.value]"
+                          :label="formatLabel({ label: t(field.label), isRequired: field.required })"
+                          :placeholder="isEmpty(field?.placeholder) ? t('enter') : field.placeholder"
+                          :rules="triggerRules(field)"
+                          :density="density"
+                          :error="userInteracted && formErrors[field.value] === true"
+                          @update:model-value="(newValue: any) => {
+                            const prevValue = formData[field.value];
+                            handleFieldChange(field, prevValue, newValue);
+                          }"
+                        />
+                      </VCol>
+                    </template>
                   </template>
                 </VRow>
               </VWindowItem>

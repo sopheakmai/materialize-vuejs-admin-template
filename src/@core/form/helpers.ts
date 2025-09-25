@@ -1,5 +1,5 @@
+import { EnumFieldType } from './enum/field'
 import type { TCoreFormField } from './type'
-import { EnumFieldType } from './type'
 import { emailValidator, passwordValidator, requiredValidator } from './validators'
 
 export function triggerRules(field: TCoreFormField) {
