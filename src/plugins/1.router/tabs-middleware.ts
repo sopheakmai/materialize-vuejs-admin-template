@@ -9,8 +9,6 @@ export const tabsMiddleware = (to: RouteLocationNormalized) => {
   if (
     to.meta.layout === 'blank'
     || to.path.includes('/login')
-    || to.path.includes('/register')
-    || to.path.includes('/forgot-password')
     || to.path.includes('/error')
     || to.path.includes('/not-authorized')
   ) {

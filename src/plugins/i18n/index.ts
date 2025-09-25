@@ -3,14 +3,9 @@ import { themeConfig } from '@themeConfig'
 import type { App } from 'vue'
 import { createI18n } from 'vue-i18n'
 
-// Scan folders in locales directory and use folder names as locale keys
-const folders = import.meta.glob<{ default: any }>('~/locales/*/index.ts', { eager: true })
-const messages = Object.fromEntries(
-  Object.entries(folders).map(([key, value]) => {
-    // './locales/en/index.ts' -> 'en'
-    const localeName = key.split('/')[2]
-    return [localeName, value.default]
-  }),
+const localesMap = Object.fromEntries(
+  Object.entries(import.meta.glob<{ default: any }>('~/locales/*.json', { eager: true }))
+    .map(([path, loadLocale]) => [path.match(/([\w-]*)\.json$/)?.[1], loadLocale.default]),
 )
 
 let _i18n: any = null
@@ -21,7 +16,7 @@ export const getI18n = () => {
       legacy: false,
       locale: cookieRef('language', themeConfig.app.i18n.defaultLocale).value,
       fallbackLocale: 'en',
-      messages,
+      messages: JSON.parse(JSON.stringify(localesMap)),
     })
   }
 
@@ -35,7 +30,7 @@ const localeLabels: Record<string, string> = {
   km: 'Khmer',
 }
 
-export const i18nOptions = Object.keys(messages).map(locale => ({
+export const i18nOptions = Object.keys(localesMap).map(locale => ({
   label: localeLabels[locale] || locale.toUpperCase(),
   i18nLang: locale,
 }))

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { TCoreFormProps } from '@core/form/type'
 import type { VForm } from 'vuetify/components'
-import { triggerRules } from '~/src/@core/form/helpers'
+import { triggerRules } from '@core/form/helpers'
 import FieldRender from '@core/form/render/index.vue'
 import { formatLabel } from './utils'
 import { EnumFieldType } from './enum/field'
