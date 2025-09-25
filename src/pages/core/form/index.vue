@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import AppCoreForm from '@/components/app/core/form/index.vue'
-import { EnumActionType, EnumFieldType } from '~/src/components/app/core/form/type'
+import CoreForm from '@core/form/index.vue'
+import { EnumActionType, EnumFieldType } from '@core/form/type'
 </script>
 
 <template>
-  <AppCoreForm
+  <CoreForm
     :action-type="EnumActionType.CREATE"
     :module="{ endpoint: 'users', path: '/users' }"
     :schema="{
@@ -25,9 +25,47 @@ import { EnumActionType, EnumFieldType } from '~/src/components/app/core/form/ty
               required: true,
             },
             {
+              type: EnumFieldType.DIVIDER_DASHED,
+            },
+            {
               label: 'email',
               value: 'email',
-              type: EnumFieldType.TEXT,
+              type: EnumFieldType.EMAIL,
+              required: false,
+            },
+            {
+              label: 'password',
+              value: 'password',
+              type: EnumFieldType.PASSWORD,
+              required: true,
+            },
+            {
+              type: EnumFieldType.DIVIDER,
+            },
+            {
+              label: 'age',
+              value: 'age',
+              type: EnumFieldType.NUMBER,
+              required: true,
+            },
+            {
+              label: 'gender',
+              value: 'gender',
+              type: EnumFieldType.SELECT,
+              required: true,
+              options: [
+                { label: 'Male', value: 'male' },
+                { label: 'Female', value: 'female' },
+                { label: 'Other', value: 'other' },
+              ],
+            },
+            {
+              type: EnumFieldType.DIVIDER,
+            },
+            {
+              label: 'about',
+              value: 'about',
+              type: EnumFieldType.TEXTAREA,
               required: true,
             },
           ],

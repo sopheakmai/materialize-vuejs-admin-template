@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import type { TCoreFormField, TCoreFormProps } from '@core/form/type'
 import type { VForm } from 'vuetify/components'
-import type { TCoreFormProps } from './type'
-import AppCoreFieldText from '@/components/app/core/field/text.vue'
+import { triggerRules } from '~/src/@core/form/helpers'
+import { EnumActionType, EnumFieldType } from '@core/form/type'
+import FieldRender from '@core/form/render/index.vue'
 import { formatLabel } from './utils'
-import { requiredValidator } from '@/@core/utils/validators'
 
 const props = withDefaults(defineProps<TCoreFormProps>(), {})
 const emit = defineEmits<{
@@ -40,12 +41,20 @@ watch(currentTab, (newVal) => {
   }
 })
 
-function handleInputChange(fieldName: string) {
+function handleFieldChange({
+  field,
+  prevValue,
+  newValue,
+}: {
+  field: TCoreFormField
+  prevValue: any
+  newValue: any
+}) {
   userInteracted.value = true
-  console.log(`Field changed: ${fieldName}`)
-  if (formErrors.value[fieldName]) {
-    console.log(`Clearing error for field: ${fieldName}`)
-    formErrors.value[fieldName] = false
+  console.log(`Field changed: ${field.label}` + `(value: ${prevValue} -> ${newValue})`)
+  if (field.value && formErrors.value[field.value]) {
+    console.log(`Clearing error for field: ${field.label}`)
+    formErrors.value[field.value] = false
     updateErrorTabs()
   }
 }
@@ -57,7 +66,9 @@ function updateErrorTabs() {
 
   for (let i = 0; i < props.schema.tabs.length; i++) {
     const tab = props.schema.tabs[i]
-    const hasTabError = tab.fields.some(field => formErrors.value[field.value])
+    const hasTabError = tab.fields.some((field) => {
+      return field.value && formErrors.value[field.value] === true
+    })
 
     if (hasTabError && !errorTabs.value.includes(i))
       errorTabs.value.push(i)
@@ -68,11 +79,7 @@ async function handleSubmit() {
   setSubmitting(true)
   try {
     console.log('Form submission successful', formData.value)
-    // For debugging and tracking form data
-    console.log('Form data by field:')
-    Object.entries(formData.value).forEach(([key, value]) => {
-      console.log(`${key}: ${value}`)
-    })
+    console.log('Form data by field:', JSON.stringify(formData.value, null, 2))
   }
   catch (error) {
     console.error('Form submission error:', error)
@@ -110,7 +117,9 @@ function resetForm() {
   if (props.schema?.tabs) {
     props.schema.tabs.forEach((tab) => {
       tab.fields.forEach((field) => {
-        formData.value[field.value] = ''
+        if (field.value) {
+          formData.value[field.value] = ''
+        }
       })
     })
   }
@@ -136,7 +145,7 @@ async function validateAllTabsAndHighlightErrors(isSubmitting = false) {
       let hasTabError = false
 
       for (const field of tab.fields) {
-        if (field.required && (!formData.value[field.value] || formData.value[field.value].trim() === '')) {
+        if (field.value && field.required && (!formData.value[field.value] || formData.value[field.value].trim() === '')) {
           formErrors.value[field.value] = true
           isValid = false
           hasTabError = true
@@ -162,7 +171,9 @@ onMounted(() => {
   if (props.schema?.tabs) {
     props.schema.tabs.forEach((tab) => {
       tab.fields.forEach((field) => {
-        formData.value[field.value] = ''
+        if (field.value) {
+          formData.value[field.value] = ''
+        }
       })
     })
   }
@@ -191,7 +202,8 @@ onMounted(() => {
     </template>
     <template #title>
       <h4 class="d-block">
-        {{ $t("create") }} :
+        {{ $t("create") }}
+        <span v-if="actionType !== EnumActionType.CREATE">:</span>
       </h4>
     </template>
     <template #append>
@@ -245,24 +257,44 @@ onMounted(() => {
                 :value="index"
               >
                 <VRow>
-                  <VCol
-                    v-for="field in tab.fields"
-                    :key="field.value"
-                    cols="12"
-                    sm="6"
+                  <template
+                    v-for="(field, fieldIndex) in tab.fields"
+                    :key="fieldIndex"
                   >
-                    <AppCoreFieldText
-                      :id="`field-${field.value}`"
-                      :value="formData[field.value]"
-                      :name="field.value"
-                      :label="formatLabel({ label: t(field.label), isRequired: field.required })"
-                      :placeholder="isEmpty(field.placeholder) ? t('enter') : field.placeholder"
-                      :rules="field.required ? [requiredValidator] : []"
-                      :density="density"
-                      :error="userInteracted && formErrors[field.value] === true"
-                      @input="handleInputChange(field.value)"
+                    <div
+                      v-if="field.type === EnumFieldType.DIVIDER || field.type === EnumFieldType.DIVIDER_DASHED"
+                      class="divider"
+                      :class="{
+                        'divider-dashed': field.type === EnumFieldType.DIVIDER_DASHED,
+                      }"
                     />
-                  </VCol>
+                    <VCol
+                      v-else
+                      cols="12"
+                      sm="6"
+                    >
+                      <FieldRender
+                        :id="`field-${field.value}`"
+                        :name="`field-${field.value}`"
+                        :field="field"
+                        :value="formData[field.value]"
+                        :label="formatLabel({ label: t(field.label), isRequired: field.required })"
+                        :placeholder="isEmpty(field?.placeholder) ? t('enter') : field.placeholder"
+                        :rules="triggerRules(field)"
+                        :density="density"
+                        :error="userInteracted && formErrors[field.value] === true"
+                        @update:model-value="(newValue: any) => {
+                          let prevValue = formData[field.value];
+                          formData[field.value] = newValue;
+                          handleFieldChange({
+                            field,
+                            prevValue,
+                            newValue,
+                          })
+                        }"
+                      />
+                    </VCol>
+                  </template>
                 </VRow>
               </VWindowItem>
             </VWindow>
@@ -273,8 +305,24 @@ onMounted(() => {
   </VCard>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .error-tab {
   color: rgb(var(--v-theme-error)) !important;
+}
+
+.divider {
+  border-top: 1px dashed rgba(0, 0, 0, 0.12);
+  width: 100%;
+  margin: 16px 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  &-dashed {
+    border-top: 1px dashed rgba(0, 0, 0, 0.12);
+    width: 100%;
+    margin: 16px 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 }
 </style>

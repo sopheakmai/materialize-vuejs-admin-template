@@ -13,6 +13,10 @@ export default [
         title: 'CRM',
         to: 'dashboards-crm',
       },
+      {
+        title: 'eCommerce',
+        to: 'dashboards-ecommerce',
+      },
     ],
     badgeContent: '5',
     badgeClass: 'bg-error',

@@ -3,12 +3,12 @@
 </script>
 
 <template>
-  <div>
+  <VCard class="pa-5" height="calc(100vh - 150px)">
     <h1>Table</h1>
     <p>This is the core table page.</p>
-  </div>
+  </VCard>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 </style>

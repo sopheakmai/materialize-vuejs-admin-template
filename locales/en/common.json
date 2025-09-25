@@ -24,5 +24,13 @@
   "icons": "Icons",
   "apps.and.pages": "Apps & Pages",
   "ui.elements": "UI Elements",
-  "table": "Table"
+  "table": "Table",
+  "facebook": "Facebook",
+  "age": "Age",
+  "gender": "Gender",
+  "male": "Male",
+  "female": "Female",
+  "other": "Other",
+  "password": "Password",
+  "about": "About"
 }
