@@ -1,11 +1,10 @@
 <script lang="ts" setup>
-
+import CoreTable from '@core/table/index.vue'
 </script>
 
 <template>
   <VCard class="pa-5" height="calc(100vh - 150px)">
-    <h1>Table</h1>
-    <p>This is the core table page.</p>
+    <CoreTable />
   </VCard>
 </template>
 

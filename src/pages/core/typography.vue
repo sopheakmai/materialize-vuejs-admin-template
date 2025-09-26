@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import TypographyHeadlines from '@/core/typography/TypographyHeadlines.vue'
-import TypographyTexts from '@core/typography/TypographyTexts.vue'
-import TypographyFamilies from '@/core/typography/TypographyFamilies.vue'
+import TypographyHeadlines from '@core/components/typography/TypographyHeadlines.vue'
+import TypographyTexts from '@core/components/typography/TypographyTexts.vue'
+import TypographyFamilies from '@core/components/typography/TypographyFamilies.vue'
 </script>
 
 <template>
