@@ -20,6 +20,9 @@
       "@/*": [
         "./src/*"
       ],
+      "@config": [
+        "./config"
+      ],
       "@themeConfig": [
         "./themeConfig.ts"
       ],
@@ -59,7 +62,7 @@
   },
   "include": [
     "./vite.config.*",
-    "types/*.d.ts",
+    "config/types/*.d.ts",
     "./src/**/*",
     "./src/**/*.vue",
     "./themeConfig.ts"
