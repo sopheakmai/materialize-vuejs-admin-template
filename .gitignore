@@ -35,9 +35,6 @@ dist-ssr
 # iconify dist files
 src/plugins/iconify/icons.css
 
-# Ignore MSW script
-public/mockServiceWorker.js
-
 # Env files
 .env*
 !.env.example

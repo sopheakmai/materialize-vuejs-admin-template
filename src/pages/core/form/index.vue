@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import CoreForm from '@core/form/index.vue'
-import { EnumActionType } from '@core/form/enum/action'
-import { EnumFieldType } from '@core/form/enum/field'
+import CoreForm from '@core/components/form/index.vue'
+import { EnumActionType } from '@core/components/form/enum/action'
+import { EnumFieldType } from '@core/components/form/enum/field'
 </script>
 
 <template>

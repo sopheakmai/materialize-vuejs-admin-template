@@ -2,7 +2,6 @@
 import Shepherd from 'shepherd.js'
 import { withQuery } from 'ufo'
 import type { RouteLocationRaw } from 'vue-router'
-import type { SearchResults } from '@db/app-bar-search/types'
 import { useConfigStore } from '@core/stores/config'
 
 type Suggestion = {
@@ -88,7 +87,7 @@ const noDataSuggestions: Suggestion[] = [
 const searchQuery = ref('')
 
 const router = useRouter()
-const searchResult = ref<SearchResults[]>([])
+const searchResult = ref<any[]>([])
 const isLoading = ref(false)
 
 const fetchResults = async () => {

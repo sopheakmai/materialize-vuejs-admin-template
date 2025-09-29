@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { TCoreFormProps } from '@core/form/type'
+import type { TCoreFormProps } from '@core/components/form/type'
 import type { VForm } from 'vuetify/components'
-import { triggerRules } from '@core/form/helpers'
-import FieldRender from '@core/form/render/index.vue'
+import { triggerRules } from '@core/components/form/helpers'
+import FieldRender from '@core/components/form/render/index.vue'
 import { formatLabel } from './utils'
 import { EnumFieldType } from './enum/field'
 import { EnumActionType } from './enum/action'
-import { useForm } from '@core/form/useForm'
+import { useForm } from '@core/components/form/useForm'
 
 const props = withDefaults(defineProps<TCoreFormProps>(), {})
 const emit = defineEmits<{

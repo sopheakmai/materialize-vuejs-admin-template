@@ -1,31 +1,11 @@
 export default [
-  {
-    title: 'analytics',
-    icon: { icon: 'solar-chart-square-outline' },
-    to: 'dashboards-analytics',
-  },
-  { heading: 'apps.and.pages' },
-  {
-    title: 'dashboards',
-    icon: { icon: 'solar-home-angle-outline' },
-    children: [
-      {
-        title: 'CRM',
-        to: 'dashboards-crm',
-      },
-      {
-        title: 'eCommerce',
-        to: 'dashboards-ecommerce',
-      },
-    ],
-    badgeContent: '5',
-    badgeClass: 'bg-error',
-  },
   { heading: 'ui.elements' },
   {
     title: 'typography',
     icon: { icon: 'solar-document-text-outline' },
     to: 'core-typography',
+    badgeContent: '5',
+    badgeClass: 'bg-error',
   },
   {
     title: 'icons',

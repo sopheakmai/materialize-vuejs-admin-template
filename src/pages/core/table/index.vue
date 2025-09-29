@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import CoreTable from '@core/table/index.vue'
+import CoreTable from '@core/components/table/index.vue'
 </script>
 
 <template>

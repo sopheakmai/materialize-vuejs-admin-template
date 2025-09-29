@@ -24,9 +24,6 @@ declare module 'vue-router/auto-routes' {
     'core-icons': RouteRecordInfo<'core-icons', '/core/icons', Record<never, never>, Record<never, never>>,
     'core-table': RouteRecordInfo<'core-table', '/core/table', Record<never, never>, Record<never, never>>,
     'core-typography': RouteRecordInfo<'core-typography', '/core/typography', Record<never, never>, Record<never, never>>,
-    'dashboards-analytics': RouteRecordInfo<'dashboards-analytics', '/dashboards/analytics', Record<never, never>, Record<never, never>>,
-    'dashboards-crm': RouteRecordInfo<'dashboards-crm', '/dashboards/crm', Record<never, never>, Record<never, never>>,
-    'dashboards-ecommerce': RouteRecordInfo<'dashboards-ecommerce', '/dashboards/ecommerce', Record<never, never>, Record<never, never>>,
     'login': RouteRecordInfo<'login', '/login', Record<never, never>, Record<never, never>>,
     'not-authorized': RouteRecordInfo<'not-authorized', '/not-authorized', Record<never, never>, Record<never, never>>,
   }

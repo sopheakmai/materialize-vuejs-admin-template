@@ -1,6 +1,5 @@
 import type { EnumActionType } from './enum/action'
 import type { EnumFieldType } from './enum/field'
-import type { Ref } from 'vue'
 import type { VForm } from 'vuetify/components'
 
 export type TCoreFormField = {
@@ -29,7 +28,7 @@ export type TCoreFormField = {
     label: string
   }
   | {
-    type: EnumFieldType.SELECT | EnumFieldType.RADIO | EnumFieldType.CHECKBOX
+    type: EnumFieldType.SELECT
     options: Array<{
       label: string
       value: string

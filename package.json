@@ -10,8 +10,7 @@
     "typecheck": "vue-tsc --noEmit",
     "lint": "eslint . --fix --ext .ts,.js,.vue,.tsx,.jsx",
     "build:icons": "tsx src/plugins/iconify/build-icons.ts",
-    "msw:init": "msw init public/ --save",
-    "postinstall": "npm run build:icons && npm run msw:init"
+    "postinstall": "npm run build:icons"
   },
   "dependencies": {
     "@casl/ability": "6.7.3",
@@ -80,7 +79,6 @@
     "@vitejs/plugin-vue-jsx": "4.2.0",
     "eslint": "^9.34.0",
     "eslint-plugin-format": "^1.0.1",
-    "msw": "2.3.4",
     "postcss-html": "1.8.0",
     "postcss-scss": "4.0.9",
     "sass": "1.76.0",
@@ -111,8 +109,5 @@
     "@types/video.js": "^7",
     "postcss": "^8",
     "sass": "1.76.0"
-  },
-  "msw": {
-    "workerDirectory": "public"
   }
 }

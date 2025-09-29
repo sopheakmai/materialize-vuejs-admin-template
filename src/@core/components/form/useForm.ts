@@ -1,5 +1,5 @@
-import type { TCoreFormField, UseFormOptions, UseFormReturn, ValidationSummary } from '@core/form/type'
-import { EnumFieldType } from '@core/form/enum/field'
+import type { TCoreFormField, UseFormOptions, UseFormReturn, ValidationSummary } from '@core/components/form/type'
+import { EnumFieldType } from '@core/components/form/enum/field'
 
 export function useForm(options: UseFormOptions): UseFormReturn {
   const { schema, formRef, onSubmit, onError, onFieldChange, validateOnChange = true } = options
