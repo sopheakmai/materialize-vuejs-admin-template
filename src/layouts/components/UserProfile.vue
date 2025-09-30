@@ -31,19 +31,19 @@ const userProfileList = [
     type: 'navItem',
     icon: 'ri-user-line',
     title: 'Profile',
-    to: { name: 'apps-user-view-id', params: { id: 21 } },
+    // to: { name: 'apps-user-view-id', params: { id: 21 } },
   },
   {
     type: 'navItem',
     icon: 'ri-settings-4-line',
     title: 'Settings',
-    to: { name: 'pages-account-settings-tab', params: { tab: 'account' } },
+    // to: { name: 'pages-account-settings-tab', params: { tab: 'account' } },
   },
   {
     type: 'navItem',
     icon: 'ri-file-text-line',
     title: 'Billing Plan',
-    to: { name: 'pages-account-settings-tab', params: { tab: 'billing-plans' } },
+    // to: { name: 'pages-account-settings-tab', params: { tab: 'billing-plans' } },
     chipsProps: { color: 'error', text: '4', size: 'small' },
   },
   { type: 'divider' },
@@ -51,13 +51,13 @@ const userProfileList = [
     type: 'navItem',
     icon: 'ri-money-dollar-circle-line',
     title: 'Pricing',
-    to: { name: 'pages-pricing' },
+    // to: { name: 'pages-pricing' },
   },
   {
     type: 'navItem',
     icon: 'ri-question-line',
     title: 'FAQ',
-    to: { name: 'pages-faq' },
+    // to: { name: 'pages-faq' },
   },
 ]
 </script>
@@ -128,9 +128,9 @@ const userProfileList = [
               v-for="item in userProfileList"
               :key="item.title"
             >
+              <!-- :to="item.to" -->
               <VListItem
                 v-if="item.type === 'navItem'"
-                :to="item.to"
                 class="px-4"
               >
                 <template #prepend>

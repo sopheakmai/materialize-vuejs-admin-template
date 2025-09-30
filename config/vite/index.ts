@@ -12,6 +12,7 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 import MetaLayouts from 'vite-plugin-vue-meta-layouts'
 import vuetify from 'vite-plugin-vuetify'
 import svgLoader from 'vite-svg-loader'
+import { visualizer } from 'rollup-plugin-visualizer'
 
 export function createVitePlugins(env: Record<string, string>) {
   const APP_NAME = 'Innotech Admin Core Template'
@@ -100,6 +101,17 @@ export function createVitePlugins(env: Record<string, string>) {
       currentBuildTime: new Date().toISOString(),
     }),
   ]
+
+  // ANALYZE MODE
+  if (process.env.ANALYZE === 'true') {
+    vitePluginList.push(visualizer({
+      filename: 'dist/stats.html',
+      title: 'Bundle Visualizer',
+      open: true,
+      gzipSize: true,
+      brotliSize: true,
+    }))
+  }
 
   return vitePluginList
 }
